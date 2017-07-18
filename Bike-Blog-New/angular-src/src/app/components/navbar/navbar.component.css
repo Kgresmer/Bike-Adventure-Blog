@@ -2,3 +2,8 @@ nav {
   border-top: brown solid 2px;
   border-bottom: brown solid 2px;
 }
+
+.active {
+  color: orange;
+  border: orange 2px solid;
+}

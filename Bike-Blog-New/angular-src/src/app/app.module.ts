@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule, Routes } from '@angular/router';
 
 import {PostComponent} from './components/post/post.component';
 import {PostDetailComponent} from './components/post-detail/post-detail.component';
@@ -14,6 +14,7 @@ import {RegisterComponent} from './components/register/register.component';
 import {HomeComponent} from './components/home/home.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {ProfileComponent} from './components/profile/profile.component';
+import {ModuleWithProviders} from "@angular/core";
 
 const appRoutes: Routes = [
   {
@@ -45,6 +46,8 @@ const appRoutes: Routes = [
     component: ProfileComponent
   }];
 
+export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+
 @NgModule({
   declarations: [
     PostComponent,
@@ -61,8 +64,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
-
+    appRouting
   ],
   providers: [
     PostService
