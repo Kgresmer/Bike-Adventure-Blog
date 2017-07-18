@@ -1,0 +1,24 @@
+{
+  "name": "bike-blog",
+  "version": "1.0.0",
+  "description": "Blog for bike touring",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
+    "mongoose": "^4.11.3",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1"
+  },
+  "author": "Kevin Gresmer",
+  "license": "ISC",
+  "devDependencies": {
+    "@angular/cli": "^1.2.1"
+  }
+}
