@@ -14,7 +14,9 @@ import {RegisterComponent} from './components/register/register.component';
 import {HomeComponent} from './components/home/home.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {ProfileComponent} from './components/profile/profile.component';
-import {ModuleWithProviders} from "@angular/core";
+import {ModuleWithProviders} from '@angular/core';
+import {ValidateService} from './services/validate.service';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 const appRoutes: Routes = [
   {
@@ -64,10 +66,12 @@ export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);
   imports: [
     BrowserModule,
     FormsModule,
-    appRouting
+    appRouting,
+    FlashMessagesModule
   ],
   providers: [
-    PostService
+    PostService,
+    ValidateService
   ],
   bootstrap: [AppComponent]
 })
