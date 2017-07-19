@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import {RouterModule, Routes } from '@angular/router';
 
 import {PostComponent} from './components/post/post.component';
@@ -17,6 +18,7 @@ import {ProfileComponent} from './components/profile/profile.component';
 import {ModuleWithProviders} from '@angular/core';
 import {ValidateService} from './services/validate.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import {AuthService} from './services/auth.service';
 
 const appRoutes: Routes = [
   {
@@ -66,12 +68,14 @@ export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     appRouting,
     FlashMessagesModule
   ],
   providers: [
     PostService,
-    ValidateService
+    ValidateService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
