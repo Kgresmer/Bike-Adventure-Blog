@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {RouterModule, Routes } from '@angular/router';
+import { tokenNotExpired } from 'angular2-jwt';
 
 import {PostComponent} from './components/post/post.component';
 import {PostDetailComponent} from './components/post-detail/post-detail.component';
@@ -19,6 +20,7 @@ import {ModuleWithProviders} from '@angular/core';
 import {ValidateService} from './services/validate.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import {AuthService} from './services/auth.service';
+import {AuthGuard} from './guards/auth.guard';
 
 const appRoutes: Routes = [
   {
@@ -43,11 +45,13 @@ const appRoutes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   }];
 
 export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);
@@ -75,7 +79,8 @@ export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);
   providers: [
     PostService,
     ValidateService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
