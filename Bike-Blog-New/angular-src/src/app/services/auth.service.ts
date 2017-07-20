@@ -10,7 +10,7 @@ export class AuthService {
   constructor(private http: Http) { }
 
   registerUser(user) {
-    const headers = new Headers();
+    let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/users/register', user, {headers: headers})
       .map(res => res.json());
@@ -21,6 +21,17 @@ export class AuthService {
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers})
       .map(res => res.json());
+  }
+
+  getProfile() {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get('http://localhost:3000/users/profile', {headers: headers})
+      .map(res => res.json());
+  }
+
+  loadToken() {
+
   }
 
   storeUserData(token, user) {

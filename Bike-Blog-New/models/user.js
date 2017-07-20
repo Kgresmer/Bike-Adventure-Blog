@@ -37,13 +37,13 @@ module.exports.addUser = function (newUser, callback) {
             if (err) throw err;
             newUser.password = hash;
             newUser.save(callback);
-        })
-    })
+        });
+    });
 };
 
 module.exports.comparePassword = function (candidatePassword, hashedPassword, callback) {
     bcrypt.compare(candidatePassword, hashedPassword, (err, isMatch) => {
         if (err) throw err;
         callback(null, isMatch);
-    })
+    });
 };
