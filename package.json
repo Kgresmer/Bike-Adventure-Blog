@@ -4,7 +4,7 @@
   "description": "Blog for bike touring",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
