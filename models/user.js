@@ -41,6 +41,26 @@ module.exports.addUser = function (newUser, callback) {
     });
 };
 
+module.exports.updateUser = function (newUserData, callback) {
+    const updatedUser = {};
+
+    User.findById(newUserData.id, function (err, existingUserData) {
+        // Handle any possible database errors
+        if (err) throw err;
+        updatedUser.name = newUserData.name || existingUserData.name;
+        updatedUser.email = newUserData.email || existingUserData.email;
+        updatedUser.username = newUserData.username || existingUserData.username;
+        updatedUser.password = newUserData.password || existingUserData.password;
+
+        // Save the updated document back to the database
+        updatedUser.save(callback);
+    });
+};
+
+module.exports.deleteUser = function(userId, callback) {
+    User.findByIdAndRemove(userId, callback);
+};
+
 module.exports.comparePassword = function (candidatePassword, hashedPassword, callback) {
     bcrypt.compare(candidatePassword, hashedPassword, (err, isMatch) => {
         if (err) throw err;

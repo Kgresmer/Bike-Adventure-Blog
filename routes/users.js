@@ -29,6 +29,47 @@ router.post('/register', (req, res, next) => {
     })
 });
 
+router.put('/delete', (req, res, next) => {
+    const userId = req.body.userId;
+
+    User.deleteUser(userId, (err, user) => {
+        if (err) {
+            res.json({
+                success: false,
+                msg: 'failed to delete user'
+            });
+        } else {
+            res.json({
+                success: true,
+                msg: 'That user is no more!'
+            });
+        }
+    })
+});
+
+router.put('/update', (req, res, next) => {
+    let newerUser = new User({
+        name: req.body.name,
+        email: req.body.email,
+        username: req.body.username,
+        password: req.body.password,
+    });
+
+    User.updateUser(newerUser, (err, user) => {
+        if (err) {
+            res.json({
+                success: false,
+                msg: 'Failed to update user...'
+            });
+        } else {
+            res.json({
+                success: true,
+                msg: 'Something is now different about that user'
+            });
+        }
+    })
+});
+
 //Authenticate
 router.post('/authenticate', (req, res, next) => {
     //get the username and password
