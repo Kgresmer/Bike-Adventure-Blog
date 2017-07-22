@@ -1,4 +1,4 @@
 module.exports = {
-    database: 'mongodb://localhost:27017/bike_blog',
+    database: 'mongodb://root:root@ds161162.mlab.com:61162/bike_blog',
     secret: 'sigger'
 }
