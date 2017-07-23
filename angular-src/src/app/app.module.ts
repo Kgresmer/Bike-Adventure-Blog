@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {RouterModule, Routes } from '@angular/router';
 import { tokenNotExpired } from 'angular2-jwt';
-import {FeedComponent, PostComponent} from './components/feed/feed.component';
+import {FeedComponent} from './components/feed/feed.component';
 import {PostComponent} from './components/post/post.component';
 import {AppComponent} from './app.component';
 import {PostService} from './components/feed/feed.service';
