@@ -17,20 +17,6 @@ export class AuthService {
       .map(res => res.json());
   }
 
-  updateUser(user) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.put('users/update', user, {headers: headers})
-      .map(res => res.json());
-  }
-
-  deleteUser(userId) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.put('users/delete', userId, {headers: headers})
-      .map(res => res.json());
-  }
-
   authenticateUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
