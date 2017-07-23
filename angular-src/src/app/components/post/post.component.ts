@@ -3,7 +3,7 @@ import {Post} from '../posts/posts.component';
 
 
 @Component({
-  selector: 'app-post-detail',
+  selector: 'app-post',
   template: `
     <div style="border: 1px black solid;">
       <h4>{{selectedPost.title}} - {{selectedPost.date}}</h4>
@@ -21,6 +21,6 @@ import {Post} from '../posts/posts.component';
   `
 })
 
-export class PostDetailComponent {
+export class PostComponent {
   @Input() selectedPost: Post;
 }

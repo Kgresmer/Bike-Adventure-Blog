@@ -13,12 +13,12 @@ export class Post {
 }
 
 @Component({
-  selector: 'app-post-root',
+  selector: 'app-feed-root',
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.css']
 })
 
-export class PostComponent implements OnInit {
+export class FeedComponent implements OnInit {
   constructor(private postService: PostService) {}
 
   selectedPost: Post;
