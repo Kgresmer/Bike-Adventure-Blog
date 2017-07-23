@@ -1,5 +1,5 @@
 
-import {Post} from './post.component';
+import {Post} from './feed.component';
 
 export const POSTS: Post[] = [
   {

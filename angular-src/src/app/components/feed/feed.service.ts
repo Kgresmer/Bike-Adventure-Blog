@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Post} from './post.component';
-import {POSTS} from './mock-posts';
+import {Post} from './feed.component';
+import {POSTS} from './mock-feed';
 
 @Injectable()
 export class PostService {

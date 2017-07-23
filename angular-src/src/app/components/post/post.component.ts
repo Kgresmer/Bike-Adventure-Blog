@@ -1,38 +1,23 @@
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
-import { PostService } from './post.service';
+import { Component, Input } from '@angular/core';
+import {Post} from '../feed/feed.component';
 
-export class Post {
-  id: number;
-  date: string;
-  title: string;
-  description: string;
-  photo: string;
-  milesSinceLastPost: number;
-  comment: string;
-}
 
 @Component({
-  selector: 'app-post-root',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css']
+  selector: 'app-post-detail',
+  template: `
+    <div style="text-align:center; display: inline-block; width: 70%" class="blog-post" *ngIf="selectedPost">
+      <div style="border: 1px black solid;">
+        <h1>{{selectedPost.title}} - {{selectedPost.date}}</h1>
+        <img src={{selectedPost.photo}} />
+        <p>Miles Since last Post: {{selectedPost.milesSinceLastPost}}</p>
+        <p>{{selectedPost.description}}</p>
+      </div>
+      <label>Comment: </label>
+      <input [(ngModel)]="selectedPost.comment" placeholder="Well thats neat"/>
+    </div>
+  `
 })
 
-export class PostComponent implements OnInit {
-  constructor(private postService: PostService) {}
-
-  selectedPost: Post;
-  posts: Post[];
-
-  ngOnInit(): void {
-    this.getAllPosts();
-  }
-
-  getAllPosts(): void {
-    this.postService.getAllPosts().then(posts => this.posts = posts);
-  }
-
-  onSelect(post: Post): void {
-    this.selectedPost = post;
-  }
+export class PostDetailComponent {
+  @Input() selectedPost: Post;
 }
