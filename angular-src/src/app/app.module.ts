@@ -5,10 +5,10 @@ import { HttpModule } from '@angular/http';
 import {RouterModule, Routes } from '@angular/router';
 import { tokenNotExpired } from 'angular2-jwt';
 
-import {PostComponent} from './components/post/post.component';
-import {PostDetailComponent} from './components/post-detail/post-detail.component';
+import {PostComponent} from './components/posts/posts.component';
+import {PostDetailComponent} from './components/posts/post-detail/post-detail.component';
 import {AppComponent} from './app.component';
-import {PostService} from './components/post/post.service';
+import {PostService} from './components/posts/posts.service';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {AboutComponent} from './components/about/about.component';
 import {LoginComponent} from './components/login/login.component';

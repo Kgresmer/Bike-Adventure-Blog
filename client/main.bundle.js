@@ -82,10 +82,10 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_post_post_component__ = __webpack_require__("../../../../../src/app/components/post/post.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_post_post_component__ = __webpack_require__("../../../../../src/app/components/post/posts.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_post_detail_post_detail_component__ = __webpack_require__("../../../../../src/app/components/post-detail/post-detail.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_post_post_service__ = __webpack_require__("../../../../../src/app/components/post/post.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_post_post_service__ = __webpack_require__("../../../../../src/app/components/post/posts.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_navbar_navbar_component__ = __webpack_require__("../../../../../src/app/components/navbar/navbar.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_about_about_component__ = __webpack_require__("../../../../../src/app/components/about/about.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_login_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
@@ -569,7 +569,7 @@ var NavbarComponent = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__post_post_component__ = __webpack_require__("../../../../../src/app/components/post/post.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__post_post_component__ = __webpack_require__("../../../../../src/app/components/post/posts.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostDetailComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -680,7 +680,7 @@ module.exports = "<div style=\"display: inline-block; width: 80%\">\r\n  <div st
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__post_service__ = __webpack_require__("../../../../../src/app/components/post/post.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__post_service__ = __webpack_require__("../../../../../src/app/components/post/posts.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Post; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -717,8 +717,8 @@ var PostComponent = (function () {
     PostComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-post-root',
-            template: __webpack_require__("../../../../../src/app/components/post/post.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/components/post/post.component.css")]
+            template: __webpack_require__("../../../../../src/app/components/post/posts.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/post/posts.component.css")]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__post_service__["a" /* PostService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__post_service__["a" /* PostService */]) === "function" && _a || Object])
     ], PostComponent);

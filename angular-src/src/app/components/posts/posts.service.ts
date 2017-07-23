@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Post} from './post.component';
+import {Post} from './posts.component';
 import {POSTS} from './mock-posts';
 
 @Injectable()

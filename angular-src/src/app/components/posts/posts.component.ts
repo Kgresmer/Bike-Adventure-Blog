@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { PostService } from './post.service';
+import { PostService } from './posts.service';
 
 export class Post {
   id: number;
@@ -14,8 +14,8 @@ export class Post {
 
 @Component({
   selector: 'app-post-root',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css']
+  templateUrl: 'posts.component.html',
+  styleUrls: ['posts.component.css']
 })
 
 export class PostComponent implements OnInit {
