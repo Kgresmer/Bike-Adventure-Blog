@@ -6,7 +6,6 @@ import {RouterModule, Routes } from '@angular/router';
 import { tokenNotExpired } from 'angular2-jwt';
 import {FeedComponent} from './components/feed/feed.component';
 import {PostComponent} from './components/post/post.component';
-import {AppComponent} from './app.component';
 import {PostService} from './components/feed/feed.service';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './components/navbar/navbar.component';

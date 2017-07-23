@@ -17,8 +17,5 @@
     "passport-jwt": "^2.2.1"
   },
   "author": "Kevin Gresmer",
-  "license": "ISC",
-  "devDependencies": {
-    "@angular/cli": "^1.2.1"
-  }
+  "license": "ISC"
 }
