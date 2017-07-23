@@ -1,6 +1,10 @@
 import { TestBed, async } from '@angular/core/testing';
 
+<<<<<<< HEAD
 import { AppComponent } from './components/feed/feed.component';
+=======
+import { AppComponent } from './components/posts/posts.component';
+>>>>>>> 807002605594a68535177d2c714a1e134b5e02e3
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
