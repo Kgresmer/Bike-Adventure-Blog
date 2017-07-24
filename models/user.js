@@ -24,7 +24,6 @@ const UserSchema = mongoose.Schema({
 const User = module.exports = mongoose.model('User', UserSchema);
 
 module.exports.getUserById = function (id, callback) {
-    console.log('looking for user with ID: ' + id);
   User.findById(id, callback);
 };
 module.exports.getUserByUsername = function (username, callback) {
@@ -56,6 +55,7 @@ module.exports.updateUser = function (newUserData, callback) {
 };
 
 module.exports.deleteUser = function(userId, callback) {
+    console.log('deleting user: ' + userId);
     User.findByIdAndRemove(userId, callback);
 };
 

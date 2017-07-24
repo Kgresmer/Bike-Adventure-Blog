@@ -786,7 +786,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"user\">\r\n  <h2 class=\"page-header\">Profile</h2>\r\n  <form (submit)=\"onSubmitEditUser()\">\r\n    <div class=\"form-group\">\r\n      <label>Name</label>\r\n      <input type=\"text\" [(ngModel)]=\"user.name\" name=\"name\" class=\"form-control\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label>Username</label>\r\n      <input type=\"text\" [(ngModel)]=\"user.username\" name=\"username\" class=\"form-control\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label>Password</label>\r\n      <input type=\"password\" [(ngModel)]=\"user.password\" name=\"password\" disabled readonly class=\"form-control\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label>Email</label>\r\n      <input type=\"text\" [(ngModel)]=\"user.email\" name=\"email\" class=\"form-control\">\r\n    </div>\r\n    <input type=\"submit\" class=\"btn btn-primary\" value=\"Edit User Details\">\r\n  </form>\r\n\r\n</div>\r\n"
+module.exports = "<div *ngIf=\"user\">\r\n  <h2 class=\"page-header\">Profile</h2>\r\n  <form (submit)=\"onSubmitEditUser()\">\r\n    <div class=\"form-group\">\r\n      <label>Name</label>\r\n      <input type=\"text\" [(ngModel)]=\"user.name\" name=\"name\" class=\"form-control\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label>Username</label>\r\n      <input type=\"text\" [(ngModel)]=\"user.username\" name=\"username\" class=\"form-control\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label>Password</label>\r\n      <input type=\"password\" [(ngModel)]=\"user.password\" name=\"password\" disabled readonly class=\"form-control\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label>Email</label>\r\n      <input type=\"text\" [(ngModel)]=\"user.email\" name=\"email\" class=\"form-control\">\r\n    </div>\r\n    <input type=\"submit\" class=\"btn btn-primary\" value=\"Edit User Details\">\r\n    <button class=\"btn-danger\" (click)=\"onDeleteUser()\" type=\"button\">Delete</button>\r\n  </form>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -829,9 +829,27 @@ var ProfileComponent = (function () {
             return false;
         });
     };
+    ProfileComponent.prototype.onDeleteUser = function () {
+        var _this = this;
+        this.authService.deleteUser(this.user._id).subscribe(function (response) {
+            if (response.success) {
+                _this.flashMessagesService.show(response.msg, {
+                    cssClass: 'alert-success',
+                    timeout: 5000
+                });
+                _this.authService.logout();
+                _this.router.navigate(['/home']);
+            }
+            else {
+                _this.flashMessagesService.show(response.msg, {
+                    cssClass: 'alert-danger',
+                    timeout: 5000
+                });
+            }
+        });
+    };
     ProfileComponent.prototype.onSubmitEditUser = function () {
         var _this = this;
-        console.log(this.user);
         this.authService.editUser(this.user).subscribe(function (response) {
             if (response.success) {
                 _this.flashMessagesService.show(response.msg, {
@@ -942,11 +960,13 @@ var RegisterComponent = (function () {
         // Register User
         this.authService.registerUser(user).subscribe(function (data) {
             if (data.success) {
-                _this.flashMessagesService.show('You are now registered and can login!', { cssClass: 'alert-success', timeout: 3000 });
-                _this.router.navigate(['/login']);
+                _this.flashMessagesService.show(data.msg, { cssClass: 'alert-success', timeout: 3000 });
+                if (!data.userAlreadyExists) {
+                    _this.router.navigate(['/login']);
+                }
             }
             else {
-                _this.flashMessagesService.show('Something went wrong trying to register. :(', { cssClass: 'alert-danger', timeout: 3000 });
+                _this.flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 3000 });
                 _this.router.navigate(['/register']);
             }
         });
@@ -1054,9 +1074,12 @@ var AuthService = (function () {
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.deleteUser = function (userId) {
+        var body = {
+            userId: userId
+        };
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.put('users/delete', userId, { headers: headers })
+        return this.http.put('users/delete', body, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.authenticateUser = function (user) {

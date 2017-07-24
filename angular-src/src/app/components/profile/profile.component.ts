@@ -26,8 +26,23 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  onDeleteUser() {
+    this.authService.deleteUser(this.user._id).subscribe( response => {
+      if (response.success) {
+        this.flashMessagesService.show(response.msg, {
+          cssClass: 'alert-success',
+          timeout: 5000});
+        this.authService.logout();
+        this.router.navigate(['/home']);
+      } else {
+        this.flashMessagesService.show(response.msg, {
+          cssClass: 'alert-danger',
+          timeout: 5000});
+      }
+    });
+  }
+
   onSubmitEditUser() {
-    console.log(this.user);
     this.authService.editUser(this.user).subscribe( response => {
       if (response.success) {
         this.flashMessagesService.show(response.msg, {

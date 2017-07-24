@@ -14,22 +14,44 @@ router.post('/register', (req, res, next) => {
         password: req.body.password,
     });
 
-    User.addUser(newUser, (err, user) => {
+    User.getUserByUsername(newUser.username, (err, user) => {
         if (err) {
             res.json({
                 success: false,
-                msg: 'failed to register user'
+                msg: 'Something went wrong trying to register. :('
             });
         } else {
-            res.json({
-                success: true,
-                msg: 'registered user'
-            });
+            if (user) {
+                console.log('A user was found ' + user);
+                res.json({
+                    success: true,
+                    msg: 'This user already exists',
+                    userAlreadyExists: true
+                });
+                return;
+            } else {
+                User.addUser(newUser, (err, user) => {
+                    if (err) {
+                        res.json({
+                            success: false,
+                            msg: 'Something went wrong trying to register. :(',
+                            userAlreadyExists: false
+                        });
+                    } else {
+                        res.json({
+                            success: true,
+                            msg: 'You are now registered and can login!',
+                            userAlreadyExists: false
+                        });
+                    }
+                });
+            }
         }
-    })
+    });
 });
 
 router.put('/delete', (req, res, next) => {
+    console.log(req.body.userId);
     const userId = req.body.userId;
 
     User.deleteUser(userId, (err, user) => {

@@ -25,9 +25,12 @@ export class AuthService {
   }
 
   deleteUser(userId) {
+    const body = {
+      userId: userId
+    };
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put('users/delete', userId, {headers: headers})
+    return this.http.put('users/delete', body, {headers: headers})
       .map(res => res.json());
   }
 
