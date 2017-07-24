@@ -24,6 +24,7 @@ const UserSchema = mongoose.Schema({
 const User = module.exports = mongoose.model('User', UserSchema);
 
 module.exports.getUserById = function (id, callback) {
+    console.log('looking for user with ID: ' + id);
   User.findById(id, callback);
 };
 module.exports.getUserByUsername = function (username, callback) {
@@ -42,18 +43,15 @@ module.exports.addUser = function (newUser, callback) {
 };
 
 module.exports.updateUser = function (newUserData, callback) {
-    const updatedUser = {};
-
-    User.findById(newUserData.id, function (err, existingUserData) {
+    User.findById(newUserData._id, function (err, existingUserData) {
         // Handle any possible database errors
-        if (err) throw err;
-        updatedUser.name = newUserData.name || existingUserData.name;
-        updatedUser.email = newUserData.email || existingUserData.email;
-        updatedUser.username = newUserData.username || existingUserData.username;
-        updatedUser.password = newUserData.password || existingUserData.password;
+        existingUserData.name = newUserData.name || existingUserData.name;
+        existingUserData.email = newUserData.email || existingUserData.email;
+        existingUserData.username = newUserData.username || existingUserData.username;
+        existingUserData.password = newUserData.password || existingUserData.password;
 
         // Save the updated document back to the database
-        updatedUser.save(callback);
+        existingUserData.save(callback);
     });
 };
 

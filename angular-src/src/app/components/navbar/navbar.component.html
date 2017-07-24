@@ -11,6 +11,7 @@
       <a routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="navbar-brand" routerLink="/">Home</a>
       <a routerLinkActive="active" class="navbar-brand" routerLink="/feed">Posts</a>
       <a routerLinkActive="active" class="navbar-brand" routerLink="/about">About</a>
+      <a *ngIf="!authService.loggedIn()" routerLinkActive="active" class="navbar-brand" routerLink="/register">Register</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -21,10 +22,9 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav" *ngIf="authService.loggedIn()">
         <li><a *ngIf="authService.loggedIn()" routerLinkActive="active" class="navbar-brand" routerLink="/dashboard">Dashboard</a></li>
-        <li><a *ngIf="!authService.loggedIn()" routerLinkActive="active" class="navbar-brand" routerLink="/login">Login</a></li>
-        <li><a *ngIf="!authService.loggedIn()" routerLinkActive="active" class="navbar-brand" routerLink="/register">Register</a></li>
+        <li><a *ngIf="authService.loggedIn()" routerLinkActive="active" class="navbar-brand" routerLink="/profile">Profile</a></li>
         <li><a *ngIf="authService.loggedIn()" class="navbar-brand" (click)="onLogoutClick()" href="#" >Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->

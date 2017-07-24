@@ -44,18 +44,11 @@ router.put('/delete', (req, res, next) => {
                 msg: 'That user is no more!'
             });
         }
-    })
+    });
 });
 
 router.put('/update', (req, res, next) => {
-    let newerUser = new User({
-        name: req.body.name,
-        email: req.body.email,
-        username: req.body.username,
-        password: req.body.password,
-    });
-
-    User.updateUser(newerUser, (err, user) => {
+    User.updateUser(req.body, (err, user) => {
         if (err) {
             res.json({
                 success: false,
@@ -64,10 +57,10 @@ router.put('/update', (req, res, next) => {
         } else {
             res.json({
                 success: true,
-                msg: 'Something is now different about that user'
+                msg: 'Something feels.... different'
             });
         }
-    })
+    });
 });
 
 //Authenticate

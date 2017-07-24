@@ -7,6 +7,7 @@
 <div class="container">
   <flash-messages></flash-messages>
   <router-outlet></router-outlet>
+  <a *ngIf="!authService.loggedIn()" routerLinkActive="active" class="navbar-brand" routerLink="/login">Login   (Put this in the footer)</a>
 </div>
 
 
