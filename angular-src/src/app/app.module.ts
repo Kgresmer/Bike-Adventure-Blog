@@ -6,7 +6,6 @@ import {RouterModule, Routes } from '@angular/router';
 import { tokenNotExpired } from 'angular2-jwt';
 import {FeedComponent} from './components/feed/feed.component';
 import {PostComponent} from './components/post/post.component';
-import {PostService} from './components/feed/feed.service';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {AboutComponent} from './components/about/about.component';
@@ -20,6 +19,7 @@ import {ValidateService} from './services/validate.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import {AuthService} from './services/auth.service';
 import {AuthGuard} from './guards/auth.guard';
+import {PostService} from "./services/post.service";
 
 const appRoutes: Routes = [
   {

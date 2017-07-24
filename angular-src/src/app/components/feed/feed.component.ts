@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
-import { PostService } from './feed.service';
+import {PostService} from "../../services/post.service";
 
 export class Post {
   id: number;
