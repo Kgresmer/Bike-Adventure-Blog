@@ -3,13 +3,16 @@ import { OnInit } from '@angular/core';
 import {PostService} from "../../services/post.service";
 
 export class Post {
-  id: number;
+  _id: number;
   date: string;
   title: string;
-  description: string;
+  body: string;
   photo: string;
+  tags: [string];
+  recap: boolean;
   milesSinceLastPost: number;
-  comment: string;
+  temperature: string;
+  weatherCondition: string;
 }
 
 @Component({
@@ -29,7 +32,13 @@ export class FeedComponent implements OnInit {
   }
 
   getAllPosts(): void {
-    this.postService.getAllPosts().then(posts => this.posts = posts);
+    this.postService.getAllPosts().subscribe(response => {
+      if (response.success) {
+        this.posts = response.data;
+      } else {
+
+      }
+    });
   }
 
   onSelect(post: Post): void {

@@ -1,14 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const config = require('../config/database');
+const Post = require('../models/post');
 
 //Register
-router.post('/register', (req, res, next) => {
+router.post('/add', (req, res, next) => {
+    console.log('Request body: ' + req.body.photo.toString());
     let newPost = new Post({
-        name: req.body.name,
-        email: req.body.email,
-        username: req.body.username,
-        password: req.body.password,
+        date: req.body.date,
+        title: req.body.title,
+        body: req.body.body,
+        photo: req.body.photo.toString(),
+        tags: req.body.tags,
+        recap: req.body.recap,
+        milesSinceLastPost: req.body.milesSinceLastPost,
+        temperature: req.body.temperature,
+        weatherCondition: req.body.weatherCondition,
     });
 
     Post.addPost(newPost, (err, post) => {

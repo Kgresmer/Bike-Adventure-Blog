@@ -1,23 +1,51 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const express = require("express");
+const grid = require('gridfs-stream');
 const config = require('../config/database');
+const fs = require('file-system');
+const multer = require("multer");
 
-//User Schema
+var app = express();
+var upload = multer({dest: "./uploads"});
+
+mongoose.connect(config.database);
+const conn = mongoose.connection;
+let gfs;
+grid.mongo = mongoose.mongo;
+
+// https://dinosaurscode.xyz/nodejs/2016/04/12/how-to-upload-images-to-mongodb-using-express/
+
 const PostSchema = mongoose.Schema({
-   name: {
-       type: String
+   date: {
+       type: Date,
+       required: true
    },
-    email: {
+    title: {
        type: String,
         required: true
     },
-    username: {
+    body: {
         type: String,
         required: true
     },
-    password: {
-        type: String,
-        required: true
+    photo:  {
+       data: Buffer,
+       contentType: String
+    },
+    tags: {
+       type: [String]
+    },
+    recap: {
+       type: Boolean
+    },
+    milesSinceLastPost: {
+       type: Number
+    },
+    temperature: {
+       type: Number
+    },
+    weatherCondition: {
+       type: ['Cloudy', 'Partly Cloudy', 'Overcast', 'Sunny', 'Rainy']
     }
 });
 
@@ -32,6 +60,12 @@ module.exports.getPostByDate = function (date, callback) {
 };
 
 module.exports.addPost = function (newPost, callback) {
+    console.log('Photo to read file sync: ' + newPost.photo);
+    console.log('Photo type: ' + typeof newPost.photo);
+    newPost.photo = {
+        data: fs.readFileSync(newPost.photo),
+        contentType: 'image/png'
+    };
     newPost.save(callback);
 };
 

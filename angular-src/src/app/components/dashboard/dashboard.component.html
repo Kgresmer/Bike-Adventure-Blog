@@ -4,3 +4,46 @@
   Maybe get rid of profile page.
   Add the create new post form here.
 </p>
+<h2 class="page-header">Add a post</h2>
+<form (submit)="onSubmitNewPost()">
+  <div class="form-group">
+    <label>Date</label>
+    <input type="date" [(ngModel)]="newPost.date" name="date" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Title</label>
+    <input [(ngModel)]="newPost.title" name="newPost.title" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Body</label>
+    <textarea [(ngModel)]="newPost.body" name="newPost.body" class="form-control" style="height: 10em;"></textarea>
+  </div>
+  <div class="form-group">
+    <label>Photo path</label>
+    <input [(ngModel)]="newPost.photo" name="newPost.photo" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Tags (comma separated)</label>
+    <input [(ngModel)]="newPost.tags" name="newPost.tags" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Recap Post</label>
+    <input type="checkbox" [(ngModel)]="newPost.recap" name="newPost.recap" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Miles Since Last Post</label>
+    <input type="number" [(ngModel)]="newPost.milesSinceLastPost" name="newPost.milesSinceLastPost"
+           class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Temperature</label>
+    <input type="number" [(ngModel)]="newPost.temperature" name="newPost.temperature" class="form-control">
+  </div>
+  <div class="form-group">
+    <select [(ngModel)]="newPost.weatherCondition" name="newPost.weatherCondition">
+      <option *ngFor="let condition of weatherConditions" [ngValue]="condition">{{condition}}</option>
+    </select>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Submit">
+</form>
+
