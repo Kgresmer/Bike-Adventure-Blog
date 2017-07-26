@@ -3,14 +3,22 @@ const router = express.Router();
 const config = require('../config/database');
 const Post = require('../models/post');
 const multer = require('multer');
+const schedule = require('node-schedule');
+let dailyPhotoNumber = 1;
+function getDailyPhotoNumber() {
+    return dailyPhotoNumber++;
+}
+schedule.scheduleJob('0 0 * * *', function(){
+    dailyPhotoNumber = 1;
+});
 
 var storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
         cb(null, './uploads/');
     },
     filename: function (req, file, cb) {
-        var datetimestamp = Date.now();
-        cb(null, file.fieldname + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
+        var datetimestamp = new Date();
+        cb(null, file.fieldname + '-' + datetimestamp.toDateString().substr(4) + '-' + getDailyPhotoNumber() + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
     }
 });
 
