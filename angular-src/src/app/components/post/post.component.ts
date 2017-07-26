@@ -11,12 +11,14 @@ import {Post} from '../feed/feed.component';
     <div style="text-align:center; display: inline-block; width: 70%" class="blog-post" *ngIf="selectedPost">
       <div style="border: 1px black solid;">
         <h1>{{selectedPost.title}} - {{selectedPost.date}}</h1>
-        <img src={{selectedPost.photo}} />
+        <img src={{selectedPost.photo[0]}} />
         <p>Miles Since last Post: {{selectedPost.milesSinceLastPost}}</p>
-        <p>{{selectedPost.description}}</p>
+        <p>Body: {{selectedPost.body}}</p>
+        <p>Tags: {{selectedPost.tags}}</p>
+        <p>Temp: {{selectedPost.temperature}}</p>
+        <p>Weather Condition: {{selectedPost.weatherCondition}}</p>
+        <small>{{selectedPost.author}}</small>
       </div>
-      <label>Comment: </label>
-      <input [(ngModel)]="selectedPost.comment" placeholder="Well thats neat"/>
     </div>
   `
 })

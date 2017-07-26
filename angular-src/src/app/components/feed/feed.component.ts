@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import {PostService} from "../../services/post.service";
+import {FlashMessagesService} from "angular2-flash-messages";
 
 export class Post {
   _id: number;
@@ -23,7 +24,8 @@ export class Post {
 })
 
 export class FeedComponent implements OnInit {
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService,
+              private flashMessagesService: FlashMessagesService) {}
 
   selectedPost: Post;
   posts: Post[];
@@ -37,12 +39,10 @@ export class FeedComponent implements OnInit {
       if (response.success) {
         this.posts = response.data;
       } else {
-
+        this.flashMessagesService.show("I'm Sorry. All the posts have evaded me!", {
+          cssClass: 'alert-danger',
+          timeout: 5000});
       }
     });
-  }
-
-  onSelect(post: Post): void {
-    this.selectedPost = post;
   }
 }
