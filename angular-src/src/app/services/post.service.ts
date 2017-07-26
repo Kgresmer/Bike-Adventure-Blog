@@ -11,16 +11,8 @@ export class PostService {
 
   addPost(post) {
     let headers = new Headers();
-    let postFormData = new FormData();
-    for (let p in post) {
-      if (p === 'photoOne') {
-        postFormData.append('photo', post[p], post[p].name);
-      } else {
-        postFormData.append(p, post[p]);
-      }
-    }
-    headers.append('Content-Type', 'multipart/form-data');
-    return this.http.post('http://localhost:3000/posts/upload', post)
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/posts/add', post)
       .map(res => res.json());
   }
 

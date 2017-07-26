@@ -13,6 +13,7 @@ export class Post {
   milesSinceLastPost: number;
   temperature: string;
   weatherCondition: string;
+  author: string;
 }
 
 @Component({

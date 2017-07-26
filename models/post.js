@@ -30,6 +30,9 @@ const PostSchema = mongoose.Schema({
     },
     weatherCondition: {
        type: ['Cloudy', 'Partly Cloudy', 'Overcast', 'Sunny', 'Rainy']
+    },
+    author: {
+       type: String
     }
 });
 
@@ -50,10 +53,16 @@ module.exports.addPost = function (newPost, callback) {
 module.exports.editPost = function (newPostData, callback) {
     Post.findById(newPostData._id, function (err, existingPostData) {
         // Handle any possible database errors
-        existingPostData.name = newPostData.name || existingPostData.name;
-        existingPostData.email = newPostData.email || existingPostData.email;
-        existingPostData.username = newPostData.username || existingPostData.username;
-        existingPostData.password = newPostData.password || existingPostData.password;
+        existingPostData.date = newPostData.date || existingPostData.date;
+        existingPostData.title = newPostData.title || existingPostData.title;
+        existingPostData.body = newPostData.body || existingPostData.body;
+        existingPostData.photos = newPostData.photos || existingPostData.photos;
+        existingPostData.tags = newPostData.tags || existingPostData.tags;
+        existingPostData.recap = newPostData.recap || existingPostData.recap;
+        existingPostData.milesSinceLastPost = newPostData.milesSinceLastPost || existingPostData.milesSinceLastPost;
+        existingPostData.temperature = newPostData.temperature || existingPostData.temperature;
+        existingPostData.weatherCondition = newPostData.weatherCondition || existingPostData.weatherCondition;
+        existingPostData.author = newPostData.author || existingPostData.author;
 
         // Save the updated document back to the database
         existingPostData.save(callback);

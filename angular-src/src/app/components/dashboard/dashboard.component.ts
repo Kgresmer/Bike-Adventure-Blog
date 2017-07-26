@@ -22,6 +22,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.newPost = new Post();
+    this.newPost.author = localStorage.getItem('user');
+    console.log(this.newPost.author);
     this.weatherConditions = ['Cloudy', 'Partly Cloudy', 'Overcast', 'Sunny', 'Rainy'];
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       let responsePath = JSON.parse(response);

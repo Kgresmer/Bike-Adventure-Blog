@@ -41,17 +41,18 @@ router.post('/upload', function(req, res) {
 
 //Register
 router.post('/add', (req, res, next) => {
-    console.log('Request body: ' + req.body.photo.toString());
+    console.log('Request body: %j', req.body);
     let newPost = new Post({
         date: req.body.date,
         title: req.body.title,
         body: req.body.body,
-        photo: req.body.photo.toString(),
+        photos: req.body.photos,
         tags: req.body.tags,
         recap: req.body.recap,
         milesSinceLastPost: req.body.milesSinceLastPost,
         temperature: req.body.temperature,
         weatherCondition: req.body.weatherCondition,
+        author: req.body.author
     });
 
     Post.addPost(newPost, (err, post) => {
@@ -72,8 +73,8 @@ router.post('/add', (req, res, next) => {
 });
 
 router.put('/delete', (req, res, next) => {
-    console.log(req.body.userId);
-    const userId = req.body.userId;
+    console.log(req.body.postId);
+    const postId = req.body.postId;
 
     Post.deletePost(postId, (err, post) => {
         if (err) {
