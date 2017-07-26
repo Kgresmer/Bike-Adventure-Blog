@@ -1,9 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Post} from '../feed/feed.component';
 import {PostService} from '../../services/post.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {Router} from '@angular/router';
-import { FileUploader } from 'ng2-file-upload';
+import {FileUploader} from 'ng2-file-upload';
+
+export class TotalsAddition {
+  milesSinceLastPost: number;
+  timeBikedToday: number;
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +18,7 @@ import { FileUploader } from 'ng2-file-upload';
 export class DashboardComponent implements OnInit {
   newPost: Post;
   weatherConditions: [string];
-  public uploader:FileUploader = new FileUploader({url:'http://localhost:3000/posts/upload'});
+  public uploader: FileUploader = new FileUploader({url: 'http://localhost:3000/posts/upload'});
 
   constructor(private postService: PostService,
               private flashMessagesService: FlashMessagesService,
@@ -40,6 +45,27 @@ export class DashboardComponent implements OnInit {
   }
 
   onSubmitNewPost() {
+    let dataToAddToTripTotals: TotalsAddition = {
+      milesSinceLastPost: this.newPost.milesSinceLastPost,
+      timeBikedToday: this.newPost.timeBikedToday
+    };
+
+    this.postService.addToTotals(dataToAddToTripTotals).subscribe(data => {
+      if (data.success) {
+        this.flashMessagesService.show(data.msg, {
+          cssClass: 'alert-success',
+          timeout: 5000
+        });
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.flashMessagesService.show(data.msg, {
+          cssClass: 'alert-danger',
+          timeout: 5000
+        });
+        this.router.navigate(['/login']);
+      }
+    });
+
     this.postService.addPost(this.newPost).subscribe(data => {
       if (data.success) {
         this.flashMessagesService.show(data.msg, {

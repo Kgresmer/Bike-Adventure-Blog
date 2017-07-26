@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Post} from '../feed/feed.component';
+import {OnInit} from '@angular/core';
 
 
 @Component({
@@ -13,16 +14,26 @@ import {Post} from '../feed/feed.component';
         <h1>{{selectedPost.title}} - {{selectedPost.date}}</h1>
         <img src={{selectedPost.photo[0]}} />
         <p>Miles Since last Post: {{selectedPost.milesSinceLastPost}}</p>
+        <p>Time spent biking: {{timeBiked}}</p>
         <p>Body: {{selectedPost.body}}</p>
         <p>Tags: {{selectedPost.tags}}</p>
         <p>Temp: {{selectedPost.temperature}}</p>
-        <p>Weather Condition: {{selectedPost.weatherCondition}}</p>
+        <p>Weather Condition: {{selectedPost.weatherCondition}} (I was thinking we could have an image to go with each choice)</p>
         <small>{{selectedPost.author}}</small>
       </div>
     </div>
   `
 })
 
-export class PostComponent {
+export class PostComponent implements OnInit {
   @Input() selectedPost: Post;
+  timeBiked: string;
+
+  ngOnInit(): void {
+    if (this.selectedPost.timeBikedToday) {
+      let hours = Math.floor(this.selectedPost.timeBikedToday / 60);
+      let minutes = this.selectedPost.timeBikedToday % 60;
+      this.timeBiked = hours + ' hours ' + minutes + ' minutes'
+    }
+  }
 }

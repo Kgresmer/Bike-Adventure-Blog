@@ -49,6 +49,7 @@ router.post('/add', (req, res, next) => {
         photos: req.body.photos,
         tags: req.body.tags,
         recap: req.body.recap,
+        timeBikedToday: req.body.timeBikedToday,
         milesSinceLastPost: req.body.milesSinceLastPost,
         temperature: req.body.temperature,
         weatherCondition: req.body.weatherCondition,
@@ -111,10 +112,21 @@ router.get('/all', (req, res, next) => {
     res.json({posts: req.posts});
 });
 
-
-// router.get('/all', (req, res, next) => {
-//     res.json({posts: req.posts});
-// });
+router.put('/addToTotals', (req, res, next) => {
+    Post.addToTotals(req.body, (err, totals) => {
+        if (err) {
+            res.json({
+                success: false,
+                msg: 'Something went wrong when trying to add to the total time and miles.'
+            });
+        } else {
+            res.json({
+                success: true,
+                msg: 'That is all you biked today... Fine I will add it on. You are at ' + totals.totalDistance + ' miles for the trip.'
+            });
+        }
+    });
+});
 
 
 

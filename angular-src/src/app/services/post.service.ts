@@ -9,6 +9,13 @@ export class PostService {
 
   }
 
+  addToTotals(dataToAdd) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/posts/addToTotals', dataToAdd)
+      .map(res => res.json());
+  }
+
   addPost(post) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');

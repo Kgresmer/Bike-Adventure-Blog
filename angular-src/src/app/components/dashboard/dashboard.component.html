@@ -1,17 +1,29 @@
+
 <h2 class="page-header">Add a post</h2>
+
+        <!-- Function called after submitting form -->
 <form (submit)="onSubmitNewPost()">
+
+  <!-- Date -->
   <div class="form-group">
     <label>Date</label>
     <input type="date" [(ngModel)]="newPost.date" name="date" class="form-control">
   </div>
+
+  <!-- Post Title -->
   <div class="form-group">
     <label>Title</label>
     <input [(ngModel)]="newPost.title" name="newPost.title" class="form-control">
   </div>
+
+  <!-- Body of the post -->
+  <!-- TODO add rich text formatter -->
   <div class="form-group">
     <label>Body</label>
     <textarea [(ngModel)]="newPost.body" name="newPost.body" class="form-control" style="height: 10em;"></textarea>
   </div>
+
+  <!-- Add photos -->
   <div class="form-group">
     <label for="single">Upload one photo at a time</label>
     <input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader" />
@@ -57,32 +69,50 @@
     </tr>
     </tbody>
   </table>
+  <!-- end of photo input -->
+
+  <!-- Tags -->
+  <!-- TODO Implement search -->
   <div class="form-group">
     <label>Tags (comma separated)</label>
     <input [(ngModel)]="newPost.tags" name="newPost.tags" class="form-control">
   </div>
+  <!-- Recap Post -->
+  <!-- TODO Implement the recap post calendar thing -->
   <div class="form-group">
     <label>Recap Post</label>
     <input type="checkbox" [(ngModel)]="newPost.recap" name="newPost.recap" class="form-control">
   </div>
+  <!-- Time Biked Today in Minutes -->
   <div class="form-group">
-    <label>Miles Since Last Post</label>
+    <label>Total time biked today in minutes</label>
+    <input type="number" [(ngModel)]="newPost.timeBikedToday" name="newPost.timeBikedToday"
+           class="form-control">
+  </div>
+  <!-- Miles biked since the last post (could be miles biked today) -->
+  <div class="form-group">
+    <label>Miles Since Last Post  (could be miles biked today) </label>
     <input type="number" [(ngModel)]="newPost.milesSinceLastPost" name="newPost.milesSinceLastPost"
            class="form-control">
   </div>
+  <!-- Temperature -->
   <div class="form-group">
     <label>Temperature</label>
     <input type="number" [(ngModel)]="newPost.temperature" name="newPost.temperature" class="form-control">
   </div>
+  <!-- Weather Condition -->
+  <!-- Add more options -->
   <div class="form-group">
     <select [(ngModel)]="newPost.weatherCondition" name="newPost.weatherCondition">
       <option *ngFor="let condition of weatherConditions" [ngValue]="condition">{{condition}}</option>
     </select>
   </div>
+  <!-- Author (defaults to name of the current user) -->
   <div class="form-group">
-    <label>Author</label>
-    <input type="number" [(ngModel)]="newPost.author" name="newPost.author" class="form-control">
+    <label>Author (defaults to name of the current user)</label>
+    <input type="text" [(ngModel)]="newPost.author" name="newPost.author" class="form-control">
   </div>
+  <!-- submit button -->
   <input type="submit" class="btn btn-primary" value="Submit">
 </form>
 

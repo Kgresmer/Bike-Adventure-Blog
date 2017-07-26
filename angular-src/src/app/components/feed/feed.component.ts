@@ -12,6 +12,7 @@ export class Post {
   tags: [string];
   recap: boolean;
   milesSinceLastPost: number;
+  timeBikedToday: number;
   temperature: string;
   weatherCondition: string;
   author: string;
