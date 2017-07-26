@@ -20,6 +20,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import {AuthService} from './services/auth.service';
 import {AuthGuard} from './guards/auth.guard';
 import {PostService} from "./services/post.service";
+import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
 
 const appRoutes: Routes = [
   {
@@ -66,7 +67,8 @@ export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);
     RegisterComponent,
     HomeComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,

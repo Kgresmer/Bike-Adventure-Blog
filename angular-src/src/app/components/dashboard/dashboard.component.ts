@@ -3,6 +3,7 @@ import {Post} from '../feed/feed.component';
 import {PostService} from '../../services/post.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {Router} from '@angular/router';
+import { FileUploader } from 'ng2-file-upload';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +13,7 @@ import {Router} from '@angular/router';
 export class DashboardComponent implements OnInit {
   newPost: Post;
   weatherConditions: [string];
+  public uploader:FileUploader = new FileUploader({url:'http://localhost:3000/posts/upload'});
 
   constructor(private postService: PostService,
               private flashMessagesService: FlashMessagesService,
@@ -26,6 +28,10 @@ export class DashboardComponent implements OnInit {
     if (condition !== null || condition !== undefined) {
       this.newPost.weatherCondition = condition;
     }
+  }
+
+  fileSelected(photoFile) {
+    this.newPost.photo = photoFile;
   }
 
   onSubmitNewPost() {
