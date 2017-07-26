@@ -17,21 +17,24 @@ export class DashboardComponent implements OnInit {
 
   constructor(private postService: PostService,
               private flashMessagesService: FlashMessagesService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.newPost = new Post();
     this.weatherConditions = ['Cloudy', 'Partly Cloudy', 'Overcast', 'Sunny', 'Rainy'];
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      let responsePath = JSON.parse(response);
+      if (responsePath.fileName && responsePath.fileName !== 'hasnt been set yet') {
+        this.newPost.photos.push(responsePath.fileName);
+      }
+    };
   }
 
   changeWeatherCondition(condition: string) {
     if (condition !== null || condition !== undefined) {
       this.newPost.weatherCondition = condition;
     }
-  }
-
-  fileSelected(photoFile) {
-    this.newPost.photo = photoFile;
   }
 
   onSubmitNewPost() {

@@ -5,6 +5,7 @@ const Post = require('../models/post');
 const multer = require('multer');
 const schedule = require('node-schedule');
 let dailyPhotoNumber = 1;
+let tempFileName = 'hasnt been set yet';
 function getDailyPhotoNumber() {
     return dailyPhotoNumber++;
 }
@@ -18,7 +19,8 @@ var storage = multer.diskStorage({ //multers disk storage settings
     },
     filename: function (req, file, cb) {
         var datetimestamp = new Date();
-        cb(null, file.fieldname + '-' + datetimestamp.toDateString().substr(4) + '-' + getDailyPhotoNumber() + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
+        tempFileName = file.fieldname + '-' + datetimestamp.toDateString().substr(4) + '-' + getDailyPhotoNumber() + '.' + file.originalname.split('.')[file.originalname.split('.').length -1];
+        cb(null, tempFileName);
     }
 });
 
@@ -29,12 +31,11 @@ var upload = multer({ //multer settings
 
 router.post('/upload', function(req, res) {
     upload(req,res,function(err){
-        console.log(req);
         if(err){
             res.json({error_code:1,err_desc:err});
             return;
         }
-        res.json({error_code:0,err_desc:null});
+        res.json({error_code:0,err_desc:null, fileName: tempFileName});
     });
 });
 
