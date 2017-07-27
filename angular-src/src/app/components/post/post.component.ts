@@ -6,7 +6,7 @@ import {OnInit} from '@angular/core';
 @Component({
   selector: 'app-post',
   template: `    
-    <div style="text-align:center; display: inline-block; width: 85%" class="blog-post" *ngIf="selectedPost">
+    <div style="display: inline-block; width: 85%" class="blog-post" *ngIf="selectedPost">
       <div style="border: 1px black solid;">
         <h3>{{selectedPost.title}} - {{formattedDate}}</h3>
         <img style="height: 100px; width: 100px;" src="/assets/uploads/{{selectedPost.photos[0]}}" />
@@ -29,7 +29,7 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.selectedPost.date) {
-      this.formattedDate = new Date(this.selectedPost.date).toLocaleString();
+      this.formattedDate = new Date(this.selectedPost.date).toLocaleString().substr(0, 10);
     }
     if (this.selectedPost.timeBikedToday) {
       let hours = Math.floor(this.selectedPost.timeBikedToday / 60);
