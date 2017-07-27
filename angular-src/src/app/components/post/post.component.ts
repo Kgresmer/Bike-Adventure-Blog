@@ -8,7 +8,7 @@ import {OnInit} from '@angular/core';
   template: `    
     <div style="text-align:center; display: inline-block; width: 85%" class="blog-post" *ngIf="selectedPost">
       <div style="border: 1px black solid;">
-        <h3>{{selectedPost.title}} - {{selectedPost.date}}</h3>
+        <h3>{{selectedPost.title}} - {{formattedDate}}</h3>
         <img style="height: 100px; width: 100px;" src="/assets/uploads/{{selectedPost.photos[0]}}" />
         <p>Miles Since last Post: {{selectedPost.milesSinceLastPost}}</p>
         <p>Time spent biking: {{timeBiked}}</p>
@@ -25,8 +25,12 @@ import {OnInit} from '@angular/core';
 export class PostComponent implements OnInit {
   @Input() selectedPost: Post;
   timeBiked: string;
+  formattedDate: string;
 
   ngOnInit(): void {
+    if (this.selectedPost.date) {
+      this.formattedDate = new Date(this.selectedPost.date).toLocaleString();
+    }
     if (this.selectedPost.timeBikedToday) {
       let hours = Math.floor(this.selectedPost.timeBikedToday / 60);
       let minutes = this.selectedPost.timeBikedToday % 60;
