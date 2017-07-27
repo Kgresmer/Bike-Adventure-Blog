@@ -30,7 +30,6 @@ export class FeedComponent implements OnInit {
 
   selectedPost: Post;
   posts: Post[];
-  basePhotoUrl: string = '../../uploads/';
 
   ngOnInit(): void {
     this.getAllPosts();

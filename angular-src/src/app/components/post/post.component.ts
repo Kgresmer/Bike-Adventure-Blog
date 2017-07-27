@@ -8,8 +8,8 @@ import {OnInit} from '@angular/core';
   template: `    
     <div style="text-align:center; display: inline-block; width: 85%" class="blog-post" *ngIf="selectedPost">
       <div style="border: 1px black solid;">
-        <h1>{{selectedPost.title}} - {{selectedPost.date}}</h1>
-        <img src="/uploads/{{selectedPost.photos[0]}}" />
+        <h3>{{selectedPost.title}} - {{selectedPost.date}}</h3>
+        <img style="height: 100px; width: 100px;" src="/assets/{{selectedPost.photos[0]}}" />
         <p>Miles Since last Post: {{selectedPost.milesSinceLastPost}}</p>
         <p>Time spent biking: {{timeBiked}}</p>
         <p>Body: {{selectedPost.body}}</p>
