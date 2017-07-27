@@ -27,13 +27,16 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.newPost = new Post();
-    this.newPost.author = localStorage.getItem('user');
-    console.log(this.newPost.author);
+    this.newPost.author = localStorage.getItem('name');
     this.weatherConditions = ['Cloudy', 'Partly Cloudy', 'Overcast', 'Sunny', 'Rainy'];
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       let responsePath = JSON.parse(response);
       if (responsePath.fileName && responsePath.fileName !== 'hasnt been set yet') {
-        this.newPost.photos.push(responsePath.fileName);
+        if (this.newPost.photos) {
+          this.newPost.photos.push(responsePath.fileName);
+        } else {
+          this.newPost.photos = [responsePath.fileName];
+        }
       }
     };
   }
@@ -50,21 +53,26 @@ export class DashboardComponent implements OnInit {
       timeBikedToday: this.newPost.timeBikedToday
     };
 
-    this.postService.addToTotals(dataToAddToTripTotals).subscribe(data => {
-      if (data.success) {
-        this.flashMessagesService.show(data.msg, {
-          cssClass: 'alert-success',
-          timeout: 5000
-        });
-        this.router.navigate(['/dashboard']);
-      } else {
-        this.flashMessagesService.show(data.msg, {
-          cssClass: 'alert-danger',
-          timeout: 5000
-        });
-        this.router.navigate(['/login']);
-      }
+    // this.postService.addToTotals(dataToAddToTripTotals).subscribe(data => {
+    //   if (data.success) {
+    //     this.flashMessagesService.show(data.msg, {
+    //       cssClass: 'alert-success',
+    //       timeout: 5000
+    //     });
+    //     this.router.navigate(['/dashboard']);
+    //   } else {
+    //     this.flashMessagesService.show(data.msg, {
+    //       cssClass: 'alert-danger',
+    //       timeout: 5000
+    //     });
+    //     this.router.navigate(['/login']);
+    //   }
+    // });
+
+    this.newPost.photos = this.newPost.photos.map(photo => {
+      return photo.replace(/ /g, '-');
     });
+    // this.newPost.date = Date.parse(this.newPost.date).toLocaleString();
 
     this.postService.addPost(this.newPost).subscribe(data => {
       if (data.success) {

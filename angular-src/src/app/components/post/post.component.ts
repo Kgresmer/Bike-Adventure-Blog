@@ -5,14 +5,11 @@ import {OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-post',
-  template: `
-    <div style="border: 1px black solid;">
-      <h4>{{selectedPost.title}} - {{selectedPost.date}}</h4>
-    </div>
-    <div style="text-align:center; display: inline-block; width: 70%" class="blog-post" *ngIf="selectedPost">
+  template: `    
+    <div style="text-align:center; display: inline-block; width: 85%" class="blog-post" *ngIf="selectedPost">
       <div style="border: 1px black solid;">
         <h1>{{selectedPost.title}} - {{selectedPost.date}}</h1>
-        <img src={{selectedPost.photo[0]}} />
+        <img src="/uploads/{{selectedPost.photos[0]}}" />
         <p>Miles Since last Post: {{selectedPost.milesSinceLastPost}}</p>
         <p>Time spent biking: {{timeBiked}}</p>
         <p>Body: {{selectedPost.body}}</p>

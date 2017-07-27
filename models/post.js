@@ -13,7 +13,7 @@ const PostSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    photo:  {
+    photos:  {
        type: [String]
     },
     tags: {

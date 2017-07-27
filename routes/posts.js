@@ -15,11 +15,11 @@ schedule.scheduleJob('0 0 * * *', function(){
 
 var storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
-        cb(null, './uploads/');
+        cb(null, './angular-src/src/uploads/');
     },
     filename: function (req, file, cb) {
         var datetimestamp = new Date();
-        tempFileName = file.fieldname + '-' + datetimestamp.toDateString().substr(4) + '-' + getDailyPhotoNumber() + '.' + file.originalname.split('.')[file.originalname.split('.').length -1];
+        tempFileName = file.fieldname + '-' + datetimestamp.toDateString().substr(4).replace(/ /g, '-') + '-' + getDailyPhotoNumber() + '.' + file.originalname.split('.')[file.originalname.split('.').length -1];
         cb(null, tempFileName);
     }
 });
@@ -27,7 +27,6 @@ var storage = multer.diskStorage({ //multers disk storage settings
 var upload = multer({ //multer settings
     storage: storage
 }).single('file');
-
 
 router.post('/upload', function(req, res) {
     upload(req,res,function(err){
@@ -109,11 +108,21 @@ router.put('/edit', (req, res, next) => {
 });
 
 router.get('/all', (req, res, next) => {
-    res.json({posts: req.posts});
+    Post.find(function (err, results) {
+        if (err) {
+            throw err;
+        }
+        if (!results) {
+            res.send("no results found");
+        }
+
+        //invoke callback with your mongoose returned result
+        res.send({success: true, posts: results});
+    });
 });
 
 router.put('/addToTotals', (req, res, next) => {
-    Post.addToTotals(req.body, (err, totals) => {
+    Totals.addToTotals(req.body, (err, totals) => {
         if (err) {
             res.json({
                 success: false,

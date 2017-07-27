@@ -8,7 +8,7 @@ export class Post {
   date: string;
   title: string;
   body: string;
-  photos: [string];
+  photos: string[];
   tags: [string];
   recap: boolean;
   milesSinceLastPost: number;
@@ -30,6 +30,7 @@ export class FeedComponent implements OnInit {
 
   selectedPost: Post;
   posts: Post[];
+  basePhotoUrl: string = '../../uploads/';
 
   ngOnInit(): void {
     this.getAllPosts();
@@ -38,7 +39,7 @@ export class FeedComponent implements OnInit {
   getAllPosts(): void {
     this.postService.getAllPosts().subscribe(response => {
       if (response.success) {
-        this.posts = response.data;
+        this.posts = response.posts;
       } else {
         this.flashMessagesService.show("I'm Sorry. All the posts have evaded me!", {
           cssClass: 'alert-danger',
