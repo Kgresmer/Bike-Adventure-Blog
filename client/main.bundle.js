@@ -352,59 +352,71 @@ var DashboardComponent = (function () {
             }
         };
         this.uploader.onCompleteAll = function () {
-            var dataToAddToTripTotals = {
-                milesSinceLastPost: _this.newPost.milesSinceLastPost,
-                timeBikedToday: _this.newPost.timeBikedToday
-            };
-            _this.postService.addToTotals(dataToAddToTripTotals).subscribe(function (data) {
-                if (data.success) {
-                    _this.flashMessagesService.show(data.msg, {
-                        cssClass: 'alert-success',
-                        timeout: 5000
-                    });
-                    _this.router.navigate(['/dashboard']);
-                }
-                else {
-                    _this.flashMessagesService.show(data.msg, {
-                        cssClass: 'alert-danger',
-                        timeout: 5000
-                    });
-                    _this.router.navigate(['/login']);
-                }
-            });
-            if (_this.newPost.photos) {
-                _this.newPost.photos = _this.newPost.photos.map(function (photo) {
-                    return photo.replace(/ /g, '-');
-                });
-            }
-            _this.postService.addPost(_this.newPost).subscribe(function (data) {
-                if (data.success) {
-                    _this.flashMessagesService.show(data.msg, {
-                        cssClass: 'alert-success',
-                        timeout: 5000
-                    });
-                    _this.router.navigate(['/dashboard']);
-                }
-                else {
-                    _this.flashMessagesService.show(data.msg, {
-                        cssClass: 'alert-danger',
-                        timeout: 5000
-                    });
-                    _this.router.navigate(['/login']);
-                }
-            });
+            _this.sendUpdateTotalsRequest();
+            _this.sendPostRequests();
         };
     };
-    DashboardComponent.prototype.changeWeatherCondition = function (condition) {
-        if (condition !== null || condition !== undefined) {
-            this.newPost.weatherCondition = condition;
+    DashboardComponent.prototype.onSubmitNewPost = function () {
+        // TODO update if based on what empty queue looks like
+        if (this.uploader.queue) {
+            for (var _i = 0, _a = this.uploader.queue; _i < _a.length; _i++) {
+                var item = _a[_i];
+                item.upload();
+            }
+        }
+        else {
+            this.sendUpdateTotalsRequest();
+            this.sendPostRequests();
         }
     };
-    DashboardComponent.prototype.onSubmitNewPost = function () {
-        for (var _i = 0, _a = this.uploader.queue; _i < _a.length; _i++) {
-            var item = _a[_i];
-            item.upload();
+    DashboardComponent.prototype.sendPostRequests = function () {
+        var _this = this;
+        if (this.newPost.photos) {
+            this.newPost.photos = this.newPost.photos.map(function (photo) {
+                return photo.replace(/ /g, '-');
+            });
         }
+        if (this.newPost.date) {
+        }
+        this.postService.addPost(this.newPost).subscribe(function (data) {
+            if (data.success) {
+                _this.flashMessagesService.show(data.msg, {
+                    cssClass: 'alert-success',
+                    timeout: 5000
+                });
+                _this.router.navigate(['/dashboard']);
+            }
+            else {
+                _this.flashMessagesService.show(data.msg, {
+                    cssClass: 'alert-danger',
+                    timeout: 5000
+                });
+                _this.router.navigate(['/login']);
+            }
+        });
+    };
+    DashboardComponent.prototype.sendUpdateTotalsRequest = function () {
+        var _this = this;
+        var dataToAddToTripTotals = {
+            milesSinceLastPost: this.newPost.milesSinceLastPost,
+            timeBikedToday: this.newPost.timeBikedToday
+        };
+        this.postService.addToTotals(dataToAddToTripTotals).subscribe(function (data) {
+            if (data.success) {
+                _this.flashMessagesService.show(data.msg, {
+                    cssClass: 'alert-success',
+                    timeout: 5000
+                });
+                _this.router.navigate(['/dashboard']);
+            }
+            else {
+                _this.flashMessagesService.show(data.msg, {
+                    cssClass: 'alert-danger',
+                    timeout: 5000
+                });
+                _this.router.navigate(['/login']);
+            }
+        });
     };
     DashboardComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({

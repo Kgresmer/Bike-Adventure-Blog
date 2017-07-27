@@ -40,60 +40,70 @@ export class DashboardComponent implements OnInit {
       }
     };
     this.uploader.onCompleteAll = () => {
-      let dataToAddToTripTotals: TotalsAddition = {
-        milesSinceLastPost: this.newPost.milesSinceLastPost,
-        timeBikedToday: this.newPost.timeBikedToday
-      };
-      this.postService.addToTotals(dataToAddToTripTotals).subscribe(data => {
-        if (data.success) {
-          this.flashMessagesService.show(data.msg, {
-            cssClass: 'alert-success',
-            timeout: 5000
-          });
-          this.router.navigate(['/dashboard']);
-        } else {
-          this.flashMessagesService.show(data.msg, {
-            cssClass: 'alert-danger',
-            timeout: 5000
-          });
-          this.router.navigate(['/login']);
-        }
-      });
-
-      if (this.newPost.photos) {
-        this.newPost.photos = this.newPost.photos.map(photo => {
-          return photo.replace(/ /g, '-');
-        });
-      }
-
-      this.postService.addPost(this.newPost).subscribe(data => {
-        if (data.success) {
-          this.flashMessagesService.show(data.msg, {
-            cssClass: 'alert-success',
-            timeout: 5000
-          });
-          this.router.navigate(['/dashboard']);
-        } else {
-          this.flashMessagesService.show(data.msg, {
-            cssClass: 'alert-danger',
-            timeout: 5000
-          });
-          this.router.navigate(['/login']);
-        }
-      });
-    }
-  }
-
-  changeWeatherCondition(condition: string) {
-    if (condition !== null || condition !== undefined) {
-      this.newPost.weatherCondition = condition;
+      this.sendUpdateTotalsRequest();
+      this.sendPostRequests();
     }
   }
 
   onSubmitNewPost() {
-    for (let item of this.uploader.queue) {
-      item.upload();
+    // TODO update if based on what empty queue looks like
+    if (this.uploader.queue) {
+      for (let item of this.uploader.queue) {
+        item.upload();
+      }
+    } else {
+      this.sendUpdateTotalsRequest();
+      this.sendPostRequests();
     }
+  }
+
+  sendPostRequests() {
+    if (this.newPost.photos) {
+      this.newPost.photos = this.newPost.photos.map(photo => {
+        return photo.replace(/ /g, '-');
+      });
+    }
+    if (this.newPost.date) {
+
+    }
+
+    this.postService.addPost(this.newPost).subscribe(data => {
+      if (data.success) {
+        this.flashMessagesService.show(data.msg, {
+          cssClass: 'alert-success',
+          timeout: 5000
+        });
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.flashMessagesService.show(data.msg, {
+          cssClass: 'alert-danger',
+          timeout: 5000
+        });
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
+  sendUpdateTotalsRequest() {
+    let dataToAddToTripTotals: TotalsAddition = {
+      milesSinceLastPost: this.newPost.milesSinceLastPost,
+      timeBikedToday: this.newPost.timeBikedToday
+    };
+    this.postService.addToTotals(dataToAddToTripTotals).subscribe(data => {
+      if (data.success) {
+        this.flashMessagesService.show(data.msg, {
+          cssClass: 'alert-success',
+          timeout: 5000
+        });
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.flashMessagesService.show(data.msg, {
+          cssClass: 'alert-danger',
+          timeout: 5000
+        });
+        this.router.navigate(['/login']);
+      }
+    });
   }
 
 }
