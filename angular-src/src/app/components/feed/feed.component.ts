@@ -18,6 +18,11 @@ export class Post {
   author: string;
 }
 
+export class Totals {
+  totalMilesBiked: number;
+  totalTimeBiked: number;
+}
+
 @Component({
   selector: 'app-feed-root',
   templateUrl: './feed.component.html',
@@ -30,9 +35,11 @@ export class FeedComponent implements OnInit {
 
   selectedPost: Post;
   posts: Post[];
+  totals: Totals;
 
   ngOnInit(): void {
     this.getAllPosts();
+    this.getTotals();
   }
 
   getAllPosts(): void {
@@ -41,6 +48,18 @@ export class FeedComponent implements OnInit {
         this.posts = response.posts;
       } else {
         this.flashMessagesService.show("I'm Sorry. All the posts have evaded me!", {
+          cssClass: 'alert-danger',
+          timeout: 5000});
+      }
+    });
+  }
+
+  getTotals(): void {
+    this.postService.getTotals().subscribe(response => {
+      if (response.success) {
+        this.totals = response.totals;
+      } else {
+        this.flashMessagesService.show("I'm Sorry. I seem to have misplaced the totals. ", {
           cssClass: 'alert-danger',
           timeout: 5000});
       }

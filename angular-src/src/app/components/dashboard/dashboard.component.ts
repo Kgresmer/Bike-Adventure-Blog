@@ -44,26 +44,27 @@ export class DashboardComponent implements OnInit {
         milesSinceLastPost: this.newPost.milesSinceLastPost,
         timeBikedToday: this.newPost.timeBikedToday
       };
-      // this.postService.addToTotals(dataToAddToTripTotals).subscribe(data => {
-      //   if (data.success) {
-      //     this.flashMessagesService.show(data.msg, {
-      //       cssClass: 'alert-success',
-      //       timeout: 5000
-      //     });
-      //     this.router.navigate(['/dashboard']);
-      //   } else {
-      //     this.flashMessagesService.show(data.msg, {
-      //       cssClass: 'alert-danger',
-      //       timeout: 5000
-      //     });
-      //     this.router.navigate(['/login']);
-      //   }
-      // });
-
-      this.newPost.photos = this.newPost.photos.map(photo => {
-        return photo.replace(/ /g, '-');
+      this.postService.addToTotals(dataToAddToTripTotals).subscribe(data => {
+        if (data.success) {
+          this.flashMessagesService.show(data.msg, {
+            cssClass: 'alert-success',
+            timeout: 5000
+          });
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.flashMessagesService.show(data.msg, {
+            cssClass: 'alert-danger',
+            timeout: 5000
+          });
+          this.router.navigate(['/login']);
+        }
       });
-      // this.newPost.date = Date.parse(this.newPost.date).toLocaleString();
+
+      if (this.newPost.photos) {
+        this.newPost.photos = this.newPost.photos.map(photo => {
+          return photo.replace(/ /g, '-');
+        });
+      }
 
       this.postService.addPost(this.newPost).subscribe(data => {
         if (data.success) {

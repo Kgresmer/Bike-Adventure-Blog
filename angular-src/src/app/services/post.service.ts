@@ -12,7 +12,7 @@ export class PostService {
   addToTotals(dataToAdd) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/posts/addToTotals', dataToAdd)
+    return this.http.put('http://localhost:3000/posts/addToTotals', dataToAdd)
       .map(res => res.json());
   }
 
@@ -52,6 +52,11 @@ export class PostService {
       search: params
     })
     .map(res => res.json());
+  }
+
+  getTotals() {
+    return this.http.get('http://localhost:3000/posts/totals')
+      .map(res => res.json());
   }
 
 }

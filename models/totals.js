@@ -2,32 +2,34 @@ const mongoose = require('mongoose');
 
 const TotalsSchema = mongoose.Schema({
     totalMilesBiked: {
-       type: Number
+        type: Number
     },
     totalTimeBiked: {
-       type: Number
+        type: Number
     }
 });
 
 const Totals = module.exports = mongoose.model('Totals', TotalsSchema);
 
-module.exports.getPostById = function (id, callback) {
-    Totals.findById(id, callback);
-};
-module.exports.getPostByDate = function (date, callback) {
-    const query = {date: date};
-    Totals.find(query, callback);
-};
+module.exports.addToTotals = function (dataToAdd, callback) {
+    console.log('entered add to totals method ' + dataToAdd);
 
-module.exports.addToTotal = function (dataToAdd, callback) {
-    // TODO add totals schema and stuff
-    Totals.findById(newPostData._id, function (err, existingPostData) {
-        // Handle any possible database errors
-        existingPostData.date = newPostData.date || existingPostData.date;
-        existingPostData.title = newPostData.title || existingPostData.title;
-
-
-        // Save the updated document back to the database
-        existingPostData.save(callback);
+    Totals.find(function (err, results) {
+        if (err) {
+            throw err;
+        }
+        if (!results || results.length < 1) {
+            let totals = new Totals({
+                totalMilesBiked: dataToAdd.milesSinceLastPost,
+                totalTimeBiked: dataToAdd.timeBikedToday
+            });
+            totals.save(callback);
+        } else {
+            console.log(results);
+            console.log(results[0]);
+            results[0].totalMilesBiked += dataToAdd.milesSinceLastPost;
+            results[0].totalTimeBiked += dataToAdd.timeBikedToday;
+            results[0].save(callback);
+        }
     });
 };

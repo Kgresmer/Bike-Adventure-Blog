@@ -4,11 +4,15 @@ const config = require('../config/database');
 const Post = require('../models/post');
 const multer = require('multer');
 const schedule = require('node-schedule');
+const Totals = require('../models/totals');
+
 let dailyPhotoNumber = 1;
 let tempFileName = 'hasnt been set yet';
+
 function getDailyPhotoNumber() {
     return dailyPhotoNumber++;
 }
+
 schedule.scheduleJob('0 0 * * *', function(){
     dailyPhotoNumber = 1;
 });
@@ -118,6 +122,20 @@ router.get('/all', (req, res, next) => {
 
         //invoke callback with your mongoose returned result
         res.send({success: true, posts: results});
+    });
+});
+
+router.get('/totals', (req, res, next) => {
+    Totals.find(function (err, results) {
+        if (err) {
+            throw err;
+        }
+        if (!results) {
+            res.send("no results found");
+        }
+
+        //invoke callback with your mongoose returned result
+        res.send({success: true, totals: results[0]});
     });
 });
 
