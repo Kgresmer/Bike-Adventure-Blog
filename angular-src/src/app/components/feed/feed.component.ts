@@ -39,6 +39,9 @@ export class FeedComponent implements OnInit {
   totalTimeBiked: string;
 
   ngOnInit(): void {
+    //TODO implement sort, possibly in ngfor
+    //TODO implement oldest, newest dropdown
+    //TODO implement search by date, by body content/title
     this.getAllPosts();
     this.getTotals();
   }

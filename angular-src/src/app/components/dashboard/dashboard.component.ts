@@ -18,6 +18,7 @@ export class TotalsAddition {
 export class DashboardComponent implements OnInit {
   newPost: Post;
   weatherConditions: [string];
+  errorMessages: string[];
   public uploader: FileUploader = new FileUploader({url: 'http://localhost:3000/posts/upload'});
 
   constructor(private postService: PostService,
@@ -26,6 +27,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.errorMessages = [];
     this.newPost = new Post();
     this.newPost.author = localStorage.getItem('name');
     this.weatherConditions = ['Cloudy', 'Partly Cloudy', 'Overcast', 'Sunny', 'Rainy'];
@@ -46,6 +48,9 @@ export class DashboardComponent implements OnInit {
   }
 
   onSubmitNewPost() {
+    //TODO implement validation
+    this.validateInputs();
+
     // TODO update if based on what empty queue looks like
     if (this.uploader.queue) {
       for (let item of this.uploader.queue) {
@@ -57,7 +62,39 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  sendPostRequests() {
+  private validateInputs() {
+    // date: string;
+    if (typeof this.newPost.date === 'undefined' || this.newPost.date.length < 4) {
+      this.errorMessages.push('Enter in a date! ');
+    }
+    // title: string;
+    if (typeof this.newPost.title === 'undefined' || this.newPost.title.length < 2) {
+      this.errorMessages.push('What you dont want a title?!');
+    }
+    // body: string;
+    if (typeof this.newPost.body === 'undefined' || this.newPost.body.length < 5) {
+      this.errorMessages.push('This isn\'t a blog that just shows headlines. Give it a body. ');
+    }
+    // _________________ Do any of these need validation or are they optional?
+    // photos: string[];
+    // tags: [string];
+    // recap: boolean;
+    // milesSinceLastPost: number;
+    // timeBikedToday: number;
+    // temperature: string;
+    // weatherCondition: string;
+
+    // author: string;
+    if (typeof this.newPost.author === 'undefined' || this.newPost.author.length < 2) {
+      this.errorMessages.push('If you wrote it own it. Enter an author');
+    }
+
+    setTimeout(() => {
+      this.errorMessages = [];
+    }, 9000);
+  }
+
+  private sendPostRequests() {
     if (this.newPost.photos) {
       this.newPost.photos = this.newPost.photos.map(photo => {
         return photo.replace(/ /g, '-');
@@ -84,7 +121,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  sendUpdateTotalsRequest() {
+  private sendUpdateTotalsRequest() {
     let dataToAddToTripTotals: TotalsAddition = {
       milesSinceLastPost: this.newPost.milesSinceLastPost,
       timeBikedToday: this.newPost.timeBikedToday

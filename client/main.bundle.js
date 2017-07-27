@@ -276,7 +276,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".post-submit-btn {\r\n  margin-bottom: 5em;\r\n}\r\n", ""]);
 
 // exports
 
@@ -289,7 +289,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<h2 class=\"page-header\">Add a post</h2>\r\n\r\n        <!-- Function called after submitting form -->\r\n<form (submit)=\"onSubmitNewPost()\">\r\n\r\n  <!-- Date -->\r\n  <div class=\"form-group\">\r\n    <label>Date</label>\r\n    <input type=\"date\" [(ngModel)]=\"newPost.date\" name=\"date\" class=\"form-control\">\r\n  </div>\r\n\r\n  <!-- Post Title -->\r\n  <div class=\"form-group\">\r\n    <label>Title</label>\r\n    <input [(ngModel)]=\"newPost.title\" name=\"newPost.title\" class=\"form-control\">\r\n  </div>\r\n\r\n  <!-- Body of the post -->\r\n  <!-- TODO add rich text formatter -->\r\n  <div class=\"form-group\">\r\n    <label>Body</label>\r\n    <textarea [(ngModel)]=\"newPost.body\" name=\"newPost.body\" class=\"form-control\" style=\"height: 10em;\"></textarea>\r\n  </div>\r\n\r\n  <!-- Add photos -->\r\n  <div class=\"form-group\">\r\n    <label for=\"single\">Upload one photo at a time</label>\r\n    <input type=\"file\" class=\"form-control\" name=\"single\" ng2FileSelect [uploader]=\"uploader\" />\r\n  </div>\r\n  <table class=\"table\">\r\n    <thead>\r\n    <tr>\r\n      <th width=\"50%\">Name</th>\r\n      <th>Size</th>\r\n      <th>Progress</th>\r\n      <th>Status</th>\r\n      <th>Actions</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let item of uploader.queue\">\r\n      <td><strong>{{ item.file.name }}</strong></td>\r\n      <td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>\r\n      <td>\r\n        <div class=\"progress\" style=\"margin-bottom: 0;\">\r\n          <div class=\"progress-bar\" role=\"progressbar\" [ngStyle]=\"{ 'width': item.progress + '%' }\"></div>\r\n        </div>\r\n      </td>\r\n      <td class=\"text-center\">\r\n        <span *ngIf=\"item.isSuccess\"><i class=\"glyphicon glyphicon-ok\"></i></span>\r\n        <span *ngIf=\"item.isCancel\"><i class=\"glyphicon glyphicon-ban-circle\"></i></span>\r\n        <span *ngIf=\"item.isError\"><i class=\"glyphicon glyphicon-remove\"></i></span>\r\n      </td>\r\n      <!--<td nowrap>-->\r\n        <!--<button type=\"button\" class=\"btn btn-success btn-xs\"-->\r\n                <!--(click)=\"item.upload()\" [disabled]=\"item.isReady || item.isUploading || item.isSuccess\">-->\r\n          <!--<span class=\"glyphicon glyphicon-upload\"></span> Upload-->\r\n        <!--</button>-->\r\n        <!--<button type=\"button\" class=\"btn btn-warning btn-xs\"-->\r\n                <!--(click)=\"item.cancel()\" [disabled]=\"!item.isUploading\">-->\r\n          <!--<span class=\"glyphicon glyphicon-ban-circle\"></span> Cancel-->\r\n        <!--</button>-->\r\n        <!--<button type=\"button\" class=\"btn btn-danger btn-xs\"-->\r\n                <!--(click)=\"item.remove()\">-->\r\n          <!--<span class=\"glyphicon glyphicon-trash\"></span> Remove-->\r\n        <!--</button>-->\r\n      <!--</td>-->\r\n    </tr>\r\n    </tbody>\r\n  </table>\r\n  <!-- end of photo input -->\r\n\r\n  <!-- Tags -->\r\n  <!-- TODO Implement search -->\r\n  <div class=\"form-group\">\r\n    <label>Tags (comma separated)</label>\r\n    <input [(ngModel)]=\"newPost.tags\" name=\"newPost.tags\" class=\"form-control\">\r\n  </div>\r\n  <!-- Recap Post -->\r\n  <!-- TODO Implement the recap post calendar thing -->\r\n  <div class=\"form-group\">\r\n    <label>Recap Post</label>\r\n    <input type=\"checkbox\" [(ngModel)]=\"newPost.recap\" name=\"newPost.recap\" class=\"form-control\">\r\n  </div>\r\n  <!-- Time Biked Today in Minutes -->\r\n  <div class=\"form-group\">\r\n    <label>Total time biked today in minutes</label>\r\n    <input type=\"number\" [(ngModel)]=\"newPost.timeBikedToday\" name=\"newPost.timeBikedToday\"\r\n           class=\"form-control\">\r\n  </div>\r\n  <!-- Miles biked since the last post (could be miles biked today) -->\r\n  <div class=\"form-group\">\r\n    <label>Miles Since Last Post  (could be miles biked today) </label>\r\n    <input type=\"number\" [(ngModel)]=\"newPost.milesSinceLastPost\" name=\"newPost.milesSinceLastPost\"\r\n           class=\"form-control\">\r\n  </div>\r\n  <!-- Temperature -->\r\n  <div class=\"form-group\">\r\n    <label>Temperature</label>\r\n    <input type=\"number\" [(ngModel)]=\"newPost.temperature\" name=\"newPost.temperature\" class=\"form-control\">\r\n  </div>\r\n  <!-- Weather Condition -->\r\n  <!-- Add more options -->\r\n  <div class=\"form-group\">\r\n    <select [(ngModel)]=\"newPost.weatherCondition\" name=\"newPost.weatherCondition\">\r\n      <option *ngFor=\"let condition of weatherConditions\" [ngValue]=\"condition\">{{condition}}</option>\r\n    </select>\r\n  </div>\r\n  <!-- Author (defaults to name of the current user) -->\r\n  <div class=\"form-group\">\r\n    <label>Author (defaults to name of the current user)</label>\r\n    <input type=\"text\" [(ngModel)]=\"newPost.author\" name=\"newPost.author\" class=\"form-control\">\r\n  </div>\r\n  <!-- submit button -->\r\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\r\n</form>\r\n\r\n"
+module.exports = "\r\n<h2 class=\"page-header\">Add a post</h2>\r\n\r\n        <!-- Function called after submitting form -->\r\n<form (submit)=\"onSubmitNewPost()\">\r\n\r\n  <!-- Date -->\r\n  <div class=\"form-group\">\r\n    <label>Date</label>\r\n    <input type=\"date\" [(ngModel)]=\"newPost.date\" name=\"date\" class=\"form-control\">\r\n  </div>\r\n\r\n  <!-- Post Title -->\r\n  <div class=\"form-group\">\r\n    <label>Title</label>\r\n    <input [(ngModel)]=\"newPost.title\" name=\"newPost.title\" class=\"form-control\">\r\n  </div>\r\n\r\n  <!-- Body of the post -->\r\n  <!-- TODO add rich text formatter -->\r\n  <div class=\"form-group\">\r\n    <label>Body</label>\r\n    <textarea [(ngModel)]=\"newPost.body\" name=\"newPost.body\" class=\"form-control\" style=\"height: 10em;\"></textarea>\r\n  </div>\r\n\r\n  <!-- Add photos -->\r\n  <div class=\"form-group\">\r\n    <label for=\"single\">Upload one photo at a time</label>\r\n    <input type=\"file\" class=\"form-control\" name=\"single\" ng2FileSelect [uploader]=\"uploader\" />\r\n  </div>\r\n  <table class=\"table\">\r\n    <thead>\r\n    <tr>\r\n      <th width=\"50%\">Name</th>\r\n      <th>Size</th>\r\n      <th>Progress</th>\r\n      <th>Status</th>\r\n      <th>Actions</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let item of uploader.queue\">\r\n      <td><strong>{{ item.file.name }}</strong></td>\r\n      <td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>\r\n      <td>\r\n        <div class=\"progress\" style=\"margin-bottom: 0;\">\r\n          <div class=\"progress-bar\" role=\"progressbar\" [ngStyle]=\"{ 'width': item.progress + '%' }\"></div>\r\n        </div>\r\n      </td>\r\n      <td class=\"text-center\">\r\n        <span *ngIf=\"item.isSuccess\"><i class=\"glyphicon glyphicon-ok\"></i></span>\r\n        <span *ngIf=\"item.isCancel\"><i class=\"glyphicon glyphicon-ban-circle\"></i></span>\r\n        <span *ngIf=\"item.isError\"><i class=\"glyphicon glyphicon-remove\"></i></span>\r\n      </td>\r\n      <!--<td nowrap>-->\r\n        <!--<button type=\"button\" class=\"btn btn-success btn-xs\"-->\r\n                <!--(click)=\"item.upload()\" [disabled]=\"item.isReady || item.isUploading || item.isSuccess\">-->\r\n          <!--<span class=\"glyphicon glyphicon-upload\"></span> Upload-->\r\n        <!--</button>-->\r\n        <!--<button type=\"button\" class=\"btn btn-warning btn-xs\"-->\r\n                <!--(click)=\"item.cancel()\" [disabled]=\"!item.isUploading\">-->\r\n          <!--<span class=\"glyphicon glyphicon-ban-circle\"></span> Cancel-->\r\n        <!--</button>-->\r\n        <!--<button type=\"button\" class=\"btn btn-danger btn-xs\"-->\r\n                <!--(click)=\"item.remove()\">-->\r\n          <!--<span class=\"glyphicon glyphicon-trash\"></span> Remove-->\r\n        <!--</button>-->\r\n      <!--</td>-->\r\n    </tr>\r\n    </tbody>\r\n  </table>\r\n  <!-- end of photo input -->\r\n\r\n  <!-- Tags -->\r\n  <!-- TODO Implement search -->\r\n  <div class=\"form-group\">\r\n    <label>Tags (comma separated)</label>\r\n    <input [(ngModel)]=\"newPost.tags\" name=\"newPost.tags\" class=\"form-control\">\r\n  </div>\r\n  <!-- Recap Post -->\r\n  <!-- TODO Implement the recap post calendar thing -->\r\n  <div class=\"form-group\">\r\n    <label>Recap Post</label>\r\n    <input type=\"checkbox\" [(ngModel)]=\"newPost.recap\" name=\"newPost.recap\" class=\"form-control\">\r\n  </div>\r\n  <!-- Time Biked Today in Minutes -->\r\n  <div class=\"form-group\">\r\n    <label>Total time biked today in minutes</label>\r\n    <input type=\"number\" [(ngModel)]=\"newPost.timeBikedToday\" name=\"newPost.timeBikedToday\"\r\n           class=\"form-control\">\r\n  </div>\r\n  <!-- Miles biked since the last post (could be miles biked today) -->\r\n  <div class=\"form-group\">\r\n    <label>Miles Since Last Post  (could be miles biked today) </label>\r\n    <input type=\"number\" [(ngModel)]=\"newPost.milesSinceLastPost\" name=\"newPost.milesSinceLastPost\"\r\n           class=\"form-control\">\r\n  </div>\r\n  <!-- Temperature -->\r\n  <div class=\"form-group\">\r\n    <label>Temperature</label>\r\n    <input type=\"number\" [(ngModel)]=\"newPost.temperature\" name=\"newPost.temperature\" class=\"form-control\">\r\n  </div>\r\n  <!-- Weather Condition -->\r\n  <!-- Add more options -->\r\n  <div class=\"form-group\">\r\n    <select [(ngModel)]=\"newPost.weatherCondition\" name=\"newPost.weatherCondition\">\r\n      <option *ngFor=\"let condition of weatherConditions\" [ngValue]=\"condition\">{{condition}}</option>\r\n    </select>\r\n  </div>\r\n  <!-- Author (defaults to name of the current user) -->\r\n  <div class=\"form-group\">\r\n    <label>Author (defaults to name of the current user)</label>\r\n    <input type=\"text\" [(ngModel)]=\"newPost.author\" name=\"newPost.author\" class=\"form-control\">\r\n  </div>\r\n  <!-- submit button -->\r\n  <div *ngFor=\"let error of errorMessages\">\r\n    <p class=\"alert-danger\">{{error}}</p>\r\n  </div>\r\n  <input type=\"submit\" [disabled]=\"errorMessages.length > 0\" class=\"btn btn-primary post-submit-btn\" value=\"Submit\">\r\n</form>\r\n\r\n"
 
 /***/ }),
 
@@ -337,6 +337,7 @@ var DashboardComponent = (function () {
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.errorMessages = [];
         this.newPost = new __WEBPACK_IMPORTED_MODULE_1__feed_feed_component__["b" /* Post */]();
         this.newPost.author = localStorage.getItem('name');
         this.weatherConditions = ['Cloudy', 'Partly Cloudy', 'Overcast', 'Sunny', 'Rainy'];
@@ -357,6 +358,8 @@ var DashboardComponent = (function () {
         };
     };
     DashboardComponent.prototype.onSubmitNewPost = function () {
+        //TODO implement validation
+        this.validateInputs();
         // TODO update if based on what empty queue looks like
         if (this.uploader.queue) {
             for (var _i = 0, _a = this.uploader.queue; _i < _a.length; _i++) {
@@ -368,6 +371,36 @@ var DashboardComponent = (function () {
             this.sendUpdateTotalsRequest();
             this.sendPostRequests();
         }
+    };
+    DashboardComponent.prototype.validateInputs = function () {
+        var _this = this;
+        // date: string;
+        if (typeof this.newPost.date === 'undefined' || this.newPost.date.length < 4) {
+            this.errorMessages.push('Enter in a date! ');
+        }
+        // title: string;
+        if (typeof this.newPost.title === 'undefined' || this.newPost.title.length < 2) {
+            this.errorMessages.push('What you dont want a title?!');
+        }
+        // body: string;
+        if (typeof this.newPost.body === 'undefined' || this.newPost.body.length < 5) {
+            this.errorMessages.push('This isn\'t a blog that just shows headlines. Give it a body. ');
+        }
+        // _________________ Do any of these need validation or are they optional?
+        // photos: string[];
+        // tags: [string];
+        // recap: boolean;
+        // milesSinceLastPost: number;
+        // timeBikedToday: number;
+        // temperature: string;
+        // weatherCondition: string;
+        // author: string;
+        if (typeof this.newPost.author === 'undefined' || this.newPost.author.length < 2) {
+            this.errorMessages.push('If you wrote it own it. Enter an author');
+        }
+        setTimeout(function () {
+            _this.errorMessages = [];
+        }, 9000);
     };
     DashboardComponent.prototype.sendPostRequests = function () {
         var _this = this;
@@ -500,6 +533,9 @@ var FeedComponent = (function () {
         this.flashMessagesService = flashMessagesService;
     }
     FeedComponent.prototype.ngOnInit = function () {
+        //TODO implement sort, possibly in ngfor
+        //TODO implement oldest, newest dropdown
+        //TODO implement search by date, by body content/title
         this.getAllPosts();
         this.getTotals();
     };
