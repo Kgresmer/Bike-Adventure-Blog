@@ -36,6 +36,7 @@ export class FeedComponent implements OnInit {
   selectedPost: Post;
   posts: Post[];
   totals: Totals;
+  totalTimeBiked: string;
 
   ngOnInit(): void {
     this.getAllPosts();
@@ -58,6 +59,11 @@ export class FeedComponent implements OnInit {
     this.postService.getTotals().subscribe(response => {
       if (response.success) {
         this.totals = response.totals;
+        if (this.totals.totalTimeBiked) {
+          let hours = Math.floor(this.totals.totalTimeBiked / 60);
+          let minutes = this.totals.totalTimeBiked % 60;
+          this.totalTimeBiked = hours + ' hours ' + minutes + ' minutes'
+        }
       } else {
         this.flashMessagesService.show("I'm Sorry. I seem to have misplaced the totals. ", {
           cssClass: 'alert-danger',
