@@ -15,7 +15,7 @@ schedule.scheduleJob('0 0 * * *', function(){
 
 var storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
-        cb(null, './angular-src/src/assets/');
+        cb(null, './angular-src/src/assets/uploads/');
     },
     filename: function (req, file, cb) {
         var datetimestamp = new Date();
