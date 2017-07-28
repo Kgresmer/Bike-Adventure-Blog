@@ -12,21 +12,21 @@ export class PostService {
   addToTotals(dataToAdd) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:3000/posts/addToTotals', dataToAdd)
+    return this.http.put('posts/addToTotals', dataToAdd)
       .map(res => res.json());
   }
 
   addPost(post) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/posts/add', post)
+    return this.http.post('posts/add', post)
       .map(res => res.json());
   }
 
   editPost(post) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:3000/posts/edit', post, {headers: headers})
+    return this.http.put('posts/edit', post, {headers: headers})
       .map(res => res.json());
   }
 
@@ -36,12 +36,12 @@ export class PostService {
     };
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put('http://localhost:3000/posts/delete', body, {headers: headers})
+    return this.http.put('posts/delete', body, {headers: headers})
       .map(res => res.json());
   }
 
   getAllPosts() {
-    return this.http.get('http://localhost:3000/posts/all')
+    return this.http.get('posts/all')
       .map(res => res.json());
   }
 
@@ -55,7 +55,7 @@ export class PostService {
   }
 
   getTotals() {
-    return this.http.get('http://localhost:3000/posts/totals')
+    return this.http.get('posts/totals')
       .map(res => res.json());
   }
 
