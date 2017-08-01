@@ -24,13 +24,13 @@ const app = express();
 const users = require('./routes/users');
 const posts = require('./routes/posts');
 
-const port = process.env.PORT || 8080;
-// const port = 3000;
-app.use(cors());
+// const port = process.env.PORT || 8080;
+const port = 3000;
+// app.use(cors());
 
 app.use(function(req, res, next) { //allow cross origin requests
     res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET");
-    // res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.header("Access-Control-Allow-Origin", "http://localhost:4200");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Credentials", true);
     next();
