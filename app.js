@@ -37,7 +37,7 @@ app.use(function(req, res, next) { //allow cross origin requests
 });
 
 //Set static folder
-app.use(express.static(path.join(__dirname, 'client')));
+app.use(express.static(path.join(__dirname, '/client')));
 
 // Body parser Middleware
 app.use(bodyParser.json());
