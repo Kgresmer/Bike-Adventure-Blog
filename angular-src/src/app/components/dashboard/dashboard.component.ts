@@ -48,10 +48,8 @@ export class DashboardComponent implements OnInit {
   }
 
   onSubmitNewPost() {
-    //TODO implement validation
-    this.validateInputs();
+    if (this.validateInputs()) return;
 
-    // TODO update if based on what empty queue looks like
     if (this.uploader.queue) {
       for (let item of this.uploader.queue) {
         item.upload();
@@ -62,18 +60,21 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  private validateInputs() {
+  private validateInputs(): boolean {
     // date: string;
     if (typeof this.newPost.date === 'undefined' || this.newPost.date.length < 4) {
       this.errorMessages.push('Enter in a date! ');
+      return false;
     }
     // title: string;
     if (typeof this.newPost.title === 'undefined' || this.newPost.title.length < 2) {
       this.errorMessages.push('What you dont want a title?!');
+      return false;
     }
     // body: string;
     if (typeof this.newPost.body === 'undefined' || this.newPost.body.length < 5) {
       this.errorMessages.push('This isn\'t a blog that just shows headlines. Give it a body. ');
+      return false;
     }
     // _________________ Do any of these need validation or are they optional?
     // photos: string[];
@@ -87,11 +88,13 @@ export class DashboardComponent implements OnInit {
     // author: string;
     if (typeof this.newPost.author === 'undefined' || this.newPost.author.length < 2) {
       this.errorMessages.push('If you wrote it own it. Enter an author');
+      return false;
     }
 
     setTimeout(() => {
       this.errorMessages = [];
-    }, 9000);
+    }, 3000);
+    return true;
   }
 
   private sendPostRequests() {
