@@ -488,7 +488,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/feed/feed.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"display: inline-block; width: 80%\">\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9\">\r\n      <div style=\"text-align:center;\"\r\n           *ngFor=\"let post of posts\">\r\n        <app-post [selectedPost]=\"post\"></app-post>\r\n      </div>\r\n    </div>\r\n    <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\" *ngIf=\"totals\">\r\n        Total Miles Biked: {{totals.totalMilesBiked}} <br>\r\n        Total Time Biked: {{totalTimeBiked}}\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div style=\"display: inline-block; width: 80%\">\r\n  <img style=\"height: 100px; width: 100px;\" src=\"/assets/bird.jpg\" />\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9\">\r\n      <div style=\"text-align:center;\"\r\n           *ngFor=\"let post of posts\">\r\n        <app-post [selectedPost]=\"post\"></app-post>\r\n      </div>\r\n    </div>\r\n    <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\" *ngIf=\"totals\">\r\n        Total Miles Biked: {{totals.totalMilesBiked}} <br>\r\n        Total Time Biked: {{totalTimeBiked}}\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
