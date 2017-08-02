@@ -116,6 +116,7 @@
   <div *ngFor="let error of errorMessages">
     <p class="alert-danger">{{error}}</p>
   </div>
+  <flash-messages></flash-messages>
   <input type="submit" [disabled]="errorMessages.length > 0" class="btn btn-primary post-submit-btn" value="Submit">
 </form>
 
