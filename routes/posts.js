@@ -5,6 +5,7 @@ const Post = require('../models/post');
 const multer = require('multer');
 const schedule = require('node-schedule');
 const Totals = require('../models/totals');
+const path = require('path');
 
 let dailyPhotoNumber = 1;
 let tempFileName = 'hasnt been set yet';
