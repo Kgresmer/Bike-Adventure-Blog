@@ -127,7 +127,7 @@ router.get('/all', (req, res, next) => {
 });
 
 router.get('/uploads/:image', (req, res) => {
-    let url = '../uploads/' + req.params.image;
+    let url = '/uploads/' + req.params.image;
     console.log(url);
     res.sendFile(path.resolve(url));
 });

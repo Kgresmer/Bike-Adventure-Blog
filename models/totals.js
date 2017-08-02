@@ -11,6 +11,8 @@ const TotalsSchema = mongoose.Schema({
 
 const Totals = module.exports = mongoose.model('Totals', TotalsSchema);
 
+// TODO clear totals
+
 module.exports.addToTotals = function (dataToAdd, callback) {
     console.log('entered add to totals method ' + dataToAdd);
 
