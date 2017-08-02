@@ -9,7 +9,7 @@ import {OnInit} from '@angular/core';
     <div style="display: inline-block; width: 85%" class="blog-post" *ngIf="selectedPost">
       <div style="border: 1px black solid;">
         <h3>{{selectedPost.title}} - {{formattedDate}}</h3>
-        <img style="height: 100px; width: 100px;" src="../uploads/{{selectedPost.photos[0]}}" />
+        <img style="height: 100px; width: 100px;" src="posts/uploads/{{selectedPost.photos[0]}}" />
         <p>Miles Since last Post: {{selectedPost.milesSinceLastPost}}</p>
         <p>Time spent biking: {{timeBiked}}</p>
         <p>Body: {{selectedPost.body}}</p>

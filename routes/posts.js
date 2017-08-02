@@ -125,6 +125,12 @@ router.get('/all', (req, res, next) => {
     });
 });
 
+router.get('/uploads/:image', (req, res) => {
+    let path = '../uploads/' + req.params.image;
+    console.log(path);
+    res.sendFile(path.resolve(path));
+});
+
 router.get('/totals', (req, res, next) => {
     Totals.find(function (err, results) {
         if (err) {

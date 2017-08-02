@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   newPost: Post;
   weatherConditions: [string];
   errorMessages: string[];
-  public uploader: FileUploader = new FileUploader({url: 'http://localhost:3000/posts/upload'});
+  public uploader: FileUploader = new FileUploader({url: 'posts/upload'});
 
   constructor(private postService: PostService,
               private flashMessagesService: FlashMessagesService,
@@ -48,7 +48,7 @@ export class DashboardComponent implements OnInit {
   }
 
   onSubmitNewPost() {
-    if (this.validateInputs()) return;
+    if (!this.validateInputs()) return;
 
     if (this.uploader.queue) {
       for (let item of this.uploader.queue) {
