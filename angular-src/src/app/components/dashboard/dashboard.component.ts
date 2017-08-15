@@ -125,25 +125,27 @@ export class DashboardComponent implements OnInit {
   }
 
   private sendUpdateTotalsRequest() {
-    let dataToAddToTripTotals: TotalsAddition = {
-      milesSinceLastPost: this.newPost.milesSinceLastPost,
-      timeBikedToday: this.newPost.timeBikedToday
-    };
-    this.postService.addToTotals(dataToAddToTripTotals).subscribe(data => {
-      if (data.success) {
-        this.flashMessagesService.show(data.msg, {
-          cssClass: 'alert-success',
-          timeout: 5000
-        });
-        this.router.navigate(['/dashboard']);
-      } else {
-        this.flashMessagesService.show(data.msg, {
-          cssClass: 'alert-danger',
-          timeout: 5000
-        });
-        this.router.navigate(['/login']);
-      }
-    });
+    if (this.newPost.milesSinceLastPost && this.newPost.timeBikedToday) {
+      let dataToAddToTripTotals: TotalsAddition = {
+        milesSinceLastPost: this.newPost.milesSinceLastPost,
+        timeBikedToday: this.newPost.timeBikedToday
+      };
+      this.postService.addToTotals(dataToAddToTripTotals).subscribe(data => {
+        if (data.success) {
+          this.flashMessagesService.show(data.msg, {
+            cssClass: 'alert-success',
+            timeout: 5000
+          });
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.flashMessagesService.show(data.msg, {
+            cssClass: 'alert-danger',
+            timeout: 5000
+          });
+          this.router.navigate(['/login']);
+        }
+      });
+    }
   }
 
 }

@@ -103,6 +103,7 @@
   <!-- Weather Condition -->
   <!-- Add more options -->
   <div class="form-group">
+    <label>Weather Condition</label>
     <select [(ngModel)]="newPost.weatherCondition" name="newPost.weatherCondition">
       <option *ngFor="let condition of weatherConditions" [ngValue]="condition">{{condition}}</option>
     </select>

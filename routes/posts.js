@@ -2,13 +2,21 @@ const express = require('express');
 const router = express.Router();
 const config = require('../config/database');
 const Post = require('../models/post');
+const AWS = require('aws-sdk');
 const multer = require('multer');
 const schedule = require('node-schedule');
 const Totals = require('../models/totals');
 const path = require('path');
+const fs = require('file-system');
 
 let dailyPhotoNumber = 1;
 let tempFileName = 'hasnt been set yet';
+
+AWS.config.loadFromPath('./config/aws-s3.json');
+const s3 = new AWS.S3();
+const bucketParams = {Bucket: 'blog-post-photos'};
+// s3.createBucket(bucketParams);
+const s3Bucket = new AWS.S3( { params: bucketParams } );
 
 function getDailyPhotoNumber() {
     return dailyPhotoNumber++;
@@ -34,10 +42,36 @@ var upload = multer({ //multer settings
 }).single('file');
 
 router.post('/upload', function(req, res) {
+
     upload(req,res,function(err){
         if(err){
             res.json({error_code:1,err_desc:err});
             return;
+        } else {
+            let filePath = './uploads/' + tempFileName;
+            fs.readFile(filePath, function (err, data) {
+                if (err) throw err; // Something went wrong!
+                var params = {
+                    Key: tempFileName, //file.name doesn't exist as a property
+                    Body: data
+                };
+                s3Bucket.putObject(params, function(err, data){
+                    // Whether there is an error or not, delete the temp file
+                    fs.unlink(filePath, function (err) {
+                        if (err) {
+                            console.error(err);
+                        }
+                        console.log('Temp File Delete');
+                    });
+
+                    console.log("PRINT FILE:", tempFileName);
+                    if (err) {
+                        console.log('ERROR MSG: ', err);
+                    } else {
+                        console.log('Successfully uploaded data');
+                    }
+                });
+            });
         }
         res.json({error_code:0,err_desc:null, fileName: tempFileName});
     });
@@ -126,10 +160,26 @@ router.get('/all', (req, res, next) => {
     });
 });
 
+// router.get('/uploads/:image', (req, res) => {
+//     let url = 'uploads/' + req.params.image;
+//     console.log(url);
+//     res.sendFile(path.resolve(url));
+// });
 router.get('/uploads/:image', (req, res) => {
-    let url = 'uploads/' + req.params.image;
-    console.log(url);
-    res.sendFile(path.resolve(url));
+    console.log(" inside get method");
+    s3.listObjects(bucketParams, function(err, data){
+        console.log("getting bucket contents: " + data);
+        var bucketContents = data.Contents;
+        for (var i = 0; i < bucketContents.length; i++){
+            var urlParams = {Bucket: 'blog-post-photos', Key: bucketContents[i].Key};
+            console.log('key ' + bucketContents[i].Key);
+            console.log('bucket contents ' + bucketContents);
+            s3.getSignedUrl('getObject',urlParams, function(err, url){
+                console.log(url);
+                res.send({success: true, url: url});
+            });
+        }
+    });
 });
 
 router.get('/totals', (req, res, next) => {

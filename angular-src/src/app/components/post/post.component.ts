@@ -1,6 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {Post} from '../feed/feed.component';
 import {OnInit} from '@angular/core';
+import { Http, Headers} from '@angular/http';
+import {Observable} from "rxjs/Observable";
 
 
 @Component({
@@ -9,7 +11,7 @@ import {OnInit} from '@angular/core';
     <div style="display: inline-block; width: 85%" class="blog-post" *ngIf="selectedPost">
       <div style="border: 1px black solid;">
         <h3>{{selectedPost.title}} - {{formattedDate}}</h3>
-        <img style="height: 100px; width: 100px;" src="posts/uploads/{{selectedPost.photos[0]}}" />
+        <img style="height: 100px; width: 100px;" src="{{photoUrl}}" />
         <p>Miles Since last Post: {{selectedPost.milesSinceLastPost}}</p>
         <p>Time spent biking: {{timeBiked}}</p>
         <p>Body: {{selectedPost.body}}</p>
@@ -23,11 +25,19 @@ import {OnInit} from '@angular/core';
 })
 
 export class PostComponent implements OnInit {
+  photoUrl: any;
   @Input() selectedPost: Post;
   timeBiked: string;
   formattedDate: string;
 
+  constructor(private http: Http) { }
+
+
   ngOnInit(): void {
+    this.getAllPhotoUrls().subscribe(response => {
+      console.log("photo returned " + response.url);
+      this.photoUrl = response.url;
+    });
     if (this.selectedPost.date) {
       this.formattedDate = new Date(this.selectedPost.date).toLocaleString().substr(0, 10);
     }
@@ -36,5 +46,10 @@ export class PostComponent implements OnInit {
       let minutes = this.selectedPost.timeBikedToday % 60;
       this.timeBiked = hours + ' hours ' + minutes + ' minutes'
     }
+  }
+
+  getAllPhotoUrls() {
+    return this.http.get('posts/uploads/' + this.selectedPost.photos[0])
+      .map(res => res.json());
   }
 }

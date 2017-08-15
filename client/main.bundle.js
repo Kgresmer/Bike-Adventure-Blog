@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"text-align:center;\">\r\n  <h1>\r\n    Welcome to {{title}}!\r\n  </h1>\r\n</div>\r\n<app-navbar></app-navbar>\r\n<div class=\"container\">\r\n  <flash-messages></flash-messages>\r\n  <router-outlet></router-outlet>\r\n  <a *ngIf=\"!authService.loggedIn()\" routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/login\">Login   (Put this in the footer)</a>\r\n</div>\r\n\r\n\r\n"
+module.exports = "<div style=\"text-align:center;\">\r\n  <h1>\r\n    Welcome to {{title}}!\r\n  </h1>\r\n</div>\r\n<app-navbar></app-navbar>\r\n<div class=\"container\">\r\n  <router-outlet></router-outlet>\r\n  <flash-messages></flash-messages>\r\n  <a *ngIf=\"!authService.loggedIn()\" routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/login\">Login   (Put this in the footer)</a>\r\n</div>\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -289,7 +289,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<h2 class=\"page-header\">Add a post</h2>\r\n\r\n        <!-- Function called after submitting form -->\r\n<form (submit)=\"onSubmitNewPost()\">\r\n\r\n  <!-- Date -->\r\n  <div class=\"form-group\">\r\n    <label>Date</label>\r\n    <input type=\"date\" [(ngModel)]=\"newPost.date\" name=\"date\" class=\"form-control\">\r\n  </div>\r\n\r\n  <!-- Post Title -->\r\n  <div class=\"form-group\">\r\n    <label>Title</label>\r\n    <input [(ngModel)]=\"newPost.title\" name=\"newPost.title\" class=\"form-control\">\r\n  </div>\r\n\r\n  <!-- Body of the post -->\r\n  <!-- TODO add rich text formatter -->\r\n  <div class=\"form-group\">\r\n    <label>Body</label>\r\n    <textarea [(ngModel)]=\"newPost.body\" name=\"newPost.body\" class=\"form-control\" style=\"height: 10em;\"></textarea>\r\n  </div>\r\n\r\n  <!-- Add photos -->\r\n  <div class=\"form-group\">\r\n    <label for=\"single\">Upload one photo at a time</label>\r\n    <input type=\"file\" class=\"form-control\" name=\"single\" ng2FileSelect [uploader]=\"uploader\" />\r\n  </div>\r\n  <table class=\"table\">\r\n    <thead>\r\n    <tr>\r\n      <th width=\"50%\">Name</th>\r\n      <th>Size</th>\r\n      <th>Progress</th>\r\n      <th>Status</th>\r\n      <th>Actions</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let item of uploader.queue\">\r\n      <td><strong>{{ item.file.name }}</strong></td>\r\n      <td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>\r\n      <td>\r\n        <div class=\"progress\" style=\"margin-bottom: 0;\">\r\n          <div class=\"progress-bar\" role=\"progressbar\" [ngStyle]=\"{ 'width': item.progress + '%' }\"></div>\r\n        </div>\r\n      </td>\r\n      <td class=\"text-center\">\r\n        <span *ngIf=\"item.isSuccess\"><i class=\"glyphicon glyphicon-ok\"></i></span>\r\n        <span *ngIf=\"item.isCancel\"><i class=\"glyphicon glyphicon-ban-circle\"></i></span>\r\n        <span *ngIf=\"item.isError\"><i class=\"glyphicon glyphicon-remove\"></i></span>\r\n      </td>\r\n      <td nowrap>\r\n        <!--<button type=\"button\" class=\"btn btn-success btn-xs\"-->\r\n                <!--(click)=\"item.upload()\" [disabled]=\"item.isReady || item.isUploading || item.isSuccess\">-->\r\n          <!--<span class=\"glyphicon glyphicon-upload\"></span> Upload-->\r\n        <!--</button>-->\r\n        <button type=\"button\" class=\"btn btn-warning btn-xs\"\r\n                (click)=\"item.cancel()\" [disabled]=\"!item.isUploading\">\r\n          <span class=\"glyphicon glyphicon-ban-circle\"></span> Cancel\r\n        </button>\r\n        <button type=\"button\" class=\"btn btn-danger btn-xs\"\r\n                (click)=\"item.remove()\">\r\n          <span class=\"glyphicon glyphicon-trash\"></span> Remove\r\n        </button>\r\n      </td>\r\n    </tr>\r\n    </tbody>\r\n  </table>\r\n  <!-- end of photo input -->\r\n\r\n  <!-- Tags -->\r\n  <!-- TODO Implement search -->\r\n  <div class=\"form-group\">\r\n    <label>Tags (comma separated)</label>\r\n    <input [(ngModel)]=\"newPost.tags\" name=\"newPost.tags\" class=\"form-control\">\r\n  </div>\r\n  <!-- Recap Post -->\r\n  <!-- TODO Implement the recap post calendar thing -->\r\n  <div class=\"form-group\">\r\n    <label>Recap Post</label>\r\n    <input type=\"checkbox\" [(ngModel)]=\"newPost.recap\" name=\"newPost.recap\" class=\"form-control\">\r\n  </div>\r\n  <!-- Time Biked Today in Minutes -->\r\n  <div class=\"form-group\">\r\n    <label>Total time biked today in minutes</label>\r\n    <input type=\"number\" [(ngModel)]=\"newPost.timeBikedToday\" name=\"newPost.timeBikedToday\"\r\n           class=\"form-control\">\r\n  </div>\r\n  <!-- Miles biked since the last post (could be miles biked today) -->\r\n  <div class=\"form-group\">\r\n    <label>Miles Since Last Post  (could be miles biked today) </label>\r\n    <input type=\"number\" [(ngModel)]=\"newPost.milesSinceLastPost\" name=\"newPost.milesSinceLastPost\"\r\n           class=\"form-control\">\r\n  </div>\r\n  <!-- Temperature -->\r\n  <div class=\"form-group\">\r\n    <label>Temperature</label>\r\n    <input type=\"number\" [(ngModel)]=\"newPost.temperature\" name=\"newPost.temperature\" class=\"form-control\">\r\n  </div>\r\n  <!-- Weather Condition -->\r\n  <!-- Add more options -->\r\n  <div class=\"form-group\">\r\n    <select [(ngModel)]=\"newPost.weatherCondition\" name=\"newPost.weatherCondition\">\r\n      <option *ngFor=\"let condition of weatherConditions\" [ngValue]=\"condition\">{{condition}}</option>\r\n    </select>\r\n  </div>\r\n  <!-- Author (defaults to name of the current user) -->\r\n  <div class=\"form-group\">\r\n    <label>Author (defaults to name of the current user)</label>\r\n    <input type=\"text\" [(ngModel)]=\"newPost.author\" name=\"newPost.author\" class=\"form-control\">\r\n  </div>\r\n  <!-- submit button -->\r\n  <div *ngFor=\"let error of errorMessages\">\r\n    <p class=\"alert-danger\">{{error}}</p>\r\n  </div>\r\n  <input type=\"submit\" [disabled]=\"errorMessages.length > 0\" class=\"btn btn-primary post-submit-btn\" value=\"Submit\">\r\n</form>\r\n\r\n"
+module.exports = "\r\n<h2 class=\"page-header\">Add a post</h2>\r\n\r\n        <!-- Function called after submitting form -->\r\n<form (submit)=\"onSubmitNewPost()\">\r\n\r\n  <!-- Date -->\r\n  <div class=\"form-group\">\r\n    <label>Date</label>\r\n    <input type=\"date\" [(ngModel)]=\"newPost.date\" name=\"date\" class=\"form-control\">\r\n  </div>\r\n\r\n  <!-- Post Title -->\r\n  <div class=\"form-group\">\r\n    <label>Title</label>\r\n    <input [(ngModel)]=\"newPost.title\" name=\"newPost.title\" class=\"form-control\">\r\n  </div>\r\n\r\n  <!-- Body of the post -->\r\n  <!-- TODO add rich text formatter -->\r\n  <div class=\"form-group\">\r\n    <label>Body</label>\r\n    <textarea [(ngModel)]=\"newPost.body\" name=\"newPost.body\" class=\"form-control\" style=\"height: 10em;\"></textarea>\r\n  </div>\r\n\r\n  <!-- Add photos -->\r\n  <div class=\"form-group\">\r\n    <label for=\"single\">Upload one photo at a time</label>\r\n    <input type=\"file\" class=\"form-control\" name=\"single\" ng2FileSelect [uploader]=\"uploader\" />\r\n  </div>\r\n  <table class=\"table\">\r\n    <thead>\r\n    <tr>\r\n      <th width=\"50%\">Name</th>\r\n      <th>Size</th>\r\n      <th>Progress</th>\r\n      <th>Status</th>\r\n      <th>Actions</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let item of uploader.queue\">\r\n      <td><strong>{{ item.file.name }}</strong></td>\r\n      <td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>\r\n      <td>\r\n        <div class=\"progress\" style=\"margin-bottom: 0;\">\r\n          <div class=\"progress-bar\" role=\"progressbar\" [ngStyle]=\"{ 'width': item.progress + '%' }\"></div>\r\n        </div>\r\n      </td>\r\n      <td class=\"text-center\">\r\n        <span *ngIf=\"item.isSuccess\"><i class=\"glyphicon glyphicon-ok\"></i></span>\r\n        <span *ngIf=\"item.isCancel\"><i class=\"glyphicon glyphicon-ban-circle\"></i></span>\r\n        <span *ngIf=\"item.isError\"><i class=\"glyphicon glyphicon-remove\"></i></span>\r\n      </td>\r\n      <td nowrap>\r\n        <!--<button type=\"button\" class=\"btn btn-success btn-xs\"-->\r\n                <!--(click)=\"item.upload()\" [disabled]=\"item.isReady || item.isUploading || item.isSuccess\">-->\r\n          <!--<span class=\"glyphicon glyphicon-upload\"></span> Upload-->\r\n        <!--</button>-->\r\n        <button type=\"button\" class=\"btn btn-warning btn-xs\"\r\n                (click)=\"item.cancel()\" [disabled]=\"!item.isUploading\">\r\n          <span class=\"glyphicon glyphicon-ban-circle\"></span> Cancel\r\n        </button>\r\n        <button type=\"button\" class=\"btn btn-danger btn-xs\"\r\n                (click)=\"item.remove()\">\r\n          <span class=\"glyphicon glyphicon-trash\"></span> Remove\r\n        </button>\r\n      </td>\r\n    </tr>\r\n    </tbody>\r\n  </table>\r\n  <!-- end of photo input -->\r\n\r\n  <!-- Tags -->\r\n  <!-- TODO Implement search -->\r\n  <div class=\"form-group\">\r\n    <label>Tags (comma separated)</label>\r\n    <input [(ngModel)]=\"newPost.tags\" name=\"newPost.tags\" class=\"form-control\">\r\n  </div>\r\n  <!-- Recap Post -->\r\n  <!-- TODO Implement the recap post calendar thing -->\r\n  <div class=\"form-group\">\r\n    <label>Recap Post</label>\r\n    <input type=\"checkbox\" [(ngModel)]=\"newPost.recap\" name=\"newPost.recap\" class=\"form-control\">\r\n  </div>\r\n  <!-- Time Biked Today in Minutes -->\r\n  <div class=\"form-group\">\r\n    <label>Total time biked today in minutes</label>\r\n    <input type=\"number\" [(ngModel)]=\"newPost.timeBikedToday\" name=\"newPost.timeBikedToday\"\r\n           class=\"form-control\">\r\n  </div>\r\n  <!-- Miles biked since the last post (could be miles biked today) -->\r\n  <div class=\"form-group\">\r\n    <label>Miles Since Last Post  (could be miles biked today) </label>\r\n    <input type=\"number\" [(ngModel)]=\"newPost.milesSinceLastPost\" name=\"newPost.milesSinceLastPost\"\r\n           class=\"form-control\">\r\n  </div>\r\n  <!-- Temperature -->\r\n  <div class=\"form-group\">\r\n    <label>Temperature</label>\r\n    <input type=\"number\" [(ngModel)]=\"newPost.temperature\" name=\"newPost.temperature\" class=\"form-control\">\r\n  </div>\r\n  <!-- Weather Condition -->\r\n  <!-- Add more options -->\r\n  <div class=\"form-group\">\r\n    <label>Weather Condition</label>\r\n    <select [(ngModel)]=\"newPost.weatherCondition\" name=\"newPost.weatherCondition\">\r\n      <option *ngFor=\"let condition of weatherConditions\" [ngValue]=\"condition\">{{condition}}</option>\r\n    </select>\r\n  </div>\r\n  <!-- Author (defaults to name of the current user) -->\r\n  <div class=\"form-group\">\r\n    <label>Author (defaults to name of the current user)</label>\r\n    <input type=\"text\" [(ngModel)]=\"newPost.author\" name=\"newPost.author\" class=\"form-control\">\r\n  </div>\r\n  <!-- submit button -->\r\n  <div *ngFor=\"let error of errorMessages\">\r\n    <p class=\"alert-danger\">{{error}}</p>\r\n  </div>\r\n  <input type=\"submit\" [disabled]=\"errorMessages.length > 0\" class=\"btn btn-primary post-submit-btn\" value=\"Submit\">\r\n</form>\r\n\r\n"
 
 /***/ }),
 
@@ -434,26 +434,28 @@ var DashboardComponent = (function () {
     };
     DashboardComponent.prototype.sendUpdateTotalsRequest = function () {
         var _this = this;
-        var dataToAddToTripTotals = {
-            milesSinceLastPost: this.newPost.milesSinceLastPost,
-            timeBikedToday: this.newPost.timeBikedToday
-        };
-        this.postService.addToTotals(dataToAddToTripTotals).subscribe(function (data) {
-            if (data.success) {
-                _this.flashMessagesService.show(data.msg, {
-                    cssClass: 'alert-success',
-                    timeout: 5000
-                });
-                _this.router.navigate(['/dashboard']);
-            }
-            else {
-                _this.flashMessagesService.show(data.msg, {
-                    cssClass: 'alert-danger',
-                    timeout: 5000
-                });
-                _this.router.navigate(['/login']);
-            }
-        });
+        if (this.newPost.milesSinceLastPost && this.newPost.timeBikedToday) {
+            var dataToAddToTripTotals = {
+                milesSinceLastPost: this.newPost.milesSinceLastPost,
+                timeBikedToday: this.newPost.timeBikedToday
+            };
+            this.postService.addToTotals(dataToAddToTripTotals).subscribe(function (data) {
+                if (data.success) {
+                    _this.flashMessagesService.show(data.msg, {
+                        cssClass: 'alert-success',
+                        timeout: 5000
+                    });
+                    _this.router.navigate(['/dashboard']);
+                }
+                else {
+                    _this.flashMessagesService.show(data.msg, {
+                        cssClass: 'alert-danger',
+                        timeout: 5000
+                    });
+                    _this.router.navigate(['/login']);
+                }
+            });
+        }
     };
     DashboardComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -841,6 +843,7 @@ var NavbarComponent = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__feed_feed_component__ = __webpack_require__("../../../../../src/app/components/feed/feed.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -853,10 +856,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var PostComponent = (function () {
-    function PostComponent() {
+    function PostComponent(http) {
+        this.http = http;
     }
     PostComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.getAllPhotoUrls().subscribe(function (response) {
+            console.log("photo returned " + response.url);
+            _this.photoUrl = response.url;
+        });
         if (this.selectedPost.date) {
             this.formattedDate = new Date(this.selectedPost.date).toLocaleString().substr(0, 10);
         }
@@ -866,6 +876,10 @@ var PostComponent = (function () {
             this.timeBiked = hours + ' hours ' + minutes + ' minutes';
         }
     };
+    PostComponent.prototype.getAllPhotoUrls = function () {
+        return this.http.get('posts/uploads/' + this.selectedPost.photos[0])
+            .map(function (res) { return res.json(); });
+    };
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__feed_feed_component__["b" /* Post */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__feed_feed_component__["b" /* Post */]) === "function" && _a || Object)
@@ -873,11 +887,12 @@ var PostComponent = (function () {
     PostComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-post',
-            template: "    \n    <div style=\"display: inline-block; width: 85%\" class=\"blog-post\" *ngIf=\"selectedPost\">\n      <div style=\"border: 1px black solid;\">\n        <h3>{{selectedPost.title}} - {{formattedDate}}</h3>\n        <img style=\"height: 100px; width: 100px;\" src=\"posts/uploads/{{selectedPost.photos[0]}}\" />\n        <p>Miles Since last Post: {{selectedPost.milesSinceLastPost}}</p>\n        <p>Time spent biking: {{timeBiked}}</p>\n        <p>Body: {{selectedPost.body}}</p>\n        <p>Tags: {{selectedPost.tags}}</p>\n        <p>Temp: {{selectedPost.temperature}}</p>\n        <p>Weather Condition: {{selectedPost.weatherCondition}} (I was thinking we could have an image to go with each choice)</p>\n        <small>{{selectedPost.author}}</small>\n      </div>\n    </div>\n  "
-        })
+            template: "    \n    <div style=\"display: inline-block; width: 85%\" class=\"blog-post\" *ngIf=\"selectedPost\">\n      <div style=\"border: 1px black solid;\">\n        <h3>{{selectedPost.title}} - {{formattedDate}}</h3>\n        <img style=\"height: 100px; width: 100px;\" src=\"{{photoUrl}}\" />\n        <p>Miles Since last Post: {{selectedPost.milesSinceLastPost}}</p>\n        <p>Time spent biking: {{timeBiked}}</p>\n        <p>Body: {{selectedPost.body}}</p>\n        <p>Tags: {{selectedPost.tags}}</p>\n        <p>Temp: {{selectedPost.temperature}}</p>\n        <p>Weather Condition: {{selectedPost.weatherCondition}} (I was thinking we could have an image to go with each choice)</p>\n        <small>{{selectedPost.author}}</small>\n      </div>\n    </div>\n  "
+        }),
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_http__["Http"]) === "function" && _b || Object])
     ], PostComponent);
     return PostComponent;
-    var _a;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=post.component.js.map
