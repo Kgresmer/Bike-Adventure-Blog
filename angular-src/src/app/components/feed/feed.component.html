@@ -1,14 +1,22 @@
-<div style="display: inline-block; width: 80%">
+<div style="display: inline-block;">
   <div class="row">
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
-      <div style="text-align:center;"
-           *ngFor="let post of posts">
+      <div *ngFor="let post of posts">
         <app-post [selectedPost]="post"></app-post>
+        <hr>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" *ngIf="totals">
-        Total Miles Biked: {{totals.totalMilesBiked}} <br>
-        Total Time Biked: {{totalTimeBiked}}
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3" *ngIf="totals" style="text-align: center">
+        <div class="totals-section">
+          <img src="../../../assets/bike.png"> <br>
+          Total Miles Biked: <br>
+          {{totals.totalMilesBiked}} <br>
+        </div>
+        <div class="totals-section">
+          <img src="../../../assets/clock.png"> <br>
+          Total Time Biked: <br>
+          {{totalTimeBiked}}
+        </div>
     </div>
   </div>
 </div>
