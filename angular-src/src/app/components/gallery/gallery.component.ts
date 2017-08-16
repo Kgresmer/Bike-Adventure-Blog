@@ -33,7 +33,6 @@ export class GalleryComponent implements OnInit {
         this.photoGroupThree = [];
         this.photoGroupFour = [];
         this.setPhotoGroups();
-        console.log(this.photos);
       } else {
         this.flashMessagesService.show('I\'m Sorry. I seem to have misplaced the photos. ', {
           cssClass: 'alert-danger',

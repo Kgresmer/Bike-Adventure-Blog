@@ -16,8 +16,9 @@ export class TotalsAddition {
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  editor: any;
-  newPost: Post;
+  postToEdit: Post;
+  posts: Post[];
+  currentPost: Post;
   weatherConditions: [string];
   errorMessages: string[];
   public uploader: FileUploader = new FileUploader({url: 'http://localhost:3000/posts/upload'});
@@ -28,17 +29,20 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.postService.getAllPosts().subscribe(response => {
+      this.posts = response.posts;
+    });
     this.errorMessages = [];
-    this.newPost = new Post();
-    this.newPost.author = localStorage.getItem('name');
+    this.currentPost = new Post();
+    this.currentPost.author = localStorage.getItem('name');
     this.weatherConditions = ['Cloudy', 'Partly Cloudy', 'Overcast', 'Sunny', 'Rainy'];
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       let responsePath = JSON.parse(response);
       if (responsePath.fileName && responsePath.fileName !== 'hasnt been set yet') {
-        if (this.newPost.photos) {
-          this.newPost.photos.push(responsePath.fileName);
+        if (this.currentPost.photos) {
+          this.currentPost.photos.push(responsePath.fileName);
         } else {
-          this.newPost.photos = [responsePath.fileName];
+          this.currentPost.photos = [responsePath.fileName];
         }
       }
     };
@@ -48,34 +52,46 @@ export class DashboardComponent implements OnInit {
     };
   }
 
-  onSubmitNewPost() {
-    if (!this.validateInputs()) return;
+  updateEditPostData() {
+    this.currentPost = this.postToEdit;
+    this.currentPost.date = this.currentPost.date.split('T')[0];
+    this.currentPost.weatherCondition = this.currentPost.weatherCondition[0];
+  }
 
-    if (this.uploader.queue) {
-      for (let item of this.uploader.queue) {
-        item.upload();
+  updatePostForm() {
+    this.currentPost = new Post();
+  }
+
+  onSubmitPost(postAction: string) {
+
+    if (postAction === 'create') {
+      if (!this.validateInputs()) return;
+
+      if (this.uploader.queue) {
+        for (let item of this.uploader.queue) {
+          item.upload();
+        }
+      } else {
+        this.sendUpdateTotalsRequest();
+        this.sendPostRequests();
       }
-    } else {
-      this.sendUpdateTotalsRequest();
-      this.sendPostRequests();
+    } else if (postAction === 'edit') {
+
     }
   }
 
   private validateInputs(): boolean {
     // date: string;
-    if (typeof this.newPost.date === 'undefined' || this.newPost.date.length < 4) {
+    if (typeof this.currentPost.date === 'undefined' || this.currentPost.date.length < 4) {
       this.errorMessages.push('Enter in a date! ');
-      return false;
     }
     // title: string;
-    if (typeof this.newPost.title === 'undefined' || this.newPost.title.length < 2) {
+    if (typeof this.currentPost.title === 'undefined' || this.currentPost.title.length < 2) {
       this.errorMessages.push('What you dont want a title?!');
-      return false;
     }
     // body: string;
-    if (typeof this.newPost.body === 'undefined' || this.newPost.body.length < 5) {
+    if (typeof this.currentPost.body === 'undefined' || this.currentPost.body.length < 5) {
       this.errorMessages.push('This isn\'t a blog that just shows headlines. Give it a body. ');
-      return false;
     }
     // _________________ Do any of these need validation or are they optional?
     // photos: string[];
@@ -87,28 +103,27 @@ export class DashboardComponent implements OnInit {
     // weatherCondition: string;
 
     // author: string;
-    if (typeof this.newPost.author === 'undefined' || this.newPost.author.length < 2) {
+    if (typeof this.currentPost.author === 'undefined' || this.currentPost.author.length < 2) {
       this.errorMessages.push('If you wrote it own it. Enter an author');
-      return false;
     }
 
-    setTimeout(() => {
-      this.errorMessages = [];
-    }, 3000);
+    if (this.errorMessages.length > 0) {
+      setTimeout(() => {
+        this.errorMessages = [];
+      }, 3000);
+      return false;
+    }
     return true;
   }
 
   private sendPostRequests() {
-    if (this.newPost.photos) {
-      this.newPost.photos = this.newPost.photos.map(photo => {
+    if (this.currentPost.photos) {
+      this.currentPost.photos = this.currentPost.photos.map(photo => {
         return photo.replace(/ /g, '-');
       });
     }
-    if (this.newPost.date) {
 
-    }
-
-    this.postService.addPost(this.newPost).subscribe(data => {
+    this.postService.addPost(this.currentPost).subscribe(data => {
       if (data.success) {
         this.flashMessagesService.show(data.msg, {
           cssClass: 'alert-success',
@@ -127,10 +142,10 @@ export class DashboardComponent implements OnInit {
   }
 
   private sendUpdateTotalsRequest() {
-    if (this.newPost.milesSinceLastPost && this.newPost.timeBikedToday) {
+    if (this.currentPost.milesSinceLastPost && this.currentPost.timeBikedToday) {
       let dataToAddToTripTotals: TotalsAddition = {
-        milesSinceLastPost: this.newPost.milesSinceLastPost,
-        timeBikedToday: this.newPost.timeBikedToday
+        milesSinceLastPost: this.currentPost.milesSinceLastPost,
+        timeBikedToday: this.currentPost.timeBikedToday
       };
       this.postService.addToTotals(dataToAddToTripTotals).subscribe(data => {
         if (data.success) {

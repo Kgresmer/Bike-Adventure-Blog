@@ -32,7 +32,7 @@ var storage = multer.diskStorage({ //multers disk storage settings
     },
     filename: function (req, file, cb) {
         var datetimestamp = new Date();
-        tempFileName = file.fieldname + '-' + datetimestamp.toDateString().substr(4).replace(/ /g, '-') + '-' + getDailyPhotoNumber() + '.' + file.originalname.split('.')[file.originalname.split('.').length -1];
+        tempFileName = file.originalname.split('.')[0] + '-' + datetimestamp.toDateString().substr(4).replace(/ /g, '-') + '-' + getDailyPhotoNumber() + '.' + file.originalname.split('.')[file.originalname.split('.').length -1];
         cb(null, tempFileName);
     }
 });

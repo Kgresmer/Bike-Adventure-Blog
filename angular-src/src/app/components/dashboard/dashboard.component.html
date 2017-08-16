@@ -1,26 +1,48 @@
 
-<h2 class="page-header">Add a post</h2>
-<form (submit)="onSubmitNewPost()">
+<label>What would you like to do?</label>
+<select [(ngModel)]="postAction" name="postAction" (change)="updatePostForm()">
+  <option value="edit">Edit a Post</option>
+  <option value="delete">Delete a Post</option>
+  <option value="create">Create a Post</option>
+</select>
+
+<h2 *ngIf="postAction === 'create'" class="page-header">Create a post</h2>
+
+<div *ngIf="postAction === 'edit'" class="editHeader">
+  <h2 class="page-header">Edit a post</h2>
+  <label>Select the post you would like to edit</label>
+  <select [(ngModel)]="postToEdit" name="postToEdit" (change)="updateEditPostData(post)">
+    <option *ngFor="let post of posts" [ngValue]="post">{{post.title}}-{{post.date}}</option>
+  </select>
+</div>
+<form (submit)="onSubmitPost(postAction)">
 
   <!-- Date -->
   <div class="form-group">
     <label>Date</label>
-    <input type="date" [(ngModel)]="newPost.date" name="date" class="form-control">
+    <input type="date" [(ngModel)]="currentPost.date" name="date" class="form-control">
   </div>
 
   <!-- Post Title -->
   <div class="form-group">
     <label>Title</label>
-    <input [(ngModel)]="newPost.title" name="newPost.title" class="form-control">
+    <input [(ngModel)]="currentPost.title" name="newPost.title" class="form-control">
   </div>
 
   <!-- Body of the post -->
   <div class="form-group">
     <label>Body</label>
-    <textarea [(ngModel)]="newPost.body" name="newPost.body" class="form-control" style="height: 10em;"></textarea>
+    <textarea [(ngModel)]="currentPost.body" name="newPost.body" class="form-control" style="height: 10em;"></textarea>
   </div>
 
   <!-- Add photos -->
+  <!-- Edit Photos -->
+  <div class="form-group" *ngIf="postAction === 'edit'">
+    <label>Existing Photos</label>
+    <div *ngFor="let photo of currentPost.photos" >
+      <p>{{photo}}</p>
+    </div>
+  </div>
   <div class="form-group">
     <label for="single">Upload one photo at a time</label>
     <input type="file" class="form-control" id="single" name="single" ng2FileSelect [uploader]="uploader" />
@@ -67,43 +89,43 @@
   <!-- Tags -->
   <div class="form-group">
     <label>Tags (comma separated)</label>
-    <input [(ngModel)]="newPost.tags" name="newPost.tags" class="form-control">
+    <input [(ngModel)]="currentPost.tags" name="newPost.tags" class="form-control">
   </div>
   <!-- Recap Post -->
   <!-- TODO Implement the recap post calendar thing -->
   <div class="form-group">
     <label>Recap Post</label>
-    <input type="checkbox" [(ngModel)]="newPost.recap" name="newPost.recap" class="form-control">
+    <input type="checkbox" [(ngModel)]="currentPost.recap" name="newPost.recap" class="form-control">
   </div>
   <!-- Time Biked Today in Minutes -->
   <div class="form-group">
     <label>Total time biked today in minutes</label>
-    <input type="number" [(ngModel)]="newPost.timeBikedToday" name="newPost.timeBikedToday"
+    <input type="number" [(ngModel)]="currentPost.timeBikedToday" name="newPost.timeBikedToday"
            class="form-control">
   </div>
   <!-- Miles biked since the last post (could be miles biked today) -->
   <div class="form-group">
     <label>Miles Since Last Post  (could be miles biked today) </label>
-    <input type="number" [(ngModel)]="newPost.milesSinceLastPost" name="newPost.milesSinceLastPost"
+    <input type="number" [(ngModel)]="currentPost.milesSinceLastPost" name="newPost.milesSinceLastPost"
            class="form-control">
   </div>
   <!-- Temperature -->
   <div class="form-group">
     <label>Temperature</label>
-    <input type="number" [(ngModel)]="newPost.temperature" name="newPost.temperature" class="form-control">
+    <input type="number" [(ngModel)]="currentPost.temperature" name="newPost.temperature" class="form-control">
   </div>
   <!-- Weather Condition -->
   <!-- Add more options -->
   <div class="form-group">
     <label>Weather Condition</label>
-    <select [(ngModel)]="newPost.weatherCondition" name="newPost.weatherCondition">
+    <select [(ngModel)]="currentPost.weatherCondition" name="newPost.weatherCondition">
       <option *ngFor="let condition of weatherConditions" [ngValue]="condition">{{condition}}</option>
     </select>
   </div>
   <!-- Author (defaults to name of the current user) -->
   <div class="form-group">
     <label>Author (defaults to name of the current user)</label>
-    <input type="text" [(ngModel)]="newPost.author" name="newPost.author" class="form-control">
+    <input type="text" [(ngModel)]="currentPost.author" name="newPost.author" class="form-control">
   </div>
   <!-- submit button -->
   <div *ngFor="let error of errorMessages">
