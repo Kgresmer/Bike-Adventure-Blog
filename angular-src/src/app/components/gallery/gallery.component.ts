@@ -11,6 +11,7 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 
 export class GalleryComponent implements OnInit {
   s3url: string;
+  imagePreview: string;
 
   constructor(private postService: PostService,
               private flashMessagesService: FlashMessagesService) {}
@@ -30,4 +31,8 @@ export class GalleryComponent implements OnInit {
     });
   }
 
+  showModal(s3url: string, Key: string): void {
+    this.imagePreview = s3url + Key;
+    $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+  }
 }
