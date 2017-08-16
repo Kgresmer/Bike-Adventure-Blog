@@ -1,0 +1,13 @@
+<div style="display: inline-block; width: 85%" class="blog-post" *ngIf="selectedPost">
+  <div style="border: 1px black solid;">
+    <h3>{{selectedPost.title}} - {{formattedDate}}</h3>
+    <img style="height: 100%; width: 100%;" src="{{s3url}}{{selectedPost.photos[0]}}" />
+    <p>Miles Since last Post: {{selectedPost.milesSinceLastPost}}</p>
+    <p>Time spent biking: {{timeBiked}}</p>
+    <p>Body: {{selectedPost.body}}</p>
+    <p>Tags: {{selectedPost.tags}}</p>
+    <p>Temp: {{selectedPost.temperature}}</p>
+    <p>Weather Condition: {{selectedPost.weatherCondition}} (I was thinking we could have an image to go with each choice)</p>
+    <small>{{selectedPost.author}}</small>
+  </div>
+</div>
