@@ -1,7 +1,5 @@
 
 <h2 class="page-header">Add a post</h2>
-
-        <!-- Function called after submitting form -->
 <form (submit)="onSubmitNewPost()">
 
   <!-- Date -->
@@ -17,7 +15,6 @@
   </div>
 
   <!-- Body of the post -->
-  <!-- TODO add rich text formatter -->
   <div class="form-group">
     <label>Body</label>
     <textarea [(ngModel)]="newPost.body" name="newPost.body" class="form-control" style="height: 10em;"></textarea>
@@ -26,7 +23,7 @@
   <!-- Add photos -->
   <div class="form-group">
     <label for="single">Upload one photo at a time</label>
-    <input type="file" class="form-control" name="single" ng2FileSelect [uploader]="uploader" />
+    <input type="file" class="form-control" id="single" name="single" ng2FileSelect [uploader]="uploader" />
   </div>
   <table class="table">
     <thead>
@@ -53,10 +50,6 @@
         <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
       </td>
       <td nowrap>
-        <!--<button type="button" class="btn btn-success btn-xs"-->
-                <!--(click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">-->
-          <!--<span class="glyphicon glyphicon-upload"></span> Upload-->
-        <!--</button>-->
         <button type="button" class="btn btn-warning btn-xs"
                 (click)="item.cancel()" [disabled]="!item.isUploading">
           <span class="glyphicon glyphicon-ban-circle"></span> Cancel
@@ -72,7 +65,6 @@
   <!-- end of photo input -->
 
   <!-- Tags -->
-  <!-- TODO Implement search -->
   <div class="form-group">
     <label>Tags (comma separated)</label>
     <input [(ngModel)]="newPost.tags" name="newPost.tags" class="form-control">

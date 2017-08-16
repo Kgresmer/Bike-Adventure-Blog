@@ -16,6 +16,7 @@ export class TotalsAddition {
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  editor: any;
   newPost: Post;
   weatherConditions: [string];
   errorMessages: string[];
@@ -44,7 +45,7 @@ export class DashboardComponent implements OnInit {
     this.uploader.onCompleteAll = () => {
       this.sendUpdateTotalsRequest();
       this.sendPostRequests();
-    }
+    };
   }
 
   onSubmitNewPost() {

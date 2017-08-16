@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import {PostService} from '../../services/post.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
+declare const jQuery: any;
 
 @Component({
   selector: 'app-gallery',
@@ -24,7 +25,7 @@ export class GalleryComponent implements OnInit {
       if (response.success) {
         this.photos = response.photos;
       } else {
-        this.flashMessagesService.show("I'm Sorry. I seem to have misplaced the photos. ", {
+        this.flashMessagesService.show('I\'m Sorry. I seem to have misplaced the photos. ', {
           cssClass: 'alert-danger',
           timeout: 5000});
       }
@@ -33,6 +34,6 @@ export class GalleryComponent implements OnInit {
 
   showModal(s3url: string, Key: string): void {
     this.imagePreview = s3url + Key;
-    $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+    jQuery('#imagemodal').modal('show');
   }
 }
