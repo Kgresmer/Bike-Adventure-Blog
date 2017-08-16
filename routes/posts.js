@@ -165,20 +165,17 @@ router.get('/all', (req, res, next) => {
 //     console.log(url);
 //     res.sendFile(path.resolve(url));
 // });
-router.get('/uploads/:image', (req, res) => {
-    console.log(" inside get method");
+router.get('/uploads/all', (req, res) => {
     s3.listObjects(bucketParams, function(err, data){
-        console.log("getting bucket contents: " + data);
-        var bucketContents = data.Contents;
-        for (var i = 0; i < bucketContents.length; i++){
-            var urlParams = {Bucket: 'blog-post-photos', Key: bucketContents[i].Key};
-            console.log('key ' + bucketContents[i].Key);
-            console.log('bucket contents ' + bucketContents);
+        let bucketContents = data.Contents;
+        let urls = [];
+        for (let i = 0; i < bucketContents.length; i++){
+            let urlParams = {Bucket: 'blog-post-photos', Key: bucketContents[i].Key};
             s3.getSignedUrl('getObject',urlParams, function(err, url){
-                console.log(url);
-                res.send({success: true, url: url});
+                urls.push(url);
             });
         }
+        res.send({success: true, urls: urls});
     });
 });
 

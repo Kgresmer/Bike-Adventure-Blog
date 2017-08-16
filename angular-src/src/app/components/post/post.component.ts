@@ -25,19 +25,11 @@ import {Observable} from "rxjs/Observable";
 })
 
 export class PostComponent implements OnInit {
-  photoUrl: any;
   @Input() selectedPost: Post;
   timeBiked: string;
   formattedDate: string;
 
-  constructor(private http: Http) { }
-
-
   ngOnInit(): void {
-    this.getAllPhotoUrls().subscribe(response => {
-      console.log("photo returned " + response.url);
-      this.photoUrl = response.url;
-    });
     if (this.selectedPost.date) {
       this.formattedDate = new Date(this.selectedPost.date).toLocaleString().substr(0, 10);
     }
@@ -48,8 +40,5 @@ export class PostComponent implements OnInit {
     }
   }
 
-  getAllPhotoUrls() {
-    return this.http.get('posts/uploads/' + this.selectedPost.photos[0])
-      .map(res => res.json());
-  }
+
 }
