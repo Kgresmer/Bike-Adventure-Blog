@@ -1,9 +1,9 @@
-<div style="display: inline-block;" class="blog-post" *ngIf="selectedPost">
+<div style="" class="blog-post" *ngIf="selectedPost">
   <div class="post-block">
-    <div style="text-align: center">
+    <div>
       <h3>{{selectedPost.title}} - {{formattedDate}}</h3>
+      <img class="blog-post-image" src="{{s3url}}{{selectedPost.photos[0]}}" />
     </div>
-    <img style="height: 100%; width: 100%;" src="{{s3url}}{{selectedPost.photos[0]}}" />
     <p>Miles Since last Post: {{selectedPost.milesSinceLastPost}}</p>
     <p>Time spent biking: {{timeBiked}}</p>
     <p>Body: {{selectedPost.body}}</p>
