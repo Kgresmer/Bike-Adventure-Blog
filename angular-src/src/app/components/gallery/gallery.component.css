@@ -1,15 +1,10 @@
 
 .gallery-image {
   width: 100%;
-  margin-top: 2em;
-  -moz-box-shadow: 8px 8px 7px rgba(0, 0, 0, .3);
-  -webkit-box-shadow: 8px 8px 7px rgba(0, 0, 0, .3);
-  box-shadow: 8px 8px 7px rgba(0, 0, 0, .3);
+  height: 10%;
+  padding: 1rem;
+  /*-moz-box-shadow: 2px 2px 7px rgba(0, 0, 0, .2);*/
+  /*-webkit-box-shadow: 2px 2px 7px rgba(0, 0, 0, .2);*/
+  /*box-shadow: 2px 2px 7px rgba(0, 0, 0, .2);*/
 }
 
-.gallery-image::after {
-  width: 100%;
-  -moz-box-shadow: 8px 8px 7px rgba(0, 0, 0, .3);
-  -webkit-box-shadow: 8px 8px 7px rgba(0, 0, 0, .3);
-  box-shadow: 8px 8px 7px rgba(0, 0, 0, .3);
-}

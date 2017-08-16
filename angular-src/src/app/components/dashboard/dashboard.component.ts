@@ -114,6 +114,7 @@ export class DashboardComponent implements OnInit {
           cssClass: 'alert-success',
           timeout: 5000
         });
+        location.reload();
         this.router.navigate(['/dashboard']);
       } else {
         this.flashMessagesService.show(data.msg, {
