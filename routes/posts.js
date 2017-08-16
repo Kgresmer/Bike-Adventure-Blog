@@ -167,15 +167,10 @@ router.get('/all', (req, res, next) => {
 // });
 router.get('/uploads/all', (req, res) => {
     s3.listObjects(bucketParams, function(err, data){
-        const urls = [];
-        let bucketContents = data.Contents;
-        res.send({success: true, urls: bucketContents});
-        for (let i = 0; i < bucketContents.length; i++){
-            let urlParams = {Bucket: 'blog-post-photos', Key: bucketContents[i].Key};
-            s3.getSignedUrl('getObject',urlParams, (err, url) => {
-                urls.push(url);
-            });
+        if (err) {
+            res.send({success: false, error: err});
         }
+        res.send({success: true, photos: data.Contents});
     });
 });
 

@@ -59,4 +59,9 @@ export class PostService {
       .map(res => res.json());
   }
 
+  getPictures() {
+    return this.http.get('http://localhost:3000/posts/uploads/all')
+      .map(res => res.json());
+  }
+
 }

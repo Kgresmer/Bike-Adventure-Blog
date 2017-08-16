@@ -44,8 +44,7 @@ export class FeedComponent implements OnInit {
     // TODO implement oldest, newest dropdown
     // TODO implement search by date, by body content/title
     this.getTotals();
-    this.postService.getAllPosts()
-    .subscribe(response => {
+    this.postService.getAllPosts().subscribe(response => {
       this.posts = response.posts;
     });
   }

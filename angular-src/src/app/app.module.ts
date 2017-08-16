@@ -21,6 +21,7 @@ import {AuthService} from './services/auth.service';
 import {AuthGuard} from './guards/auth.guard';
 import {PostService} from "./services/post.service";
 import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
+import {GalleryComponent} from "./components/gallery/gallery.component";
 
 const appRoutes: Routes = [
   {
@@ -30,6 +31,10 @@ const appRoutes: Routes = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'gallery',
+    component: GalleryComponent
   },
   {
     path: '',
@@ -68,7 +73,8 @@ export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,

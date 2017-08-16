@@ -10,6 +10,7 @@
       </button>
       <a routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="navbar-brand" routerLink="/">Home</a>
       <a routerLinkActive="active" class="navbar-brand" routerLink="/feed">Posts</a>
+      <a routerLinkActive="active" class="navbar-brand" routerLink="/gallery">Gallery</a>
       <a routerLinkActive="active" class="navbar-brand" routerLink="/about">About</a>
       <a *ngIf="!authService.loggedIn()" routerLinkActive="active" class="navbar-brand" routerLink="/register">Register</a>
     </div>
