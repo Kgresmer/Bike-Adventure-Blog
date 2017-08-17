@@ -16,6 +16,7 @@ export class TotalsAddition {
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  postAction: string;
   postToEdit: Post;
   posts: Post[];
   currentPost: Post;
@@ -47,8 +48,13 @@ export class DashboardComponent implements OnInit {
       }
     };
     this.uploader.onCompleteAll = () => {
-      this.sendUpdateTotalsRequest();
-      this.sendPostRequests();
+      if (this.postAction === 'create') {
+        this.sendUpdateTotalsRequest();
+        this.sendPostRequests();
+      } else if (this.postAction === 'edit') {
+        this.sendUpdateTotalsRequest();
+        this.sendEditRequest();
+      }
     };
   }
 
@@ -62,22 +68,20 @@ export class DashboardComponent implements OnInit {
     this.currentPost = new Post();
   }
 
-  onSubmitPost(postAction: string) {
-
-    if (postAction === 'create') {
+  onSubmitPost() {
       if (!this.validateInputs()) return;
 
       if (this.uploader.queue) {
         for (let item of this.uploader.queue) {
           item.upload();
         }
-      } else {
+      } else if (this.postAction === 'create') {
         this.sendUpdateTotalsRequest();
         this.sendPostRequests();
+      } else if (this.postAction === 'edit') {
+        this.sendUpdateTotalsRequest();
+        this.sendEditRequest();
       }
-    } else if (postAction === 'edit') {
-
-    }
   }
 
   private validateInputs(): boolean {
@@ -116,6 +120,23 @@ export class DashboardComponent implements OnInit {
     return true;
   }
 
+  public deletePhoto(photo: string) {
+    this.postService.deletePhoto(photo).subscribe(response => {
+      if (response.success) {
+        this.currentPost.photos.splice(this.currentPost.photos.indexOf(photo), 1);
+        this.flashMessagesService.show(response.msg, {
+          cssClass: 'alert-success',
+          timeout: 5000
+        });
+      } else {
+        this.flashMessagesService.show(response.msg, {
+          cssClass: 'alert-danger',
+          timeout: 5000
+        });
+      }
+    });
+  }
+
   private sendPostRequests() {
     if (this.currentPost.photos) {
       this.currentPost.photos = this.currentPost.photos.map(photo => {
@@ -137,6 +158,28 @@ export class DashboardComponent implements OnInit {
           timeout: 5000
         });
         this.router.navigate(['/login']);
+      }
+    });
+  }
+
+  private sendEditRequest() {
+    if (this.currentPost.photos) {
+      this.currentPost.photos = this.currentPost.photos.map(photo => {
+        return photo.replace(/ /g, '-');
+      });
+    }
+
+    this.postService.editPost(this.currentPost).subscribe(data => {
+      if (data.success) {
+        this.flashMessagesService.show(data.msg, {
+          cssClass: 'alert-success',
+          timeout: 5000
+        });
+      } else {
+        this.flashMessagesService.show(data.msg, {
+          cssClass: 'alert-danger',
+          timeout: 5000
+        });
       }
     });
   }

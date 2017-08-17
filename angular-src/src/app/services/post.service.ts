@@ -10,23 +10,30 @@ export class PostService {
   }
 
   addToTotals(dataToAdd) {
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.put('http://localhost:3000/posts/addToTotals', dataToAdd)
       .map(res => res.json());
   }
 
   addPost(post) {
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/posts/add', post)
       .map(res => res.json());
   }
 
   editPost(post) {
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.put('http://localhost:3000/posts/edit', post, {headers: headers})
+      .map(res => res.json());
+  }
+
+  deletePhoto(photo) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put('http://localhost:3000/posts/photo/delete', {photo: photo}, {headers: headers})
       .map(res => res.json());
   }
 
@@ -34,7 +41,7 @@ export class PostService {
     const body = {
       postId: postId
     };
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.put('http://localhost:3000/posts/delete', body, {headers: headers})
       .map(res => res.json());
@@ -46,7 +53,7 @@ export class PostService {
   }
 
   getPostByDate(date) {
-    let params: URLSearchParams = new URLSearchParams();
+    const params: URLSearchParams = new URLSearchParams();
     params.set('date', date);
     return this.http.get('http://localhost:3000/posts/all', {
       search: params

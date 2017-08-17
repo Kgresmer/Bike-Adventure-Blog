@@ -77,10 +77,20 @@ router.post('/upload', function(req, res) {
     });
 });
 
+router.put('/photo/delete', function(req, res) {
+    const params = { Bucket: 'blog-post-photos', Key: req.body.photo};
+    s3.deleteObject(params, (err, data) => {
+        if (err) {
+            res.send({success: false, msg: err});
+        } else {
+            res.send({success: true, msg: data});
+        }
+    });
+});
+
 //Register
 router.post('/add', (req, res, next) => {
-    console.log('Request body: %j', req.body);
-    let newPost = new Post({
+    const newPost = new Post({
         date: req.body.date,
         title: req.body.title,
         body: req.body.body,

@@ -15,7 +15,7 @@
     <option *ngFor="let post of posts" [ngValue]="post">{{post.title}}-{{post.date}}</option>
   </select>
 </div>
-<form (submit)="onSubmitPost(postAction)">
+<form (submit)="onSubmitPost()">
 
   <!-- Date -->
   <div class="form-group">
@@ -39,9 +39,10 @@
   <!-- Edit Photos -->
   <div class="form-group" *ngIf="postAction === 'edit'">
     <label>Existing Photos</label>
-    <div *ngFor="let photo of currentPost.photos" >
-      <p>{{photo}}</p>
+    <div *ngFor="let photo of currentPost.photos">
+      <p>{{photo}} <button class="btn btn-danger" (click)="deletePhoto(photo)">Delete</button></p>
     </div>
+    <p *ngIf="currentPost.photos && currentPost.photos.length === 0">There are no photos attached to this post.</p>
   </div>
   <div class="form-group">
     <label for="single">Upload one photo at a time</label>
