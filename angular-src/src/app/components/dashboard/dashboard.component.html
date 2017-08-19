@@ -1,6 +1,7 @@
 
 <label>What would you like to do?</label>
 <select [(ngModel)]="postAction" name="postAction" (change)="updatePostForm()">
+  <option value=""></option>
   <option value="edit">Edit a Post</option>
   <option value="delete">Delete a Post</option>
   <option value="create">Create a Post</option>
@@ -12,10 +13,21 @@
   <h2 class="page-header">Edit a post</h2>
   <label>Select the post you would like to edit</label>
   <select [(ngModel)]="postToEdit" name="postToEdit" (change)="updateEditPostData(post)">
+    <option value=""></option>
     <option *ngFor="let post of posts" [ngValue]="post">{{post.title}}-{{post.date}}</option>
   </select>
 </div>
-<form (submit)="onSubmitPost()">
+
+<div *ngIf="postAction === 'delete'" class="deleteHeader">
+  <h2 class="page-header">Delete a post</h2>
+  <label>Select the post you would like to edit</label>
+  <select [(ngModel)]="postToEdit" name="postToEdit" (change)="updateEditPostData(post)">
+    <option value=""></option>
+    <option *ngFor="let post of posts" [ngValue]="post">{{post.title}}-{{post.date}}</option>
+  </select>
+</div>
+
+<form *ngIf="postAction" (submit)="onSubmitPost()">
 
   <!-- Date -->
   <div class="form-group">

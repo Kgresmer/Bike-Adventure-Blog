@@ -14,7 +14,7 @@ export class Post {
   recap: boolean;
   milesSinceLastPost: number;
   timeBikedToday: number;
-  temperature: string;
+  temperature: number;
   weatherCondition: string;
   author: string;
 }

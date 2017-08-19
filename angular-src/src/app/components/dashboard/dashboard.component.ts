@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
   currentPost: Post;
   weatherConditions: [string];
   errorMessages: string[];
-  public uploader: FileUploader = new FileUploader({url: 'posts/upload'});
+  public uploader: FileUploader = new FileUploader({url: 'http://localhost:3000/posts/upload'});
 
   constructor(private postService: PostService,
               private flashMessagesService: FlashMessagesService,
@@ -35,6 +35,8 @@ export class DashboardComponent implements OnInit {
     });
     this.errorMessages = [];
     this.currentPost = new Post();
+    this.currentPost.timeBikedToday = 0;
+    this.currentPost.milesSinceLastPost = 0;
     this.currentPost.author = localStorage.getItem('name');
     this.weatherConditions = ['Cloudy', 'Partly Cloudy', 'Overcast', 'Sunny', 'Rainy'];
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
@@ -59,8 +61,19 @@ export class DashboardComponent implements OnInit {
   }
 
   updateEditPostData() {
-    this.currentPost = this.postToEdit;
-    this.currentPost.date = this.currentPost.date.split('T')[0];
+    this.currentPost = new Post();
+    this.currentPost.timeBikedToday = this.postToEdit.timeBikedToday || 0;
+    this.currentPost.milesSinceLastPost = this.postToEdit.milesSinceLastPost || 0;
+    this.currentPost.photos = this.postToEdit.photos;
+    this.currentPost.author = this.postToEdit.author;
+    this.currentPost.body = this.postToEdit.body;
+    this.currentPost._id = this.postToEdit._id;
+    this.currentPost.recap = this.postToEdit.recap;
+    this.currentPost.tags = this.postToEdit.tags;
+    this.currentPost.title = this.postToEdit.title;
+    this.currentPost.temperature = this.postToEdit.temperature || 0;
+    this.currentPost.weatherCondition = this.postToEdit.weatherCondition;
+    this.currentPost.date = this.postToEdit.date.split('T')[0];
     this.currentPost.weatherCondition = this.currentPost.weatherCondition[0];
   }
 
@@ -71,7 +84,7 @@ export class DashboardComponent implements OnInit {
   onSubmitPost() {
       if (!this.validateInputs()) return;
 
-      if (this.uploader.queue) {
+      if (this.uploader.queue.length > 0) {
         for (let item of this.uploader.queue) {
           item.upload();
         }
@@ -171,10 +184,14 @@ export class DashboardComponent implements OnInit {
 
     this.postService.editPost(this.currentPost).subscribe(data => {
       if (data.success) {
+        this.uploader.clearQueue();
         this.flashMessagesService.show(data.msg, {
           cssClass: 'alert-success',
           timeout: 5000
         });
+        this.updatePostForm();
+        this.postAction = '';
+        this.postToEdit = null;
       } else {
         this.flashMessagesService.show(data.msg, {
           cssClass: 'alert-danger',
@@ -185,11 +202,22 @@ export class DashboardComponent implements OnInit {
   }
 
   private sendUpdateTotalsRequest() {
-    if (this.currentPost.milesSinceLastPost && this.currentPost.timeBikedToday) {
-      let dataToAddToTripTotals: TotalsAddition = {
-        milesSinceLastPost: this.currentPost.milesSinceLastPost,
-        timeBikedToday: this.currentPost.timeBikedToday
-      };
+    let dataToAddToTripTotals: TotalsAddition = {
+      milesSinceLastPost: this.currentPost.milesSinceLastPost,
+      timeBikedToday: this.currentPost.timeBikedToday
+    };
+    if (this.postAction === 'edit') {
+      if (this.postToEdit.milesSinceLastPost === this.currentPost.milesSinceLastPost &&
+        this.postToEdit.timeBikedToday === this.currentPost.timeBikedToday) {
+        return;
+      } else if (this.postToEdit.milesSinceLastPost !== this.currentPost.milesSinceLastPost ||
+        this.postToEdit.timeBikedToday !== this.currentPost.timeBikedToday) {
+        dataToAddToTripTotals.timeBikedToday = this.currentPost.timeBikedToday - this.postToEdit.timeBikedToday;
+        dataToAddToTripTotals.milesSinceLastPost = this.currentPost.milesSinceLastPost - this.postToEdit.milesSinceLastPost;
+      }
+    }
+    if (typeof this.currentPost.milesSinceLastPost === 'number' &&
+      typeof this.currentPost.timeBikedToday === 'number') {
       this.postService.addToTotals(dataToAddToTripTotals).subscribe(data => {
         if (data.success) {
           this.flashMessagesService.show(data.msg, {

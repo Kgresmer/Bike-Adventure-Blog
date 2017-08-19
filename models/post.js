@@ -50,12 +50,16 @@ module.exports.getPostByDate = function (date, callback) {
 };
 
 module.exports.addPost = function (newPost, callback) {
+    console.log('new post %j', newPost);
     newPost.save(callback);
 };
 
 module.exports.editPost = function (newPostData, callback) {
     Post.findById(newPostData._id, function (err, existingPostData) {
         // Handle any possible database errors
+        if (typeof existingPostData === 'undefined') {
+            return "No record found to update.";
+        }
         existingPostData.date = newPostData.date || existingPostData.date;
         existingPostData.title = newPostData.title || existingPostData.title;
         existingPostData.body = newPostData.body || existingPostData.body;
@@ -67,19 +71,6 @@ module.exports.editPost = function (newPostData, callback) {
         existingPostData.temperature = newPostData.temperature || existingPostData.temperature;
         existingPostData.weatherCondition = newPostData.weatherCondition || existingPostData.weatherCondition;
         existingPostData.author = newPostData.author || existingPostData.author;
-
-        // Save the updated document back to the database
-        existingPostData.save(callback);
-    });
-};
-
-module.exports.addToTotal = function (newPostData, callback) {
-    // TODO add totals schema and stuff
-    Post.findById(newPostData._id, function (err, existingPostData) {
-        // Handle any possible database errors
-        existingPostData.date = newPostData.date || existingPostData.date;
-        existingPostData.title = newPostData.title || existingPostData.title;
-
 
         // Save the updated document back to the database
         existingPostData.save(callback);

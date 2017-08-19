@@ -296,7 +296,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<label>What would you like to do?</label>\r\n<select [(ngModel)]=\"postAction\" name=\"postAction\" (change)=\"updatePostForm()\">\r\n  <option value=\"edit\">Edit a Post</option>\r\n  <option value=\"delete\">Delete a Post</option>\r\n  <option value=\"create\">Create a Post</option>\r\n</select>\r\n\r\n<h2 *ngIf=\"postAction === 'create'\" class=\"page-header\">Create a post</h2>\r\n\r\n<div *ngIf=\"postAction === 'edit'\" class=\"editHeader\">\r\n  <h2 class=\"page-header\">Edit a post</h2>\r\n  <label>Select the post you would like to edit</label>\r\n  <select [(ngModel)]=\"postToEdit\" name=\"postToEdit\" (change)=\"updateEditPostData(post)\">\r\n    <option *ngFor=\"let post of posts\" [ngValue]=\"post\">{{post.title}}-{{post.date}}</option>\r\n  </select>\r\n</div>\r\n<form (submit)=\"onSubmitPost()\">\r\n\r\n  <!-- Date -->\r\n  <div class=\"form-group\">\r\n    <label>Date</label>\r\n    <input type=\"date\" [(ngModel)]=\"currentPost.date\" name=\"date\" class=\"form-control\">\r\n  </div>\r\n\r\n  <!-- Post Title -->\r\n  <div class=\"form-group\">\r\n    <label>Title</label>\r\n    <input [(ngModel)]=\"currentPost.title\" name=\"newPost.title\" class=\"form-control\">\r\n  </div>\r\n\r\n  <!-- Body of the post -->\r\n  <div class=\"form-group\">\r\n    <label>Body</label>\r\n    <textarea [(ngModel)]=\"currentPost.body\" name=\"newPost.body\" class=\"form-control\" style=\"height: 10em;\"></textarea>\r\n  </div>\r\n\r\n  <!-- Add photos -->\r\n  <!-- Edit Photos -->\r\n  <div class=\"form-group\" *ngIf=\"postAction === 'edit'\">\r\n    <label>Existing Photos</label>\r\n    <div *ngFor=\"let photo of currentPost.photos\">\r\n      <p>{{photo}} <button class=\"btn btn-danger\" (click)=\"deletePhoto(photo)\">Delete</button></p>\r\n    </div>\r\n    <p *ngIf=\"currentPost.photos && currentPost.photos.length === 0\">There are no photos attached to this post.</p>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label for=\"single\">Upload one photo at a time</label>\r\n    <input type=\"file\" class=\"form-control\" id=\"single\" name=\"single\" ng2FileSelect [uploader]=\"uploader\" />\r\n  </div>\r\n  <table class=\"table\">\r\n    <thead>\r\n    <tr>\r\n      <th width=\"50%\">Name</th>\r\n      <th>Size</th>\r\n      <th>Progress</th>\r\n      <th>Status</th>\r\n      <th>Actions</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let item of uploader.queue\">\r\n      <td><strong>{{ item.file.name }}</strong></td>\r\n      <td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>\r\n      <td>\r\n        <div class=\"progress\" style=\"margin-bottom: 0;\">\r\n          <div class=\"progress-bar\" role=\"progressbar\" [ngStyle]=\"{ 'width': item.progress + '%' }\"></div>\r\n        </div>\r\n      </td>\r\n      <td class=\"text-center\">\r\n        <span *ngIf=\"item.isSuccess\"><i class=\"glyphicon glyphicon-ok\"></i></span>\r\n        <span *ngIf=\"item.isCancel\"><i class=\"glyphicon glyphicon-ban-circle\"></i></span>\r\n        <span *ngIf=\"item.isError\"><i class=\"glyphicon glyphicon-remove\"></i></span>\r\n      </td>\r\n      <td nowrap>\r\n        <button type=\"button\" class=\"btn btn-warning btn-xs\"\r\n                (click)=\"item.cancel()\" [disabled]=\"!item.isUploading\">\r\n          <span class=\"glyphicon glyphicon-ban-circle\"></span> Cancel\r\n        </button>\r\n        <button type=\"button\" class=\"btn btn-danger btn-xs\"\r\n                (click)=\"item.remove()\">\r\n          <span class=\"glyphicon glyphicon-trash\"></span> Remove\r\n        </button>\r\n      </td>\r\n    </tr>\r\n    </tbody>\r\n  </table>\r\n  <!-- end of photo input -->\r\n\r\n  <!-- Tags -->\r\n  <div class=\"form-group\">\r\n    <label>Tags (comma separated)</label>\r\n    <input [(ngModel)]=\"currentPost.tags\" name=\"newPost.tags\" class=\"form-control\">\r\n  </div>\r\n  <!-- Recap Post -->\r\n  <!-- TODO Implement the recap post calendar thing -->\r\n  <div class=\"form-group\">\r\n    <label>Recap Post</label>\r\n    <input type=\"checkbox\" [(ngModel)]=\"currentPost.recap\" name=\"newPost.recap\" class=\"form-control\">\r\n  </div>\r\n  <!-- Time Biked Today in Minutes -->\r\n  <div class=\"form-group\">\r\n    <label>Total time biked today in minutes</label>\r\n    <input type=\"number\" [(ngModel)]=\"currentPost.timeBikedToday\" name=\"newPost.timeBikedToday\"\r\n           class=\"form-control\">\r\n  </div>\r\n  <!-- Miles biked since the last post (could be miles biked today) -->\r\n  <div class=\"form-group\">\r\n    <label>Miles Since Last Post  (could be miles biked today) </label>\r\n    <input type=\"number\" [(ngModel)]=\"currentPost.milesSinceLastPost\" name=\"newPost.milesSinceLastPost\"\r\n           class=\"form-control\">\r\n  </div>\r\n  <!-- Temperature -->\r\n  <div class=\"form-group\">\r\n    <label>Temperature</label>\r\n    <input type=\"number\" [(ngModel)]=\"currentPost.temperature\" name=\"newPost.temperature\" class=\"form-control\">\r\n  </div>\r\n  <!-- Weather Condition -->\r\n  <!-- Add more options -->\r\n  <div class=\"form-group\">\r\n    <label>Weather Condition</label>\r\n    <select [(ngModel)]=\"currentPost.weatherCondition\" name=\"newPost.weatherCondition\">\r\n      <option *ngFor=\"let condition of weatherConditions\" [ngValue]=\"condition\">{{condition}}</option>\r\n    </select>\r\n  </div>\r\n  <!-- Author (defaults to name of the current user) -->\r\n  <div class=\"form-group\">\r\n    <label>Author (defaults to name of the current user)</label>\r\n    <input type=\"text\" [(ngModel)]=\"currentPost.author\" name=\"newPost.author\" class=\"form-control\">\r\n  </div>\r\n  <!-- submit button -->\r\n  <div *ngFor=\"let error of errorMessages\">\r\n    <p class=\"alert-danger\">{{error}}</p>\r\n  </div>\r\n  <input type=\"submit\" [disabled]=\"errorMessages.length > 0\" class=\"btn btn-primary post-submit-btn\" value=\"Submit\">\r\n</form>\r\n\r\n"
+module.exports = "\r\n<label>What would you like to do?</label>\r\n<select [(ngModel)]=\"postAction\" name=\"postAction\" (change)=\"updatePostForm()\">\r\n  <option value=\"\"></option>\r\n  <option value=\"edit\">Edit a Post</option>\r\n  <option value=\"delete\">Delete a Post</option>\r\n  <option value=\"create\">Create a Post</option>\r\n</select>\r\n\r\n<h2 *ngIf=\"postAction === 'create'\" class=\"page-header\">Create a post</h2>\r\n\r\n<div *ngIf=\"postAction === 'edit'\" class=\"editHeader\">\r\n  <h2 class=\"page-header\">Edit a post</h2>\r\n  <label>Select the post you would like to edit</label>\r\n  <select [(ngModel)]=\"postToEdit\" name=\"postToEdit\" (change)=\"updateEditPostData(post)\">\r\n    <option value=\"\"></option>\r\n    <option *ngFor=\"let post of posts\" [ngValue]=\"post\">{{post.title}}-{{post.date}}</option>\r\n  </select>\r\n</div>\r\n\r\n<div *ngIf=\"postAction === 'delete'\" class=\"deleteHeader\">\r\n  <h2 class=\"page-header\">Delete a post</h2>\r\n  <label>Select the post you would like to edit</label>\r\n  <select [(ngModel)]=\"postToEdit\" name=\"postToEdit\" (change)=\"updateEditPostData(post)\">\r\n    <option value=\"\"></option>\r\n    <option *ngFor=\"let post of posts\" [ngValue]=\"post\">{{post.title}}-{{post.date}}</option>\r\n  </select>\r\n</div>\r\n\r\n<form *ngIf=\"postAction\" (submit)=\"onSubmitPost()\">\r\n\r\n  <!-- Date -->\r\n  <div class=\"form-group\">\r\n    <label>Date</label>\r\n    <input type=\"date\" [(ngModel)]=\"currentPost.date\" name=\"date\" class=\"form-control\">\r\n  </div>\r\n\r\n  <!-- Post Title -->\r\n  <div class=\"form-group\">\r\n    <label>Title</label>\r\n    <input [(ngModel)]=\"currentPost.title\" name=\"newPost.title\" class=\"form-control\">\r\n  </div>\r\n\r\n  <!-- Body of the post -->\r\n  <div class=\"form-group\">\r\n    <label>Body</label>\r\n    <textarea [(ngModel)]=\"currentPost.body\" name=\"newPost.body\" class=\"form-control\" style=\"height: 10em;\"></textarea>\r\n  </div>\r\n\r\n  <!-- Add photos -->\r\n  <!-- Edit Photos -->\r\n  <div class=\"form-group\" *ngIf=\"postAction === 'edit'\">\r\n    <label>Existing Photos</label>\r\n    <div *ngFor=\"let photo of currentPost.photos\">\r\n      <p>{{photo}} <button class=\"btn btn-danger\" (click)=\"deletePhoto(photo)\">Delete</button></p>\r\n    </div>\r\n    <p *ngIf=\"currentPost.photos && currentPost.photos.length === 0\">There are no photos attached to this post.</p>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label for=\"single\">Upload one photo at a time</label>\r\n    <input type=\"file\" class=\"form-control\" id=\"single\" name=\"single\" ng2FileSelect [uploader]=\"uploader\" />\r\n  </div>\r\n  <table class=\"table\">\r\n    <thead>\r\n    <tr>\r\n      <th width=\"50%\">Name</th>\r\n      <th>Size</th>\r\n      <th>Progress</th>\r\n      <th>Status</th>\r\n      <th>Actions</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let item of uploader.queue\">\r\n      <td><strong>{{ item.file.name }}</strong></td>\r\n      <td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>\r\n      <td>\r\n        <div class=\"progress\" style=\"margin-bottom: 0;\">\r\n          <div class=\"progress-bar\" role=\"progressbar\" [ngStyle]=\"{ 'width': item.progress + '%' }\"></div>\r\n        </div>\r\n      </td>\r\n      <td class=\"text-center\">\r\n        <span *ngIf=\"item.isSuccess\"><i class=\"glyphicon glyphicon-ok\"></i></span>\r\n        <span *ngIf=\"item.isCancel\"><i class=\"glyphicon glyphicon-ban-circle\"></i></span>\r\n        <span *ngIf=\"item.isError\"><i class=\"glyphicon glyphicon-remove\"></i></span>\r\n      </td>\r\n      <td nowrap>\r\n        <button type=\"button\" class=\"btn btn-warning btn-xs\"\r\n                (click)=\"item.cancel()\" [disabled]=\"!item.isUploading\">\r\n          <span class=\"glyphicon glyphicon-ban-circle\"></span> Cancel\r\n        </button>\r\n        <button type=\"button\" class=\"btn btn-danger btn-xs\"\r\n                (click)=\"item.remove()\">\r\n          <span class=\"glyphicon glyphicon-trash\"></span> Remove\r\n        </button>\r\n      </td>\r\n    </tr>\r\n    </tbody>\r\n  </table>\r\n  <!-- end of photo input -->\r\n\r\n  <!-- Tags -->\r\n  <div class=\"form-group\">\r\n    <label>Tags (comma separated)</label>\r\n    <input [(ngModel)]=\"currentPost.tags\" name=\"newPost.tags\" class=\"form-control\">\r\n  </div>\r\n  <!-- Recap Post -->\r\n  <!-- TODO Implement the recap post calendar thing -->\r\n  <div class=\"form-group\">\r\n    <label>Recap Post</label>\r\n    <input type=\"checkbox\" [(ngModel)]=\"currentPost.recap\" name=\"newPost.recap\" class=\"form-control\">\r\n  </div>\r\n  <!-- Time Biked Today in Minutes -->\r\n  <div class=\"form-group\">\r\n    <label>Total time biked today in minutes</label>\r\n    <input type=\"number\" [(ngModel)]=\"currentPost.timeBikedToday\" name=\"newPost.timeBikedToday\"\r\n           class=\"form-control\">\r\n  </div>\r\n  <!-- Miles biked since the last post (could be miles biked today) -->\r\n  <div class=\"form-group\">\r\n    <label>Miles Since Last Post  (could be miles biked today) </label>\r\n    <input type=\"number\" [(ngModel)]=\"currentPost.milesSinceLastPost\" name=\"newPost.milesSinceLastPost\"\r\n           class=\"form-control\">\r\n  </div>\r\n  <!-- Temperature -->\r\n  <div class=\"form-group\">\r\n    <label>Temperature</label>\r\n    <input type=\"number\" [(ngModel)]=\"currentPost.temperature\" name=\"newPost.temperature\" class=\"form-control\">\r\n  </div>\r\n  <!-- Weather Condition -->\r\n  <!-- Add more options -->\r\n  <div class=\"form-group\">\r\n    <label>Weather Condition</label>\r\n    <select [(ngModel)]=\"currentPost.weatherCondition\" name=\"newPost.weatherCondition\">\r\n      <option *ngFor=\"let condition of weatherConditions\" [ngValue]=\"condition\">{{condition}}</option>\r\n    </select>\r\n  </div>\r\n  <!-- Author (defaults to name of the current user) -->\r\n  <div class=\"form-group\">\r\n    <label>Author (defaults to name of the current user)</label>\r\n    <input type=\"text\" [(ngModel)]=\"currentPost.author\" name=\"newPost.author\" class=\"form-control\">\r\n  </div>\r\n  <!-- submit button -->\r\n  <div *ngFor=\"let error of errorMessages\">\r\n    <p class=\"alert-danger\">{{error}}</p>\r\n  </div>\r\n  <input type=\"submit\" [disabled]=\"errorMessages.length > 0\" class=\"btn btn-primary post-submit-btn\" value=\"Submit\">\r\n</form>\r\n\r\n"
 
 /***/ }),
 
@@ -340,7 +340,7 @@ var DashboardComponent = (function () {
         this.postService = postService;
         this.flashMessagesService = flashMessagesService;
         this.router = router;
-        this.uploader = new __WEBPACK_IMPORTED_MODULE_5_ng2_file_upload__["FileUploader"]({ url: 'posts/upload' });
+        this.uploader = new __WEBPACK_IMPORTED_MODULE_5_ng2_file_upload__["FileUploader"]({ url: 'http://localhost:3000/posts/upload' });
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -349,6 +349,8 @@ var DashboardComponent = (function () {
         });
         this.errorMessages = [];
         this.currentPost = new __WEBPACK_IMPORTED_MODULE_1__feed_feed_component__["b" /* Post */]();
+        this.currentPost.timeBikedToday = 0;
+        this.currentPost.milesSinceLastPost = 0;
         this.currentPost.author = localStorage.getItem('name');
         this.weatherConditions = ['Cloudy', 'Partly Cloudy', 'Overcast', 'Sunny', 'Rainy'];
         this.uploader.onCompleteItem = function (item, response, status, headers) {
@@ -374,8 +376,19 @@ var DashboardComponent = (function () {
         };
     };
     DashboardComponent.prototype.updateEditPostData = function () {
-        this.currentPost = this.postToEdit;
-        this.currentPost.date = this.currentPost.date.split('T')[0];
+        this.currentPost = new __WEBPACK_IMPORTED_MODULE_1__feed_feed_component__["b" /* Post */]();
+        this.currentPost.timeBikedToday = this.postToEdit.timeBikedToday || 0;
+        this.currentPost.milesSinceLastPost = this.postToEdit.milesSinceLastPost || 0;
+        this.currentPost.photos = this.postToEdit.photos;
+        this.currentPost.author = this.postToEdit.author;
+        this.currentPost.body = this.postToEdit.body;
+        this.currentPost._id = this.postToEdit._id;
+        this.currentPost.recap = this.postToEdit.recap;
+        this.currentPost.tags = this.postToEdit.tags;
+        this.currentPost.title = this.postToEdit.title;
+        this.currentPost.temperature = this.postToEdit.temperature || 0;
+        this.currentPost.weatherCondition = this.postToEdit.weatherCondition;
+        this.currentPost.date = this.postToEdit.date.split('T')[0];
         this.currentPost.weatherCondition = this.currentPost.weatherCondition[0];
     };
     DashboardComponent.prototype.updatePostForm = function () {
@@ -384,7 +397,7 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.onSubmitPost = function () {
         if (!this.validateInputs())
             return;
-        if (this.uploader.queue) {
+        if (this.uploader.queue.length > 0) {
             for (var _i = 0, _a = this.uploader.queue; _i < _a.length; _i++) {
                 var item = _a[_i];
                 item.upload();
@@ -485,10 +498,14 @@ var DashboardComponent = (function () {
         }
         this.postService.editPost(this.currentPost).subscribe(function (data) {
             if (data.success) {
+                _this.uploader.clearQueue();
                 _this.flashMessagesService.show(data.msg, {
                     cssClass: 'alert-success',
                     timeout: 5000
                 });
+                _this.updatePostForm();
+                _this.postAction = '';
+                _this.postToEdit = null;
             }
             else {
                 _this.flashMessagesService.show(data.msg, {
@@ -500,11 +517,23 @@ var DashboardComponent = (function () {
     };
     DashboardComponent.prototype.sendUpdateTotalsRequest = function () {
         var _this = this;
-        if (this.currentPost.milesSinceLastPost && this.currentPost.timeBikedToday) {
-            var dataToAddToTripTotals = {
-                milesSinceLastPost: this.currentPost.milesSinceLastPost,
-                timeBikedToday: this.currentPost.timeBikedToday
-            };
+        var dataToAddToTripTotals = {
+            milesSinceLastPost: this.currentPost.milesSinceLastPost,
+            timeBikedToday: this.currentPost.timeBikedToday
+        };
+        if (this.postAction === 'edit') {
+            if (this.postToEdit.milesSinceLastPost === this.currentPost.milesSinceLastPost &&
+                this.postToEdit.timeBikedToday === this.currentPost.timeBikedToday) {
+                return;
+            }
+            else if (this.postToEdit.milesSinceLastPost !== this.currentPost.milesSinceLastPost ||
+                this.postToEdit.timeBikedToday !== this.currentPost.timeBikedToday) {
+                dataToAddToTripTotals.timeBikedToday = this.currentPost.timeBikedToday - this.postToEdit.timeBikedToday;
+                dataToAddToTripTotals.milesSinceLastPost = this.currentPost.milesSinceLastPost - this.postToEdit.milesSinceLastPost;
+            }
+        }
+        if (typeof this.currentPost.milesSinceLastPost === 'number' &&
+            typeof this.currentPost.timeBikedToday === 'number') {
             this.postService.addToTotals(dataToAddToTripTotals).subscribe(function (data) {
                 if (data.success) {
                     _this.flashMessagesService.show(data.msg, {
@@ -1390,13 +1419,13 @@ var AuthService = (function () {
     AuthService.prototype.registerUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('users/register', user, { headers: headers })
+        return this.http.post('http://localhost:3000/users/register', user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.editUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.put('users/update', user, { headers: headers })
+        return this.http.put('http://localhost:3000/users/update', user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.deleteUser = function (userId) {
@@ -1405,13 +1434,13 @@ var AuthService = (function () {
         };
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.put('users/delete', body, { headers: headers })
+        return this.http.put('http://localhost:3000/users/delete', body, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.authenticateUser = function (user) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('users/authenticate', user, { headers: headers })
+        return this.http.post('http://localhost:3000/users/authenticate', user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.getProfile = function () {
@@ -1419,7 +1448,7 @@ var AuthService = (function () {
         this.loadToken();
         headers.append('Authorization', this.authToken);
         headers.append('Content-Type', 'application/json');
-        return this.http.get('users/profile', { headers: headers })
+        return this.http.get('http://localhost:3000/users/profile', { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.loggedIn = function () {
@@ -1477,25 +1506,25 @@ var PostService = (function () {
     PostService.prototype.addToTotals = function (dataToAdd) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.put('posts/addToTotals', dataToAdd)
+        return this.http.put('http://localhost:3000/posts/addToTotals', dataToAdd)
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.addPost = function (post) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('posts/add', post)
+        return this.http.post('http://localhost:3000/posts/add', post)
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.editPost = function (post) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.put('posts/edit', post, { headers: headers })
+        return this.http.put('http://localhost:3000/posts/edit', post, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.deletePhoto = function (photo) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.put('posts/photo/delete', { photo: photo }, { headers: headers })
+        return this.http.put('http://localhost:3000/posts/photo/delete', { photo: photo }, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.deletePost = function (postId) {
@@ -1504,27 +1533,27 @@ var PostService = (function () {
         };
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.put('posts/delete', body, { headers: headers })
+        return this.http.put('http://localhost:3000/posts/delete', body, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.getAllPosts = function () {
-        return this.http.get('posts/all')
+        return this.http.get('http://localhost:3000/posts/all')
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.getPostByDate = function (date) {
         var params = new URLSearchParams();
         params.set('date', date);
-        return this.http.get('posts/all', {
+        return this.http.get('http://localhost:3000/posts/all', {
             search: params
         })
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.getTotals = function () {
-        return this.http.get('posts/totals')
+        return this.http.get('http://localhost:3000/posts/totals')
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.getPictures = function () {
-        return this.http.get('posts/uploads/all')
+        return this.http.get('http://localhost:3000/posts/uploads/all')
             .map(function (res) { return res.json(); });
     };
     PostService = __decorate([

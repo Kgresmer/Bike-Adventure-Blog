@@ -24,8 +24,8 @@ const app = express();
 const users = require('./routes/users');
 const posts = require('./routes/posts');
 
-const port = process.env.PORT || 8080;
-// const port = 3000;
+// const port = process.env.PORT || 8080;
+const port = 3000;
 // app.use(cors());
 
 app.use(function(req, res, next) { //allow cross origin requests

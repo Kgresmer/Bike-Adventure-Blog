@@ -18,17 +18,18 @@ module.exports.addToTotals = function (dataToAdd, callback) {
         if (err) {
             throw err;
         }
+        console.log('results: ' + results);
         if (!results || results.length < 1) {
             let totals = new Totals({
                 totalMilesBiked: dataToAdd.milesSinceLastPost,
                 totalTimeBiked: dataToAdd.timeBikedToday
             });
+            console.log('totals: ' + totals);
             totals.save(callback);
         } else {
-            console.log(results);
-            console.log(results[0]);
             results[0].totalMilesBiked += dataToAdd.milesSinceLastPost;
             results[0].totalTimeBiked += dataToAdd.timeBikedToday;
+            console.log('results after changes: ' + results);
             results[0].save(callback);
         }
     });
