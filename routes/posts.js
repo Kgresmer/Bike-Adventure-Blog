@@ -122,7 +122,7 @@ router.post('/add', (req, res, next) => {
 });
 
 router.put('/delete', (req, res, next) => {
-    console.log(req.body.postId);
+    console.log('post id to delete ' + req.body.postId);
     const postId = req.body.postId;
 
     Post.deletePost(postId, (err, post) => {

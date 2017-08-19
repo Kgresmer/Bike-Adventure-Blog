@@ -18,16 +18,23 @@
   </select>
 </div>
 
-<div *ngIf="postAction === 'delete'" class="deleteHeader">
+<div *ngIf="postAction === 'delete'" class="deleteHeader dropdown">
   <h2 class="page-header">Delete a post</h2>
   <label>Select the post you would like to edit</label>
-  <select [(ngModel)]="postToEdit" name="postToEdit" (change)="updateEditPostData(post)">
+  <select [(ngModel)]="postToDelete" name="postToDelete">
     <option value=""></option>
-    <option *ngFor="let post of posts" [ngValue]="post">{{post.title}}-{{post.date}}</option>
+    <option *ngFor="let post of posts" [ngValue]="post">
+      {{post.title}}-{{post.date}}
+    </option>
   </select>
+
+  <div *ngIf="postToDelete" id="display-delete-post">
+    <p>{{postToDelete.title}}-{{postToDelete.date}}</p>
+    <button class="btn-danger" (click)="deletePost(postToDelete)">Delete</button>
+  </div>
 </div>
 
-<form *ngIf="postAction" (submit)="onSubmitPost()">
+<form *ngIf="(postAction === 'edit' && postToEdit) || postAction === 'create'" (submit)="onSubmitPost()">
 
   <!-- Date -->
   <div class="form-group">

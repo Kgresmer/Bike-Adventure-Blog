@@ -60,6 +60,47 @@ export class DashboardComponent implements OnInit {
     };
   }
 
+  deletePost(postToDelete) {
+    const dataToAddToTripTotals: TotalsAddition = {
+      milesSinceLastPost: -Math.abs(postToDelete.milesSinceLastPost),
+      timeBikedToday: -Math.abs(postToDelete.timeBikedToday)
+    };
+    this.postService.addToTotals(dataToAddToTripTotals).subscribe(data => {
+      if (data.success) {
+        this.flashMessagesService.show(data.msg, {
+          cssClass: 'alert-success',
+          timeout: 5000
+        });
+        this.router.navigate(['/dashboard']);
+      } else {
+        this.flashMessagesService.show(data.msg, {
+          cssClass: 'alert-danger',
+          timeout: 5000
+        });
+        this.router.navigate(['/login']);
+      }
+    });
+    if (postToDelete.photos && postToDelete.photos.length > 0) {
+      for (let i = 0; i < postToDelete.photos.length; i++) {
+        this.deletePhoto(postToDelete.photos[i]);
+      }
+    }
+    this.postService.deletePost(postToDelete._id).subscribe(response => {
+      if (response.success) {
+        this.flashMessagesService.show(response.msg, {
+          cssClass: 'alert-success',
+          timeout: 5000
+        });
+        this.postAction = '';
+      } else {
+        this.flashMessagesService.show(response.msg, {
+          cssClass: 'alert-danger',
+          timeout: 5000
+        });
+      }
+    });
+  }
+
   updateEditPostData() {
     this.currentPost = new Post();
     this.currentPost.timeBikedToday = this.postToEdit.timeBikedToday || 0;
@@ -136,7 +177,9 @@ export class DashboardComponent implements OnInit {
   public deletePhoto(photo: string) {
     this.postService.deletePhoto(photo).subscribe(response => {
       if (response.success) {
-        this.currentPost.photos.splice(this.currentPost.photos.indexOf(photo), 1);
+        if (this.currentPost) {
+          this.currentPost.photos.splice(this.currentPost.photos.indexOf(photo), 1);
+        }
         this.flashMessagesService.show(response.msg, {
           cssClass: 'alert-success',
           timeout: 5000
