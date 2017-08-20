@@ -1,22 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3" style="text-align:center;">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3" style="text-align:center;">
       <div class="row" *ngFor="let photo of photoGroupOne">
           <img (click)="showModal(s3url, photo.Key)" class="gallery-image"
                src="{{s3url}}{{photo.Key}}">
       </div>
     </div>
-    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3" style="text-align:center;">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3" style="text-align:center;">
       <div class="row" *ngFor="let photo of photoGroupTwo">
         <img (click)="showModal(s3url, photo.Key)" class="gallery-image" src="{{s3url}}{{photo.Key}}">
       </div>
     </div>
-    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3" style="text-align:center;">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3" style="text-align:center;">
       <div class="row" *ngFor="let photo of photoGroupThree">
         <img (click)="showModal(s3url, photo.Key)" class="gallery-image" src="{{s3url}}{{photo.Key}}">
       </div>
     </div>
-    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3" style="text-align:center;">
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3" style="text-align:center;">
       <div class="row" *ngFor="let photo of photoGroupFour">
         <img (click)="showModal(s3url, photo.Key)" class="gallery-image" src="{{s3url}}{{photo.Key}}">
       </div>

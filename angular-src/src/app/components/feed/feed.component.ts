@@ -37,7 +37,11 @@ export class FeedComponent implements OnInit {
 
   posts: Post[];
   totals: Totals;
-  totalTimeBiked: string;
+  totalTimeBiked: {
+    days: number,
+    hours: number,
+    minutes: number
+  } = { days: 0, hours: 0, minutes: 0};
 
   ngOnInit(): void {
     // TODO implement sort, possibly in ngfor
@@ -54,12 +58,12 @@ export class FeedComponent implements OnInit {
       if (response.success) {
         this.totals = response.totals;
         if (this.totals.totalTimeBiked) {
-          let hours = Math.floor(this.totals.totalTimeBiked / 60);
-          let minutes = this.totals.totalTimeBiked % 60;
-          this.totalTimeBiked = hours + ' hours ' + minutes + ' minutes';
+          this.totalTimeBiked.days = Math.floor(this.totals.totalTimeBiked / 1440);
+          this.totalTimeBiked.hours = Math.floor(this.totals.totalTimeBiked / 60);
+          this.totalTimeBiked.minutes = this.totals.totalTimeBiked % 60;
         }
       } else {
-        this.flashMessagesService.show("I'm Sorry. I seem to have misplaced the totals. ", {
+        this.flashMessagesService.show('I\'m Sorry. I seem to have misplaced the totals. ', {
           cssClass: 'alert-danger',
           timeout: 5000});
       }

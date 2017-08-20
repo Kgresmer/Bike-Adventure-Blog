@@ -9,17 +9,19 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"
-         *ngIf="totals" style="text-align: center; position: fixed; right: -0%;">
+         id="totals-display" *ngIf="totals">
       <div style="background-color: #ffffff; padding: 1.5rem;">
         <div class="totals-section">
           <img src="../../../assets/bike.png"> <br>
           Total Miles Biked: <br>
-          {{totals.totalMilesBiked}} <br>
+          <span class="totals-number">{{totals.totalMilesBiked}}</span> <br>
         </div>
         <div class="totals-section">
           <img src="../../../assets/clock.png"> <br>
           Total Time Biked: <br>
-          {{totalTimeBiked}}
+          <span class="totals-number">{{totalTimeBiked.days}}</span> days<br>
+          <span class="totals-number">{{totalTimeBiked.hours}}</span> hrs<br>
+          <span class="totals-number">{{totalTimeBiked.minutes}}</span> mins<br>
         </div>
       </div>
     </div>

@@ -6,6 +6,23 @@
   padding: 0;
 }
 
+.totals-number {
+  font-size: 2em;
+}
+
 .totals-section {
   margin-top: 1rem;
+}
+
+#totals-display {
+  text-align: center;
+  position: fixed;
+  right: -0%;
+}
+
+@media (min-width: 428px) {
+  #totals-display  {
+    position: relative;
+    right: 0;
+  }
 }
