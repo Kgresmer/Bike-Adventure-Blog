@@ -10,8 +10,12 @@
   font-size: 2em;
 }
 
+.totals-image {
+  margin-bottom: 1em;
+}
+
 .totals-section {
-  margin-top: 1rem;
+  margin-top: 1em;
 }
 
 #totals-display {
@@ -24,5 +28,26 @@
   #totals-display  {
     position: relative;
     right: 0;
+  }
+}
+
+@media (min-width: 629px) {
+  #totals-display  {
+    position: fixed;
+    right: -0%;
+  }
+}
+
+@media (min-width: 992px) {
+  #totals-display  {
+    position: fixed;
+    right: -0%;
+  }
+}
+
+@media (min-width: 1200px) {
+  #totals-display  {
+    position: fixed;
+    right: -0%;
   }
 }
