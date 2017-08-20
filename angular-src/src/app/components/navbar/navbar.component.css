@@ -5,5 +5,13 @@
 }
 
 .active {
+  color: #ffb100 !important;
+}
+
+.navbar-brand {
+  color: #00495C;
+}
+
+.navbar-brand:hover {
   color: #ffb100;
 }
