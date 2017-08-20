@@ -1,4 +1,37 @@
 .about-photo {
   border-radius: 100%;
-  width: 75%;
+  width: 70%;
+}
+
+.about-photo-container {
+  display: inherit;
+  height: 100%;
+}
+
+@media (min-width: 428px) {
+  .about-photo-container  {
+    height: 250px;
+    display: inline-table;
+  }
+}
+
+@media (min-width: 768px) {
+  .about-photo-container  {
+    height: 250px;
+    display: inherit;
+  }
+}
+
+@media (min-width: 992px) {
+  .about-photo-container  {
+    height: 250px;
+    display: inline-table;
+  }
+}
+
+@media (min-width: 1200px) {
+  .about-photo-container  {
+    height: 250px;
+    display: inline-table;
+  }
 }

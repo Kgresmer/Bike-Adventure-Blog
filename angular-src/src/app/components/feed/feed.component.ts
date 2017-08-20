@@ -49,7 +49,7 @@ export class FeedComponent implements OnInit {
     // TODO implement search by date, by body content/title
     this.getTotals();
     this.postService.getAllPosts().subscribe(response => {
-      this.posts = response.posts;
+      this.posts = response.posts.reverse();
     });
   }
 
