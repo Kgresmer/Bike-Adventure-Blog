@@ -1,9 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import {RouterModule, Routes } from '@angular/router';
-import { tokenNotExpired } from 'angular2-jwt';
+import {HttpModule} from '@angular/http';
+import {RouterModule, Routes} from '@angular/router';
 import {FeedComponent} from './components/feed/feed.component';
 import {PostComponent} from './components/post/post.component';
 import {AppComponent} from './app.component';
@@ -14,13 +13,12 @@ import {RegisterComponent} from './components/register/register.component';
 import {HomeComponent} from './components/home/home.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {ProfileComponent} from './components/profile/profile.component';
-import {ModuleWithProviders} from '@angular/core';
 import {ValidateService} from './services/validate.service';
-import { FlashMessagesModule } from 'angular2-flash-messages';
+import {FlashMessagesModule} from 'angular2-flash-messages';
 import {AuthService} from './services/auth.service';
 import {AuthGuard} from './guards/auth.guard';
 import {PostService} from "./services/post.service";
-import { FileSelectDirective, FileDropDirective } from 'ng2-file-upload';
+import {FileSelectDirective} from 'ng2-file-upload';
 import {GalleryComponent} from "./components/gallery/gallery.component";
 import {FooterComponent} from "./components/footer/footer.component";
 
