@@ -1,8 +1,9 @@
-nav {
-
+#navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .active {
-  color: orange;
-  border: orange 2px solid;
+  color: #ffb100;
 }
