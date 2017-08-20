@@ -120,6 +120,10 @@ export class DashboardComponent implements OnInit {
 
   updatePostForm() {
     this.currentPost = new Post();
+    this.currentPost.timeBikedToday = 0;
+    this.currentPost.date = new Date().toISOString().split('T')[0];
+    this.currentPost.milesSinceLastPost = 0;
+    this.currentPost.author = localStorage.getItem('name');
   }
 
   onSubmitPost() {

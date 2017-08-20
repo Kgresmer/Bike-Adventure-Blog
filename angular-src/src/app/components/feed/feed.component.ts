@@ -10,7 +10,7 @@ export class Post {
   title: string;
   body: string;
   photos: string[];
-  tags: [string];
+  tags: string;
   recap: boolean;
   milesSinceLastPost: number;
   timeBikedToday: number;
