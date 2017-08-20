@@ -202,6 +202,7 @@ export class DashboardComponent implements OnInit {
 
     this.postService.addPost(this.currentPost).subscribe(data => {
       if (data.success) {
+        this.uploader.clearQueue();
         this.flashMessagesService.show(data.msg, {
           cssClass: 'alert-success',
           timeout: 5000
