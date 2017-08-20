@@ -1,6 +1,3 @@
 <ul class="nav navbar-nav">
   <li><a *ngIf="!authService.loggedIn()" routerLinkActive="active" class="navbar-brand" routerLink="/login">Log In</a></li>
-  <li><a *ngIf="authService.loggedIn()" routerLinkActive="active" class="navbar-brand" routerLink="/dashboard">Dashboard</a></li>
-  <li><a *ngIf="authService.loggedIn()" routerLinkActive="active" class="navbar-brand" routerLink="/profile">Profile</a></li>
-  <li><a *ngIf="authService.loggedIn()" class="navbar-brand" (click)="onLogoutClick()" href="#" >Logout</a></li>
 </ul>
