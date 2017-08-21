@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import { Http, Headers} from '@angular/http';
+import {Http, Headers, RequestOptions, URLSearchParams} from '@angular/http';
 
 
 @Injectable()
@@ -52,12 +52,12 @@ export class PostService {
       .map(res => res.json());
   }
 
-  getPostByDate(date) {
+  getPostsByTag(tag) {
     const params: URLSearchParams = new URLSearchParams();
-    params.set('date', date);
-    return this.http.get('http://localhost:3000/posts/all', {
-      search: params
-    })
+    params.set('tag', tag);
+    const requestOptions = new RequestOptions();
+    requestOptions.params = params;
+    return this.http.get('http://localhost:3000/posts/filter', requestOptions)
     .map(res => res.json());
   }
 

@@ -17,7 +17,7 @@ const PostSchema = mongoose.Schema({
        type: [String]
     },
     tags: {
-       type: [String]
+       type: String
     },
     recap: {
        type: Boolean
@@ -46,12 +46,12 @@ module.exports.getPostById = function (id, callback) {
 };
 
 module.exports.getPostsByTag = function (tag, callback) {
-    Post.
-    find({'tags': { "$regex": tag, "$options": "i" }}, callback);
+    Post.find(
+        {tags: new RegExp(tag, "i")},
+        callback);
 };
 
 module.exports.addPost = function (newPost, callback) {
-    console.log('new post %j', newPost);
     newPost.save(callback);
 };
 

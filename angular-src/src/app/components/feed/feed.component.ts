@@ -37,6 +37,8 @@ export class FeedComponent implements OnInit {
               private flashMessagesService: FlashMessagesService,
               private http: Http) {}
 
+  filteredPosts: Post[];
+  filterTags: string[];
   posts: Post[];
   totals: Totals;
   totalTimeBiked: {
@@ -46,13 +48,15 @@ export class FeedComponent implements OnInit {
   } = { days: 0, hours: 0, minutes: 0};
 
   ngOnInit(): void {
-    // TODO implement search by date, by body content/title
+    this.filteredPosts = [];
+    this.filterTags = [];
     jQuery(window).scroll(function(){
       if (jQuery(window).width() > 780) {
-        if (jQuery(window).scrollTop() > 190) {
+        if (jQuery(window).scrollTop() > 220) {
           jQuery("#totals-display").offset({top: jQuery(window).scrollTop() + 50});
         } else {
-          jQuery("#totals-display").offset({top: 255});
+          let offset = jQuery("#header-image").height() + 20;
+          jQuery("#totals-display").offset({top: offset});
         }
       }
     });
@@ -60,7 +64,19 @@ export class FeedComponent implements OnInit {
     this.getTotals();
     this.postService.getAllPosts().subscribe(response => {
       this.posts = response.posts.reverse();
+      this.setFilterTags();
     });
+  }
+
+  private setFilterTags() {
+    for (let i = 0; i < this.posts.length; i++) {
+      this.posts[i].tags.split(',').map(tag => {
+        if (this.filterTags.indexOf(tag.trim()) < 0) {
+          this.filterTags.push(tag.trim());
+        }
+      });
+    }
+    console.log(this.filterTags);
   }
 
   getTotals(): void {
@@ -81,6 +97,19 @@ export class FeedComponent implements OnInit {
   }
 
   public searchForTag(searchText) {
+    this.postService.getPostsByTag(searchText).subscribe(response => {
+      if (response.success) {
+        this.filteredPosts = response.posts;
+        console.log(this.filteredPosts.length);
+      } else {
+        this.flashMessagesService.show('I\'m Sorry. I can\'t find any posts with that tag. ', {
+          cssClass: 'alert-danger',
+          timeout: 4000});
+      }
+    });
+  }
 
+  clearSearchResults() {
+    this.filteredPosts = [];
   }
 }

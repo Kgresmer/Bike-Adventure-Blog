@@ -198,13 +198,15 @@ router.get('/totals', (req, res, next) => {
     });
 });
 
-router.get('/filter/:tag', (req, res, next) => {
-        Posts.getPostsByTag(req.params.tag, function (err, results) {
+router.get('/filter', (req, res, next) => {
+    console.log('filtering! !!! ');
+    console.log('req tag ' + req.query.tag);
+        Post.getPostsByTag(req.query.tag, function (err, results) {
         if (err) {
-            throw err;
+            res.send({success: false, mes: err});
         }
         if (!results) {
-            res.send("no results found");
+            res.send({success: false, mes: "no results found"});
         }
 
         //invoke callback with your mongoose returned result

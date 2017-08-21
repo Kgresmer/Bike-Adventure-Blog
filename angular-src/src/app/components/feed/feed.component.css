@@ -2,6 +2,15 @@
   background-color: #CFD8DC !important;
 }
 
+#tag-container {
+  display: inline-block;
+  padding: 5px;
+}
+
+.tag-link {
+  padding: 3px;
+}
+
 #search-button {
   margin-top: 1em;
   background-color: #00495C;

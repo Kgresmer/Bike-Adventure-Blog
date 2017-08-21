@@ -1,10 +1,18 @@
 <div style="display: inline-block;">
   <div class="row">
-    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding">
+    <div *ngIf="filteredPosts.length === 0" class="col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding">
       <div *ngFor="let post of posts" >
         <div style="background-color: #ffffff;">
         <app-post [selectedPost]="post"></app-post>
         <hr>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="filteredPosts.length > 0" class="col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding">
+      <div *ngFor="let post of filteredPosts" >
+        <div style="background-color: #ffffff;">
+          <app-post [selectedPost]="post"></app-post>
+          <hr>
         </div>
       </div>
     </div>
@@ -26,11 +34,16 @@
         <hr>
         <div id="search-section">
           <label>Search by Tag</label>
-          <input type="text" style="width: 100%" [(ngModel)]="searchText" />
           <br>
-          <button id="search-button" (click)="searchForTag(searchText)"
+          <div id="tag-container">
+            <a *ngFor="let tag of filterTags" href="#" (click)="searchForTag(tag)" class="tag-link">
+              {{tag}}
+            </a>
+          </div>
+          <br>
+          <button id="search-button" *ngIf="filteredPosts.length > 0" (click)="clearSearchResults()"
                   class="btn btn-info">
-            Search
+            Clear Search Results
           </button>
         </div>
       </div>
