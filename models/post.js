@@ -44,9 +44,10 @@ const Post = module.exports = mongoose.model('Post', PostSchema);
 module.exports.getPostById = function (id, callback) {
   Post.findById(id, callback);
 };
-module.exports.getPostByDate = function (date, callback) {
-    const query = {date: date};
-    Post.find(query, callback);
+
+module.exports.getPostsByTag = function (tag, callback) {
+    Post.
+    find({'tags': { "$regex": tag, "$options": "i" }}, callback);
 };
 
 module.exports.addPost = function (newPost, callback) {

@@ -198,6 +198,20 @@ router.get('/totals', (req, res, next) => {
     });
 });
 
+router.get('/filter/:tag', (req, res, next) => {
+        Posts.getPostsByTag(req.params.tag, function (err, results) {
+        if (err) {
+            throw err;
+        }
+        if (!results) {
+            res.send("no results found");
+        }
+
+        //invoke callback with your mongoose returned result
+        res.send({success: true, posts: results});
+    });
+});
+
 router.put('/addToTotals', (req, res, next) => {
     Totals.addToTotals(req.body, (err, totals) => {
         if (err) {
