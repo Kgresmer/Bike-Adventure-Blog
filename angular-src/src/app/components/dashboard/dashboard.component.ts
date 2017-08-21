@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
     this.currentPost.timeBikedToday = 0;
     this.currentPost.milesSinceLastPost = 0;
     this.currentPost.author = localStorage.getItem('name');
-    this.weatherConditions = ['Cloudy', 'Partly Cloudy', 'Overcast', 'Sunny', 'Rainy'];
+    this.weatherConditions = ['Cloudy', 'Partly Cloudy', 'Overcast', 'Sunny', 'Rainy', 'Raining Cats and Dogs'];
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       let responsePath = JSON.parse(response);
       if (responsePath.fileName && responsePath.fileName !== 'hasnt been set yet') {

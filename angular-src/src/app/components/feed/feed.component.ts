@@ -46,8 +46,6 @@ export class FeedComponent implements OnInit {
   } = { days: 0, hours: 0, minutes: 0};
 
   ngOnInit(): void {
-    // TODO implement sort, possibly in ngfor
-    // TODO implement oldest, newest dropdown
     // TODO implement search by date, by body content/title
     jQuery(window).scroll(function(){
       if (jQuery(window).scrollTop() > 295) {

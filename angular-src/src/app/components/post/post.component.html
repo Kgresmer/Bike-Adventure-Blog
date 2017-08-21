@@ -6,8 +6,7 @@
     <p>Time spent biking: {{timeBiked}}</p>
     <p>Body: {{selectedPost.body}}</p>
     <p>Tags: {{selectedPost.tags}}</p>
-    <p>Temp: {{selectedPost.temperature}}</p>
-    <p>Weather Condition: {{selectedPost.weatherCondition}} (I was thinking we could have an image to go with each choice)</p>
+    <p><img id="post-weather-image" src="{{formattedWeatherPhotoName}}" /> {{selectedPost.temperature}}&#8457;</p>
     <small>Author: {{selectedPost.author}}</small>
   </div>
 </div>
