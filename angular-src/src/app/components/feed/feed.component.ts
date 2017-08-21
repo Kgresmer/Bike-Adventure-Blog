@@ -37,8 +37,12 @@ export class FeedComponent implements OnInit {
               private flashMessagesService: FlashMessagesService,
               private http: Http) {}
 
+  pageNumbers: string[];
+  activePage: Post[];
   filteredPosts: Post[];
+  visiblePosts: Post[];
   filterTags: string[];
+  mapOfPages;
   posts: Post[];
   totals: Totals;
   totalTimeBiked: {
@@ -49,6 +53,7 @@ export class FeedComponent implements OnInit {
 
   ngOnInit(): void {
     this.filteredPosts = [];
+    this.mapOfPages = {};
     this.filterTags = [];
     jQuery(window).scroll(function(){
       if (jQuery(window).width() > 780) {
@@ -64,6 +69,8 @@ export class FeedComponent implements OnInit {
     this.getTotals();
     this.postService.getAllPosts().subscribe(response => {
       this.posts = response.posts.reverse();
+      this.visiblePosts = this.posts;
+      this.setupPagination();
       this.setFilterTags();
     });
   }
@@ -100,7 +107,10 @@ export class FeedComponent implements OnInit {
     this.postService.getPostsByTag(searchText).subscribe(response => {
       if (response.success) {
         this.filteredPosts = response.posts;
-        console.log(this.filteredPosts.length);
+        if (this.filteredPosts.length > 0) {
+          this.visiblePosts = this.filteredPosts;
+          this.setupPagination();
+        }
       } else {
         this.flashMessagesService.show('I\'m Sorry. I can\'t find any posts with that tag. ', {
           cssClass: 'alert-danger',
@@ -110,6 +120,23 @@ export class FeedComponent implements OnInit {
   }
 
   clearSearchResults() {
-    this.filteredPosts = [];
+    this.visiblePosts = this.posts;
+    this.setupPagination();
+  }
+
+  changePage(pageNum) {
+    this.activePage = this.mapOfPages[pageNum];
+  }
+
+  private setupPagination() {
+    let numOfPosts = this.visiblePosts.length;
+    let numOfPostsPerPage = 6;
+    let pageNumber = 1;
+    for (let i = 0, j = numOfPosts; i < numOfPosts; i += numOfPostsPerPage) {
+      this.mapOfPages[pageNumber] = this.visiblePosts.slice(i, i + numOfPostsPerPage);
+      pageNumber++;
+    }
+    this.pageNumbers = Object.keys(this.mapOfPages);
+    this.activePage = this.mapOfPages[1];
   }
 }

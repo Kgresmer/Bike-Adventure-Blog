@@ -16,13 +16,13 @@ AWS.config.loadFromPath('./config/aws-s3.json');
 const s3 = new AWS.S3();
 const bucketParams = {Bucket: 'blog-post-photos'};
 // s3.createBucket(bucketParams);
-const s3Bucket = new AWS.S3( { params: bucketParams } );
+const s3Bucket = new AWS.S3({params: bucketParams});
 
 function getDailyPhotoNumber() {
     return dailyPhotoNumber++;
 }
 
-schedule.scheduleJob('0 0 * * *', function(){
+schedule.scheduleJob('0 0 * * *', function () {
     dailyPhotoNumber = 1;
 });
 
@@ -32,7 +32,7 @@ var storage = multer.diskStorage({ //multers disk storage settings
     },
     filename: function (req, file, cb) {
         var datetimestamp = new Date();
-        tempFileName = file.originalname.split('.')[0] + '-' + datetimestamp.toDateString().substr(4).replace(/ /g, '-') + '-' + getDailyPhotoNumber() + '.' + file.originalname.split('.')[file.originalname.split('.').length -1];
+        tempFileName = file.originalname.split('.')[0] + '-' + datetimestamp.toDateString().substr(4).replace(/ /g, '-') + '-' + getDailyPhotoNumber() + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1];
         cb(null, tempFileName);
     }
 });
@@ -41,11 +41,11 @@ var upload = multer({ //multer settings
     storage: storage
 }).single('file');
 
-router.post('/upload', function(req, res) {
+router.post('/upload', function (req, res) {
 
-    upload(req,res,function(err){
-        if(err){
-            res.json({error_code:1,err_desc:err});
+    upload(req, res, function (err) {
+        if (err) {
+            res.json({error_code: 1, err_desc: err});
             return;
         } else {
             let filePath = './uploads/' + tempFileName;
@@ -55,7 +55,7 @@ router.post('/upload', function(req, res) {
                     Key: tempFileName, //file.name doesn't exist as a property
                     Body: data
                 };
-                s3Bucket.putObject(params, function(err, data){
+                s3Bucket.putObject(params, function (err, data) {
                     // Whether there is an error or not, delete the temp file
                     fs.unlink(filePath, function (err) {
                         if (err) {
@@ -73,12 +73,12 @@ router.post('/upload', function(req, res) {
                 });
             });
         }
-        res.json({error_code:0,err_desc:null, fileName: tempFileName});
+        res.json({error_code: 0, err_desc: null, fileName: tempFileName});
     });
 });
 
-router.put('/photo/delete', function(req, res) {
-    const params = { Bucket: 'blog-post-photos', Key: req.body.photo};
+router.put('/photo/delete', function (req, res) {
+    const params = {Bucket: 'blog-post-photos', Key: req.body.photo};
     s3.deleteObject(params, (err, data) => {
         if (err) {
             res.send({success: false, msg: err});
@@ -176,7 +176,7 @@ router.get('/all', (req, res, next) => {
 //     res.sendFile(path.resolve(url));
 // });
 router.get('/uploads/all', (req, res) => {
-    s3.listObjects(bucketParams, function(err, data){
+    s3.listObjects(bucketParams, function (err, data) {
         if (err) {
             res.send({success: false, error: err});
         }
@@ -199,9 +199,7 @@ router.get('/totals', (req, res, next) => {
 });
 
 router.get('/filter', (req, res, next) => {
-    console.log('filtering! !!! ');
-    console.log('req tag ' + req.query.tag);
-        Post.getPostsByTag(req.query.tag, function (err, results) {
+    Post.getPostsByTag(req.query.tag, function (err, results) {
         if (err) {
             res.send({success: false, mes: err});
         }
@@ -229,7 +227,6 @@ router.put('/addToTotals', (req, res, next) => {
         }
     });
 });
-
 
 
 module.exports = router;
