@@ -27,35 +27,33 @@
 
 #totals-display {
   text-align: center;
-  position: fixed;
-  /*position: absolute;*/
+  position: relative;
   right: -0%;
 }
 
 @media (min-width: 428px) {
   #totals-display  {
-    /*position: relative;*/
-    right: 0;
+    position: relative;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 780px) {
   #totals-display  {
-    /*position: fixed;*/
+    position: fixed;
     right: -0%;
   }
 }
 
 @media (min-width: 992px) {
   #totals-display  {
-    /*position: fixed;*/
+    position: fixed;
     right: -0%;
   }
 }
 
 @media (min-width: 1200px) {
   #totals-display  {
-    /*position: fixed;*/
+    position: fixed;
     right: -0%;
   }
 }

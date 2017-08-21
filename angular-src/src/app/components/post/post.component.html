@@ -1,12 +1,11 @@
 <div style="" class="blog-post" *ngIf="selectedPost">
   <div class="post-block">
       <img class="blog-post-image" src="{{s3url}}{{selectedPost.photos[0]}}" />
-      <h3>{{selectedPost.title}} - {{formattedDate}}</h3>
+      <h3>{{selectedPost.title}} - {{formattedDate}} <img id="post-weather-image" src="{{formattedWeatherPhotoName}}" /> {{selectedPost.temperature}}&#8457;</h3>
     <p>Miles Since last Post: {{selectedPost.milesSinceLastPost}}</p>
     <p>Time spent biking: {{timeBiked}}</p>
     <p>Body: {{selectedPost.body}}</p>
     <p>Tags: {{selectedPost.tags}}</p>
-    <p><img id="post-weather-image" src="{{formattedWeatherPhotoName}}" /> {{selectedPost.temperature}}&#8457;</p>
     <small>Author: {{selectedPost.author}}</small>
   </div>
 </div>

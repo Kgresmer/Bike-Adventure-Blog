@@ -48,10 +48,12 @@ export class FeedComponent implements OnInit {
   ngOnInit(): void {
     // TODO implement search by date, by body content/title
     jQuery(window).scroll(function(){
-      if (jQuery(window).scrollTop() > 295) {
-        jQuery("#totals-display").offset({top: jQuery(window).scrollTop() + 50});
-      } else {
-        jQuery("#totals-display").offset({top: 375});
+      if (jQuery(window).width() > 780) {
+        if (jQuery(window).scrollTop() > 190) {
+          jQuery("#totals-display").offset({top: jQuery(window).scrollTop() + 50});
+        } else {
+          jQuery("#totals-display").offset({top: 255});
+        }
       }
     });
 
