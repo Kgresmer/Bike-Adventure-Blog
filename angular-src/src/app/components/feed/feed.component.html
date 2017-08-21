@@ -23,6 +23,16 @@
           <span class="totals-number">{{totalTimeBiked.hours}}</span> hrs<br>
           <span class="totals-number">{{totalTimeBiked.minutes}}</span> mins<br>
         </div>
+        <hr>
+        <div id="search-section">
+          <label>Search by Tag</label>
+          <input type="text" style="width: 100%" [(ngModel)]="searchText" />
+          <br>
+          <button id="search-button" (click)="searchForTag(searchText)"
+                  class="btn btn-info">
+            Search
+          </button>
+        </div>
       </div>
     </div>
   </div>

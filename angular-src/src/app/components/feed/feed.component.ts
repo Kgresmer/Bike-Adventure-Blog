@@ -4,6 +4,8 @@ import {PostService} from '../../services/post.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {Http} from '@angular/http';
 
+declare const jQuery: any;
+
 export class Post {
   _id: number;
   date: string;
@@ -47,6 +49,14 @@ export class FeedComponent implements OnInit {
     // TODO implement sort, possibly in ngfor
     // TODO implement oldest, newest dropdown
     // TODO implement search by date, by body content/title
+    jQuery(window).scroll(function(){
+      if (jQuery(window).scrollTop() > 295) {
+        jQuery("#totals-display").offset({top: jQuery(window).scrollTop() + 50});
+      } else {
+        jQuery("#totals-display").offset({top: 375});
+      }
+    });
+
     this.getTotals();
     this.postService.getAllPosts().subscribe(response => {
       this.posts = response.posts.reverse();
@@ -68,5 +78,9 @@ export class FeedComponent implements OnInit {
           timeout: 5000});
       }
     });
+  }
+
+  public searchForTag(searchText) {
+
   }
 }

@@ -2,6 +2,12 @@
   background-color: #CFD8DC !important;
 }
 
+#search-button {
+  margin-top: 1em;
+  background-color: #00495C;
+  border: none;
+}
+
 .remove-padding {
   padding: 0;
 }
@@ -22,33 +28,34 @@
 #totals-display {
   text-align: center;
   position: fixed;
+  /*position: absolute;*/
   right: -0%;
 }
 
 @media (min-width: 428px) {
   #totals-display  {
-    position: relative;
+    /*position: relative;*/
     right: 0;
   }
 }
 
 @media (min-width: 768px) {
   #totals-display  {
-    position: fixed;
+    /*position: fixed;*/
     right: -0%;
   }
 }
 
 @media (min-width: 992px) {
   #totals-display  {
-    position: fixed;
+    /*position: fixed;*/
     right: -0%;
   }
 }
 
 @media (min-width: 1200px) {
   #totals-display  {
-    position: fixed;
+    /*position: fixed;*/
     right: -0%;
   }
 }
