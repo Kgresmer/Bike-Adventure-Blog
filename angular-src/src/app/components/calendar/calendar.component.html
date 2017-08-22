@@ -1,178 +1,159 @@
 <div class="container">
+  <div id="calendar-container">
   <div style="text-align: center"><h3>August</h3></div>
   <div class="row">
-    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 spacer-column">
-    </div>
-    <button (click)="showPostsOnDate('2017-8-20')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      20
-    </div></button>
-    <button (click)="showPostsOnDate('2017-8-21')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      21
-    </div></button>
-    <button (click)="showPostsOnDate('2017-8-22')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      22
-    </div></button>
-    <button (click)="showPostsOnDate('2017-8-23')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      23
-    </div></button>
-    <button (click)="showPostsOnDate('2017-8-24')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      24
-    </div></button>
-    <button (click)="showPostsOnDate('2017-8-25')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      25
-    </div></button>
-    <button (click)="showPostsOnDate('2017-8-26')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      26
-    </div></button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-8-20')">
+        20
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-8-21')">
+        21
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-8-22')">
+        22
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-8-23')">
+        23
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-8-24')">
+        24
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-8-25')">
+        25
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-8-26')">
+        26
+    </button>
   </div>
-  <div class="row">
-    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 spacer-column">
-    </div>
-    <button (click)="showPostsOnDate('2017-8-27')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      27
-    </div></button>
-    <button (click)="showPostsOnDate('2017-8-28')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      28
-    </div></button>
-    <button (click)="showPostsOnDate('2017-8-29')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      29
-    </div></button>
-    <button (click)="showPostsOnDate('2017-8-30')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      30
-    </div></button>
-    <button (click)="showPostsOnDate('2017-8-31')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      31
-    </div></button>
+  <div class="row" style="height: 56px;">
+    <button class="cal-column" (click)="showPostsOnDate('2017-8-27')">
+        27
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-8-28')">
+        28
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-8-29')">
+        29
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-8-30')">
+        30
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-8-31')" style="margin-right: 15%">
+        31
+    </button>
   </div>
   <div style="text-align: center;"><h3>September</h3></div>
   <div class="row">
-    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 spacer-column">
-    </div>
-    <button class="spacer-column"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-    </div></button>
-    <button class="spacer-column"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-    </div></button>
-    <button class="spacer-column"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-    </div></button>
-    <button class="spacer-column"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-    </div></button>
-    <button class="spacer-column"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-1')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      1
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-2')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      2
-    </div></button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-1')" style="margin-left: 39%">
+        1
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-2')">
+        2
+    </button>
   </div>
   <div class="row">
-    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 spacer-column">
-    </div>
-    <button (click)="showPostsOnDate('2017-9-3')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      3
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-4')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      4
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-5')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      5
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-6')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      6
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-7')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      7
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-8')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      8
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-9')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      9
-    </div></button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-3')">
+        3
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-4')">
+        4
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-5')">
+        5
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-6')">
+        6
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-7')">
+        7
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-8')">
+        8
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-9')">
+        9
+    </button>
   </div>
   <div class="row">
-    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 spacer-column">
-    </div>
-    <button (click)="showPostsOnDate('2017-9-10')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      10
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-11')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      11
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-12')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      12
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-13')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      13
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-14')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      14
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-15')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      15
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-16')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      16
-    </div></button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-10')">
+        10
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-11')">
+        11
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-12')">
+        12
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-13')">
+        13
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-14')">
+        14
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-15')">
+        15
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-16')">
+        16
+    </button>
   </div>
   <div class="row">
-    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 spacer-column">
-    </div>
-    <button (click)="showPostsOnDate('2017-9-17')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      17
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-18')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      18
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-19')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      19
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-20')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      20
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-21')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      21
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-22')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      22
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-23')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      23
-    </div></button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-17')">
+        17
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-18')">
+        18
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-19')">
+        19
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-20')">
+        20
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-21')">
+        21
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-22')">
+        22
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-23')">
+        23
+    </button>
   </div>
   <div class="row">
-    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 spacer-column">
-    </div>
-    <button (click)="showPostsOnDate('2017-9-24')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      24
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-25')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      25
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-26')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      26
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-27')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      27
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-28')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      28
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-29')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      29
-    </div></button>
-    <button (click)="showPostsOnDate('2017-9-30')"><div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 cal-column">
-      30
-    </div></button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-24')">
+        24
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-25')">
+        25
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-26')">
+        26
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-27')">
+        27
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-28')">
+        28
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-29')">
+        29
+    </button>
+    <button class="cal-column" (click)="showPostsOnDate('2017-9-30')">
+        30
+    </button>
   </div>
-  <div class="row" *ngIf="posts.length > 0">
-    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding">
-      <div *ngFor="let post of posts" >
-        <div>
-          <app-post [selectedPost]="post"></app-post>
-          <hr>
+  </div>
+</div>
+  <div id="post-display">
+    <div class="row" *ngIf="posts.length > 0">
+      <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding">
+        <div *ngFor="let post of posts">
+          <div>
+            <app-post [selectedPost]="post"></app-post>
+            <hr>
+          </div>
         </div>
       </div>
     </div>
-</div>
+  </div>
 
