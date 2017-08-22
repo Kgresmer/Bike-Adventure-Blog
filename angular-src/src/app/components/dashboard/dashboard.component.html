@@ -129,11 +129,17 @@
     <input type="number" [(ngModel)]="currentPost.temperature" name="newPost.temperature" class="form-control">
   </div>
   <!-- Weather Condition -->
-  <!-- Add more options -->
   <div class="form-group">
     <label>Weather Condition</label>
     <select [(ngModel)]="currentPost.weatherCondition" name="newPost.weatherCondition">
       <option *ngFor="let condition of weatherConditions" [ngValue]="condition">{{condition}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Horizontal or Vertical Layout</label>
+    <select [(ngModel)]="currentPost.layout" name="newPost.layout">
+      <option value="horizontal">Horizontal</option>
+      <option value="vertical">Vertical</option>
     </select>
   </div>
   <!-- Author (defaults to name of the current user) -->

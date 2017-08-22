@@ -94,6 +94,7 @@ router.post('/add', (req, res, next) => {
         date: req.body.date,
         title: req.body.title,
         body: req.body.body,
+        layout: req.body.layout,
         photos: req.body.photos,
         tags: req.body.tags,
         recap: req.body.recap,

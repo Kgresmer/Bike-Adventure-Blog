@@ -16,6 +16,8 @@ export class TotalsAddition {
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  private HORIZONTAL_LAYOUT: string = 'horizontal';
+  private VERTICAL_LAYOUT: string = 'vertical';
   postAction: string;
   postToEdit: Post;
   posts: Post[];
@@ -37,6 +39,7 @@ export class DashboardComponent implements OnInit {
     this.currentPost = new Post();
     this.currentPost.timeBikedToday = 0;
     this.currentPost.milesSinceLastPost = 0;
+    this.currentPost.layout = this.HORIZONTAL_LAYOUT;
     this.currentPost.author = localStorage.getItem('name');
     this.weatherConditions = ['Cloudy', 'Partly Cloudy', 'Sunny', 'Rainy', 'Raining Cats and Dogs'];
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
@@ -109,6 +112,7 @@ export class DashboardComponent implements OnInit {
     this.currentPost.author = this.postToEdit.author;
     this.currentPost.body = this.postToEdit.body;
     this.currentPost._id = this.postToEdit._id;
+    this.currentPost.layout = this.postToEdit.layout;
     this.currentPost.recap = this.postToEdit.recap;
     this.currentPost.tags = this.postToEdit.tags;
     this.currentPost.title = this.postToEdit.title;
@@ -123,6 +127,7 @@ export class DashboardComponent implements OnInit {
     this.currentPost.timeBikedToday = 0;
     this.currentPost.date = new Date().toISOString().split('T')[0];
     this.currentPost.milesSinceLastPost = 0;
+    this.currentPost.layout = this.HORIZONTAL_LAYOUT;
     this.currentPost.author = localStorage.getItem('name');
   }
 

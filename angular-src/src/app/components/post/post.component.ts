@@ -39,7 +39,7 @@ export class PostComponent implements OnInit {
         this.formattedWeatherPhotoName = '../../../assets/cloudy.png';
         return;
       }
-      case 'Overcast': {
+      case 'Partly Cloudy': {
         this.formattedWeatherPhotoName = '../../../assets/partlycloudy.png';
         return;
       }

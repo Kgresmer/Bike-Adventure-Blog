@@ -13,6 +13,10 @@ const PostSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    layout: {
+        type: String,
+        required: true
+    },
     photos:  {
        type: [String]
     },
@@ -84,6 +88,7 @@ module.exports.editPost = function (newPostData, callback) {
         existingPostData.body = newPostData.body || existingPostData.body;
         existingPostData.photos = newPostData.photos || existingPostData.photos;
         existingPostData.tags = newPostData.tags || existingPostData.tags;
+        existingPostData.layout = newPostData.layout || existingPostData.layout;
         existingPostData.recap = newPostData.recap || existingPostData.recap;
         existingPostData.timeBikedToday = newPostData.timeBikedToday || existingPostData.timeBikedToday;
         existingPostData.milesSinceLastPost = newPostData.milesSinceLastPost || existingPostData.milesSinceLastPost;

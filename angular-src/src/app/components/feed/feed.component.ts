@@ -11,6 +11,7 @@ export class Post {
   date: string;
   title: string;
   body: string;
+  layout: string;
   photos: string[];
   tags: string;
   recap: boolean;
