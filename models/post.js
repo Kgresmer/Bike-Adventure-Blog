@@ -51,6 +51,24 @@ module.exports.getPostsByTag = function (tag, callback) {
         callback);
 };
 
+module.exports.getPostsByDate = function (date, callback) {
+    let dateSegments = date.split('-');
+    console.log(dateSegments);
+    let searchDate = new Date(dateSegments[0],
+        dateSegments[1]-1,
+        dateSegments[2],
+        -7, 0, 0);
+    let endOfSearchDate = new Date(searchDate.getFullYear(),
+        searchDate.getMonth(),
+        searchDate.getDate() + 1,
+        searchDate.getHours(),
+        searchDate.getMinutes(),
+        searchDate.getSeconds() - 1);
+    console.log('search date' + searchDate.toISOString());
+    console.log('endOfSearchDate ' + endOfSearchDate.toISOString());
+    Post.find({date: {"$gte": searchDate, "$lt": endOfSearchDate}}, callback);
+};
+
 module.exports.addPost = function (newPost, callback) {
     newPost.save(callback);
 };

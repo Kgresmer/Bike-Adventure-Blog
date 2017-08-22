@@ -68,10 +68,12 @@ export class FeedComponent implements OnInit {
 
     this.getTotals();
     this.postService.getAllPosts().subscribe(response => {
-      this.posts = response.posts.reverse();
-      this.visiblePosts = this.posts;
-      this.setupPagination();
-      this.setFilterTags();
+      if (response.success) {
+        this.posts = response.posts.reverse();
+        this.visiblePosts = this.posts;
+        this.setupPagination();
+        this.setFilterTags();
+      }
     });
   }
 

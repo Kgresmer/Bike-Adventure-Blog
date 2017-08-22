@@ -57,8 +57,17 @@ export class PostService {
     params.set('tag', tag);
     const requestOptions = new RequestOptions();
     requestOptions.params = params;
-    return this.http.get('http://localhost:3000/posts/filter', requestOptions)
+    return this.http.get('http://localhost:3000/posts/filterByTag', requestOptions)
     .map(res => res.json());
+  }
+
+  getPostsByDate(date) {
+    const params: URLSearchParams = new URLSearchParams();
+    params.set('date', date);
+    const requestOptions = new RequestOptions();
+    requestOptions.params = params;
+    return this.http.get('http://localhost:3000/posts/filterByDate', requestOptions)
+      .map(res => res.json());
   }
 
   getTotals() {

@@ -21,6 +21,7 @@ import {PostService} from "./services/post.service";
 import {FileSelectDirective} from 'ng2-file-upload';
 import {GalleryComponent} from "./components/gallery/gallery.component";
 import {FooterComponent} from "./components/footer/footer.component";
+import {CalendarComponent} from "./components/calendar/calendar.component";
 
 const appRoutes: Routes = [
   {
@@ -30,6 +31,10 @@ const appRoutes: Routes = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'calendar',
+    component: CalendarComponent
   },
   {
     path: 'gallery',
@@ -74,7 +79,8 @@ export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);
     ProfileComponent,
     FileSelectDirective,
     GalleryComponent,
-    FooterComponent
+    FooterComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,

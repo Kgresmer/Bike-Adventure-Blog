@@ -1,0 +1,10 @@
+.cal-column {
+  height: 50px;
+  width: 50px;
+}
+
+.spacer-column {
+  visibility: hidden;
+  height: 50px;
+  width: 66px;
+}
