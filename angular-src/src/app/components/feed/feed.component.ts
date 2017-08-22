@@ -61,9 +61,9 @@ export class FeedComponent implements OnInit {
     jQuery(window).scroll(function(){
       if (jQuery(window).width() > 780) {
         if (jQuery(window).scrollTop() > 220) {
-          jQuery("#totals-display").offset({top: jQuery(window).scrollTop() + 50});
+          jQuery("#totals-display").offset({top: jQuery(window).scrollTop() + 5});
         } else {
-          let offset = jQuery("#header-image").height() + 20;
+          let offset = jQuery("#header-image").height();
           jQuery("#totals-display").offset({top: offset});
         }
       }

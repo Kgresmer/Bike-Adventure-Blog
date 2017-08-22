@@ -2,6 +2,14 @@
 
 }
 
+h3 {
+  font-size: 2em;
+}
+
+.weather-section {
+  line-height: 2em;
+}
+
 .blog-post-image {
   margin-left:auto;
   margin-right:auto;
@@ -9,5 +17,5 @@
 }
 
 #post-weather-image {
-  width:10%;
+  width: 24%;
 }
