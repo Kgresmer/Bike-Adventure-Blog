@@ -37,6 +37,7 @@ export class FeedComponent implements OnInit {
               private flashMessagesService: FlashMessagesService,
               private http: Http) {}
 
+  numOfPostsPerPage: number;
   pageNumbers: string[];
   activePage: Post[];
   filteredPosts: Post[];
@@ -54,6 +55,8 @@ export class FeedComponent implements OnInit {
   ngOnInit(): void {
     this.filteredPosts = [];
     this.mapOfPages = {};
+    this.numOfPostsPerPage = 2;
+    this.pageNumbers = [];
     this.filterTags = [];
     jQuery(window).scroll(function(){
       if (jQuery(window).width() > 780) {
@@ -79,13 +82,14 @@ export class FeedComponent implements OnInit {
 
   private setFilterTags() {
     for (let i = 0; i < this.posts.length; i++) {
-      this.posts[i].tags.split(',').map(tag => {
-        if (this.filterTags.indexOf(tag.trim()) < 0) {
-          this.filterTags.push(tag.trim());
-        }
-      });
+      if (this.posts[i].tags && this.posts[i].tags.length > 0) {
+        this.posts[i].tags.split(',').map(tag => {
+          if (this.filterTags.indexOf(tag.trim()) < 0) {
+            this.filterTags.push(tag.trim());
+          }
+        });
+      }
     }
-    console.log(this.filterTags);
   }
 
   getTotals(): void {
@@ -132,10 +136,9 @@ export class FeedComponent implements OnInit {
 
   private setupPagination() {
     let numOfPosts = this.visiblePosts.length;
-    let numOfPostsPerPage = 6;
     let pageNumber = 1;
-    for (let i = 0, j = numOfPosts; i < numOfPosts; i += numOfPostsPerPage) {
-      this.mapOfPages[pageNumber] = this.visiblePosts.slice(i, i + numOfPostsPerPage);
+    for (let i = 0, j = numOfPosts; i < numOfPosts; i += this.numOfPostsPerPage) {
+      this.mapOfPages[pageNumber] = this.visiblePosts.slice(i, i + this.numOfPostsPerPage);
       pageNumber++;
     }
     this.pageNumbers = Object.keys(this.mapOfPages);
