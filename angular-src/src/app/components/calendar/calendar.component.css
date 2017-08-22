@@ -1,6 +1,44 @@
 .cal-column {
-  width: 7%;
-  line-height: 3;
+  width: 8%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  font-size: 1.2em;
+}
+
+@media (min-width: 428px) {
+  .cal-column {
+    width: 8%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-size: 1.2em;
+  }
+}
+
+@media (min-width: 780px) {
+  .cal-column {
+    width: 8%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-size: 1.2em;
+  }
+}
+
+@media (min-width: 992px) {
+  .cal-column {
+    width: 6%;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    font-size: 1.4em;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cal-column {
+    width: 6%;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    font-size: 1.4em;
+  }
 }
 
 #calendar-container {
