@@ -5,6 +5,8 @@
   font-size: 1.2em;
 }
 
+
+
 @media (min-width: 428px) {
   .cal-column {
     width: 8%;
@@ -50,4 +52,9 @@ button {
   border-radius: 100%;
   background-color: #00495C;
   color: white;
+}
+
+button:hover {
+  background-color: #ffb100;
+  color: black;
 }

@@ -1,3 +1,8 @@
 <ul class="nav navbar-nav">
-  <li><a *ngIf="!authService.loggedIn()" routerLinkActive="active" class="navbar-brand" routerLink="/login">Log In</a></li>
+  <li>
+    <a *ngIf="!authService.loggedIn()" routerLinkActive="active" class="navbar-brand"
+         routerLink="/login" style="color: darkgrey">
+      Log In
+    </a>
+  </li>
 </ul>
