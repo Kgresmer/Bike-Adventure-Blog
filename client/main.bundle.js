@@ -1860,11 +1860,11 @@ var PostService = (function () {
         };
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
-        return this.http.put('delete', body, { headers: headers })
+        return this.http.put('posts/delete', body, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.getAllPosts = function () {
-        return this.http.get('all')
+        return this.http.get('posts/all')
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.getPostsByTag = function (tag) {
@@ -1872,7 +1872,7 @@ var PostService = (function () {
         params.set('tag', tag);
         var requestOptions = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["RequestOptions"]();
         requestOptions.params = params;
-        return this.http.get('filterByTag', requestOptions)
+        return this.http.get('posts/filterByTag', requestOptions)
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.getPostsByDate = function (date) {
@@ -1880,15 +1880,15 @@ var PostService = (function () {
         params.set('date', date);
         var requestOptions = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["RequestOptions"]();
         requestOptions.params = params;
-        return this.http.get('filterByDate', requestOptions)
+        return this.http.get('posts/filterByDate', requestOptions)
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.getTotals = function () {
-        return this.http.get('totals')
+        return this.http.get('posts/totals')
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.getPictures = function () {
-        return this.http.get('uploads/all')
+        return this.http.get('posts/uploads/all')
             .map(function (res) { return res.json(); });
     };
     PostService = __decorate([
