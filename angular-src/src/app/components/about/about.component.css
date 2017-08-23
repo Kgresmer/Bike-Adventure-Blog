@@ -3,6 +3,11 @@
   width: 70%;
 }
 
+#route-map {
+  width: 100%;
+  padding-top: 2em
+}
+
 .about-photo-container {
   display: inherit;
   height: 100%;

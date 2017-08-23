@@ -27,6 +27,7 @@
 
 .totals-number {
   font-size: 1.2em;
+  margin-bottom: 5em;
 }
 
 .totals-image {
@@ -34,7 +35,8 @@
   width: 40%;
 }
 
-.totals-section {
+.total-miles-section {
+  padding-bottom: 1em;
 }
 
 #totals-display {

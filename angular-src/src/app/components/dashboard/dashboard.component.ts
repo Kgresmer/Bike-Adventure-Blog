@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   currentPost: Post;
   weatherConditions: [string];
   errorMessages: string[];
-  public uploader: FileUploader = new FileUploader({url: 'http://localhost:3000/posts/upload'});
+  public uploader: FileUploader = new FileUploader({url: 'posts/upload'});
 
   constructor(private postService: PostService,
               private flashMessagesService: FlashMessagesService,
