@@ -33,7 +33,7 @@ export class PostService {
   deletePhoto(photo) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put('photo/delete', {photo: photo}, {headers: headers})
+    return this.http.put('posts/photo/delete', {photo: photo}, {headers: headers})
       .map(res => res.json());
   }
 
