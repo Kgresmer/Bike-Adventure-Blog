@@ -24,7 +24,7 @@ export class PostComponent implements OnInit {
       this.setWeatherPhoto();
     }
     if (this.selectedPost.date) {
-      this.formattedDate = new Date(this.selectedPost.date).toLocaleString().split(',')[0];
+      this.formattedDate = this.selectedPost.date.split('T')[0];
     }
     if (this.selectedPost.timeBikedToday) {
       let hours = Math.floor(this.selectedPost.timeBikedToday / 60);

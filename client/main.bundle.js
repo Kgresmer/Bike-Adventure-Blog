@@ -1396,7 +1396,7 @@ var PostComponent = (function () {
             this.setWeatherPhoto();
         }
         if (this.selectedPost.date) {
-            this.formattedDate = new Date(this.selectedPost.date).toLocaleString().split(',')[0];
+            this.formattedDate = this.selectedPost.date.split('T')[0];
         }
         if (this.selectedPost.timeBikedToday) {
             var hours = Math.floor(this.selectedPost.timeBikedToday / 60);
