@@ -30,6 +30,8 @@ export class PostComponent implements OnInit {
       let hours = Math.floor(this.selectedPost.timeBikedToday / 60);
       let minutes = this.selectedPost.timeBikedToday % 60;
       this.timeBiked = hours + ' hours ' + minutes + ' minutes';
+    } else {
+      this.timeBiked = '0 hours 0 minutes';
     }
   }
 
