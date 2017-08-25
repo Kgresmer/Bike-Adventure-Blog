@@ -59,7 +59,7 @@
   <div class="form-group" *ngIf="postAction === 'edit'">
     <label>Existing Photos</label>
     <div *ngFor="let photo of currentPost.photos">
-      <p>{{photo}} <button class="btn btn-danger" (click)="deletePhoto(photo)">Delete</button></p>
+      <p>{{photo}} <button type="button" class="btn btn-danger" (click)="deletePhoto(photo)">Delete</button></p>
     </div>
     <p *ngIf="currentPost.photos && currentPost.photos.length === 0">There are no photos attached to this post.</p>
   </div>
