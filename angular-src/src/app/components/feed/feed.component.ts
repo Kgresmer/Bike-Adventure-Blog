@@ -56,7 +56,7 @@ export class FeedComponent implements OnInit {
   ngOnInit(): void {
     this.filteredPosts = [];
     this.mapOfPages = {};
-    this.numOfPostsPerPage = 2;
+    this.numOfPostsPerPage = 5;
     this.pageNumbers = [];
     this.filterTags = [];
     jQuery(window).scroll(function(){
@@ -82,9 +82,9 @@ export class FeedComponent implements OnInit {
   }
 
   private setFilterTags() {
-    for (let i = 0; i < this.posts.length; i++) {
-      if (this.posts[i].tags && this.posts[i].tags.length > 0) {
-        this.posts[i].tags.split(',').map(tag => {
+    for (let i = 0; i < this.activePage.length; i++) {
+      if (this.activePage[i].tags && this.activePage[i].tags.length > 0) {
+        this.activePage[i].tags.split(',').map(tag => {
           if (this.filterTags.indexOf(tag.trim()) < 0) {
             this.filterTags.push(tag.trim());
           }
