@@ -600,10 +600,11 @@ var DashboardComponent = (function () {
     };
     DashboardComponent.prototype.deletePhoto = function (photo) {
         var _this = this;
+        var currentPost = this.currentPost;
         this.postService.deletePhoto(photo).subscribe(function (response) {
             if (response.success) {
-                if (_this.currentPost) {
-                    _this.currentPost.photos.splice(_this.currentPost.photos.indexOf(photo), 1);
+                if (currentPost && currentPost.photos) {
+                    currentPost.photos.splice(_this.currentPost.photos.indexOf(photo), 1);
                 }
                 _this.flashMessagesService.show(response.msg, {
                     cssClass: 'alert-success',

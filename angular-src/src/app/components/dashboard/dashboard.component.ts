@@ -184,10 +184,11 @@ export class DashboardComponent implements OnInit {
   }
 
   public deletePhoto(photo: string) {
+    let currentPost = this.currentPost;
     this.postService.deletePhoto(photo).subscribe(response => {
       if (response.success) {
-        if (this.currentPost) {
-          this.currentPost.photos.splice(this.currentPost.photos.indexOf(photo), 1);
+        if (currentPost && currentPost.photos) {
+          currentPost.photos.splice(this.currentPost.photos.indexOf(photo), 1);
         }
         this.flashMessagesService.show(response.msg, {
           cssClass: 'alert-success',
