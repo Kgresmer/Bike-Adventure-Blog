@@ -7,7 +7,7 @@ import {AuthService} from './services/auth.service';
   styleUrls: ['./app.component.css']
 })
 
-@Pipe({name: 'newLine'})
+@Pipe({name: 'newLine', pure: false})
 export class NewlinePipe implements PipeTransform {
   transform(value: string, args: string[]): any {
     return value.replace(/(?:\r\n|\r|\n)/g, '<br />');

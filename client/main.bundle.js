@@ -64,7 +64,7 @@ var NewlinePipe = (function () {
             template: __webpack_require__("../../../../../src/app/app.component.html"),
             styles: [__webpack_require__("../../../../../src/app/app.component.css")]
         }),
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({ name: 'newLine' })
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({ name: 'newLine', pure: false })
     ], NewlinePipe);
     return NewlinePipe;
 }());
