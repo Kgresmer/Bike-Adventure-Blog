@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import {PostService} from '../../services/post.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
+import {Post} from "../feed/feed.component";
 declare const jQuery: any;
 
 @Component({
@@ -13,17 +14,23 @@ declare const jQuery: any;
 export class GalleryComponent implements OnInit {
   photos: string[];
   s3url: string;
+  pageNumbers: string[];
+  activePage: Post[];
   imagePreview: string;
   photoGroupOne: string[];
   photoGroupTwo: string[];
   photoGroupThree: string[];
   photoGroupFour: string[];
+  mapOfPages: any;
+  visiblePosts: Post[];
+  numOfPostsPerPage: number;
 
   constructor(private postService: PostService,
               private flashMessagesService: FlashMessagesService) {}
 
 
   ngOnInit(): void {
+    this.numOfPostsPerPage = 4;
     this.s3url = 'https://blog-post-photos.s3.amazonaws.com/';
     this.postService.getPictures().subscribe(response => {
       if (response.success) {
@@ -74,5 +81,20 @@ export class GalleryComponent implements OnInit {
         this.photoGroupFour.push(photo);
         break;
     }
+  }
+
+  changePage(pageNum) {
+    this.activePage = this.mapOfPages[pageNum];
+  }
+
+  private setupPagination() {
+    let numOfPosts = this.visiblePosts.length;
+    let pageNumber = 1;
+    for (let i = 0, j = numOfPosts; i < numOfPosts; i += this.numOfPostsPerPage) {
+      this.mapOfPages[pageNumber] = this.visiblePosts.slice(i, i + this.numOfPostsPerPage);
+      pageNumber++;
+    }
+    this.pageNumbers = Object.keys(this.mapOfPages);
+    this.activePage = this.mapOfPages[1];
   }
 }

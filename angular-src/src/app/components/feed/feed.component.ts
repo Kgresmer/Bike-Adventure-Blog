@@ -56,7 +56,7 @@ export class FeedComponent implements OnInit {
   ngOnInit(): void {
     this.filteredPosts = [];
     this.mapOfPages = {};
-    this.numOfPostsPerPage = 5;
+    this.numOfPostsPerPage = 4;
     this.pageNumbers = [];
     this.filterTags = [];
     jQuery(window).scroll(function(){
@@ -138,7 +138,7 @@ export class FeedComponent implements OnInit {
   private setupPagination() {
     let numOfPosts = this.visiblePosts.length;
     let pageNumber = 1;
-    for (let i = 0, j = numOfPosts; i < numOfPosts; i += this.numOfPostsPerPage) {
+    for (let i = 0; i < numOfPosts; i += this.numOfPostsPerPage) {
       this.mapOfPages[pageNumber] = this.visiblePosts.slice(i, i + this.numOfPostsPerPage);
       pageNumber++;
     }
