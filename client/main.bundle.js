@@ -45,12 +45,17 @@ module.exports = "<div>\n  <a routerLink=\"/\"><img id=\"header-image\" src=\"..
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return NewlinePipe; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 var NewlinePipe = (function () {
     function NewlinePipe() {
@@ -59,11 +64,6 @@ var NewlinePipe = (function () {
         return value.replace(/(?:\r\n|\r|\n)/g, '<br />');
     };
     NewlinePipe = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-root',
-            template: __webpack_require__("../../../../../src/app/app.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/app.component.css")]
-        }),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({ name: 'newLine', pure: false })
     ], NewlinePipe);
     return NewlinePipe;
@@ -74,7 +74,16 @@ var AppComponent = (function () {
         this.authService = authService;
         this.title = 'Adventure Blog';
     }
+    AppComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-root',
+            template: __webpack_require__("../../../../../src/app/app.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/app.component.css")]
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object])
+    ], AppComponent);
     return AppComponent;
+    var _a;
 }());
 
 //# sourceMappingURL=app.component.js.map
