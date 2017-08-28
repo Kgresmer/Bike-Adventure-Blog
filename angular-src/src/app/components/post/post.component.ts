@@ -1,16 +1,8 @@
-import {Component, Input, Pipe, PipeTransform} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Post} from '../feed/feed.component';
 import {OnInit} from '@angular/core';
 import { Http, Headers} from '@angular/http';
 import {Observable} from "rxjs/Observable";
-
-
-@Pipe({name: 'newLine'})
-export class NewlinePipe implements PipeTransform {
-  transform(value: string, args: string[]): any {
-    return value.replace(/(?:\r\n|\r|\n)/g, '<br />');
-  }
-}
 
 @Component({
   selector: 'app-post',
