@@ -15,8 +15,8 @@ h3 {
   margin-bottom: 15px;
 }
 
-div.white-space-pre-line {
-  white-space: pre-line;
+div.white-space-pre-wrap {
+  white-space: pre-wrap;
 }
 
 #post-header-section-hori {

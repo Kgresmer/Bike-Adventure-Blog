@@ -1368,7 +1368,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".post-block {\n\n}\n\nh3 {\n  font-size: 2em;\n  margin-bottom: 0;\n}\n\n.weather-section {\n  line-height: 2em;\n}\n\n#post-header-section-vert {\n  margin-bottom: 15px;\n}\n\ndiv.white-space-pre-line {\n  white-space: pre-line;\n}\n\n#post-header-section-hori {\n  margin-bottom: 15px;\n}\n\n.blog-post-image-vert {\n  margin-bottom: 10px;\n  margin-right: 10px;\n  width: 50%;\n  float: left\n}\n\n.blog-post-image-hori {\n  margin-bottom: 10px;\n  width: 100%;\n}\n\n#post-weather-image {\n  width: 10%;\n}\n", ""]);
+exports.push([module.i, ".post-block {\n\n}\n\nh3 {\n  font-size: 2em;\n  margin-bottom: 0;\n}\n\n.weather-section {\n  line-height: 2em;\n}\n\n#post-header-section-vert {\n  margin-bottom: 15px;\n}\n\ndiv.white-space-pre-wrap {\n  white-space: pre-wrap;\n}\n\n#post-header-section-hori {\n  margin-bottom: 15px;\n}\n\n.blog-post-image-vert {\n  margin-bottom: 10px;\n  margin-right: 10px;\n  width: 50%;\n  float: left\n}\n\n.blog-post-image-hori {\n  margin-bottom: 10px;\n  width: 100%;\n}\n\n#post-weather-image {\n  width: 10%;\n}\n", ""]);
 
 // exports
 
