@@ -1,15 +1,15 @@
-webpackJsonp([1],{
+webpackJsonp(["main"],{
 
-/***/ "../../../../../src async recursive":
+/***/ "../../../../../src/$$_gendir lazy recursive":
 /***/ (function(module, exports) {
 
-function webpackEmptyContext(req) {
-	throw new Error("Cannot find module '" + req + "'.");
+function webpackEmptyAsyncContext(req) {
+	return new Promise(function(resolve, reject) { reject(new Error("Cannot find module '" + req + "'.")); });
 }
-webpackEmptyContext.keys = function() { return []; };
-webpackEmptyContext.resolve = webpackEmptyContext;
-module.exports = webpackEmptyContext;
-webpackEmptyContext.id = "../../../../../src async recursive";
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = "../../../../../src/$$_gendir lazy recursive";
 
 /***/ }),
 
@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n  <a routerLink=\"/\"><img id=\"header-image\" src=\"../../../assets/header.jpg\" style=\"width:100%;\"></a>\r\n</div>\r\n<app-navbar></app-navbar>\r\n<div class=\"container\">\r\n  <router-outlet></router-outlet>\r\n  <flash-messages></flash-messages>\r\n</div>\r\n\r\n\r\n\r\n"
+module.exports = "<div>\n  <a routerLink=\"/\"><img id=\"header-image\" src=\"../../../assets/header.jpg\" style=\"width:100%;\"></a>\n</div>\n<app-navbar></app-navbar>\n<div class=\"container\">\n  <router-outlet></router-outlet>\n  <flash-messages></flash-messages>\n</div>\n\n\n\n"
 
 /***/ }),
 
@@ -42,9 +42,9 @@ module.exports = "<div>\r\n  <a routerLink=\"/\"><img id=\"header-image\" src=\"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -62,7 +62,7 @@ var AppComponent = (function () {
         this.title = 'Adventure Blog';
     }
     AppComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
             template: __webpack_require__("../../../../../src/app/app.component.html"),
             styles: [__webpack_require__("../../../../../src/app/app.component.css")]
@@ -81,6 +81,8 @@ var AppComponent = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export appRouting */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__("../../../platform-browser/@angular/platform-browser.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
@@ -107,8 +109,6 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_gallery_gallery_component__ = __webpack_require__("../../../../../src/app/components/gallery/gallery.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_footer_footer_component__ = __webpack_require__("../../../../../src/app/components/footer/footer.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_calendar_calendar_component__ = __webpack_require__("../../../../../src/app/components/calendar/calendar.component.ts");
-/* unused harmony export appRouting */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -179,12 +179,12 @@ var appRoutes = [
         canActivate: [__WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]]
     }
 ];
-var appRouting = __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* RouterModule */].forRoot(appRoutes);
+var appRouting = __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* RouterModule */].forRoot(appRoutes);
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_5__components_feed_feed_component__["a" /* FeedComponent */],
                 __WEBPACK_IMPORTED_MODULE_6__components_post_post_component__["a" /* PostComponent */],
@@ -232,7 +232,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".about-photo {\r\n  border-radius: 100%;\r\n  width: 70%;\r\n}\r\n\r\n#route-map {\r\n  width: 100%;\r\n  padding-top: 2em\r\n}\r\n\r\n.about-photo-container {\r\n  display: inherit;\r\n  height: 100%;\r\n}\r\n\r\n@media (min-width: 428px) {\r\n  .about-photo-container  {\r\n    height: 250px;\r\n    display: inline-table;\r\n  }\r\n}\r\n\r\n@media (min-width: 768px) {\r\n  .about-photo-container  {\r\n    height: 250px;\r\n    display: inherit;\r\n  }\r\n}\r\n\r\n@media (min-width: 992px) {\r\n  .about-photo-container  {\r\n    height: 250px;\r\n    display: inline-table;\r\n  }\r\n}\r\n\r\n@media (min-width: 1200px) {\r\n  .about-photo-container  {\r\n    height: 250px;\r\n    display: inline-table;\r\n  }\r\n}\r\n", ""]);
+exports.push([module.i, ".about-photo {\n  border-radius: 100%;\n  width: 70%;\n}\n\n#route-map {\n  width: 100%;\n  padding-top: 2em\n}\n\n.about-photo-container {\n  display: inherit;\n  height: 100%;\n}\n\n@media (min-width: 428px) {\n  .about-photo-container  {\n    height: 250px;\n    display: inline-table;\n  }\n}\n\n@media (min-width: 768px) {\n  .about-photo-container  {\n    height: 250px;\n    display: inherit;\n  }\n}\n\n@media (min-width: 992px) {\n  .about-photo-container  {\n    height: 250px;\n    display: inline-table;\n  }\n}\n\n@media (min-width: 1200px) {\n  .about-photo-container  {\n    height: 250px;\n    display: inline-table;\n  }\n}\n", ""]);
 
 // exports
 
@@ -245,7 +245,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/about/about.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" style=\"text-align: center; margin-bottom: 10em;\">\r\n  <div class=\"row\">\r\n    <div class=\"col-lg-9 col-md-9 col-sm-9 col-xs-12\">\r\n      <h1>About Us</h1>\r\n      <p>120 is the combined number of spokes on our wheels and the name of this website created to document our travels,\r\n        adventures, and mishaps by bicycle.  We are a Midwestern couple with cycling at our roots, harking back to our\r\n        early days side saddling together around Madison, WI, and Houston, TX.  This website is a collaboration project;\r\n        Kevin coded the majority of the site, while Sigrid designed the graphics and layout.\r\n        <br>\r\n        <br>\r\n        We are currently en route to San Francisco — on our first long distance bike tour from SEA to SAN — during a\r\n        brief hiatus between jobs and cities. Our route spans a little over 1000 miles down the coast, includes 3 states,\r\n        and will take us about one month to complete.  We are armed with Adventure Cycling Association maps, 5 panniers,\r\n        and the expectation that things can and will go wrong — which is half the fun of biking for us.  You can follow\r\n        our progress here, unless we are having too much fun to write, in which case you can use your imaginations. Happy trails!\r\n      </p>\r\n      <br>\r\n      <div class=\"row\">\r\n        <div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-12\">\r\n          <div class=\"about-photo-container\">\r\n            <img src=\"../../../assets/sigrid.png\" class=\"about-photo\"/>\r\n          </div>\r\n          <h2>Sigrid Stensvold</h2>\r\n          <h4><strong>Cyclist, Writer, Designer, Aspiring Front-End Developer</strong></h4>\r\n          <p>Weighing in at 192 lbs (bike & gear included) from Ladysmith, WI, Sigrid discovered touring while\r\n            studying in Bologna, IT, when she and some friends attempted a short bike overnight. They found themselves\r\n            lost in the middle of a field at sunset, only to be saved by a friendly local cyclist. The experience,\r\n            along with a rural milk vending machine, made Sigrid fall cage over toes for the pace and the inevitable misadventures\r\n            of touring.\r\n          </p>\r\n        </div>\r\n        <div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-12\">\r\n          <div class=\"about-photo-container\">\r\n            <img src=\"../../../assets/kevin.png\" class=\"about-photo\"/>\r\n          </div>\r\n          <h2>Kevin Gresmer</h2>\r\n          <h4><strong>Cyclist, Full Stack Developer, Designer (sort of), Writer </strong></h4>\r\n          <p>A group effort from Wisconsin, Illinois and Dubai was needed to raise this cyclist. Early on in life he\r\n            dreamed of playing in the NHL, but his love of Legos and lack of talent led to a career as an engineer. He\r\n            became a biker pretty early in life, but it wasn't until college when he would trek through snowy roads of\r\n            Wisconsin on his 1985 Schwinn that he realized, this is the way to travel. </p>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"col-lg-3 col-md-3 col-sm-3 col-xs-12\">\r\n      <img id=\"route-map\" src=\"../../../assets/map.jpg\" />\r\n    </div>\r\n  </div>\r\n</div>\r\n<app-footer></app-footer>\r\n\r\n"
+module.exports = "<div class=\"container\" style=\"text-align: center; margin-bottom: 10em;\">\n  <div class=\"row\">\n    <div class=\"col-lg-9 col-md-9 col-sm-9 col-xs-12\">\n      <h1>About Us</h1>\n      <p>120 is the combined number of spokes on our wheels and the name of this website created to document our travels,\n        adventures, and mishaps by bicycle.  We are a Midwestern couple with cycling at our roots, harking back to our\n        early days side saddling together around Madison, WI, and Houston, TX.  This website is a collaboration project;\n        Kevin coded the majority of the site, while Sigrid designed the graphics and layout.\n        <br>\n        <br>\n        We are currently en route to San Francisco — on our first long distance bike tour from SEA to SAN — during a\n        brief hiatus between jobs and cities. Our route spans a little over 1000 miles down the coast, includes 3 states,\n        and will take us about one month to complete.  We are armed with Adventure Cycling Association maps, 5 panniers,\n        and the expectation that things can and will go wrong — which is half the fun of biking for us.  You can follow\n        our progress here, unless we are having too much fun to write, in which case you can use your imaginations. Happy trails!\n      </p>\n      <br>\n      <div class=\"row\">\n        <div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-12\">\n          <div class=\"about-photo-container\">\n            <img src=\"../../../assets/sigrid.png\" class=\"about-photo\"/>\n          </div>\n          <h2>Sigrid Stensvold</h2>\n          <h4><strong>Cyclist, Writer, Designer, Aspiring Front-End Developer</strong></h4>\n          <p>Weighing in at 192 lbs (bike & gear included) from Ladysmith, WI, Sigrid discovered touring while\n            studying in Bologna, IT, when she and some friends attempted a short bike overnight. They found themselves\n            lost in the middle of a field at sunset, only to be saved by a friendly local cyclist. The experience,\n            along with a rural milk vending machine, made Sigrid fall cage over toes for the pace and the inevitable misadventures\n            of touring.\n          </p>\n        </div>\n        <div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-12\">\n          <div class=\"about-photo-container\">\n            <img src=\"../../../assets/kevin.png\" class=\"about-photo\"/>\n          </div>\n          <h2>Kevin Gresmer</h2>\n          <h4><strong>Cyclist, Full Stack Developer, Designer (sort of), Writer </strong></h4>\n          <p>A group effort from Wisconsin, Illinois and Dubai was needed to raise this cyclist. Early on in life he\n            dreamed of playing in the NHL, but his love of Legos and lack of talent led to a career as an engineer. He\n            became a biker pretty early in life, but it wasn't until college when he would trek through snowy roads of\n            Wisconsin on his 1985 Schwinn that he realized, this is the way to travel. </p>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-lg-3 col-md-3 col-sm-3 col-xs-12\">\n      <img id=\"route-map\" src=\"../../../assets/map.jpg\" />\n    </div>\n  </div>\n</div>\n<app-footer></app-footer>\n\n"
 
 /***/ }),
 
@@ -253,10 +253,10 @@ module.exports = "<div class=\"container\" style=\"text-align: center; margin-bo
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_bootstrap_dist_css_bootstrap_css__ = __webpack_require__("../../../../bootstrap/dist/css/bootstrap.css");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_bootstrap_dist_css_bootstrap_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_bootstrap_dist_css_bootstrap_css__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -272,7 +272,7 @@ var AboutComponent = (function () {
     function AboutComponent() {
     }
     AboutComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-about',
             template: __webpack_require__("../../../../../src/app/components/about/about.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/about/about.component.css")]
@@ -293,7 +293,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".cal-column {\r\n  width: 8%;\r\n  padding-top: 2%;\r\n  padding-bottom: 2%;\r\n  font-size: 1.2em;\r\n}\r\n\r\n\r\n\r\n@media (min-width: 428px) {\r\n  .cal-column {\r\n    width: 8%;\r\n    padding-top: 2%;\r\n    padding-bottom: 2%;\r\n    font-size: 1.2em;\r\n  }\r\n}\r\n\r\n@media (min-width: 780px) {\r\n  .cal-column {\r\n    width: 8%;\r\n    padding-top: 2%;\r\n    padding-bottom: 2%;\r\n    font-size: 1.2em;\r\n  }\r\n}\r\n\r\n@media (min-width: 992px) {\r\n  .cal-column {\r\n    width: 6%;\r\n    padding-top: 1.5%;\r\n    padding-bottom: 1.5%;\r\n    font-size: 1.4em;\r\n  }\r\n}\r\n\r\n@media (min-width: 1200px) {\r\n  .cal-column {\r\n    width: 6%;\r\n    padding-top: 1.5%;\r\n    padding-bottom: 1.5%;\r\n    font-size: 1.4em;\r\n  }\r\n}\r\n\r\n#calendar-container {\r\n  text-align: center;\r\n  margin-bottom: 5em;\r\n}\r\n\r\nbutton {\r\n  padding: 0;\r\n  border-radius: 100%;\r\n  background-color: #00495C;\r\n  color: white;\r\n}\r\n\r\nbutton:hover {\r\n  background-color: #ffb100;\r\n  color: black;\r\n}\r\n", ""]);
+exports.push([module.i, ".cal-column {\n  width: 8%;\n  padding-top: 2%;\n  padding-bottom: 2%;\n  font-size: 1.2em;\n}\n\n\n\n@media (min-width: 428px) {\n  .cal-column {\n    width: 8%;\n    padding-top: 2%;\n    padding-bottom: 2%;\n    font-size: 1.2em;\n  }\n}\n\n@media (min-width: 780px) {\n  .cal-column {\n    width: 8%;\n    padding-top: 2%;\n    padding-bottom: 2%;\n    font-size: 1.2em;\n  }\n}\n\n@media (min-width: 992px) {\n  .cal-column {\n    width: 6%;\n    padding-top: 1.5%;\n    padding-bottom: 1.5%;\n    font-size: 1.4em;\n  }\n}\n\n@media (min-width: 1200px) {\n  .cal-column {\n    width: 6%;\n    padding-top: 1.5%;\n    padding-bottom: 1.5%;\n    font-size: 1.4em;\n  }\n}\n\n#calendar-container {\n  text-align: center;\n  margin-bottom: 5em;\n}\n\nbutton {\n  padding: 0;\n  border-radius: 100%;\n  background-color: #00495C;\n  color: white;\n}\n\nbutton:hover {\n  background-color: #ffb100;\n  color: black;\n}\n", ""]);
 
 // exports
 
@@ -306,7 +306,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/calendar/calendar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div id=\"calendar-container\">\r\n    <div class=\"row\" style=\"text-align: center\">\r\n      <h3>August</h3>\r\n    </div>\r\n    <div class=\"row\">\r\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\r\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\r\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\r\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-8-24')\">\r\n        24\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-8-25')\">\r\n        25\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-8-26')\">\r\n        26\r\n      </button>\r\n    </div>\r\n    <div class=\"row\">\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-8-27')\">\r\n        27\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-8-28')\">\r\n        28\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-8-29')\">\r\n        29\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-8-30')\">\r\n        30\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-8-31')\">\r\n        31\r\n      </button>\r\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\r\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\r\n    </div>\r\n    <div class=\"row\" style=\"text-align: center;\">\r\n      <h3>September</h3>\r\n    </div>\r\n    <div class=\"row\">\r\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\r\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\r\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\r\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\r\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-1')\">\r\n        1\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-2')\">\r\n        2\r\n      </button>\r\n    </div>\r\n    <div class=\"row\">\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-3')\">\r\n        3\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-4')\">\r\n        4\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-5')\">\r\n        5\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-6')\">\r\n        6\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-7')\">\r\n        7\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-8')\">\r\n        8\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-9')\">\r\n        9\r\n      </button>\r\n    </div>\r\n    <div class=\"row\">\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-10')\">\r\n        10\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-11')\">\r\n        11\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-12')\">\r\n        12\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-13')\">\r\n        13\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-14')\">\r\n        14\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-15')\">\r\n        15\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-16')\">\r\n        16\r\n      </button>\r\n    </div>\r\n    <div class=\"row\">\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-17')\">\r\n        17\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-18')\">\r\n        18\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-19')\">\r\n        19\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-20')\">\r\n        20\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-21')\">\r\n        21\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-22')\">\r\n        22\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-23')\">\r\n        23\r\n      </button>\r\n    </div>\r\n    <div class=\"row\">\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-24')\">\r\n        24\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-25')\">\r\n        25\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-26')\">\r\n        26\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-27')\">\r\n        27\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-28')\">\r\n        28\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-29')\">\r\n        29\r\n      </button>\r\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-30')\">\r\n        30\r\n      </button>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div id=\"post-display\">\r\n  <div class=\"row\" *ngIf=\"posts.length > 0\">\r\n    <div class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding\">\r\n      <div *ngFor=\"let post of posts\">\r\n        <div>\r\n          <app-post [selectedPost]=\"post\"></app-post>\r\n          <hr>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"container\">\n  <div id=\"calendar-container\">\n    <div class=\"row\" style=\"text-align: center\">\n      <h3>August</h3>\n    </div>\n    <div class=\"row\">\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-8-24')\">\n        24\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-8-25')\">\n        25\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-8-26')\">\n        26\n      </button>\n    </div>\n    <div class=\"row\">\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-8-27')\">\n        27\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-8-28')\">\n        28\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-8-29')\">\n        29\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-8-30')\">\n        30\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-8-31')\">\n        31\n      </button>\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\n    </div>\n    <div class=\"row\" style=\"text-align: center;\">\n      <h3>September</h3>\n    </div>\n    <div class=\"row\">\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\n      <button class=\"cal-column\" style=\"visibility: hidden\"></button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-1')\">\n        1\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-2')\">\n        2\n      </button>\n    </div>\n    <div class=\"row\">\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-3')\">\n        3\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-4')\">\n        4\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-5')\">\n        5\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-6')\">\n        6\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-7')\">\n        7\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-8')\">\n        8\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-9')\">\n        9\n      </button>\n    </div>\n    <div class=\"row\">\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-10')\">\n        10\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-11')\">\n        11\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-12')\">\n        12\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-13')\">\n        13\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-14')\">\n        14\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-15')\">\n        15\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-16')\">\n        16\n      </button>\n    </div>\n    <div class=\"row\">\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-17')\">\n        17\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-18')\">\n        18\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-19')\">\n        19\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-20')\">\n        20\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-21')\">\n        21\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-22')\">\n        22\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-23')\">\n        23\n      </button>\n    </div>\n    <div class=\"row\">\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-24')\">\n        24\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-25')\">\n        25\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-26')\">\n        26\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-27')\">\n        27\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-28')\">\n        28\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-29')\">\n        29\n      </button>\n      <button class=\"cal-column\" (click)=\"showPostsOnDate('2017-9-30')\">\n        30\n      </button>\n    </div>\n  </div>\n</div>\n<div id=\"post-display\">\n  <div class=\"row\" *ngIf=\"posts.length > 0\">\n    <div class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding\">\n      <div *ngFor=\"let post of posts\">\n        <div>\n          <app-post [selectedPost]=\"post\"></app-post>\n          <hr>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -314,13 +314,13 @@ module.exports = "<div class=\"container\">\r\n  <div id=\"calendar-container\">
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CalendarComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_bootstrap_dist_css_bootstrap_css__ = __webpack_require__("../../../../bootstrap/dist/css/bootstrap.css");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_bootstrap_dist_css_bootstrap_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_bootstrap_dist_css_bootstrap_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_post_service__ = __webpack_require__("../../../../../src/app/services/post.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CalendarComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -360,7 +360,7 @@ var CalendarComponent = (function () {
         });
     };
     CalendarComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-calendar',
             template: __webpack_require__("../../../../../src/app/components/calendar/calendar.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/calendar/calendar.component.css")]
@@ -383,7 +383,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".post-submit-btn {\r\n  margin-bottom: 5em;\r\n}\r\n\r\n#display-delete-post {\r\n\r\n}\r\n", ""]);
+exports.push([module.i, ".post-submit-btn {\n  margin-bottom: 5em;\n}\n\n#display-delete-post {\n\n}\n", ""]);
 
 // exports
 
@@ -396,7 +396,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<label>What would you like to do?</label>\r\n<select [(ngModel)]=\"postAction\" name=\"postAction\" (change)=\"updatePostForm()\">\r\n  <option value=\"\"></option>\r\n  <option value=\"edit\">Edit a Post</option>\r\n  <option value=\"delete\">Delete a Post</option>\r\n  <option value=\"create\">Create a Post</option>\r\n</select>\r\n\r\n<h2 *ngIf=\"postAction === 'create'\" class=\"page-header\">Create a post</h2>\r\n\r\n<div *ngIf=\"postAction === 'edit'\" class=\"editHeader\">\r\n  <h2 class=\"page-header\">Edit a post</h2>\r\n  <label>Select the post you would like to edit</label>\r\n  <select [(ngModel)]=\"postToEdit\" name=\"postToEdit\" (change)=\"updateEditPostData(post)\">\r\n    <option value=\"\"></option>\r\n    <option *ngFor=\"let post of posts\" [ngValue]=\"post\">{{post.title}}-{{post.date}}</option>\r\n  </select>\r\n</div>\r\n\r\n<div *ngIf=\"postAction === 'delete'\" class=\"deleteHeader dropdown\">\r\n  <h2 class=\"page-header\">Delete a post</h2>\r\n  <label>Select the post you would like to edit</label>\r\n  <select [(ngModel)]=\"postToDelete\" name=\"postToDelete\">\r\n    <option value=\"\"></option>\r\n    <option *ngFor=\"let post of posts\" [ngValue]=\"post\">\r\n      {{post.title}}-{{post.date}}\r\n    </option>\r\n  </select>\r\n\r\n  <div *ngIf=\"postToDelete\" id=\"display-delete-post\">\r\n    <p>{{postToDelete.title}}-{{postToDelete.date}}</p>\r\n    <button class=\"btn-danger\" (click)=\"deletePost(postToDelete)\">Delete</button>\r\n  </div>\r\n</div>\r\n\r\n<form *ngIf=\"(postAction === 'edit' && postToEdit) || postAction === 'create'\" (submit)=\"onSubmitPost()\">\r\n\r\n  <!-- Date -->\r\n  <div class=\"form-group\">\r\n    <label>Date</label>\r\n    <input type=\"date\" [(ngModel)]=\"currentPost.date\" name=\"date\" class=\"form-control\">\r\n  </div>\r\n\r\n  <!-- Post Title -->\r\n  <div class=\"form-group\">\r\n    <label>Title</label>\r\n    <input [(ngModel)]=\"currentPost.title\" name=\"newPost.title\" class=\"form-control\">\r\n  </div>\r\n\r\n  <!-- Body of the post -->\r\n  <div class=\"form-group\">\r\n    <label>Body</label>\r\n    <textarea [(ngModel)]=\"currentPost.body\" name=\"newPost.body\" class=\"form-control\" style=\"height: 10em;\"></textarea>\r\n  </div>\r\n\r\n  <!-- Add photos -->\r\n  <!-- Edit Photos -->\r\n  <div class=\"form-group\" *ngIf=\"postAction === 'edit'\">\r\n    <label>Existing Photos</label>\r\n    <div *ngFor=\"let photo of currentPost.photos\">\r\n      <p>{{photo}} <button type=\"button\" class=\"btn btn-danger\" (click)=\"deletePhoto(photo)\">Delete</button></p>\r\n    </div>\r\n    <p *ngIf=\"currentPost.photos && currentPost.photos.length === 0\">There are no photos attached to this post.</p>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label for=\"single\">Upload one photo at a time</label>\r\n    <input type=\"file\" class=\"form-control\" id=\"single\" name=\"single\" ng2FileSelect [uploader]=\"uploader\" />\r\n  </div>\r\n  <table class=\"table\">\r\n    <thead>\r\n    <tr>\r\n      <th width=\"50%\">Name</th>\r\n      <th>Size</th>\r\n      <th>Progress</th>\r\n      <th>Status</th>\r\n      <th>Actions</th>\r\n    </tr>\r\n    </thead>\r\n    <tbody>\r\n    <tr *ngFor=\"let item of uploader.queue\">\r\n      <td><strong>{{ item.file.name }}</strong></td>\r\n      <td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>\r\n      <td>\r\n        <div class=\"progress\" style=\"margin-bottom: 0;\">\r\n          <div class=\"progress-bar\" role=\"progressbar\" [ngStyle]=\"{ 'width': item.progress + '%' }\"></div>\r\n        </div>\r\n      </td>\r\n      <td class=\"text-center\">\r\n        <span *ngIf=\"item.isSuccess\"><i class=\"glyphicon glyphicon-ok\"></i></span>\r\n        <span *ngIf=\"item.isCancel\"><i class=\"glyphicon glyphicon-ban-circle\"></i></span>\r\n        <span *ngIf=\"item.isError\"><i class=\"glyphicon glyphicon-remove\"></i></span>\r\n      </td>\r\n      <td nowrap>\r\n        <button type=\"button\" class=\"btn btn-warning btn-xs\"\r\n                (click)=\"item.cancel()\" [disabled]=\"!item.isUploading\">\r\n          <span class=\"glyphicon glyphicon-ban-circle\"></span> Cancel\r\n        </button>\r\n        <button type=\"button\" class=\"btn btn-danger btn-xs\"\r\n                (click)=\"item.remove()\">\r\n          <span class=\"glyphicon glyphicon-trash\"></span> Remove\r\n        </button>\r\n      </td>\r\n    </tr>\r\n    </tbody>\r\n  </table>\r\n  <!-- end of photo input -->\r\n\r\n  <!-- Tags -->\r\n  <div class=\"form-group\">\r\n    <label>Tags (comma separated)</label>\r\n    <input [(ngModel)]=\"currentPost.tags\" name=\"newPost.tags\" class=\"form-control\">\r\n  </div>\r\n  <!-- Time Biked Today in Minutes -->\r\n  <div class=\"form-group\">\r\n    <label>Total time biked today in minutes</label>\r\n    <input type=\"number\" [(ngModel)]=\"currentPost.timeBikedToday\" name=\"newPost.timeBikedToday\"\r\n           class=\"form-control\">\r\n  </div>\r\n  <!-- Miles biked since the last post (could be miles biked today) -->\r\n  <div class=\"form-group\">\r\n    <label>Miles Since Last Post  (could be miles biked today) </label>\r\n    <input type=\"number\" [(ngModel)]=\"currentPost.milesSinceLastPost\" name=\"newPost.milesSinceLastPost\"\r\n           class=\"form-control\">\r\n  </div>\r\n  <!-- Temperature -->\r\n  <div class=\"form-group\">\r\n    <label>Temperature</label>\r\n    <input type=\"number\" [(ngModel)]=\"currentPost.temperature\" name=\"newPost.temperature\" class=\"form-control\">\r\n  </div>\r\n  <!-- Weather Condition -->\r\n  <div class=\"form-group\">\r\n    <label>Weather Condition</label>\r\n    <select [(ngModel)]=\"currentPost.weatherCondition\" name=\"newPost.weatherCondition\">\r\n      <option *ngFor=\"let condition of weatherConditions\" [ngValue]=\"condition\">{{condition}}</option>\r\n    </select>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label>Horizontal or Vertical Layout</label>\r\n    <select [(ngModel)]=\"currentPost.layout\" name=\"newPost.layout\">\r\n      <option value=\"horizontal\">Horizontal</option>\r\n      <option value=\"vertical\">Vertical</option>\r\n    </select>\r\n  </div>\r\n  <!-- Author (defaults to name of the current user) -->\r\n  <div class=\"form-group\">\r\n    <label>Author (defaults to name of the current user)</label>\r\n    <input type=\"text\" [(ngModel)]=\"currentPost.author\" name=\"newPost.author\" class=\"form-control\">\r\n  </div>\r\n  <!-- submit button -->\r\n  <div *ngFor=\"let error of errorMessages\">\r\n    <p class=\"alert-danger\">{{error}}</p>\r\n  </div>\r\n  <input type=\"submit\" [disabled]=\"errorMessages.length > 0\" class=\"btn btn-primary post-submit-btn\" value=\"Submit\">\r\n</form>\r\n\r\n"
+module.exports = "\n<label>What would you like to do?</label>\n<select [(ngModel)]=\"postAction\" name=\"postAction\" (change)=\"updatePostForm()\">\n  <option value=\"\"></option>\n  <option value=\"edit\">Edit a Post</option>\n  <option value=\"delete\">Delete a Post</option>\n  <option value=\"create\">Create a Post</option>\n</select>\n\n<h2 *ngIf=\"postAction === 'create'\" class=\"page-header\">Create a post</h2>\n\n<div *ngIf=\"postAction === 'edit'\" class=\"editHeader\">\n  <h2 class=\"page-header\">Edit a post</h2>\n  <label>Select the post you would like to edit</label>\n  <select [(ngModel)]=\"postToEdit\" name=\"postToEdit\" (change)=\"updateEditPostData(post)\">\n    <option value=\"\"></option>\n    <option *ngFor=\"let post of posts\" [ngValue]=\"post\">{{post.title}}-{{post.date}}</option>\n  </select>\n</div>\n\n<div *ngIf=\"postAction === 'delete'\" class=\"deleteHeader dropdown\">\n  <h2 class=\"page-header\">Delete a post</h2>\n  <label>Select the post you would like to edit</label>\n  <select [(ngModel)]=\"postToDelete\" name=\"postToDelete\">\n    <option value=\"\"></option>\n    <option *ngFor=\"let post of posts\" [ngValue]=\"post\">\n      {{post.title}}-{{post.date}}\n    </option>\n  </select>\n\n  <div *ngIf=\"postToDelete\" id=\"display-delete-post\">\n    <p>{{postToDelete.title}}-{{postToDelete.date}}</p>\n    <button class=\"btn-danger\" (click)=\"deletePost(postToDelete)\">Delete</button>\n  </div>\n</div>\n\n<form *ngIf=\"(postAction === 'edit' && postToEdit) || postAction === 'create'\" (submit)=\"onSubmitPost()\">\n\n  <!-- Date -->\n  <div class=\"form-group\">\n    <label>Date</label>\n    <input type=\"date\" [(ngModel)]=\"currentPost.date\" name=\"date\" class=\"form-control\">\n  </div>\n\n  <!-- Post Title -->\n  <div class=\"form-group\">\n    <label>Title</label>\n    <input [(ngModel)]=\"currentPost.title\" name=\"newPost.title\" class=\"form-control\">\n  </div>\n\n  <!-- Body of the post -->\n  <div class=\"form-group\">\n    <label>Body</label>\n    <textarea [(ngModel)]=\"currentPost.body\" name=\"newPost.body\" class=\"form-control\" style=\"height: 10em;\"></textarea>\n  </div>\n\n  <!-- Add photos -->\n  <!-- Edit Photos -->\n  <div class=\"form-group\" *ngIf=\"postAction === 'edit'\">\n    <label>Existing Photos</label>\n    <div *ngFor=\"let photo of currentPost.photos\">\n      <p>{{photo}} <button type=\"button\" class=\"btn btn-danger\" (click)=\"deletePhoto(photo)\">Delete</button></p>\n    </div>\n    <p *ngIf=\"currentPost.photos && currentPost.photos.length === 0\">There are no photos attached to this post.</p>\n  </div>\n  <div class=\"form-group\">\n    <label for=\"single\">Upload one photo at a time</label>\n    <input type=\"file\" class=\"form-control\" id=\"single\" name=\"single\" ng2FileSelect [uploader]=\"uploader\" />\n  </div>\n  <table class=\"table\">\n    <thead>\n    <tr>\n      <th width=\"50%\">Name</th>\n      <th>Size</th>\n      <th>Progress</th>\n      <th>Status</th>\n      <th>Actions</th>\n    </tr>\n    </thead>\n    <tbody>\n    <tr *ngFor=\"let item of uploader.queue\">\n      <td><strong>{{ item.file.name }}</strong></td>\n      <td nowrap>{{ item.file.size/1024/1024 | number:'.2' }} MB</td>\n      <td>\n        <div class=\"progress\" style=\"margin-bottom: 0;\">\n          <div class=\"progress-bar\" role=\"progressbar\" [ngStyle]=\"{ 'width': item.progress + '%' }\"></div>\n        </div>\n      </td>\n      <td class=\"text-center\">\n        <span *ngIf=\"item.isSuccess\"><i class=\"glyphicon glyphicon-ok\"></i></span>\n        <span *ngIf=\"item.isCancel\"><i class=\"glyphicon glyphicon-ban-circle\"></i></span>\n        <span *ngIf=\"item.isError\"><i class=\"glyphicon glyphicon-remove\"></i></span>\n      </td>\n      <td nowrap>\n        <button type=\"button\" class=\"btn btn-warning btn-xs\"\n                (click)=\"item.cancel()\" [disabled]=\"!item.isUploading\">\n          <span class=\"glyphicon glyphicon-ban-circle\"></span> Cancel\n        </button>\n        <button type=\"button\" class=\"btn btn-danger btn-xs\"\n                (click)=\"item.remove()\">\n          <span class=\"glyphicon glyphicon-trash\"></span> Remove\n        </button>\n      </td>\n    </tr>\n    </tbody>\n  </table>\n  <!-- end of photo input -->\n\n  <!-- Tags -->\n  <div class=\"form-group\">\n    <label>Tags (comma separated)</label>\n    <input [(ngModel)]=\"currentPost.tags\" name=\"newPost.tags\" class=\"form-control\">\n  </div>\n  <!-- Time Biked Today in Minutes -->\n  <div class=\"form-group\">\n    <label>Total time biked today in minutes</label>\n    <input type=\"number\" [(ngModel)]=\"currentPost.timeBikedToday\" name=\"newPost.timeBikedToday\"\n           class=\"form-control\">\n  </div>\n  <!-- Miles biked since the last post (could be miles biked today) -->\n  <div class=\"form-group\">\n    <label>Miles Since Last Post  (could be miles biked today) </label>\n    <input type=\"number\" [(ngModel)]=\"currentPost.milesSinceLastPost\" name=\"newPost.milesSinceLastPost\"\n           class=\"form-control\">\n  </div>\n  <!-- Temperature -->\n  <div class=\"form-group\">\n    <label>Temperature</label>\n    <input type=\"number\" [(ngModel)]=\"currentPost.temperature\" name=\"newPost.temperature\" class=\"form-control\">\n  </div>\n  <!-- Weather Condition -->\n  <div class=\"form-group\">\n    <label>Weather Condition</label>\n    <select [(ngModel)]=\"currentPost.weatherCondition\" name=\"newPost.weatherCondition\">\n      <option *ngFor=\"let condition of weatherConditions\" [ngValue]=\"condition\">{{condition}}</option>\n    </select>\n  </div>\n  <div class=\"form-group\">\n    <label>Horizontal or Vertical Layout</label>\n    <select [(ngModel)]=\"currentPost.layout\" name=\"newPost.layout\">\n      <option value=\"horizontal\">Horizontal</option>\n      <option value=\"vertical\">Vertical</option>\n    </select>\n  </div>\n  <!-- Author (defaults to name of the current user) -->\n  <div class=\"form-group\">\n    <label>Author (defaults to name of the current user)</label>\n    <input type=\"text\" [(ngModel)]=\"currentPost.author\" name=\"newPost.author\" class=\"form-control\">\n  </div>\n  <!-- submit button -->\n  <div *ngFor=\"let error of errorMessages\">\n    <p class=\"alert-danger\">{{error}}</p>\n  </div>\n  <input type=\"submit\" [disabled]=\"errorMessages.length > 0\" class=\"btn btn-primary post-submit-btn\" value=\"Submit\">\n</form>\n\n"
 
 /***/ }),
 
@@ -404,6 +404,8 @@ module.exports = "\r\n<label>What would you like to do?</label>\r\n<select [(ngM
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export TotalsAddition */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__feed_feed_component__ = __webpack_require__("../../../../../src/app/components/feed/feed.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_post_service__ = __webpack_require__("../../../../../src/app/services/post.service.ts");
@@ -412,8 +414,6 @@ module.exports = "\r\n<label>What would you like to do?</label>\r\n<select [(ngM
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng2_file_upload__ = __webpack_require__("../../../../ng2-file-upload/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng2_file_upload___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_ng2_file_upload__);
-/* unused harmony export TotalsAddition */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -709,12 +709,12 @@ var DashboardComponent = (function () {
         }
     };
     DashboardComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-dashboard',
             template: __webpack_require__("../../../../../src/app/components/dashboard/dashboard.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/dashboard/dashboard.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_post_service__["a" /* PostService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_post_service__["a" /* PostService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_post_service__["a" /* PostService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_post_service__["a" /* PostService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* Router */]) === "function" && _c || Object])
     ], DashboardComponent);
     return DashboardComponent;
     var _a, _b, _c;
@@ -732,7 +732,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".selected {\r\n  background-color: #CFD8DC !important;\r\n}\r\n\r\n.pagination {\r\n  margin: 0;\r\n}\r\n\r\n#tag-container {\r\n  display: inline-block;\r\n  padding: 5px;\r\n}\r\n\r\n.tag-link {\r\n  padding: 3px;\r\n}\r\n\r\n#search-button {\r\n  margin-top: 5px;\r\n  background-color: #00495C;\r\n  border: none;\r\n}\r\n\r\n.remove-padding {\r\n  padding: 0;\r\n}\r\n\r\n.totals-number {\r\n  font-size: 1.2em;\r\n  margin-bottom: 5em;\r\n}\r\n\r\n.totals-image {\r\n  margin-bottom: 5px;\r\n  width: 40%;\r\n}\r\n\r\n.total-miles-section {\r\n  padding-bottom: 1em;\r\n}\r\n\r\n#totals-display {\r\n  text-align: center;\r\n  position: relative;\r\n  right: -0%;\r\n  height:100%;\r\n}\r\n\r\n@media (min-width: 428px) {\r\n  #totals-display  {\r\n    position: relative;\r\n  }\r\n}\r\n\r\n@media (min-width: 780px) {\r\n  #totals-display  {\r\n    position: fixed;\r\n    right: -0%;\r\n  }\r\n}\r\n\r\n@media (min-width: 992px) {\r\n  #totals-display  {\r\n    position: fixed;\r\n    right: -0%;\r\n  }\r\n}\r\n\r\n@media (min-width: 1200px) {\r\n  #totals-display  {\r\n    position: fixed;\r\n    right: -0%;\r\n  }\r\n}\r\n", ""]);
+exports.push([module.i, ".selected {\n  background-color: #CFD8DC !important;\n}\n\n.pagination {\n  margin: 0;\n}\n\n#tag-container {\n  display: inline-block;\n  padding: 5px;\n}\n\n.tag-link {\n  padding: 3px;\n}\n\n#search-button {\n  margin-top: 5px;\n  background-color: #00495C;\n  border: none;\n}\n\n.remove-padding {\n  padding: 0;\n}\n\n.totals-number {\n  font-size: 1.2em;\n  margin-bottom: 5em;\n}\n\n.totals-image {\n  margin-bottom: 5px;\n  width: 40%;\n}\n\n.total-miles-section {\n  padding-bottom: 1em;\n}\n\n#totals-display {\n  text-align: center;\n  position: relative;\n  right: -0%;\n  height:100%;\n}\n\n@media (min-width: 428px) {\n  #totals-display  {\n    position: relative;\n  }\n}\n\n@media (min-width: 780px) {\n  #totals-display  {\n    position: fixed;\n    right: -0%;\n  }\n}\n\n@media (min-width: 992px) {\n  #totals-display  {\n    position: fixed;\n    right: -0%;\n  }\n}\n\n@media (min-width: 1200px) {\n  #totals-display  {\n    position: fixed;\n    right: -0%;\n  }\n}\n", ""]);
 
 // exports
 
@@ -745,7 +745,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/feed/feed.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" style=\"display: inline-block;\">\r\n  <ul class=\"pagination\" *ngIf=\"pageNumbers.length > 1\">\r\n    <li *ngFor=\"let page of pageNumbers\"><a href=\"#\" (click)=\"changePage(page)\">{{page}}</a></li>\r\n  </ul>\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding\">\r\n      <div *ngFor=\"let post of activePage\" >\r\n        <div>\r\n        <app-post [selectedPost]=\"post\"></app-post>\r\n        <hr>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"col-xs-offset-3 col-xs-6 col-sm-3 col-md-3 col-lg-3\"\r\n         id=\"totals-display\" *ngIf=\"totals\">\r\n      <div style=\"background-color: #ffffff; padding: 1.5rem;\">\r\n        <div class=\"total-miles-section\">\r\n          <img src=\"../../../assets/bike.png\" class=\"totals-image\"> <br>\r\n          Total Miles Biked: <br>\r\n          <span class=\"totals-number\">{{totals.totalMilesBiked}}</span> <br>\r\n        </div>\r\n        <div class=\"total-time-section\">\r\n          <img src=\"../../../assets/clock.png\" class=\"totals-image\"> <br>\r\n          Total Time Biked: <br>\r\n          <span class=\"totals-number\">{{totalTimeBiked.days}}</span> days<br>\r\n          <span class=\"totals-number\">{{totalTimeBiked.hours}}</span> hrs<br>\r\n          <span class=\"totals-number\">{{totalTimeBiked.minutes}}</span> mins<br>\r\n        </div>\r\n        <hr>\r\n        <div id=\"search-section\">\r\n          <label>Search by Tag</label>\r\n          <br>\r\n          <div id=\"tag-container\">\r\n            <a *ngFor=\"let tag of filterTags\" href=\"#\" (click)=\"searchForTag(tag)\" class=\"tag-link\">\r\n              {{tag}}\r\n            </a>\r\n          </div>\r\n          <br>\r\n          <button id=\"search-button\" *ngIf=\"filteredPosts.length > 0\" (click)=\"clearSearchResults()\"\r\n                  class=\"btn btn-info\">\r\n            Clear Search Results\r\n          </button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <ul class=\"pagination\" *ngIf=\"pageNumbers.length > 1\">\r\n    <li *ngFor=\"let page of pageNumbers\"><a href=\"#\" (click)=\"changePage(page)\">{{page}}</a></li>\r\n  </ul>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"container\" style=\"display: inline-block;\">\n  <ul class=\"pagination\" *ngIf=\"pageNumbers.length > 1\">\n    <li *ngFor=\"let page of pageNumbers\"><a href=\"#\" (click)=\"changePage(page)\">{{page}}</a></li>\n  </ul>\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding\">\n      <div *ngFor=\"let post of activePage\" >\n        <div>\n        <app-post [selectedPost]=\"post\"></app-post>\n        <hr>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-xs-offset-3 col-xs-6 col-sm-3 col-md-3 col-lg-3\"\n         id=\"totals-display\" *ngIf=\"totals\">\n      <div style=\"background-color: #ffffff; padding: 1.5rem;\">\n        <div class=\"total-miles-section\">\n          <img src=\"../../../assets/bike.png\" class=\"totals-image\"> <br>\n          Total Miles Biked: <br>\n          <span class=\"totals-number\">{{totals.totalMilesBiked}}</span> <br>\n        </div>\n        <div class=\"total-time-section\">\n          <img src=\"../../../assets/clock.png\" class=\"totals-image\"> <br>\n          Total Time Biked: <br>\n          <span class=\"totals-number\">{{totalTimeBiked.days}}</span> days<br>\n          <span class=\"totals-number\">{{totalTimeBiked.hours}}</span> hrs<br>\n          <span class=\"totals-number\">{{totalTimeBiked.minutes}}</span> mins<br>\n        </div>\n        <hr>\n        <div id=\"search-section\">\n          <label>Search by Tag</label>\n          <br>\n          <div id=\"tag-container\">\n            <a *ngFor=\"let tag of filterTags\" href=\"#\" (click)=\"searchForTag(tag)\" class=\"tag-link\">\n              {{tag}}\n            </a>\n          </div>\n          <br>\n          <button id=\"search-button\" *ngIf=\"filteredPosts.length > 0\" (click)=\"clearSearchResults()\"\n                  class=\"btn btn-info\">\n            Clear Search Results\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n  <ul class=\"pagination\" *ngIf=\"pageNumbers.length > 1\">\n    <li *ngFor=\"let page of pageNumbers\"><a href=\"#\" (click)=\"changePage(page)\">{{page}}</a></li>\n  </ul>\n</div>\n\n"
 
 /***/ }),
 
@@ -753,14 +753,14 @@ module.exports = "<div class=\"container\" style=\"display: inline-block;\">\r\n
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Post; });
+/* unused harmony export Totals */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FeedComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_post_service__ = __webpack_require__("../../../../../src/app/services/post.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Post; });
-/* unused harmony export Totals */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FeedComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -797,7 +797,7 @@ var FeedComponent = (function () {
         var _this = this;
         this.filteredPosts = [];
         this.mapOfPages = {};
-        this.numOfPostsPerPage = 2;
+        this.numOfPostsPerPage = 4;
         this.pageNumbers = [];
         this.filterTags = [];
         jQuery(window).scroll(function () {
@@ -823,9 +823,9 @@ var FeedComponent = (function () {
     };
     FeedComponent.prototype.setFilterTags = function () {
         var _this = this;
-        for (var i = 0; i < this.posts.length; i++) {
-            if (this.posts[i].tags && this.posts[i].tags.length > 0) {
-                this.posts[i].tags.split(',').map(function (tag) {
+        for (var i = 0; i < this.activePage.length; i++) {
+            if (this.activePage[i].tags && this.activePage[i].tags.length > 0) {
+                this.activePage[i].tags.split(',').map(function (tag) {
                     if (_this.filterTags.indexOf(tag.trim()) < 0) {
                         _this.filterTags.push(tag.trim());
                     }
@@ -880,7 +880,7 @@ var FeedComponent = (function () {
     FeedComponent.prototype.setupPagination = function () {
         var numOfPosts = this.visiblePosts.length;
         var pageNumber = 1;
-        for (var i = 0, j = numOfPosts; i < numOfPosts; i += this.numOfPostsPerPage) {
+        for (var i = 0; i < numOfPosts; i += this.numOfPostsPerPage) {
             this.mapOfPages[pageNumber] = this.visiblePosts.slice(i, i + this.numOfPostsPerPage);
             pageNumber++;
         }
@@ -888,7 +888,7 @@ var FeedComponent = (function () {
         this.activePage = this.mapOfPages[1];
     };
     FeedComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-feed-root',
             template: __webpack_require__("../../../../../src/app/components/feed/feed.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/feed/feed.component.css")]
@@ -924,7 +924,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/footer/footer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<ul class=\"nav navbar-nav\">\r\n  <li>\r\n    <a *ngIf=\"!authService.loggedIn()\" routerLinkActive=\"active\" class=\"navbar-brand\"\r\n         routerLink=\"/login\" style=\"color: darkgrey\">\r\n      Log In\r\n    </a>\r\n  </li>\r\n</ul>\r\n"
+module.exports = "<ul class=\"nav navbar-nav\">\n  <li>\n    <a *ngIf=\"!authService.loggedIn()\" routerLinkActive=\"active\" class=\"navbar-brand\"\n         routerLink=\"/login\" style=\"color: darkgrey\">\n      Log In\n    </a>\n  </li>\n</ul>\n"
 
 /***/ }),
 
@@ -932,12 +932,12 @@ module.exports = "<ul class=\"nav navbar-nav\">\r\n  <li>\r\n    <a *ngIf=\"!aut
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FooterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FooterComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -967,12 +967,12 @@ var FooterComponent = (function () {
         return false;
     };
     FooterComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-footer',
             template: __webpack_require__("../../../../../src/app/components/footer/footer.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/footer/footer.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */]) === "function" && _c || Object])
     ], FooterComponent);
     return FooterComponent;
     var _a, _b, _c;
@@ -990,7 +990,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "\r\n.gallery-image {\r\n  width: 100%;\r\n  height: 10%;\r\n  padding: 1rem;\r\n  /*-moz-box-shadow: 2px 2px 7px rgba(0, 0, 0, .2);*/\r\n  /*-webkit-box-shadow: 2px 2px 7px rgba(0, 0, 0, .2);*/\r\n  /*box-shadow: 2px 2px 7px rgba(0, 0, 0, .2);*/\r\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.gallery-image {\n  width: 100%;\n  height: 10%;\n  padding: 1rem;\n  /*-moz-box-shadow: 2px 2px 7px rgba(0, 0, 0, .2);*/\n  /*-webkit-box-shadow: 2px 2px 7px rgba(0, 0, 0, .2);*/\n  /*box-shadow: 2px 2px 7px rgba(0, 0, 0, .2);*/\n}\n\n", ""]);
 
 // exports
 
@@ -1003,7 +1003,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/gallery/gallery.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p><small>Click a photo to enlarge!</small></p>\r\n<div class=\"container\" style=\"margin-bottom: 10em;\">\r\n  <div class=\"row\">\r\n    <div class=\"col-xs-6 col-sm-6 col-md-3 col-lg-3\" style=\"text-align:center;\">\r\n      <div class=\"row\" *ngFor=\"let photo of photoGroupOne\">\r\n          <img (click)=\"showModal(s3url, photo.Key)\" class=\"gallery-image\"\r\n               src=\"{{s3url}}{{photo.Key}}\">\r\n      </div>\r\n    </div>\r\n    <div class=\"col-xs-6 col-sm-6 col-md-3 col-lg-3\" style=\"text-align:center;\">\r\n      <div class=\"row\" *ngFor=\"let photo of photoGroupTwo\">\r\n        <img (click)=\"showModal(s3url, photo.Key)\" class=\"gallery-image\" src=\"{{s3url}}{{photo.Key}}\">\r\n      </div>\r\n    </div>\r\n    <div class=\"col-xs-6 col-sm-6 col-md-3 col-lg-3\" style=\"text-align:center;\">\r\n      <div class=\"row\" *ngFor=\"let photo of photoGroupThree\">\r\n        <img (click)=\"showModal(s3url, photo.Key)\" class=\"gallery-image\" src=\"{{s3url}}{{photo.Key}}\">\r\n      </div>\r\n    </div>\r\n    <div class=\"col-xs-6 col-sm-6 col-md-3 col-lg-3\" style=\"text-align:center;\">\r\n      <div class=\"row\" *ngFor=\"let photo of photoGroupFour\">\r\n        <img (click)=\"showModal(s3url, photo.Key)\" class=\"gallery-image\" src=\"{{s3url}}{{photo.Key}}\">\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<!-- Creates the bootstrap modal where the image will appear -->\r\n<div class=\"modal fade\" id=\"imagemodal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"galleryImageModal\"\r\n     aria-hidden=\"true\">\r\n  <div class=\"modal-dialog\">\r\n    <div class=\"modal-body\">\r\n      <img [src]=\"imagePreview\" id=\"imagepreview\" style=\"width: 100%;\">\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<p><small>Click a photo to enlarge!</small></p>\n<div class=\"container\" style=\"margin-bottom: 10em;\">\n  <div class=\"row\">\n    <div class=\"col-xs-6 col-sm-6 col-md-3 col-lg-3\" style=\"text-align:center;\">\n      <div class=\"row\" *ngFor=\"let photo of photoGroupOne\">\n          <img (click)=\"showModal(s3url, photo.Key)\" class=\"gallery-image\"\n               src=\"{{s3url}}{{photo.Key}}\">\n      </div>\n    </div>\n    <div class=\"col-xs-6 col-sm-6 col-md-3 col-lg-3\" style=\"text-align:center;\">\n      <div class=\"row\" *ngFor=\"let photo of photoGroupTwo\">\n        <img (click)=\"showModal(s3url, photo.Key)\" class=\"gallery-image\" src=\"{{s3url}}{{photo.Key}}\">\n      </div>\n    </div>\n    <div class=\"col-xs-6 col-sm-6 col-md-3 col-lg-3\" style=\"text-align:center;\">\n      <div class=\"row\" *ngFor=\"let photo of photoGroupThree\">\n        <img (click)=\"showModal(s3url, photo.Key)\" class=\"gallery-image\" src=\"{{s3url}}{{photo.Key}}\">\n      </div>\n    </div>\n    <div class=\"col-xs-6 col-sm-6 col-md-3 col-lg-3\" style=\"text-align:center;\">\n      <div class=\"row\" *ngFor=\"let photo of photoGroupFour\">\n        <img (click)=\"showModal(s3url, photo.Key)\" class=\"gallery-image\" src=\"{{s3url}}{{photo.Key}}\">\n      </div>\n    </div>\n  </div>\n</div>\n<!-- Creates the bootstrap modal where the image will appear -->\n<div class=\"modal fade\" id=\"imagemodal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"galleryImageModal\"\n     aria-hidden=\"true\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-body\">\n      <img [src]=\"imagePreview\" id=\"imagepreview\" style=\"width: 100%;\">\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1011,11 +1011,11 @@ module.exports = "<p><small>Click a photo to enlarge!</small></p>\r\n<div class=
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GalleryComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_post_service__ = __webpack_require__("../../../../../src/app/services/post.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GalleryComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1035,6 +1035,7 @@ var GalleryComponent = (function () {
     }
     GalleryComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.numOfPostsPerPage = 4;
         this.s3url = 'https://blog-post-photos.s3.amazonaws.com/';
         this.postService.getPictures().subscribe(function (response) {
             if (response.success) {
@@ -1086,8 +1087,21 @@ var GalleryComponent = (function () {
                 break;
         }
     };
+    GalleryComponent.prototype.changePage = function (pageNum) {
+        this.activePage = this.mapOfPages[pageNum];
+    };
+    GalleryComponent.prototype.setupPagination = function () {
+        var numOfPosts = this.visiblePosts.length;
+        var pageNumber = 1;
+        for (var i = 0, j = numOfPosts; i < numOfPosts; i += this.numOfPostsPerPage) {
+            this.mapOfPages[pageNumber] = this.visiblePosts.slice(i, i + this.numOfPostsPerPage);
+            pageNumber++;
+        }
+        this.pageNumbers = Object.keys(this.mapOfPages);
+        this.activePage = this.mapOfPages[1];
+    };
     GalleryComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-gallery',
             template: __webpack_require__("../../../../../src/app/components/gallery/gallery.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/gallery/gallery.component.css")]
@@ -1123,7 +1137,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"jumbotron text-center\">\r\n  <h1>Sigrid Likes Pancakes</h1>\r\n  <div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "\n<div class=\"jumbotron text-center\">\n  <h1>Sigrid Likes Pancakes</h1>\n  <div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1131,8 +1145,8 @@ module.exports = "\r\n<div class=\"jumbotron text-center\">\r\n  <h1>Sigrid Like
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1149,7 +1163,7 @@ var HomeComponent = (function () {
     HomeComponent.prototype.ngOnInit = function () {
     };
     HomeComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-home',
             template: __webpack_require__("../../../../../src/app/components/home/home.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/home/home.component.css")]
@@ -1184,7 +1198,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Login</h2>\r\n<form (submit)=\"onLoginSubmit()\">\r\n  <div class=\"form-group\">\r\n    <label>Username</label>\r\n    <input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label>Password</label>\r\n    <input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\">\r\n  </div>\r\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\r\n</form>\r\n"
+module.exports = "<h2 class=\"page-header\">Login</h2>\n<form (submit)=\"onLoginSubmit()\">\n  <div class=\"form-group\">\n    <label>Username</label>\n    <input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\">\n  </div>\n  <div class=\"form-group\">\n    <label>Password</label>\n    <input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\">\n  </div>\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\n</form>\n"
 
 /***/ }),
 
@@ -1192,12 +1206,12 @@ module.exports = "<h2 class=\"page-header\">Login</h2>\r\n<form (submit)=\"onLog
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1246,12 +1260,12 @@ var LoginComponent = (function () {
         });
     };
     LoginComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-login',
             template: __webpack_require__("../../../../../src/app/components/login/login.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/login/login.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
     ], LoginComponent);
     return LoginComponent;
     var _a, _b, _c;
@@ -1269,7 +1283,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "#navbar {\r\n  width: 100%;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-pack: center;\r\n      -ms-flex-pack: center;\r\n          justify-content: center;\r\n}\r\n\r\n.icon-bar {\r\n  background: #00495C;\r\n}\r\n\r\n.active {\r\n  color: #ffb100 !important;\r\n}\r\n\r\n.navbar-brand {\r\n  color: #00495C;\r\n}\r\n\r\n.navbar-brand:hover {\r\n  color: #ffb100;\r\n}\r\n", ""]);
+exports.push([module.i, "#navbar {\n  width: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n\n.icon-bar {\n  background: #00495C;\n}\n\n.active {\n  color: #ffb100 !important;\n}\n\n.navbar-brand {\n  color: #00495C;\n}\n\n.navbar-brand:hover {\n  color: #ffb100;\n}\n", ""]);
 
 // exports
 
@@ -1282,7 +1296,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar\">\r\n  <div class=\"container-fluid\">\r\n    <!-- Brand and toggle get grouped for better mobile display -->\r\n    <div id=\"navbar\" >\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\"\r\n                data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\" style=\"border: solid #00495C 1px;\">\r\n          <span class=\"sr-only\">Toggle navigation</span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n      </div>\r\n      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\r\n        <a routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{ exact: true }\" class=\"navbar-brand\"\r\n           routerLink=\"/\">Latest</a>\r\n        <a routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/gallery\">Gallery</a>\r\n        <a routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/about\">About</a>\r\n        <a routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/calendar\">Calendar</a>\r\n        <div class=\"dropdown\" *ngIf=\"authService.loggedIn()\">\r\n          <a class=\"navbar-brand \" type=\"button\" data-toggle=\"dropdown\">Admin\r\n            <span class=\"caret\"></span></a>\r\n          <ul class=\"dropdown-menu\">\r\n            <li><a *ngIf=\"authService.loggedIn()\" routerLinkActive=\"active\" class=\"navbar-brand\"\r\n                   routerLink=\"/dashboard\">Dashboard</a>\r\n            </li>\r\n            <li><a *ngIf=\"authService.loggedIn()\" routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/profile\">Profile</a>\r\n            </li>\r\n            <li><a *ngIf=\"authService.loggedIn()\" class=\"navbar-brand\" (click)=\"onLogoutClick()\" href=\"#\">Logout</a>\r\n            </li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n  </div><!-- /.container-fluid -->\r\n</nav>\r\n"
+module.exports = "<nav class=\"navbar\">\n  <div class=\"container-fluid\">\n    <!-- Brand and toggle get grouped for better mobile display -->\n    <div id=\"navbar\" >\n      <div class=\"navbar-header\">\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\"\n                data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\" style=\"border: solid #00495C 1px;\">\n          <span class=\"sr-only\">Toggle navigation</span>\n          <span class=\"icon-bar\"></span>\n          <span class=\"icon-bar\"></span>\n          <span class=\"icon-bar\"></span>\n        </button>\n      </div>\n      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n        <a routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{ exact: true }\" class=\"navbar-brand\"\n           routerLink=\"/\">Latest</a>\n        <a routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/gallery\">Gallery</a>\n        <a routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/about\">About</a>\n        <a routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/calendar\">Calendar</a>\n        <div class=\"dropdown\" *ngIf=\"authService.loggedIn()\">\n          <a class=\"navbar-brand \" type=\"button\" data-toggle=\"dropdown\">Admin\n            <span class=\"caret\"></span></a>\n          <ul class=\"dropdown-menu\">\n            <li><a *ngIf=\"authService.loggedIn()\" routerLinkActive=\"active\" class=\"navbar-brand\"\n                   routerLink=\"/dashboard\">Dashboard</a>\n            </li>\n            <li><a *ngIf=\"authService.loggedIn()\" routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/profile\">Profile</a>\n            </li>\n            <li><a *ngIf=\"authService.loggedIn()\" class=\"navbar-brand\" (click)=\"onLogoutClick()\" href=\"#\">Logout</a>\n            </li>\n          </ul>\n        </div>\n      </div>\n    </div>\n\n  </div><!-- /.container-fluid -->\n</nav>\n"
 
 /***/ }),
 
@@ -1290,12 +1304,12 @@ module.exports = "<nav class=\"navbar\">\r\n  <div class=\"container-fluid\">\r\
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavbarComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NavbarComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1330,12 +1344,12 @@ var NavbarComponent = (function () {
         return false;
     };
     NavbarComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-navbar',
             template: __webpack_require__("../../../../../src/app/components/navbar/navbar.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/navbar/navbar.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
     ], NavbarComponent);
     return NavbarComponent;
     var _a, _b, _c;
@@ -1353,7 +1367,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".post-block {\r\n\r\n}\r\n\r\nh3 {\r\n  font-size: 2em;\r\n  margin-bottom: 0;\r\n}\r\n\r\n.weather-section {\r\n  line-height: 2em;\r\n}\r\n\r\n#post-header-section-vert {\r\n  margin-bottom: 15px;\r\n}\r\n\r\ndiv.white-space-pre-line {\r\n  white-space: pre-line;\r\n}\r\n\r\n#post-header-section-hori {\r\n  margin-bottom: 15px;\r\n}\r\n\r\n.blog-post-image-vert {\r\n  margin-bottom: 10px;\r\n  margin-right: 10px;\r\n  width: 50%;\r\n  float: left\r\n}\r\n\r\n.blog-post-image-hori {\r\n  margin-bottom: 10px;\r\n  width: 100%;\r\n}\r\n\r\n#post-weather-image {\r\n  width: 10%;\r\n}\r\n", ""]);
+exports.push([module.i, ".post-block {\n\n}\n\nh3 {\n  font-size: 2em;\n  margin-bottom: 0;\n}\n\n.weather-section {\n  line-height: 2em;\n}\n\n#post-header-section-vert {\n  margin-bottom: 15px;\n}\n\ndiv.white-space-pre-line {\n  white-space: pre-line;\n}\n\n#post-header-section-hori {\n  margin-bottom: 15px;\n}\n\n.blog-post-image-vert {\n  margin-bottom: 10px;\n  margin-right: 10px;\n  width: 50%;\n  float: left\n}\n\n.blog-post-image-hori {\n  margin-bottom: 10px;\n  width: 100%;\n}\n\n#post-weather-image {\n  width: 10%;\n}\n", ""]);
 
 // exports
 
@@ -1366,7 +1380,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/post/post.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"\" class=\"blog-post\" *ngIf=\"selectedPost && selectedPost.layout === 'horizontal'\">\r\n  <div class=\"post-block\">\r\n    <div class=\"row\" id=\"post-header-section-hori\">\r\n      <div class=\"col-lg-10 col-md-10 col-sm-10 col-xs-12\">\r\n        <h3>{{selectedPost.title}}</h3>\r\n      </div>\r\n      <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section\">\r\n        <small>Posted by: {{selectedPost.author}} on {{formattedDate}}</small> -\r\n        <img id=\"post-weather-image\" src=\"{{formattedWeatherPhotoName}}\"/>\r\n        <small>{{selectedPost.temperature}}&#8457;</small>\r\n      </div>\r\n    </div>\r\n    <div><img class=\"blog-post-image-hori\" src=\"{{s3url}}{{selectedPost.photos[0]}}\"/>{{selectedPost.body}}\r\n    </div>\r\n    <br>\r\n    <div class=\"row\">\r\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\r\n        <p>Miles Since last Post: <strong>{{selectedPost.milesSinceLastPost}}</strong>.  Time spent biking: <strong>{{timeBiked}}</strong></p>\r\n      </div>\r\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\r\n        <p>Tags: {{selectedPost.tags}}</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div style=\"\" class=\"blog-post\" *ngIf=\"selectedPost && selectedPost.layout === 'vertical'\">\r\n  <div class=\"post-block\">\r\n    <div class=\"row\" id=\"post-header-section-vert\">\r\n      <div class=\"col-lg-10 col-md-10 col-sm-10 col-xs-12\">\r\n        <h3>{{selectedPost.title}}</h3>\r\n      </div>\r\n      <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section\">\r\n        <small>Posted by: {{selectedPost.author}} on {{formattedDate}}</small> -\r\n        <img id=\"post-weather-image\" src=\"{{formattedWeatherPhotoName}}\"/>\r\n        <small>{{selectedPost.temperature}}&#8457;</small>\r\n      </div>\r\n    </div>\r\n    <div class=\"white-space-pre-line\"><img class=\"blog-post-image-vert\" src=\"{{s3url}}{{selectedPost.photos[0]}}\"/>{{selectedPost.body}}\r\n    </div>\r\n    <br>\r\n    <div class=\"row\">\r\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\r\n        <p>Miles Since last Post: <strong>{{selectedPost.milesSinceLastPost}}</strong>.  Time spent biking: <strong>{{timeBiked}}</strong></p>\r\n      </div>\r\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\r\n        <p>Tags: {{selectedPost.tags}}</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div style=\"\" class=\"blog-post\" *ngIf=\"selectedPost && selectedPost.layout === 'horizontal'\">\n  <div class=\"post-block\">\n    <div class=\"row\" id=\"post-header-section-hori\">\n      <div class=\"col-lg-10 col-md-10 col-sm-10 col-xs-12\">\n        <h3>{{selectedPost.title}}</h3>\n      </div>\n      <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section\">\n        <small>Posted by: {{selectedPost.author}} on {{formattedDate}}</small> -\n        <img id=\"post-weather-image\" src=\"{{formattedWeatherPhotoName}}\"/>\n        <small>{{selectedPost.temperature}}&#8457;</small>\n      </div>\n    </div>\n    <div><img class=\"blog-post-image-hori\" src=\"{{s3url}}{{selectedPost.photos[0]}}\"/>{{selectedPost.body}}\n    </div>\n    <br>\n    <div class=\"row\">\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\n        <p>Miles Since last Post: <strong>{{selectedPost.milesSinceLastPost}}</strong>.  Time spent biking: <strong>{{timeBiked}}</strong></p>\n      </div>\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\n        <p>Tags: {{selectedPost.tags}}</p>\n      </div>\n    </div>\n  </div>\n</div>\n<div style=\"\" class=\"blog-post\" *ngIf=\"selectedPost && selectedPost.layout === 'vertical'\">\n  <div class=\"post-block\">\n    <div class=\"row\" id=\"post-header-section-vert\">\n      <div class=\"col-lg-10 col-md-10 col-sm-10 col-xs-12\">\n        <h3>{{selectedPost.title}}</h3>\n      </div>\n      <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section\">\n        <small>Posted by: {{selectedPost.author}} on {{formattedDate}}</small> -\n        <img id=\"post-weather-image\" src=\"{{formattedWeatherPhotoName}}\"/>\n        <small>{{selectedPost.temperature}}&#8457;</small>\n      </div>\n    </div>\n    <div ><img class=\"blog-post-image-vert\" src=\"{{s3url}}{{selectedPost.photos[0]}}\"/>\n      <span class=\"white-space-pre-wrap\" [innerHtml]=\"selectedPost.body | newLine\"></span>\n    </div>\n    <br>\n    <div class=\"row\">\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\n        <p>Miles Since last Post: <strong>{{selectedPost.milesSinceLastPost}}</strong>.  Time spent biking: <strong>{{timeBiked}}</strong></p>\n      </div>\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\n        <p>Tags: {{selectedPost.tags}}</p>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1374,9 +1388,10 @@ module.exports = "<div style=\"\" class=\"blog-post\" *ngIf=\"selectedPost && se
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export NewlinePipe */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__feed_feed_component__ = __webpack_require__("../../../../../src/app/components/feed/feed.component.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1387,6 +1402,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+var NewlinePipe = (function () {
+    function NewlinePipe() {
+    }
+    NewlinePipe.prototype.transform = function (value, args) {
+        return value.replace(/(?:\r\n|\r|\n)/g, '<br />');
+    };
+    NewlinePipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({ name: 'newLine' })
+    ], NewlinePipe);
+    return NewlinePipe;
+}());
 
 var PostComponent = (function () {
     function PostComponent() {
@@ -1433,11 +1460,11 @@ var PostComponent = (function () {
         }
     };
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__feed_feed_component__["b" /* Post */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__feed_feed_component__["b" /* Post */]) === "function" && _a || Object)
     ], PostComponent.prototype, "selectedPost", void 0);
     PostComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-post',
             template: __webpack_require__("../../../../../src/app/components/post/post.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/post/post.component.css")]
@@ -1472,7 +1499,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/profile/profile.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"user\" style=\"margin-bottom: 12em;\">\r\n  <h2 class=\"page-header\">Profile</h2>\r\n  <form (submit)=\"onSubmitEditUser()\">\r\n    <div class=\"form-group\">\r\n      <label>Name</label>\r\n      <input type=\"text\" [(ngModel)]=\"user.name\" name=\"name\" class=\"form-control\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label>Username</label>\r\n      <input type=\"text\" [(ngModel)]=\"user.username\" name=\"username\" class=\"form-control\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label>Password</label>\r\n      <input type=\"password\" [(ngModel)]=\"user.password\" name=\"password\" disabled readonly class=\"form-control\">\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label>Email</label>\r\n      <input type=\"text\" [(ngModel)]=\"user.email\" name=\"email\" class=\"form-control\">\r\n    </div>\r\n    <input type=\"submit\" class=\"btn btn-primary\" value=\"Edit User Details\">\r\n    <button class=\"btn-danger\" (click)=\"onDeleteUser()\" type=\"button\">Delete</button>\r\n  </form>\r\n\r\n</div>\r\n"
+module.exports = "<div *ngIf=\"user\" style=\"margin-bottom: 12em;\">\n  <h2 class=\"page-header\">Profile</h2>\n  <form (submit)=\"onSubmitEditUser()\">\n    <div class=\"form-group\">\n      <label>Name</label>\n      <input type=\"text\" [(ngModel)]=\"user.name\" name=\"name\" class=\"form-control\">\n    </div>\n    <div class=\"form-group\">\n      <label>Username</label>\n      <input type=\"text\" [(ngModel)]=\"user.username\" name=\"username\" class=\"form-control\">\n    </div>\n    <div class=\"form-group\">\n      <label>Password</label>\n      <input type=\"password\" [(ngModel)]=\"user.password\" name=\"password\" disabled readonly class=\"form-control\">\n    </div>\n    <div class=\"form-group\">\n      <label>Email</label>\n      <input type=\"text\" [(ngModel)]=\"user.email\" name=\"email\" class=\"form-control\">\n    </div>\n    <input type=\"submit\" class=\"btn btn-primary\" value=\"Edit User Details\">\n    <button class=\"btn-danger\" (click)=\"onDeleteUser()\" type=\"button\">Delete</button>\n  </form>\n\n</div>\n"
 
 /***/ }),
 
@@ -1480,12 +1507,12 @@ module.exports = "<div *ngIf=\"user\" style=\"margin-bottom: 12em;\">\r\n  <h2 c
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfileComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfileComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1552,12 +1579,12 @@ var ProfileComponent = (function () {
         });
     };
     ProfileComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-profile',
             template: __webpack_require__("../../../../../src/app/components/profile/profile.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/profile/profile.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
     ], ProfileComponent);
     return ProfileComponent;
     var _a, _b, _c;
@@ -1588,7 +1615,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"page-header\">Register</h2>\r\n<form (submit)=\"onRegisterSubmit()\">\r\n  <div class=\"form-group\">\r\n    <label>Name</label>\r\n    <input type=\"text\" [(ngModel)]=\"name\" name=\"name\" class=\"form-control\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label>Username</label>\r\n    <input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label>Password</label>\r\n    <input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\">\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label>Email</label>\r\n    <input type=\"text\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\">\r\n  </div>\r\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\r\n</form>\r\n"
+module.exports = "<h2 class=\"page-header\">Register</h2>\n<form (submit)=\"onRegisterSubmit()\">\n  <div class=\"form-group\">\n    <label>Name</label>\n    <input type=\"text\" [(ngModel)]=\"name\" name=\"name\" class=\"form-control\">\n  </div>\n  <div class=\"form-group\">\n    <label>Username</label>\n    <input type=\"text\" [(ngModel)]=\"username\" name=\"username\" class=\"form-control\">\n  </div>\n  <div class=\"form-group\">\n    <label>Password</label>\n    <input type=\"password\" [(ngModel)]=\"password\" name=\"password\" class=\"form-control\">\n  </div>\n  <div class=\"form-group\">\n    <label>Email</label>\n    <input type=\"text\" [(ngModel)]=\"email\" name=\"email\" class=\"form-control\">\n  </div>\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Submit\">\n</form>\n"
 
 /***/ }),
 
@@ -1596,13 +1623,13 @@ module.exports = "<h2 class=\"page-header\">Register</h2>\r\n<form (submit)=\"on
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_validate_service__ = __webpack_require__("../../../../../src/app/services/validate.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1658,12 +1685,12 @@ var RegisterComponent = (function () {
         });
     };
     RegisterComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-register',
             template: __webpack_require__("../../../../../src/app/components/register/register.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/register/register.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_auth_service__["a" /* AuthService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_auth_service__["a" /* AuthService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* Router */]) === "function" && _d || Object])
     ], RegisterComponent);
     return RegisterComponent;
     var _a, _b, _c, _d;
@@ -1677,10 +1704,10 @@ var RegisterComponent = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthGuard; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthGuard; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1708,8 +1735,8 @@ var AuthGuard = (function () {
         }
     };
     AuthGuard = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]) === "function" && _b || Object])
     ], AuthGuard);
     return AuthGuard;
     var _a, _b;
@@ -1723,13 +1750,13 @@ var AuthGuard = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/add/operator/map.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_jwt__ = __webpack_require__("../../../../angular2-jwt/angular2-jwt.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_jwt___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_jwt__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1783,7 +1810,7 @@ var AuthService = (function () {
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.loggedIn = function () {
-        return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_angular2_jwt__["tokenNotExpired"])('id_token');
+        return Object(__WEBPACK_IMPORTED_MODULE_3_angular2_jwt__["tokenNotExpired"])('id_token');
     };
     AuthService.prototype.loadToken = function () {
         var token = localStorage.getItem('id_token');
@@ -1801,7 +1828,7 @@ var AuthService = (function () {
         localStorage.clear();
     };
     AuthService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === "function" && _a || Object])
     ], AuthService);
     return AuthService;
@@ -1816,9 +1843,9 @@ var AuthService = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/@angular/http.es5.js");
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1896,7 +1923,7 @@ var PostService = (function () {
             .map(function (res) { return res.json(); });
     };
     PostService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]) === "function" && _a || Object])
     ], PostService);
     return PostService;
@@ -1911,8 +1938,8 @@ var PostService = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ValidateService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1942,7 +1969,7 @@ var ValidateService = (function () {
         return re.test(email);
     };
     ValidateService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [])
     ], ValidateService);
     return ValidateService;
@@ -1988,9 +2015,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 if (__WEBPACK_IMPORTED_MODULE_5__environments_environment__["a" /* environment */].production) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
 }
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_4__app_app_module__["a" /* AppModule */]);
+Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_4__app_app_module__["a" /* AppModule */]);
 //# sourceMappingURL=main.js.map
 
 /***/ }),

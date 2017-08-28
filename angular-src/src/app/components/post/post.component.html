@@ -35,8 +35,8 @@
         <small>{{selectedPost.temperature}}&#8457;</small>
       </div>
     </div>
-    <div class="white-space-pre-line"><img class="blog-post-image-vert" src="{{s3url}}{{selectedPost.photos[0]}}"/>
-      <span [innerHtml]="selectedPost.body | newLine"></span>
+    <div ><img class="blog-post-image-vert" src="{{s3url}}{{selectedPost.photos[0]}}"/>
+      <span class="white-space-pre-wrap" [innerHtml]="selectedPost.body | newLine"></span>
     </div>
     <br>
     <div class="row">

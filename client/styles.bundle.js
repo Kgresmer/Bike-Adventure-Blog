@@ -1,4 +1,4 @@
-webpackJsonp([2],{
+webpackJsonp(["styles"],{
 
 /***/ "../../../../../src/styles.css":
 /***/ (function(module, exports, __webpack_require__) {
@@ -15,8 +15,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!../node_modules/css-loader/index.js??ref--9-1!../node_modules/postcss-loader/index.js??postcss!./styles.css", function() {
-			var newContent = require("!!../node_modules/css-loader/index.js??ref--9-1!../node_modules/postcss-loader/index.js??postcss!./styles.css");
+		module.hot.accept("!!../node_modules/css-loader/index.js??ref--8-1!../node_modules/postcss-loader/index.js??postcss!./styles.css", function() {
+			var newContent = require("!!../node_modules/css-loader/index.js??ref--8-1!../node_modules/postcss-loader/index.js??postcss!./styles.css");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -70,7 +70,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 exports.i(__webpack_require__("../../../../css-loader/index.js?{\"sourceMap\":false,\"importLoaders\":1}!../../../../postcss-loader/index.js?{\"ident\":\"postcss\"}!../../../../bootstrap/dist/css/bootstrap.css"), "");
 
 // module
-exports.push([module.i, "body {\r\n  font-family: 'Raleway', sans-serif;\r\n  color: #00495C !important;\r\n  font-size: 1.7em;\r\n}\r\n", ""]);
+exports.push([module.i, "body {\n  font-family: 'Raleway', sans-serif;\n  color: #00495C !important;\n  font-size: 1.7em;\n}\n", ""]);
 
 // exports
 
