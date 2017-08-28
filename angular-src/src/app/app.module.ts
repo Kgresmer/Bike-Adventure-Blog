@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 import {FeedComponent} from './components/feed/feed.component';
-import {PostComponent} from './components/post/post.component';
+import {NewlinePipe, PostComponent} from './components/post/post.component';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {AboutComponent} from './components/about/about.component';
@@ -77,6 +77,7 @@ export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);
     HomeComponent,
     DashboardComponent,
     ProfileComponent,
+    NewlinePipe,
     FileSelectDirective,
     GalleryComponent,
     FooterComponent,

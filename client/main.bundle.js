@@ -187,7 +187,7 @@ var AppModule = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_5__components_feed_feed_component__["a" /* FeedComponent */],
-                __WEBPACK_IMPORTED_MODULE_6__components_post_post_component__["a" /* PostComponent */],
+                __WEBPACK_IMPORTED_MODULE_6__components_post_post_component__["b" /* PostComponent */],
                 __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_8__components_navbar_navbar_component__["a" /* NavbarComponent */],
                 __WEBPACK_IMPORTED_MODULE_9__components_about_about_component__["a" /* AboutComponent */],
@@ -196,6 +196,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_12__components_home_home_component__["a" /* HomeComponent */],
                 __WEBPACK_IMPORTED_MODULE_13__components_dashboard_dashboard_component__["a" /* DashboardComponent */],
                 __WEBPACK_IMPORTED_MODULE_14__components_profile_profile_component__["a" /* ProfileComponent */],
+                __WEBPACK_IMPORTED_MODULE_6__components_post_post_component__["a" /* NewlinePipe */],
                 __WEBPACK_IMPORTED_MODULE_20_ng2_file_upload__["FileSelectDirective"],
                 __WEBPACK_IMPORTED_MODULE_21__components_gallery_gallery_component__["a" /* GalleryComponent */],
                 __WEBPACK_IMPORTED_MODULE_22__components_footer_footer_component__["a" /* FooterComponent */],
@@ -1388,8 +1389,8 @@ module.exports = "<div style=\"\" class=\"blog-post\" *ngIf=\"selectedPost && se
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export NewlinePipe */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewlinePipe; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return PostComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__feed_feed_component__ = __webpack_require__("../../../../../src/app/components/feed/feed.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
