@@ -9,7 +9,7 @@
           <div class="post-block">
             <div class="row">
               <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section">
-                <h3>{{post.title}}</h3><span [innerHtml]="post.body.split('. ')[0]"></span>. . . . <small>(see more)<small>
+                <h3>{{post.title}}</h3><span [innerHtml]="post.body.split('. ')[0]"></span>. . . . <small>(see more)</small>
                 <p>Miles Since last Post: <strong>{{post.milesSinceLastPost}}</strong><br>
                   <small>Posted by: {{post.author}} on {{formattedDate}}</small>
                   - <img id="post-weather-image" src="{{formattedWeatherPhotoName}}"/>
