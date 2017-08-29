@@ -122,6 +122,7 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_gallery_gallery_component__ = __webpack_require__("../../../../../src/app/components/gallery/gallery.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_footer_footer_component__ = __webpack_require__("../../../../../src/app/components/footer/footer.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_calendar_calendar_component__ = __webpack_require__("../../../../../src/app/components/calendar/calendar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_post_page_post_page_component__ = __webpack_require__("../../../../../src/app/components/post-page/post-page.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -152,10 +153,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var appRoutes = [
     {
         path: 'feed',
         component: __WEBPACK_IMPORTED_MODULE_5__components_feed_feed_component__["a" /* FeedComponent */]
+    },
+    {
+        path: 'post/:id',
+        component: __WEBPACK_IMPORTED_MODULE_24__components_post_page_post_page_component__["a" /* PostPageComponent */]
     },
     {
         path: 'about',
@@ -192,7 +198,7 @@ var appRoutes = [
         canActivate: [__WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]]
     }
 ];
-var appRouting = __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* RouterModule */].forRoot(appRoutes);
+var appRouting = __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* RouterModule */].forRoot(appRoutes);
 var AppModule = (function () {
     function AppModule() {
     }
@@ -213,7 +219,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_20_ng2_file_upload__["FileSelectDirective"],
                 __WEBPACK_IMPORTED_MODULE_21__components_gallery_gallery_component__["a" /* GalleryComponent */],
                 __WEBPACK_IMPORTED_MODULE_22__components_footer_footer_component__["a" /* FooterComponent */],
-                __WEBPACK_IMPORTED_MODULE_23__components_calendar_calendar_component__["a" /* CalendarComponent */]
+                __WEBPACK_IMPORTED_MODULE_23__components_calendar_calendar_component__["a" /* CalendarComponent */],
+                __WEBPACK_IMPORTED_MODULE_24__components_post_page_post_page_component__["a" /* PostPageComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -226,7 +233,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_19__services_post_service__["a" /* PostService */],
                 __WEBPACK_IMPORTED_MODULE_15__services_validate_service__["a" /* ValidateService */],
                 __WEBPACK_IMPORTED_MODULE_17__services_auth_service__["a" /* AuthService */],
-                __WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */]
+                __WEBPACK_IMPORTED_MODULE_18__guards_auth_guard__["a" /* AuthGuard */],
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */]]
         })
@@ -465,6 +472,7 @@ var DashboardComponent = (function () {
         });
         this.errorMessages = [];
         this.currentPost = new __WEBPACK_IMPORTED_MODULE_1__feed_feed_component__["b" /* Post */]();
+        this.currentPost.comments = [];
         this.currentPost.timeBikedToday = 0;
         this.currentPost.milesSinceLastPost = 0;
         this.currentPost.layout = this.HORIZONTAL_LAYOUT;
@@ -539,6 +547,7 @@ var DashboardComponent = (function () {
         this.currentPost = new __WEBPACK_IMPORTED_MODULE_1__feed_feed_component__["b" /* Post */]();
         this.currentPost.timeBikedToday = this.postToEdit.timeBikedToday || 0;
         this.currentPost.milesSinceLastPost = this.postToEdit.milesSinceLastPost || 0;
+        this.currentPost.comments = this.postToEdit.comments;
         this.currentPost.photos = this.postToEdit.photos;
         this.currentPost.author = this.postToEdit.author;
         this.currentPost.body = this.postToEdit.body;
@@ -554,6 +563,7 @@ var DashboardComponent = (function () {
     };
     DashboardComponent.prototype.updatePostForm = function () {
         this.currentPost = new __WEBPACK_IMPORTED_MODULE_1__feed_feed_component__["b" /* Post */]();
+        this.currentPost.comments = [];
         this.currentPost.timeBikedToday = 0;
         this.currentPost.date = new Date().toISOString().split('T')[0];
         this.currentPost.milesSinceLastPost = 0;
@@ -728,7 +738,7 @@ var DashboardComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/dashboard/dashboard.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/dashboard/dashboard.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_post_service__["a" /* PostService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_post_service__["a" /* PostService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* Router */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_post_service__["a" /* PostService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_post_service__["a" /* PostService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _c || Object])
     ], DashboardComponent);
     return DashboardComponent;
     var _a, _b, _c;
@@ -746,7 +756,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".selected {\n  background-color: #CFD8DC !important;\n}\n\n.pagination {\n  margin: 0;\n}\n\n#tag-container {\n  display: inline-block;\n  padding: 5px;\n}\n\n.tag-link {\n  padding: 3px;\n}\n\n#search-button {\n  margin-top: 5px;\n  background-color: #00495C;\n  border: none;\n}\n\n.remove-padding {\n  padding: 0;\n}\n\n.totals-number {\n  font-size: 1.2em;\n  margin-bottom: 5em;\n}\n\n.totals-image {\n  margin-bottom: 5px;\n  width: 40%;\n}\n\n.total-miles-section {\n  padding-bottom: 1em;\n}\n\n#totals-display {\n  text-align: center;\n  position: relative;\n  right: -0%;\n  height:100%;\n}\n\n@media (min-width: 428px) {\n  #totals-display  {\n    position: relative;\n  }\n}\n\n@media (min-width: 780px) {\n  #totals-display  {\n    position: fixed;\n    right: -0%;\n  }\n}\n\n@media (min-width: 992px) {\n  #totals-display  {\n    position: fixed;\n    right: -0%;\n  }\n}\n\n@media (min-width: 1200px) {\n  #totals-display  {\n    position: fixed;\n    right: -0%;\n  }\n}\n", ""]);
+exports.push([module.i, ".selected {\n  background-color: #CFD8DC !important;\n}\n\n.display-post-thumbnail {\n  height: 5%;\n}\n\n.weather-section {\n  line-height: 2em;\n}\n\n.post-block {\n  padding-bottom: 1em;\n  border-bottom: solid 1px #00495C;\n  margin-bottom: 1em;\n}\n\n#post-weather-image {\n  width: 10%;\n}\n\n.blog-post-image-thumbnail {\n  padding-top: 5%;\n  width: 100%;\n}\n\n#tag-container {\n  display: inline-block;\n  padding: 5px;\n}\n\n.tag-link {\n  padding: 3px;\n}\n\n#search-button {\n  margin-top: 5px;\n  background-color: #00495C;\n  border: none;\n}\n\n.remove-padding {\n  padding: 0;\n}\n\n.totals-number {\n  font-size: 1.2em;\n  margin-bottom: 5em;\n}\n\n.totals-image {\n  margin-bottom: 5px;\n  width: 40%;\n}\n\n.total-miles-section {\n  padding-bottom: 1em;\n}\n\n#totals-display {\n  text-align: center;\n  position: relative;\n  right: -0%;\n  height:100%;\n}\n\n@media (min-width: 428px) {\n  #totals-display  {\n    position: relative;\n  }\n}\n\n@media (min-width: 780px) {\n  #totals-display  {\n    position: fixed;\n    right: -0%;\n  }\n}\n\n@media (min-width: 992px) {\n  #totals-display  {\n    position: fixed;\n    right: -0%;\n  }\n}\n\n@media (min-width: 1200px) {\n  #totals-display  {\n    position: fixed;\n    right: -0%;\n  }\n}\n", ""]);
 
 // exports
 
@@ -759,7 +769,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/feed/feed.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" style=\"display: inline-block;\">\n  <ul class=\"pagination\" *ngIf=\"pageNumbers.length > 1\">\n    <li *ngFor=\"let page of pageNumbers\"><a href=\"#\" (click)=\"changePage(page)\">{{page}}</a></li>\n  </ul>\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding\">\n      <div *ngFor=\"let post of activePage\" >\n        <div>\n        <app-post [selectedPost]=\"post\"></app-post>\n        <hr>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-xs-offset-3 col-xs-6 col-sm-3 col-md-3 col-lg-3\"\n         id=\"totals-display\" *ngIf=\"totals\">\n      <div style=\"background-color: #ffffff; padding: 1.5rem;\">\n        <div class=\"total-miles-section\">\n          <img src=\"../../../assets/bike.png\" class=\"totals-image\"> <br>\n          Total Miles Biked: <br>\n          <span class=\"totals-number\">{{totals.totalMilesBiked}}</span> <br>\n        </div>\n        <div class=\"total-time-section\">\n          <img src=\"../../../assets/clock.png\" class=\"totals-image\"> <br>\n          Total Time Biked: <br>\n          <span class=\"totals-number\">{{totalTimeBiked.days}}</span> days<br>\n          <span class=\"totals-number\">{{totalTimeBiked.hours}}</span> hrs<br>\n          <span class=\"totals-number\">{{totalTimeBiked.minutes}}</span> mins<br>\n        </div>\n        <hr>\n        <div id=\"search-section\">\n          <label>Search by Tag</label>\n          <br>\n          <div id=\"tag-container\">\n            <a *ngFor=\"let tag of filterTags\" href=\"#\" (click)=\"searchForTag(tag)\" class=\"tag-link\">\n              {{tag}}\n            </a>\n          </div>\n          <br>\n          <button id=\"search-button\" *ngIf=\"filteredPosts.length > 0\" (click)=\"clearSearchResults()\"\n                  class=\"btn btn-info\">\n            Clear Search Results\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n  <ul class=\"pagination\" *ngIf=\"pageNumbers.length > 1\">\n    <li *ngFor=\"let page of pageNumbers\"><a href=\"#\" (click)=\"changePage(page)\">{{page}}</a></li>\n  </ul>\n</div>\n\n"
+module.exports = "<div class=\"container\" style=\"display: inline-block;\">\n  <ul class=\"pagination\" *ngIf=\"pageNumbers.length > 1\">\n    <li *ngFor=\"let page of pageNumbers\"><a href=\"#\" (click)=\"changePage(page)\">{{page}}</a></li>\n  </ul>\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding\">\n      <div *ngFor=\"let post of activePage\" class=\"display-post-thumbnail\">\n        <a [routerLink]=\"['/post', post._id]\" title=\"Click to read more\" data-toggle=\"tooltip\" data-placement=\"top\">\n          <div class=\"post-block\">\n            <div class=\"row\">\n              <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-8 weather-section\">\n                <h3>{{post.title}}</h3><span [innerHtml]=\"post.body.split('. ')[0]\"></span>.\n                <p>Miles Since last Post: <strong>{{post.milesSinceLastPost}}</strong><br>\n                  <small>Posted by: {{post.author}} on {{formattedDate}}</small>\n                  - <img id=\"post-weather-image\" src=\"{{formattedWeatherPhotoName}}\"/>\n                  <small>{{post.temperature}}&#8457;</small>\n                </p>\n              </div>\n              <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-4 weather-section\">\n                <img class=\"blog-post-image-thumbnail\" src=\"{{s3url}}{{post.photos[0]}}\"/>\n              </div>\n            </div>\n          </div>\n        </a>\n      </div>\n    </div>\n    <div class=\"col-xs-offset-3 col-xs-6 col-sm-3 col-md-3 col-lg-3\"\n         id=\"totals-display\" *ngIf=\"totals\">\n      <div style=\"background-color: #ffffff; padding: 1.5rem;\">\n        <div class=\"total-miles-section\">\n          <img src=\"../../../assets/bike.png\" class=\"totals-image\"> <br>\n          Total Miles Biked: <br>\n          <span class=\"totals-number\">{{totals.totalMilesBiked}}</span> <br>\n        </div>\n        <div class=\"total-time-section\">\n          <img src=\"../../../assets/clock.png\" class=\"totals-image\"> <br>\n          Total Time Biked: <br>\n          <span class=\"totals-number\">{{totalTimeBiked.days}}</span> days<br>\n          <span class=\"totals-number\">{{totalTimeBiked.hours}}</span> hrs<br>\n          <span class=\"totals-number\">{{totalTimeBiked.minutes}}</span> mins<br>\n        </div>\n        <hr>\n        <div id=\"search-section\">\n          <label>Search by Tag</label>\n          <br>\n          <div id=\"tag-container\">\n            <a *ngFor=\"let tag of filterTags\" href=\"#\" (click)=\"searchForTag(tag)\" class=\"tag-link\">\n              {{tag}}\n            </a>\n          </div>\n          <br>\n          <button id=\"search-button\" *ngIf=\"filteredPosts.length > 0\" (click)=\"clearSearchResults()\"\n                  class=\"btn btn-info\">\n            Clear Search Results\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n  <ul class=\"pagination\" *ngIf=\"pageNumbers.length > 1\">\n    <li *ngFor=\"let page of pageNumbers\"><a href=\"#\" (click)=\"changePage(page)\">{{page}}</a></li>\n  </ul>\n</div>\n\n"
 
 /***/ }),
 
@@ -809,11 +819,21 @@ var FeedComponent = (function () {
     }
     FeedComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.s3url = 'https://blog-post-photos.s3.amazonaws.com/';
         this.filteredPosts = [];
         this.mapOfPages = {};
         this.numOfPostsPerPage = 4;
         this.pageNumbers = [];
         this.filterTags = [];
+        jQuery(document).ready(function () {
+            jQuery('[data-toggle=tooltip]').hover(function () {
+                // on mouseenter
+                jQuery(this).tooltip('show');
+            }, function () {
+                // on mouseleave
+                jQuery(this).tooltip('hide');
+            });
+        });
         jQuery(window).scroll(function () {
             if (jQuery(window).width() > 780) {
                 if (jQuery(window).scrollTop() > 220) {
@@ -986,7 +1006,7 @@ var FooterComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/footer/footer.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/footer/footer.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _c || Object])
     ], FooterComponent);
     return FooterComponent;
     var _a, _b, _c;
@@ -1279,7 +1299,7 @@ var LoginComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/login/login.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/login/login.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
     ], LoginComponent);
     return LoginComponent;
     var _a, _b, _c;
@@ -1310,7 +1330,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/navbar/navbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar\">\n  <div class=\"container-fluid\">\n    <!-- Brand and toggle get grouped for better mobile display -->\n    <div id=\"navbar\" >\n      <div class=\"navbar-header\">\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\"\n                data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\" style=\"border: solid #00495C 1px;\">\n          <span class=\"sr-only\">Toggle navigation</span>\n          <span class=\"icon-bar\"></span>\n          <span class=\"icon-bar\"></span>\n          <span class=\"icon-bar\"></span>\n        </button>\n      </div>\n      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n        <a routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{ exact: true }\" class=\"navbar-brand\"\n           routerLink=\"/\">Latest</a>\n        <a routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/gallery\">Gallery</a>\n        <a routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/about\">About</a>\n        <a routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/calendar\">Calendar</a>\n        <div class=\"dropdown\" *ngIf=\"authService.loggedIn()\">\n          <a class=\"navbar-brand \" type=\"button\" data-toggle=\"dropdown\">Admin\n            <span class=\"caret\"></span></a>\n          <ul class=\"dropdown-menu\">\n            <li><a *ngIf=\"authService.loggedIn()\" routerLinkActive=\"active\" class=\"navbar-brand\"\n                   routerLink=\"/dashboard\">Dashboard</a>\n            </li>\n            <li><a *ngIf=\"authService.loggedIn()\" routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/profile\">Profile</a>\n            </li>\n            <li><a *ngIf=\"authService.loggedIn()\" class=\"navbar-brand\" (click)=\"onLogoutClick()\" href=\"#\">Logout</a>\n            </li>\n          </ul>\n        </div>\n      </div>\n    </div>\n\n  </div><!-- /.container-fluid -->\n</nav>\n"
+module.exports = "<nav class=\"navbar\">\n  <div class=\"container-fluid\">\n    <!-- Brand and toggle get grouped for better mobile display -->\n    <div id=\"navbar\" >\n      <div class=\"navbar-header\">\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\"\n                data-target=\"#bs-example-navbar-collapse-1\" aria-expanded=\"false\" style=\"border: solid #00495C 1px;\">\n          <span class=\"sr-only\">Toggle navigation</span>\n          <span class=\"icon-bar\"></span>\n          <span class=\"icon-bar\"></span>\n          <span class=\"icon-bar\"></span>\n        </button>\n      </div>\n      <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n        <a routerLinkActive=\"active\" [routerLinkActiveOptions]=\"{ exact: true }\" class=\"navbar-brand\"\n           routerLink=\"/\">Home</a>\n        <a routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/gallery\">Gallery</a>\n        <a routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/about\">About</a>\n        <a routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/calendar\">Calendar</a>\n        <div class=\"dropdown\" *ngIf=\"authService.loggedIn()\">\n          <a class=\"navbar-brand \" type=\"button\" data-toggle=\"dropdown\">Admin\n            <span class=\"caret\"></span></a>\n          <ul class=\"dropdown-menu\">\n            <li><a *ngIf=\"authService.loggedIn()\" routerLinkActive=\"active\" class=\"navbar-brand\"\n                   routerLink=\"/dashboard\">Dashboard</a>\n            </li>\n            <li><a *ngIf=\"authService.loggedIn()\" routerLinkActive=\"active\" class=\"navbar-brand\" routerLink=\"/profile\">Profile</a>\n            </li>\n            <li><a *ngIf=\"authService.loggedIn()\" class=\"navbar-brand\" (click)=\"onLogoutClick()\" href=\"#\">Logout</a>\n            </li>\n          </ul>\n        </div>\n      </div>\n    </div>\n\n  </div><!-- /.container-fluid -->\n</nav>\n"
 
 /***/ }),
 
@@ -1363,13 +1383,139 @@ var NavbarComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/navbar/navbar.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/navbar/navbar.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
     ], NavbarComponent);
     return NavbarComponent;
     var _a, _b, _c;
 }());
 
 //# sourceMappingURL=navbar.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/post-page/post-page.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".selected {\n  background-color: #CFD8DC !important;\n}\n\n.pagination {\n  margin: 0;\n}\n\n#tag-container {\n  display: inline-block;\n  padding: 5px;\n}\n\n.tag-link {\n  padding: 3px;\n}\n\n#search-button {\n  margin-top: 5px;\n  background-color: #00495C;\n  border: none;\n}\n\n.remove-padding {\n  padding: 0;\n}\n\n.totals-number {\n  font-size: 1.2em;\n  margin-bottom: 5em;\n}\n\n.totals-image {\n  margin-bottom: 5px;\n  width: 40%;\n}\n\n.total-miles-section {\n  padding-bottom: 1em;\n}\n\n#totals-display {\n  text-align: center;\n  position: relative;\n  right: -0%;\n  height:100%;\n}\n\n@media (min-width: 428px) {\n  #totals-display  {\n    position: relative;\n  }\n}\n\n@media (min-width: 780px) {\n  #totals-display  {\n    position: fixed;\n    right: -0%;\n  }\n}\n\n@media (min-width: 992px) {\n  #totals-display  {\n    position: fixed;\n    right: -0%;\n  }\n}\n\n@media (min-width: 1200px) {\n  #totals-display  {\n    position: fixed;\n    right: -0%;\n  }\n}\n", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/post-page/post-page.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\" style=\"display: inline-block;\">\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding\" *ngIf=\"activePost\">\n        <app-post [selectedPost]=\"activePost\"></app-post>\n        <hr>\n    </div>\n    <div class=\"col-xs-offset-3 col-xs-6 col-sm-3 col-md-3 col-lg-3\"\n         id=\"totals-display\" *ngIf=\"totals\">\n      <div style=\"background-color: #ffffff; padding: 1.5rem;\">\n        <div class=\"total-miles-section\">\n          <img src=\"../../../assets/bike.png\" class=\"totals-image\"> <br>\n          Total Miles Biked: <br>\n          <span class=\"totals-number\">{{totals.totalMilesBiked}}</span> <br>\n        </div>\n        <div class=\"total-time-section\">\n          <img src=\"../../../assets/clock.png\" class=\"totals-image\"> <br>\n          Total Time Biked: <br>\n          <span class=\"totals-number\">{{totalTimeBiked.days}}</span> days<br>\n          <span class=\"totals-number\">{{totalTimeBiked.hours}}</span> hrs<br>\n          <span class=\"totals-number\">{{totalTimeBiked.minutes}}</span> mins<br>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/post-page/post-page.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export Totals */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostPageComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_post_service__ = __webpack_require__("../../../../../src/app/services/post.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var Totals = (function () {
+    function Totals() {
+    }
+    return Totals;
+}());
+
+var PostPageComponent = (function () {
+    function PostPageComponent(postService, flashMessagesService, route) {
+        this.postService = postService;
+        this.flashMessagesService = flashMessagesService;
+        this.route = route;
+        this.totalTimeBiked = { days: 0, hours: 0, minutes: 0 };
+    }
+    PostPageComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.sub = this.route.params.subscribe(function (params) {
+            var id = params['id'];
+            _this.postService.getPostById(id).subscribe(function (response) {
+                if (response.success) {
+                    _this.activePost = response.post;
+                }
+                else {
+                    _this.flashMessagesService.show('I\'m Sorry. I seem to have misplaced that post. ', {
+                        cssClass: 'alert-danger',
+                        timeout: 5000
+                    });
+                }
+            });
+        });
+        jQuery(window).scroll(function () {
+            if (jQuery(window).width() > 780) {
+                if (jQuery(window).scrollTop() > 220) {
+                    jQuery("#totals-display").offset({ top: jQuery(window).scrollTop() + 5 });
+                }
+                else {
+                    var offset = jQuery("#header-image").height() + 90;
+                    jQuery("#totals-display").offset({ top: offset });
+                }
+            }
+        });
+        this.getTotals();
+    };
+    PostPageComponent.prototype.getTotals = function () {
+        var _this = this;
+        this.postService.getTotals().subscribe(function (response) {
+            if (response.success) {
+                _this.totals = response.totals;
+                if (_this.totals.totalTimeBiked) {
+                    _this.totalTimeBiked.days = Math.floor(_this.totals.totalTimeBiked / 1440);
+                    _this.totalTimeBiked.hours = Math.floor(_this.totals.totalTimeBiked / 60);
+                    _this.totalTimeBiked.minutes = _this.totals.totalTimeBiked % 60;
+                }
+            }
+            else {
+                _this.flashMessagesService.show('I\'m Sorry. I seem to have misplaced the totals. ', {
+                    cssClass: 'alert-danger',
+                    timeout: 5000
+                });
+            }
+        });
+    };
+    PostPageComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-feed-root',
+            template: __webpack_require__("../../../../../src/app/components/post-page/post-page.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/post-page/post-page.component.css")]
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_post_service__["a" /* PostService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_post_service__["a" /* PostService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* ActivatedRoute */]) === "function" && _c || Object])
+    ], PostPageComponent);
+    return PostPageComponent;
+    var _a, _b, _c;
+}());
+
+//# sourceMappingURL=post-page.component.js.map
 
 /***/ }),
 
@@ -1394,7 +1540,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/post/post.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"\" class=\"blog-post\" *ngIf=\"selectedPost && selectedPost.layout === 'horizontal'\">\n  <div class=\"post-block\">\n    <div class=\"row\" id=\"post-header-section-hori\">\n      <div class=\"col-lg-10 col-md-10 col-sm-10 col-xs-12\">\n        <h3>{{selectedPost.title}}</h3>\n      </div>\n      <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section\">\n        <small>Posted by: {{selectedPost.author}} on {{formattedDate}}</small> -\n        <img id=\"post-weather-image\" src=\"{{formattedWeatherPhotoName}}\"/>\n        <small>{{selectedPost.temperature}}&#8457;</small>\n      </div>\n    </div>\n    <div><img class=\"blog-post-image-hori\" src=\"{{s3url}}{{selectedPost.photos[0]}}\"/>\n      <span class=\"white-space-pre-wrap\" [innerHtml]=\"selectedPost.body | newLine\"></span>\n    </div>\n    <br>\n    <div class=\"row\">\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\n        <p>Miles Since last Post: <strong>{{selectedPost.milesSinceLastPost}}</strong>.  Time spent biking: <strong>{{timeBiked}}</strong></p>\n      </div>\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\n        <p>Tags: {{selectedPost.tags}}</p>\n      </div>\n    </div>\n  </div>\n</div>\n<div style=\"\" class=\"blog-post\" *ngIf=\"selectedPost && selectedPost.layout === 'vertical'\">\n  <div class=\"post-block\">\n    <div class=\"row\" id=\"post-header-section-vert\">\n      <div class=\"col-lg-10 col-md-10 col-sm-10 col-xs-12\">\n        <h3>{{selectedPost.title}}</h3>\n      </div>\n      <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section\">\n        <small>Posted by: {{selectedPost.author}} on {{formattedDate}}</small> -\n        <img id=\"post-weather-image\" src=\"{{formattedWeatherPhotoName}}\"/>\n        <small>{{selectedPost.temperature}}&#8457;</small>\n      </div>\n    </div>\n    <div ><img class=\"blog-post-image-vert\" src=\"{{s3url}}{{selectedPost.photos[0]}}\"/>\n      <span class=\"white-space-pre-wrap\" [innerHtml]=\"selectedPost.body | newLine\"></span>\n    </div>\n    <br>\n    <div class=\"row\">\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\n        <p>Miles Since last Post: <strong>{{selectedPost.milesSinceLastPost}}</strong>.  Time spent biking: <strong>{{timeBiked}}</strong></p>\n      </div>\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\n        <p>Tags: {{selectedPost.tags}}</p>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div style=\"\" class=\"blog-post\">\n  <div class=\"post-block\">\n    <div *ngIf=\"selectedPost && selectedPost.layout === 'vertical'\">\n      <div class=\"row\" id=\"post-header-section-vert\">\n        <div class=\"col-lg-10 col-md-10 col-sm-10 col-xs-12\">\n          <h3>{{selectedPost.title}}</h3>\n        </div>\n        <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section\">\n          <small>Posted by: {{selectedPost.author}} on {{formattedDate}}</small>\n          -\n          <img id=\"post-weather-image\" src=\"{{formattedWeatherPhotoName}}\"/>\n          <small>{{selectedPost.temperature}}&#8457;</small>\n        </div>\n      </div>\n      <div><img class=\"blog-post-image-vert\" src=\"{{s3url}}{{selectedPost.photos[0]}}\"/>\n        <span class=\"white-space-pre-wrap\" [innerHtml]=\"selectedPost.body | newLine\"></span>\n      </div>\n    </div>\n    <div *ngIf=\"selectedPost && selectedPost.layout === 'horizontal'\">\n      <div class=\"row\" id=\"post-header-section-hori\">\n        <div class=\"col-lg-10 col-md-10 col-sm-10 col-xs-12\">\n          <h3>{{selectedPost.title}}</h3>\n        </div>\n        <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section\">\n          <small>Posted by: {{selectedPost.author}} on {{formattedDate}}</small>\n          -\n          <img id=\"post-weather-image\" src=\"{{formattedWeatherPhotoName}}\"/>\n          <small>{{selectedPost.temperature}}&#8457;</small>\n        </div>\n      </div>\n      <div><img class=\"blog-post-image-hori\" src=\"{{s3url}}{{selectedPost.photos[0]}}\"/>\n        <span class=\"white-space-pre-wrap\" [innerHtml]=\"selectedPost.body | newLine\"></span>\n      </div>\n    </div>\n    <br>\n    <div class=\"row\">\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\n        <p>Miles Since last Post: <strong>{{selectedPost.milesSinceLastPost}}</strong>. Time spent biking: <strong>{{timeBiked}}</strong>\n        </p>\n      </div>\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\n        <p>Tags: {{selectedPost.tags}}</p>\n      </div>\n    </div>\n    <hr>\n    <div class=\"row\">\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\n        <div *ngFor=\"let comment of selectedPost.comments\">\n          <p>{{comment.text}}<br>\n            &nbsp;&nbsp;&nbsp;&nbsp;<small> - {{comment.author}}</small></p>\n        </div>\n        <label for=\"new-comment\"><small>Comment (Warning: Coding in the woods and haven't implemented the edit or delete comment functionality yet):</small></label><br>\n        <input id=\"new-comment\" [(ngModel)]=\"newComment\" /><br>\n        <label for=\"new-comment-author\"><small>Your name/display name:</small></label><br>\n        <input [(ngModel)]=\"newCommentAuthor\" id=\"new-comment-author\"/><br>\n        <button (click)=\"submitComment()\" class=\"btn\">Submit</button>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1405,6 +1551,9 @@ module.exports = "<div style=\"\" class=\"blog-post\" *ngIf=\"selectedPost && se
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__feed_feed_component__ = __webpack_require__("../../../../../src/app/components/feed/feed.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_post_service__ = __webpack_require__("../../../../../src/app/services/post.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1416,10 +1565,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
 var PostComponent = (function () {
-    function PostComponent() {
+    function PostComponent(postService, flashMessagesService) {
+        this.postService = postService;
+        this.flashMessagesService = flashMessagesService;
     }
     PostComponent.prototype.ngOnInit = function () {
+        this.newComment = null;
+        this.newCommentAuthor = null;
         this.s3url = 'https://blog-post-photos.s3.amazonaws.com/';
         if (this.selectedPost.weatherCondition) {
             this.setWeatherPhoto();
@@ -1460,6 +1615,37 @@ var PostComponent = (function () {
             }
         }
     };
+    PostComponent.prototype.submitComment = function () {
+        var _this = this;
+        if (!this.newComment || !this.newCommentAuthor) {
+            this.flashMessagesService.show('Please add a name to be displayed and a comment', {
+                cssClass: 'alert-success',
+                timeout: 4000
+            });
+            return;
+        }
+        var comment = {
+            text: this.newComment,
+            author: this.newCommentAuthor
+        };
+        this.selectedPost.comments.push(comment);
+        this.postService.editPost(this.selectedPost).subscribe(function (data) {
+            if (data.success) {
+                _this.flashMessagesService.show('Comment was Added.', {
+                    cssClass: 'alert-success',
+                    timeout: 5000
+                });
+                _this.newComment = null;
+                _this.newCommentAuthor = null;
+            }
+            else {
+                _this.flashMessagesService.show('I messed something up. Refresh the page and try again?', {
+                    cssClass: 'alert-danger',
+                    timeout: 5000
+                });
+            }
+        });
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__feed_feed_component__["b" /* Post */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__feed_feed_component__["b" /* Post */]) === "function" && _a || Object)
@@ -1469,10 +1655,11 @@ var PostComponent = (function () {
             selector: 'app-post',
             template: __webpack_require__("../../../../../src/app/components/post/post.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/post/post.component.css")]
-        })
+        }),
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__services_post_service__["a" /* PostService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_post_service__["a" /* PostService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
     ], PostComponent);
     return PostComponent;
-    var _a;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=post.component.js.map
@@ -1585,7 +1772,7 @@ var ProfileComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/profile/profile.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/profile/profile.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"]) === "function" && _c || Object])
     ], ProfileComponent);
     return ProfileComponent;
     var _a, _b, _c;
@@ -1691,7 +1878,7 @@ var RegisterComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/register/register.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/register/register.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_auth_service__["a" /* AuthService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* Router */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__["FlashMessagesService"]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__services_auth_service__["a" /* AuthService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */]) === "function" && _d || Object])
     ], RegisterComponent);
     return RegisterComponent;
     var _a, _b, _c, _d;
@@ -1737,7 +1924,7 @@ var AuthGuard = (function () {
     };
     AuthGuard = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]) === "function" && _b || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _b || Object])
     ], AuthGuard);
     return AuthGuard;
     var _a, _b;
@@ -1913,6 +2100,14 @@ var PostService = (function () {
         var requestOptions = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["RequestOptions"]();
         requestOptions.params = params;
         return this.http.get('posts/filterByDate', requestOptions)
+            .map(function (res) { return res.json(); });
+    };
+    PostService.prototype.getPostById = function (id) {
+        var params = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["URLSearchParams"]();
+        params.set('id', id);
+        var requestOptions = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["RequestOptions"]();
+        requestOptions.params = params;
+        return this.http.get('posts/id', requestOptions)
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.getTotals = function () {

@@ -4,11 +4,24 @@
   </ul>
   <div class="row">
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding">
-      <div *ngFor="let post of activePage" >
-        <div>
-        <app-post [selectedPost]="post"></app-post>
-        <hr>
-        </div>
+      <div *ngFor="let post of activePage" class="display-post-thumbnail">
+        <a [routerLink]="['/post', post._id]" title="Click to read more" data-toggle="tooltip" data-placement="top">
+          <div class="post-block">
+            <div class="row">
+              <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 weather-section">
+                <h3>{{post.title}}</h3><span [innerHtml]="post.body.split('. ')[0]"></span>.
+                <p>Miles Since last Post: <strong>{{post.milesSinceLastPost}}</strong><br>
+                  <small>Posted by: {{post.author}} on {{formattedDate}}</small>
+                  - <img id="post-weather-image" src="{{formattedWeatherPhotoName}}"/>
+                  <small>{{post.temperature}}&#8457;</small>
+                </p>
+              </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 weather-section">
+                <img class="blog-post-image-thumbnail" src="{{s3url}}{{post.photos[0]}}"/>
+              </div>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
     <div class="col-xs-offset-3 col-xs-6 col-sm-3 col-md-3 col-lg-3"

@@ -1,8 +1,8 @@
 import {Component, Input} from '@angular/core';
 import {Post} from '../feed/feed.component';
 import {OnInit} from '@angular/core';
-import { Http, Headers} from '@angular/http';
-import {Observable} from "rxjs/Observable";
+import {PostService} from "../../services/post.service";
+import {FlashMessagesService} from "angular2-flash-messages";
 
 @Component({
   selector: 'app-post',
@@ -13,11 +13,19 @@ import {Observable} from "rxjs/Observable";
 export class PostComponent implements OnInit {
   @Input() selectedPost: Post;
   formattedWeatherPhotoName: string;
+  newComment: string;
+  newCommentAuthor: string;
   s3url: string;
   timeBiked: string;
   formattedDate: string;
 
+  constructor(private postService: PostService,
+              private flashMessagesService: FlashMessagesService) {
+  }
+
   ngOnInit(): void {
+    this.newComment = null;
+    this.newCommentAuthor = null;
     this.s3url = 'https://blog-post-photos.s3.amazonaws.com/';
     if (this.selectedPost.weatherCondition) {
       this.setWeatherPhoto();
@@ -57,6 +65,37 @@ export class PostComponent implements OnInit {
         return;
       }
     }
+  }
+
+  submitComment() {
+    if (!this.newComment || !this.newCommentAuthor) {
+      this.flashMessagesService.show('Please add a name to be displayed and a comment', {
+        cssClass: 'alert-success',
+        timeout: 4000
+      });
+      return;
+    }
+    let comment = {
+      text: this.newComment,
+      author: this.newCommentAuthor
+    };
+    this.selectedPost.comments.push(comment);
+
+    this.postService.editPost(this.selectedPost).subscribe(data => {
+      if (data.success) {
+        this.flashMessagesService.show('Comment was Added.', {
+          cssClass: 'alert-success',
+          timeout: 5000
+        });
+        this.newComment = null;
+        this.newCommentAuthor = null;
+      } else {
+        this.flashMessagesService.show('I messed something up. Refresh the page and try again?', {
+          cssClass: 'alert-danger',
+          timeout: 5000
+        });
+      }
+    });
   }
 
 

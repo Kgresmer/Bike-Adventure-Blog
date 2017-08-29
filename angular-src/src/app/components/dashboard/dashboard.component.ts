@@ -37,6 +37,7 @@ export class DashboardComponent implements OnInit {
     });
     this.errorMessages = [];
     this.currentPost = new Post();
+    this.currentPost.comments = [];
     this.currentPost.timeBikedToday = 0;
     this.currentPost.milesSinceLastPost = 0;
     this.currentPost.layout = this.HORIZONTAL_LAYOUT;
@@ -108,6 +109,7 @@ export class DashboardComponent implements OnInit {
     this.currentPost = new Post();
     this.currentPost.timeBikedToday = this.postToEdit.timeBikedToday || 0;
     this.currentPost.milesSinceLastPost = this.postToEdit.milesSinceLastPost || 0;
+    this.currentPost.comments = this.postToEdit.comments;
     this.currentPost.photos = this.postToEdit.photos;
     this.currentPost.author = this.postToEdit.author;
     this.currentPost.body = this.postToEdit.body;
@@ -124,6 +126,7 @@ export class DashboardComponent implements OnInit {
 
   updatePostForm() {
     this.currentPost = new Post();
+    this.currentPost.comments = [];
     this.currentPost.timeBikedToday = 0;
     this.currentPost.date = new Date().toISOString().split('T')[0];
     this.currentPost.milesSinceLastPost = 0;

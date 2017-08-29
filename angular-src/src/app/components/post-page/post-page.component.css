@@ -2,27 +2,8 @@
   background-color: #CFD8DC !important;
 }
 
-.display-post-thumbnail {
-  height: 5%;
-}
-
-.weather-section {
-  line-height: 2em;
-}
-
-.post-block {
-  padding-bottom: 1em;
-  border-bottom: solid 1px #00495C;
-  margin-bottom: 1em;
-}
-
-#post-weather-image {
-  width: 10%;
-}
-
-.blog-post-image-thumbnail {
-  padding-top: 5%;
-  width: 100%;
+.pagination {
+  margin: 0;
 }
 
 #tag-container {

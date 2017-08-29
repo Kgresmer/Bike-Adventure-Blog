@@ -1,0 +1,26 @@
+<div class="container" style="display: inline-block;">
+  <div class="row">
+    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding" *ngIf="activePost">
+        <app-post [selectedPost]="activePost"></app-post>
+        <hr>
+    </div>
+    <div class="col-xs-offset-3 col-xs-6 col-sm-3 col-md-3 col-lg-3"
+         id="totals-display" *ngIf="totals">
+      <div style="background-color: #ffffff; padding: 1.5rem;">
+        <div class="total-miles-section">
+          <img src="../../../assets/bike.png" class="totals-image"> <br>
+          Total Miles Biked: <br>
+          <span class="totals-number">{{totals.totalMilesBiked}}</span> <br>
+        </div>
+        <div class="total-time-section">
+          <img src="../../../assets/clock.png" class="totals-image"> <br>
+          Total Time Biked: <br>
+          <span class="totals-number">{{totalTimeBiked.days}}</span> days<br>
+          <span class="totals-number">{{totalTimeBiked.hours}}</span> hrs<br>
+          <span class="totals-number">{{totalTimeBiked.minutes}}</span> mins<br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

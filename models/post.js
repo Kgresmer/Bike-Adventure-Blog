@@ -9,6 +9,11 @@ const PostSchema = mongoose.Schema({
        type: String,
         required: true
     },
+    comments: {
+       type : Array ,
+        "default" : [],
+        required: false
+    },
     body: {
         type: String,
         required: true
@@ -85,6 +90,7 @@ module.exports.editPost = function (newPostData, callback) {
         }
         existingPostData.date = newPostData.date || existingPostData.date;
         existingPostData.title = newPostData.title || existingPostData.title;
+        existingPostData.comments = newPostData.comments || existingPostData.comments;
         existingPostData.body = newPostData.body || existingPostData.body;
         existingPostData.photos = newPostData.photos || existingPostData.photos;
         existingPostData.tags = newPostData.tags || existingPostData.tags;

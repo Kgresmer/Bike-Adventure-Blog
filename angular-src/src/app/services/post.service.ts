@@ -70,6 +70,15 @@ export class PostService {
       .map(res => res.json());
   }
 
+  getPostById(id) {
+    const params: URLSearchParams = new URLSearchParams();
+    params.set('id', id);
+    const requestOptions = new RequestOptions();
+    requestOptions.params = params;
+    return this.http.get('posts/id', requestOptions)
+      .map(res => res.json());
+  }
+
   getTotals() {
     return this.http.get('posts/totals')
       .map(res => res.json());

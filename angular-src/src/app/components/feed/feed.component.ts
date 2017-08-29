@@ -3,6 +3,7 @@ import { OnInit } from '@angular/core';
 import {PostService} from '../../services/post.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {Http} from '@angular/http';
+import {MdTooltipModule} from '@angular/material'
 
 declare const jQuery: any;
 
@@ -11,6 +12,7 @@ export class Post {
   date: string;
   title: string;
   body: string;
+  comments: any;
   layout: string;
   photos: string[];
   tags: string;
@@ -34,10 +36,13 @@ export class Totals {
 })
 
 export class FeedComponent implements OnInit {
+
   constructor(private postService: PostService,
               private flashMessagesService: FlashMessagesService,
               private http: Http) {}
 
+  position: string;
+  s3url: string;
   numOfPostsPerPage: number;
   pageNumbers: string[];
   activePage: Post[];
@@ -54,11 +59,21 @@ export class FeedComponent implements OnInit {
   } = { days: 0, hours: 0, minutes: 0};
 
   ngOnInit(): void {
+    this.s3url = 'https://blog-post-photos.s3.amazonaws.com/';
     this.filteredPosts = [];
     this.mapOfPages = {};
     this.numOfPostsPerPage = 4;
     this.pageNumbers = [];
     this.filterTags = [];
+    jQuery(document).ready(function(){
+      jQuery('[data-toggle=tooltip]').hover(function(){
+        // on mouseenter
+        jQuery(this).tooltip('show');
+      }, function(){
+        // on mouseleave
+        jQuery(this).tooltip('hide');
+      });
+    });
     jQuery(window).scroll(function(){
       if (jQuery(window).width() > 780) {
         if (jQuery(window).scrollTop() > 220) {

@@ -1,51 +1,59 @@
-<div style="" class="blog-post" *ngIf="selectedPost && selectedPost.layout === 'horizontal'">
+<div style="" class="blog-post">
   <div class="post-block">
-    <div class="row" id="post-header-section-hori">
-      <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-        <h3>{{selectedPost.title}}</h3>
+    <div *ngIf="selectedPost && selectedPost.layout === 'vertical'">
+      <div class="row" id="post-header-section-vert">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+          <h3>{{selectedPost.title}}</h3>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section">
+          <small>Posted by: {{selectedPost.author}} on {{formattedDate}}</small>
+          -
+          <img id="post-weather-image" src="{{formattedWeatherPhotoName}}"/>
+          <small>{{selectedPost.temperature}}&#8457;</small>
+        </div>
       </div>
-      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section">
-        <small>Posted by: {{selectedPost.author}} on {{formattedDate}}</small> -
-        <img id="post-weather-image" src="{{formattedWeatherPhotoName}}"/>
-        <small>{{selectedPost.temperature}}&#8457;</small>
+      <div><img class="blog-post-image-vert" src="{{s3url}}{{selectedPost.photos[0]}}"/>
+        <span class="white-space-pre-wrap" [innerHtml]="selectedPost.body | newLine"></span>
       </div>
     </div>
-    <div><img class="blog-post-image-hori" src="{{s3url}}{{selectedPost.photos[0]}}"/>
-      <span class="white-space-pre-wrap" [innerHtml]="selectedPost.body | newLine"></span>
+    <div *ngIf="selectedPost && selectedPost.layout === 'horizontal'">
+      <div class="row" id="post-header-section-hori">
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+          <h3>{{selectedPost.title}}</h3>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section">
+          <small>Posted by: {{selectedPost.author}} on {{formattedDate}}</small>
+          -
+          <img id="post-weather-image" src="{{formattedWeatherPhotoName}}"/>
+          <small>{{selectedPost.temperature}}&#8457;</small>
+        </div>
+      </div>
+      <div><img class="blog-post-image-hori" src="{{s3url}}{{selectedPost.photos[0]}}"/>
+        <span class="white-space-pre-wrap" [innerHtml]="selectedPost.body | newLine"></span>
+      </div>
     </div>
     <br>
     <div class="row">
       <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12">
-        <p>Miles Since last Post: <strong>{{selectedPost.milesSinceLastPost}}</strong>.  Time spent biking: <strong>{{timeBiked}}</strong></p>
+        <p>Miles Since last Post: <strong>{{selectedPost.milesSinceLastPost}}</strong>. Time spent biking: <strong>{{timeBiked}}</strong>
+        </p>
       </div>
       <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12">
         <p>Tags: {{selectedPost.tags}}</p>
       </div>
     </div>
-  </div>
-</div>
-<div style="" class="blog-post" *ngIf="selectedPost && selectedPost.layout === 'vertical'">
-  <div class="post-block">
-    <div class="row" id="post-header-section-vert">
-      <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-        <h3>{{selectedPost.title}}</h3>
-      </div>
-      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section">
-        <small>Posted by: {{selectedPost.author}} on {{formattedDate}}</small> -
-        <img id="post-weather-image" src="{{formattedWeatherPhotoName}}"/>
-        <small>{{selectedPost.temperature}}&#8457;</small>
-      </div>
-    </div>
-    <div ><img class="blog-post-image-vert" src="{{s3url}}{{selectedPost.photos[0]}}"/>
-      <span class="white-space-pre-wrap" [innerHtml]="selectedPost.body | newLine"></span>
-    </div>
-    <br>
+    <hr>
     <div class="row">
       <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12">
-        <p>Miles Since last Post: <strong>{{selectedPost.milesSinceLastPost}}</strong>.  Time spent biking: <strong>{{timeBiked}}</strong></p>
-      </div>
-      <div class="col-lg-11 col-md-11 col-sm-11 col-xs-12">
-        <p>Tags: {{selectedPost.tags}}</p>
+        <div *ngFor="let comment of selectedPost.comments">
+          <p>{{comment.text}}<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<small> - {{comment.author}}</small></p>
+        </div>
+        <label for="new-comment"><small>Comment (Warning: Coding in the woods and haven't implemented the edit or delete comment functionality yet):</small></label><br>
+        <input id="new-comment" [(ngModel)]="newComment" /><br>
+        <label for="new-comment-author"><small>Your name/display name:</small></label><br>
+        <input [(ngModel)]="newCommentAuthor" id="new-comment-author"/><br>
+        <button (click)="submitComment()" class="btn">Submit</button>
       </div>
     </div>
   </div>

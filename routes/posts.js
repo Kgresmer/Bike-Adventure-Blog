@@ -94,6 +94,7 @@ router.post('/add', (req, res, next) => {
         date: req.body.date,
         title: req.body.title,
         body: req.body.body,
+        comments: req.body.comments,
         layout: req.body.layout,
         photos: req.body.photos,
         tags: req.body.tags,
@@ -146,7 +147,7 @@ router.put('/edit', (req, res, next) => {
         if (err) {
             res.json({
                 success: false,
-                msg: 'Oh no something went wrong. Bloggy Blog Blog could not edit post.'
+                msg: 'Oh no something went wrong. Bloggy Blog Blog could not edit post. ' + err
             });
         } else {
             res.json({
@@ -220,6 +221,18 @@ router.get('/filterByDate', (req, res, next) => {
             res.send({success: false, mes: "no results found"});
         }
         res.send({success: true, posts: results});
+    });
+});
+
+router.get('/id', (req, res) => {
+    Post.getPostById(req.query.id, function (err, results) {
+        if (err) {
+            res.send({success: false, mes: err});
+        }
+        if (!results) {
+            res.send({success: false, mes: "no results found"});
+        }
+        res.send({success: true, post: results});
     });
 });
 

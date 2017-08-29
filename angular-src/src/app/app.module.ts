@@ -22,11 +22,21 @@ import {FileSelectDirective} from 'ng2-file-upload';
 import {GalleryComponent} from "./components/gallery/gallery.component";
 import {FooterComponent} from "./components/footer/footer.component";
 import {CalendarComponent} from "./components/calendar/calendar.component";
+import {PostPageComponent} from "./components/post-page/post-page.component";
+import {
+  MdDialog, MdTooltip, MdTooltipModule, OVERLAY_PROVIDERS, ScrollDispatcher, ScrollStrategyOptions,
+  TooltipComponent
+} from "@angular/material";
+import {Platform} from "@angular/cdk";
 
 const appRoutes: Routes = [
   {
     path: 'feed',
     component: FeedComponent
+  },
+  {
+    path: 'post/:id',
+    component: PostPageComponent
   },
   {
     path: 'about',
@@ -81,7 +91,8 @@ export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);
     FileSelectDirective,
     GalleryComponent,
     FooterComponent,
-    CalendarComponent
+    CalendarComponent,
+    PostPageComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +105,7 @@ export const appRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes);
     PostService,
     ValidateService,
     AuthService,
-    AuthGuard
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })
