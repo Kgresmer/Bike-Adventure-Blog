@@ -180,10 +180,6 @@ var appRoutes = [
         component: __WEBPACK_IMPORTED_MODULE_5__components_feed_feed_component__["a" /* FeedComponent */]
     },
     {
-        path: 'register',
-        component: __WEBPACK_IMPORTED_MODULE_11__components_register_register_component__["a" /* RegisterComponent */]
-    },
-    {
         path: 'login',
         component: __WEBPACK_IMPORTED_MODULE_10__components_login_login_component__["a" /* LoginComponent */]
     },

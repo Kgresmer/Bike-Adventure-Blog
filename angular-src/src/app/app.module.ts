@@ -55,10 +55,6 @@ const appRoutes: Routes = [
     component: FeedComponent
   },
   {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
     path: 'login',
     component: LoginComponent
   },
