@@ -12,12 +12,12 @@ const fs = require('file-system');
 let dailyPhotoNumber = 1;
 let tempFileName = 'hasnt been set yet';
 
-AWS.update({
+
+const s3 = new AWS.S3({
     accessKeyId: process.env.accessKeyId,
     secretAccessKey: process.env.secretAccessKey,
     region: process.env.region
 });
-const s3 = new AWS.S3();
 const bucketParams = {Bucket: 'blog-post-photos'};
 // s3.createBucket(bucketParams);
 const s3Bucket = new AWS.S3({params: bucketParams});
