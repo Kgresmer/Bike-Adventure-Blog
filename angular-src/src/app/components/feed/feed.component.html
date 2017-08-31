@@ -11,8 +11,8 @@
               <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section">
                 <h3>{{post.title}}</h3><span [innerHtml]="post.body.split('. ')[0]"></span>. . . . <small>(see more)</small>
                 <p>Miles Since last Post: <strong>{{post.milesSinceLastPost}}</strong><br>
-                  <small>Posted by: {{post.author}} on {{formattedDate}}</small>
-                  - <img id="post-weather-image" src="{{formattedWeatherPhotoName}}"/>
+                  <small>Posted by: {{post.author}} on {{post.date.split('T')[0]}}</small>
+                  - <img id="post-weather-image" src="{{formatPhotoName(post.weatherCondition[0])}}"/>
                   <small>{{post.temperature}}&#8457;</small>
                 </p>
               </div>

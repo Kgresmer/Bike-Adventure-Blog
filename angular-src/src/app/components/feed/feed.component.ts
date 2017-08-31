@@ -108,6 +108,26 @@ export class FeedComponent implements OnInit {
     }
   }
 
+  formatPhotoName(weatherCondition) {
+    switch (weatherCondition) {
+      case 'Cloudy': {
+        return '../../../assets/cloudy.png';
+      }
+      case 'Partly Cloudy': {
+        return '../../../assets/partlycloudy.png';
+      }
+      case 'Sunny': {
+        return '../../../assets/sunny.png';
+      }
+      case 'Rainy': {
+        return '../../../assets/rain.png';
+      }
+      case 'Raining Cats and Dogs': {
+        return '../../../assets/rainycats.png';
+      }
+    }
+  }
+
   getTotals(): void {
     this.postService.getTotals().subscribe(response => {
       if (response.success) {
