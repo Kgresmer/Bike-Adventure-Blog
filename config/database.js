@@ -1,4 +1,4 @@
 module.exports = {
-    database: 'mongodb://root:root@ds161162.mlab.com:61162/bike_blog',
-    secret: 'sigger'
-}
+    database: process.env.dburl,
+    secret: process.env.dbsecret
+};
