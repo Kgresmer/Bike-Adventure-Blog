@@ -91,7 +91,7 @@ export class FeedComponent implements OnInit {
         this.posts = response.posts.sort(function(a, b) {
           var dateA:any = new Date(a.date), dateB:any = new Date(b.date);
           return dateA - dateB;
-        });
+        }).reverse();
         this.visiblePosts = this.posts;
         this.setupPagination();
         this.setFilterTags();

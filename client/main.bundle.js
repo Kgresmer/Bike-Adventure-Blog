@@ -847,7 +847,7 @@ var FeedComponent = (function () {
                 _this.posts = response.posts.sort(function (a, b) {
                     var dateA = new Date(a.date), dateB = new Date(b.date);
                     return dateA - dateB;
-                });
+                }).reverse();
                 _this.visiblePosts = _this.posts;
                 _this.setupPagination();
                 _this.setFilterTags();
