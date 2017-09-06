@@ -844,7 +844,10 @@ var FeedComponent = (function () {
         this.getTotals();
         this.postService.getAllPosts().subscribe(function (response) {
             if (response.success) {
-                _this.posts = response.posts.reverse();
+                _this.posts = response.posts.sort(function (a, b) {
+                    var dateA = new Date(a.date), dateB = new Date(b.date);
+                    return dateA - dateB;
+                });
                 _this.visiblePosts = _this.posts;
                 _this.setupPagination();
                 _this.setFilterTags();
