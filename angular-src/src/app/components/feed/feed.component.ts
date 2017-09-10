@@ -137,8 +137,8 @@ export class FeedComponent implements OnInit {
         this.totals = response.totals;
         if (this.totals.totalTimeBiked) {
           this.totalTimeBiked.days = Math.floor(this.totals.totalTimeBiked / 1440);
-          this.totalTimeBiked.hours = Math.floor(this.totals.totalTimeBiked / 60);
-          this.totalTimeBiked.minutes = this.totals.totalTimeBiked % 60;
+          this.totalTimeBiked.hours = Math.floor((this.totals.totalTimeBiked - this.totalTimeBiked.days) / 60);
+          this.totalTimeBiked.minutes = (this.totals.totalTimeBiked - this.totalTimeBiked.days - this.totalTimeBiked.hours) % 60;
         }
       } else {
         this.flashMessagesService.show('I\'m Sorry. I seem to have misplaced the totals. ', {
