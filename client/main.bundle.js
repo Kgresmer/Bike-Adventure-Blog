@@ -892,8 +892,8 @@ var FeedComponent = (function () {
                 _this.totals = response.totals;
                 if (_this.totals.totalTimeBiked) {
                     _this.totalTimeBiked.days = Math.floor(_this.totals.totalTimeBiked / 1440);
-                    _this.totalTimeBiked.hours = Math.floor((_this.totals.totalTimeBiked - _this.totalTimeBiked.days) / 60);
-                    _this.totalTimeBiked.minutes = (_this.totals.totalTimeBiked - _this.totalTimeBiked.days - _this.totalTimeBiked.hours) % 60;
+                    _this.totalTimeBiked.hours = Math.floor((_this.totals.totalTimeBiked - _this.totalTimeBiked.days * 1440) / 60);
+                    _this.totalTimeBiked.minutes = (_this.totals.totalTimeBiked - (_this.totalTimeBiked.days * 1440) - (_this.totalTimeBiked.hours * 60)) % 60;
                 }
             }
             else {
