@@ -50,9 +50,9 @@
             &nbsp;&nbsp;&nbsp;&nbsp;<small> - {{comment.author}}</small></p>
         </div>
         <label for="new-comment-author"><small>Your name/display name:</small></label><br>
-        <input [(ngModel)]="newCommentAuthor" id="new-comment-author" placeholder="Kevin G."/><br>
+        <input [(ngModel)]="newCommentAuthor" id="new-comment-author" placeholder="Your name"/><br>
         <label for="new-comment"><small>Comment (Warning: C Coding in the woods and haven't implemented the edit or delete comment functionality yet):</small></label><br>
-        <input id="new-comment" [(ngModel)]="newComment" placeholder="Wow guys you look really good on bicycles"/><br>
+        <input id="new-comment" [(ngModel)]="newComment" placeholder="Comment"/><br>
         <button (click)="submitComment()" class="btn">Submit</button>
       </div>
     </div>
