@@ -1432,7 +1432,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/post-page/post-page.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" style=\"display: inline-block;\">\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding\" *ngIf=\"activePost\">\n        <app-post [selectedPost]=\"activePost\"></app-post>\n        <hr>\n    </div>\n    <div class=\"col-xs-offset-3 col-xs-6 col-sm-3 col-md-3 col-lg-3\"\n         id=\"totals-display\" *ngIf=\"totals\">\n      <div style=\"background-color: #ffffff; padding: 1.5rem;\">\n        <div class=\"total-miles-section\">\n          <img src=\"../../../assets/bike.png\" class=\"totals-image\"> <br>\n          Total Miles Biked: <br>\n          <span class=\"totals-number\">{{totals.totalMilesBiked}}</span> <br>\n        </div>\n        <div class=\"total-time-section\">\n          <img src=\"../../../assets/clock.png\" class=\"totals-image\"> <br>\n          Total Time Biked: <br>\n          <span class=\"totals-number\">{{totalTimeBiked.days}}</span> days<br>\n          <span class=\"totals-number\">{{totalTimeBiked.hours}}</span> hrs<br>\n          <span class=\"totals-number\">{{totalTimeBiked.minutes}}</span> mins<br>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n"
+module.exports = "<div class=\"container\" style=\"display: inline-block;\">\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding\" *ngIf=\"activePost\">\n      <div *ngIf=\"previousPost && nextPost\">\n        <a class=\"pull-right\" [routerLink]=\"['/post', nextPost._id]\" (click)=\"removedPostFromPage()\" >&nbsp;| Next Day</a>\n        <a class=\"pull-right\" [routerLink]=\"['/post', previousPost._id]\" (click)=\"removedPostFromPage()\" >Previous Day</a>\n      </div>\n      <div *ngIf=\"previousPost && !nextPost\">\n        <a class=\"pull-right\" [routerLink]=\"['/post', previousPost._id]\" (click)=\"removedPostFromPage()\" >Previous Day</a>\n      </div>\n      <div *ngIf=\"!previousPost && nextPost\">\n        <a class=\"pull-right\" [routerLink]=\"['/post', nextPost._id]\" (click)=\"removedPostFromPage()\" >Next Day</a>\n      </div>\n        <app-post [selectedPost]=\"activePost\"></app-post>\n        <hr>\n    </div>\n    <div class=\"col-xs-offset-3 col-xs-6 col-sm-3 col-md-3 col-lg-3\"\n         id=\"totals-display\" *ngIf=\"totals\">\n      <div style=\"background-color: #ffffff; padding: 1.5rem;\">\n        <div class=\"total-miles-section\">\n          <img src=\"../../../assets/bike.png\" class=\"totals-image\"> <br>\n          Total Miles Biked: <br>\n          <span class=\"totals-number\">{{totals.totalMilesBiked}}</span> <br>\n        </div>\n        <div class=\"total-time-section\">\n          <img src=\"../../../assets/clock.png\" class=\"totals-image\"> <br>\n          Total Time Biked: <br>\n          <span class=\"totals-number\">{{totalTimeBiked.days}}</span> days<br>\n          <span class=\"totals-number\">{{totalTimeBiked.hours}}</span> hrs<br>\n          <span class=\"totals-number\">{{totalTimeBiked.minutes}}</span> mins<br>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -1447,6 +1447,7 @@ module.exports = "<div class=\"container\" style=\"display: inline-block;\">\n  
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angular2_flash_messages__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__feed_feed_component__ = __webpack_require__("../../../../../src/app/components/feed/feed.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1456,6 +1457,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -1475,11 +1477,32 @@ var PostPageComponent = (function () {
     }
     PostPageComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.nextPost = null;
+        this.previousPost = null;
         this.sub = this.route.params.subscribe(function (params) {
             var id = params['id'];
             _this.postService.getPostById(id).subscribe(function (response) {
                 if (response.success) {
                     _this.activePost = response.post;
+                    if (_this.activePost.weatherCondition) {
+                        _this.setWeatherPhoto();
+                    }
+                    if (_this.activePost.date) {
+                        _this.activePost.date = _this.activePost.date.split('T')[0];
+                    }
+                    var currentDate = new Date(_this.activePost.date);
+                    var previousDayDate = new Date(currentDate.getTime() - (24 * 60 * 60 * 1000)).toISOString().split('T')[0];
+                    var nextDayDate = new Date(currentDate.getTime() + (24 * 60 * 60 * 1000)).toISOString().split('T')[0];
+                    _this.postService.getPostsByDate(previousDayDate).subscribe(function (response) {
+                        if (response.success && response.posts.length > 0) {
+                            _this.previousPost = response.posts[0];
+                        }
+                    });
+                    _this.postService.getPostsByDate(nextDayDate).subscribe(function (response) {
+                        if (response.success && response.posts.length > 0) {
+                            _this.nextPost = response.posts[0];
+                        }
+                    });
                 }
                 else {
                     _this.flashMessagesService.show('I\'m Sorry. I seem to have misplaced that post. ', {
@@ -1509,8 +1532,8 @@ var PostPageComponent = (function () {
                 _this.totals = response.totals;
                 if (_this.totals.totalTimeBiked) {
                     _this.totalTimeBiked.days = Math.floor(_this.totals.totalTimeBiked / 1440);
-                    _this.totalTimeBiked.hours = Math.floor(_this.totals.totalTimeBiked / 60);
-                    _this.totalTimeBiked.minutes = _this.totals.totalTimeBiked % 60;
+                    _this.totalTimeBiked.hours = Math.floor((_this.totals.totalTimeBiked - _this.totalTimeBiked.days * 1440) / 60);
+                    _this.totalTimeBiked.minutes = (_this.totals.totalTimeBiked - (_this.totalTimeBiked.days * 1440) - (_this.totalTimeBiked.hours * 60)) % 60;
                 }
             }
             else {
@@ -1520,6 +1543,33 @@ var PostPageComponent = (function () {
                 });
             }
         });
+    };
+    PostPageComponent.prototype.removedPostFromPage = function () {
+        this.activePost = new __WEBPACK_IMPORTED_MODULE_4__feed_feed_component__["b" /* Post */]();
+    };
+    PostPageComponent.prototype.setWeatherPhoto = function () {
+        switch (this.activePost.weatherCondition[0]) {
+            case 'Cloudy': {
+                this.activePost.weatherCondition = '../../../assets/cloudy.png';
+                return;
+            }
+            case 'Partly Cloudy': {
+                this.activePost.weatherCondition = '../../../assets/partlycloudy.png';
+                return;
+            }
+            case 'Sunny': {
+                this.activePost.weatherCondition = '../../../assets/sunny.png';
+                return;
+            }
+            case 'Rainy': {
+                this.activePost.weatherCondition = '../../../assets/rain.png';
+                return;
+            }
+            case 'Raining Cats and Dogs': {
+                this.activePost.weatherCondition = '../../../assets/rainycats.png';
+                return;
+            }
+        }
     };
     PostPageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1558,7 +1608,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/post/post.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"\" class=\"blog-post\">\n  <div class=\"post-block\">\n    <div *ngIf=\"selectedPost && selectedPost.layout === 'vertical'\">\n      <div class=\"row\" id=\"post-header-section-vert\">\n        <div class=\"col-lg-10 col-md-10 col-sm-10 col-xs-12\">\n          <h3>{{selectedPost.title}}</h3>\n        </div>\n        <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section\">\n          <small>Posted by: {{selectedPost.author}} on {{formattedDate}}</small>\n          -\n          <img id=\"post-weather-image\" src=\"{{formattedWeatherPhotoName}}\"/>\n          <small>{{selectedPost.temperature}}&#8457;</small>\n        </div>\n      </div>\n      <div><img class=\"blog-post-image-vert\" src=\"{{s3url}}{{selectedPost.photos[0]}}\"/>\n        <span class=\"white-space-pre-wrap\" [innerHtml]=\"selectedPost.body | newLine\"></span>\n      </div>\n    </div>\n    <div *ngIf=\"selectedPost && selectedPost.layout === 'horizontal'\">\n      <div class=\"row\" id=\"post-header-section-hori\">\n        <div class=\"col-lg-10 col-md-10 col-sm-10 col-xs-12\">\n          <h3>{{selectedPost.title}}</h3>\n        </div>\n        <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section\">\n          <small>Posted by: {{selectedPost.author}} on {{formattedDate}}</small>\n          -\n          <img id=\"post-weather-image\" src=\"{{formattedWeatherPhotoName}}\"/>\n          <small>{{selectedPost.temperature}}&#8457;</small>\n        </div>\n      </div>\n      <div><img class=\"blog-post-image-hori\" src=\"{{s3url}}{{selectedPost.photos[0]}}\"/>\n        <span class=\"white-space-pre-wrap\" [innerHtml]=\"selectedPost.body | newLine\"></span>\n      </div>\n    </div>\n    <br>\n    <div class=\"row\">\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\n        <p>Miles Since last Post: <strong>{{selectedPost.milesSinceLastPost}}</strong>. Time spent biking: <strong>{{timeBiked}}</strong>\n        </p>\n      </div>\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\n        <p>Tags: {{selectedPost.tags}}</p>\n      </div>\n    </div>\n    <hr>\n    <div class=\"row\">\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\n        <div *ngFor=\"let comment of selectedPost.comments\">\n          <p>{{comment.text}}<br>\n            &nbsp;&nbsp;&nbsp;&nbsp;<small> - {{comment.author}}</small></p>\n        </div>\n        <label for=\"new-comment\"><small>Comment (Warning: Comment at your own risk. Coding in the woods and haven't implemented the edit or delete comment functionality yet):</small></label><br>\n        <input id=\"new-comment\" [(ngModel)]=\"newComment\" /><br>\n        <label for=\"new-comment-author\"><small>Your name/display name:</small></label><br>\n        <input [(ngModel)]=\"newCommentAuthor\" id=\"new-comment-author\"/><br>\n        <button (click)=\"submitComment()\" class=\"btn\">Submit</button>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div style=\"\" class=\"blog-post\">\n  <div class=\"post-block\">\n    <div *ngIf=\"selectedPost && selectedPost.layout === 'vertical'\">\n      <div class=\"row\" id=\"post-header-section-vert\">\n        <div class=\"col-lg-10 col-md-10 col-sm-10 col-xs-12\">\n          <h3>{{selectedPost.title}}</h3>\n        </div>\n        <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section\">\n          <small>Posted by: {{selectedPost.author}} on {{selectedPost.date}}</small>\n          -\n          <img id=\"post-weather-image\" src=\"{{selectedPost.weatherCondition}}\"/>\n          <small>{{selectedPost.temperature}}&#8457;</small>\n        </div>\n      </div>\n      <div><img class=\"blog-post-image-vert\" src=\"{{s3url}}{{selectedPost.photos[0]}}\"/>\n        <span class=\"white-space-pre-wrap\" [innerHtml]=\"selectedPost.body | newLine\"></span>\n      </div>\n    </div>\n    <div *ngIf=\"selectedPost && selectedPost.layout === 'horizontal'\">\n      <div class=\"row\" id=\"post-header-section-hori\">\n        <div class=\"col-lg-10 col-md-10 col-sm-10 col-xs-12\">\n          <h3>{{selectedPost.title}}</h3>\n        </div>\n        <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section\">\n          <small>Posted by: {{selectedPost.author}} on {{selectedPost.date}}</small>\n          -\n          <img id=\"post-weather-image\" src=\"{{selectedPost.weatherCondition}}\"/>\n          <small>{{selectedPost.temperature}}&#8457;</small>\n        </div>\n      </div>\n      <div><img class=\"blog-post-image-hori\" src=\"{{s3url}}{{selectedPost.photos[0]}}\"/>\n        <span class=\"white-space-pre-wrap\" [innerHtml]=\"selectedPost.body | newLine\"></span>\n      </div>\n    </div>\n    <br>\n    <div class=\"row\">\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\n        <p>Miles Since last Post: <strong>{{selectedPost.milesSinceLastPost}}</strong>. Time spent biking: <strong>{{timeBiked}}</strong>\n        </p>\n      </div>\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\n        <p>Tags: {{selectedPost.tags}}</p>\n      </div>\n    </div>\n    <hr>\n    <div class=\"row\">\n      <div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-12\">\n        <div *ngFor=\"let comment of selectedPost.comments\">\n          <p>{{comment.text}}<br>\n            &nbsp;&nbsp;&nbsp;&nbsp;<small> - {{comment.author}}</small></p>\n        </div>\n        <label for=\"new-comment\"><small>Comment (Warning: C Coding in the woods and haven't implemented the edit or delete comment functionality yet):</small></label><br>\n        <input id=\"new-comment\" [(ngModel)]=\"newComment\" /><br>\n        <label for=\"new-comment-author\"><small>Your name/display name:</small></label><br>\n        <input [(ngModel)]=\"newCommentAuthor\" id=\"new-comment-author\"/><br>\n        <button (click)=\"submitComment()\" class=\"btn\">Submit</button>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1587,6 +1637,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var PostComponent = (function () {
     function PostComponent(postService, flashMessagesService) {
+        this.postService = postService;
+        this.flashMessagesService = flashMessagesService;
         this.postService = postService;
         this.flashMessagesService = flashMessagesService;
     }

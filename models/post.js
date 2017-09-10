@@ -88,7 +88,8 @@ module.exports.editPost = function (newPostData, callback) {
         if (typeof existingPostData === 'undefined') {
             return "No record found to update.";
         }
-        existingPostData.date = newPostData.date || existingPostData.date;
+
+
         existingPostData.title = newPostData.title || existingPostData.title;
         existingPostData.comments = newPostData.comments || existingPostData.comments;
         existingPostData.body = newPostData.body || existingPostData.body;
@@ -99,8 +100,11 @@ module.exports.editPost = function (newPostData, callback) {
         existingPostData.timeBikedToday = newPostData.timeBikedToday || existingPostData.timeBikedToday;
         existingPostData.milesSinceLastPost = newPostData.milesSinceLastPost || existingPostData.milesSinceLastPost;
         existingPostData.temperature = newPostData.temperature || existingPostData.temperature;
-        existingPostData.weatherCondition = newPostData.weatherCondition || existingPostData.weatherCondition;
         existingPostData.author = newPostData.author || existingPostData.author;
+        if (newPostData.comments.length === existingPostData.comments.length) {
+            existingPostData.date = newPostData.date || existingPostData.date;
+            existingPostData.weatherCondition = newPostData.weatherCondition || existingPostData.weatherCondition;
+        }
 
         // Save the updated document back to the database
         existingPostData.save(callback);

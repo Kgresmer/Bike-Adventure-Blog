@@ -21,6 +21,8 @@ export class PostComponent implements OnInit {
 
   constructor(private postService: PostService,
               private flashMessagesService: FlashMessagesService) {
+    this.postService = postService;
+    this.flashMessagesService = flashMessagesService;
   }
 
   ngOnInit(): void {
