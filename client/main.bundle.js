@@ -1495,7 +1495,7 @@ var PostPageComponent = (function () {
                     var nextDayDate = new Date(currentDate.getTime() + (24 * 60 * 60 * 1000)).toISOString().split('T')[0];
                     _this.postService.getPostsByDate(previousDayDate).subscribe(function (response) {
                         if (response.success && response.posts.length > 0) {
-                            _this.previousPost = response.posts[0];
+                            _this.previousPost = response.posts[response.posts.length - 1];
                         }
                         else {
                             _this.previousPost = null;
@@ -1503,7 +1503,7 @@ var PostPageComponent = (function () {
                     });
                     _this.postService.getPostsByDate(nextDayDate).subscribe(function (response) {
                         if (response.success && response.posts.length > 0) {
-                            _this.nextPost = response.posts[0];
+                            _this.nextPost = response.posts[response.posts.length - 1];
                         }
                         else {
                             _this.nextPost = null;

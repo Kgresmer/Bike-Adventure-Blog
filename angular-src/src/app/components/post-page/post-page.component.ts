@@ -56,14 +56,14 @@ export class PostPageComponent implements OnInit {
 
           this.postService.getPostsByDate(previousDayDate).subscribe( response => {
             if (response.success && response.posts.length > 0) {
-              this.previousPost = response.posts[0];
+              this.previousPost = response.posts[response.posts.length - 1];
             } else {
               this.previousPost = null;
             }
           })
           this.postService.getPostsByDate(nextDayDate).subscribe( response => {
             if (response.success && response.posts.length > 0) {
-              this.nextPost = response.posts[0];
+              this.nextPost = response.posts[response.posts.length - 1];
             } else {
               this.nextPost = null;
             }
