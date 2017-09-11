@@ -1497,10 +1497,16 @@ var PostPageComponent = (function () {
                         if (response.success && response.posts.length > 0) {
                             _this.previousPost = response.posts[0];
                         }
+                        else {
+                            _this.previousPost = null;
+                        }
                     });
                     _this.postService.getPostsByDate(nextDayDate).subscribe(function (response) {
                         if (response.success && response.posts.length > 0) {
                             _this.nextPost = response.posts[0];
+                        }
+                        else {
+                            _this.nextPost = null;
                         }
                     });
                 }
@@ -1573,7 +1579,7 @@ var PostPageComponent = (function () {
     };
     PostPageComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-feed-root',
+            selector: 'app-post-page',
             template: __webpack_require__("../../../../../src/app/components/post-page/post-page.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/post-page/post-page.component.css")]
         }),
