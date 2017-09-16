@@ -117,10 +117,16 @@
     <input type="number" [(ngModel)]="currentPost.timeBikedToday" name="newPost.timeBikedToday"
            class="form-control">
   </div>
-  <!-- Miles biked since the last post (could be miles biked today) -->
+  <!-- Miles biked since the last post -->
   <div class="form-group">
-    <label>Miles Since Last Post  (could be miles biked today) </label>
+    <label>Miles Since Last Post</label>
     <input type="number" [(ngModel)]="currentPost.milesSinceLastPost" name="newPost.milesSinceLastPost"
+           class="form-control">
+  </div>
+  <!-- Ascent in feet biked since the last post -->
+  <div class="form-group">
+    <label>Ascent (feet) Since Last Post </label>
+    <input type="number" [(ngModel)]="currentPost.ascentSinceLastPost" name="newPost.ascentSinceLastPost"
            class="form-control">
   </div>
   <!-- Temperature -->

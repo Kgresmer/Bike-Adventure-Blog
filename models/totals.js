@@ -6,12 +6,13 @@ const TotalsSchema = mongoose.Schema({
     },
     totalTimeBiked: {
         type: Number
+    },
+    totalAscent: {
+        type: Number
     }
 });
 
 const Totals = module.exports = mongoose.model('Totals', TotalsSchema);
-
-// TODO clear totals
 
 module.exports.addToTotals = function (dataToAdd, callback) {
     Totals.find(function (err, results) {
@@ -22,13 +23,15 @@ module.exports.addToTotals = function (dataToAdd, callback) {
         if (!results || results.length < 1) {
             let totals = new Totals({
                 totalMilesBiked: dataToAdd.milesSinceLastPost,
-                totalTimeBiked: dataToAdd.timeBikedToday
+                totalTimeBiked: dataToAdd.timeBikedToday,
+                totalAscent: dataToAdd.ascentSinceLastPost
             });
             console.log('totals: ' + totals);
             totals.save(callback);
         } else {
             results[0].totalMilesBiked += dataToAdd.milesSinceLastPost;
             results[0].totalTimeBiked += dataToAdd.timeBikedToday;
+            results[0].totalAscent += dataToAdd.ascentSinceLastPost;
             console.log('results after changes: ' + results);
             results[0].save(callback);
         }

@@ -54,9 +54,20 @@
   width: 40%;
 }
 
+.totals-image-bottom-row {
+  margin-bottom: 5px;
+  width: 80%;
+}
+
 .total-miles-section {
   padding-bottom: 1em;
 }
+
+.total-ascent-section {
+  padding-bottom: 1em;
+}
+
+
 
 #totals-display {
   text-align: center;

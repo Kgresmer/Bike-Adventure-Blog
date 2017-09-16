@@ -8,6 +8,7 @@ import {FileUploader} from 'ng2-file-upload';
 export class TotalsAddition {
   milesSinceLastPost: number;
   timeBikedToday: number;
+  ascentSinceLastPost: number;
 }
 
 @Component({
@@ -67,7 +68,8 @@ export class DashboardComponent implements OnInit {
   deletePost(postToDelete) {
     const dataToAddToTripTotals: TotalsAddition = {
       milesSinceLastPost: -Math.abs(postToDelete.milesSinceLastPost),
-      timeBikedToday: -Math.abs(postToDelete.timeBikedToday)
+      timeBikedToday: -Math.abs(postToDelete.timeBikedToday),
+      ascentSinceLastPost: -Math.abs(postToDelete.ascentSinceLastPost)
     };
     this.postService.addToTotals(dataToAddToTripTotals).subscribe(data => {
       if (data.success) {
@@ -261,20 +263,25 @@ export class DashboardComponent implements OnInit {
   private sendUpdateTotalsRequest() {
     let dataToAddToTripTotals: TotalsAddition = {
       milesSinceLastPost: this.currentPost.milesSinceLastPost,
-      timeBikedToday: this.currentPost.timeBikedToday
+      timeBikedToday: this.currentPost.timeBikedToday,
+      ascentSinceLastPost: this.currentPost.ascentSinceLastPost
     };
     if (this.postAction === 'edit') {
       if (this.postToEdit.milesSinceLastPost === this.currentPost.milesSinceLastPost &&
-        this.postToEdit.timeBikedToday === this.currentPost.timeBikedToday) {
+        this.postToEdit.timeBikedToday === this.currentPost.timeBikedToday &&
+        this.postToEdit.ascentSinceLastPost === this.currentPost.ascentSinceLastPost) {
         return;
       } else if (this.postToEdit.milesSinceLastPost !== this.currentPost.milesSinceLastPost ||
-        this.postToEdit.timeBikedToday !== this.currentPost.timeBikedToday) {
+        this.postToEdit.timeBikedToday !== this.currentPost.timeBikedToday ||
+        this.postToEdit.ascentSinceLastPost !== this.currentPost.ascentSinceLastPost) {
         dataToAddToTripTotals.timeBikedToday = this.currentPost.timeBikedToday - this.postToEdit.timeBikedToday;
         dataToAddToTripTotals.milesSinceLastPost = this.currentPost.milesSinceLastPost - this.postToEdit.milesSinceLastPost;
+        dataToAddToTripTotals.ascentSinceLastPost = this.currentPost.ascentSinceLastPost - this.postToEdit.ascentSinceLastPost;
       }
     }
     if (typeof this.currentPost.milesSinceLastPost === 'number' &&
-      typeof this.currentPost.timeBikedToday === 'number') {
+      typeof this.currentPost.timeBikedToday === 'number' &&
+      typeof this.currentPost.ascentSinceLastPost === 'number') {
       this.postService.addToTotals(dataToAddToTripTotals).subscribe(data => {
         if (data.success) {
           this.flashMessagesService.show(data.msg, {

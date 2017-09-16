@@ -70,7 +70,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 exports.i(__webpack_require__("../../../../css-loader/index.js?{\"sourceMap\":false,\"importLoaders\":1}!../../../../postcss-loader/index.js?{\"ident\":\"postcss\"}!../../../../bootstrap/dist/css/bootstrap.css"), "");
 
 // module
-exports.push([module.i, "body {\n  font-family: 'Raleway', sans-serif;\n  color: #00495C !important;\n  font-size: 1.7em;\n}\n", ""]);
+exports.push([module.i, "body {\n  font-family: 'Raleway', sans-serif;\n  color: #00495C !important;\n  font-size: 1.7em;\n  margin-bottom: 4em;\n}\n", ""]);
 
 // exports
 

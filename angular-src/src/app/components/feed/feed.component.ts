@@ -19,6 +19,7 @@ export class Post {
   recap: boolean;
   milesSinceLastPost: number;
   timeBikedToday: number;
+  ascentSinceLastPost: number;
   temperature: number;
   weatherCondition: string;
   author: string;
@@ -27,6 +28,7 @@ export class Post {
 export class Totals {
   totalMilesBiked: number;
   totalTimeBiked: number;
+  totalAscent: number;
 }
 
 @Component({
@@ -86,17 +88,17 @@ export class FeedComponent implements OnInit {
     });
 
     this.getTotals();
-    this.postService.getAllPosts().subscribe(response => {
-      if (response.success) {
-        this.posts = response.posts.sort(function(a, b) {
-          var dateA:any = new Date(a.date), dateB:any = new Date(b.date);
-          return dateA - dateB;
-        }).reverse();
-        this.visiblePosts = this.posts;
-        this.setupPagination();
-        this.setFilterTags();
-      }
-    });
+    // this.postService.getAllPosts().subscribe(response => {
+    //   if (response.success) {
+    //     this.posts = response.posts.sort(function(a, b) {
+    //       var dateA:any = new Date(a.date), dateB:any = new Date(b.date);
+    //       return dateA - dateB;
+    //     }).reverse();
+    //     this.visiblePosts = this.posts;
+    //     this.setupPagination();
+    //     this.setFilterTags();
+    //   }
+    // });
   }
 
   private setFilterTags() {
