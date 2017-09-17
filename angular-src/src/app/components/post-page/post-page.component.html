@@ -17,17 +17,24 @@
     <div class="col-xs-offset-3 col-xs-6 col-sm-3 col-md-3 col-lg-3"
          id="totals-display" *ngIf="totals">
       <div style="background-color: #ffffff; padding: 1.5rem;">
-        <div class="total-miles-section">
-          <img src="../../../assets/bike.png" class="totals-image"> <br>
-          Total Miles Biked: <br>
-          <span class="totals-number">{{totals.totalMilesBiked | number : '1.2-2'}}</span> <br>
-        </div>
         <div class="total-time-section">
           <img src="../../../assets/clock.png" class="totals-image"> <br>
-          Total Time Biked: <br>
-          <span class="totals-number">{{totalTimeBiked.days}}</span> days<br>
-          <span class="totals-number">{{totalTimeBiked.hours}}</span> hrs<br>
+          Time: <br>
+          <span class="totals-number">{{totalTimeBiked.days}}</span> days,
+          <span class="totals-number">{{totalTimeBiked.hours}}</span> hrs,
           <span class="totals-number">{{totalTimeBiked.minutes}}</span> mins<br>
+        </div>
+        <br>
+        <div class="total-miles-section">
+          <img src="../../../assets/bike.png" class="totals-image-bottom-row"> <br>
+          Distance: <br>
+          <span class="totals-number">{{totals.totalMilesBiked | number : '1.0-0'}}</span> mi <br>
+        </div>
+        <div class="total-ascent-section">
+          <img src="../../../assets/elevation.png" class="totals-image-bottom-row"> <br>
+          Ascent: <br>
+          <span class="totals-number">{{totals.totalAscent | number : '1.0-0'}}</span> ft <br>
+          {{(totals.totalAscent / 29029) | number: '1.1-2'}} Everest summits
         </div>
       </div>
     </div>
