@@ -11,6 +11,11 @@
   padding: 5px;
 }
 
+.totals-image-bottom-row {
+  margin-bottom: 5px;
+  width: 40%;
+}
+
 .tag-link {
   padding: 3px;
 }
