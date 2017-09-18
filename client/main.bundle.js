@@ -820,6 +820,7 @@ var FeedComponent = (function () {
         this.totalTimeBiked = { days: 0, hours: 0, minutes: 0 };
     }
     FeedComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.s3url = 'https://blog-post-photos.s3.amazonaws.com/';
         this.filteredPosts = [];
         this.mapOfPages = {};
@@ -847,17 +848,17 @@ var FeedComponent = (function () {
             }
         });
         this.getTotals();
-        // this.postService.getAllPosts().subscribe(response => {
-        //   if (response.success) {
-        //     this.posts = response.posts.sort(function(a, b) {
-        //       var dateA:any = new Date(a.date), dateB:any = new Date(b.date);
-        //       return dateA - dateB;
-        //     }).reverse();
-        //     this.visiblePosts = this.posts;
-        //     this.setupPagination();
-        //     this.setFilterTags();
-        //   }
-        // });
+        this.postService.getAllPosts().subscribe(function (response) {
+            if (response.success) {
+                _this.posts = response.posts.sort(function (a, b) {
+                    var dateA = new Date(a.date), dateB = new Date(b.date);
+                    return dateA - dateB;
+                }).reverse();
+                _this.visiblePosts = _this.posts;
+                _this.setupPagination();
+                _this.setFilterTags();
+            }
+        });
     };
     FeedComponent.prototype.setFilterTags = function () {
         var _this = this;
