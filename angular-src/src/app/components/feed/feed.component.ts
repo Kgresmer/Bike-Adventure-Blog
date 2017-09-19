@@ -45,6 +45,7 @@ export class FeedComponent implements OnInit {
 
   position: string;
   s3url: string;
+  loading: boolean;
   numOfPostsPerPage: number;
   pageNumbers: string[];
   activePage: Post[];
@@ -86,9 +87,10 @@ export class FeedComponent implements OnInit {
         }
       }
     });
-
+    this.loading = true;
     this.getTotals();
     this.postService.getAllPosts().subscribe(response => {
+      this.loading = false;
       if (response.success) {
         this.posts = response.posts.sort(function(a, b) {
           var dateA:any = new Date(a.date), dateB:any = new Date(b.date);
@@ -99,6 +101,7 @@ export class FeedComponent implements OnInit {
         this.setFilterTags();
       }
     });
+    this.loading = false;
   }
 
   private setFilterTags() {

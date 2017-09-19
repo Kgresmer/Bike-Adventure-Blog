@@ -22,6 +22,7 @@ export class Totals {
 export class PostPageComponent implements OnInit {
 
   totals: Totals;
+  loading: boolean;
   private sub: any;
   activePost: Post;
   nextPost: Post;
@@ -41,9 +42,11 @@ export class PostPageComponent implements OnInit {
     this.previousPost = null;
     this.sub = this.route.params.subscribe(params => {
       let id = params['id'];
+      this.loading = true;
       this.postService.getPostById(id).subscribe(response => {
         if (response.success){
           this.activePost = response.post;
+          this.loading = false;
           if (this.activePost.weatherCondition) {
             this.setWeatherPhoto();
           }
@@ -60,7 +63,7 @@ export class PostPageComponent implements OnInit {
             } else {
               this.previousPost = null;
             }
-          })
+          });
           this.postService.getPostsByDate(nextDayDate).subscribe( response => {
             if (response.success && response.posts.length > 0) {
               this.nextPost = response.posts[response.posts.length - 1];
@@ -69,6 +72,7 @@ export class PostPageComponent implements OnInit {
             }
           })
         } else {
+          this.loading = false;
           this.flashMessagesService.show('I\'m Sorry. I seem to have misplaced that post. ', {
             cssClass: 'alert-danger',
             timeout: 5000});
@@ -88,6 +92,7 @@ export class PostPageComponent implements OnInit {
     });
 
     this.getTotals();
+    this.loading = false;
   }
 
   getTotals(): void {

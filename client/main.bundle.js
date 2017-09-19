@@ -21,7 +21,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".loader-hidden {\n  visibility: hidden;\n}\n.loader-overlay {\n  position: absolute;\n  width:100%;\n  top:0;\n  left: 0;\n  opacity: 1;\n  z-index: 500000;\n}\n", ""]);
 
 // exports
 
@@ -123,12 +123,14 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__components_footer_footer_component__ = __webpack_require__("../../../../../src/app/components/footer/footer.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__components_calendar_calendar_component__ = __webpack_require__("../../../../../src/app/components/calendar/calendar.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__components_post_page_post_page_component__ = __webpack_require__("../../../../../src/app/components/post-page/post-page.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__components_loading_indicator_loading_component__ = __webpack_require__("../../../../../src/app/components/loading-indicator/loading.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -216,7 +218,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_21__components_gallery_gallery_component__["a" /* GalleryComponent */],
                 __WEBPACK_IMPORTED_MODULE_22__components_footer_footer_component__["a" /* FooterComponent */],
                 __WEBPACK_IMPORTED_MODULE_23__components_calendar_calendar_component__["a" /* CalendarComponent */],
-                __WEBPACK_IMPORTED_MODULE_24__components_post_page_post_page_component__["a" /* PostPageComponent */]
+                __WEBPACK_IMPORTED_MODULE_24__components_post_page_post_page_component__["a" /* PostPageComponent */],
+                __WEBPACK_IMPORTED_MODULE_25__components_loading_indicator_loading_component__["a" /* LoadingIndicatorComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -771,7 +774,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/feed/feed.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" style=\"display: inline-block;\">\n  <ul class=\"pagination\" *ngIf=\"pageNumbers.length > 1\">\n    <li *ngFor=\"let page of pageNumbers\"><a href=\"#\" (click)=\"changePage(page)\">{{page}}</a></li>\n  </ul>\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding\">\n      <div *ngFor=\"let post of activePage\" class=\"display-post-thumbnail\">\n        <a [routerLink]=\"['/post', post._id]\" title=\"Click to read more\" data-toggle=\"tooltip\" data-placement=\"top\">\n          <div class=\"post-block\">\n            <div class=\"row\">\n              <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section\">\n                <h3>{{post.title}}</h3><span [innerHtml]=\"post.body.split('. ')[0]\"></span>. . . .\n                <small>(see more)</small>\n                <p>Miles Since last Post: <strong>{{post.milesSinceLastPost}}</strong><br>\n                  <small>Posted by: {{post.author}} on {{post.date.split('T')[0]}}</small>\n                  - <img id=\"post-weather-image\" src=\"{{formatPhotoName(post.weatherCondition[0])}}\"/>\n                  <small>{{post.temperature}}&#8457;</small>\n                </p>\n              </div>\n              <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12 weather-section\">\n                <img class=\"blog-post-image-thumbnail\" src=\"{{s3url}}{{post.photos[0]}}\"/>\n              </div>\n            </div>\n          </div>\n        </a>\n      </div>\n    </div>\n    <div class=\"col-xs-offset-3 col-xs-6 col-sm-3 col-md-3 col-lg-3\"\n         id=\"totals-display\" *ngIf=\"totals\">\n      <div style=\"background-color: #ffffff; padding: 1.5rem;\">\n        <h3>Totals</h3>\n        <hr style=\"margin-top: 0; margin-bottom: 10px;\">\n        <div class=\"total-time-section\">\n          <img src=\"../../../assets/clock.png\" class=\"totals-image\"> <br>\n          Time: <br>\n          <span class=\"totals-number\">{{totalTimeBiked.days}}</span> days,\n          <span class=\"totals-number\">{{totalTimeBiked.hours}}</span> hrs,\n          <span class=\"totals-number\">{{totalTimeBiked.minutes}}</span> mins<br>\n        </div>\n        <br>\n        <div class=\"total-miles-section\">\n          <img src=\"../../../assets/bike.png\" class=\"totals-image-bottom-row\"> <br>\n          Distance: <br>\n          <span class=\"totals-number\">{{totals.totalMilesBiked | number : '1.0-0'}}</span> mi <br>\n        </div>\n        <div class=\"total-ascent-section\">\n          <img src=\"../../../assets/elevation.png\" class=\"totals-image-bottom-row\"> <br>\n          Ascent: <br>\n          <span class=\"totals-number\">{{totals.totalAscent | number : '1.0-0'}}</span> ft <br>\n          {{(totals.totalAscent / 29029) | number: '1.1-2'}} Everest summits\n        </div>\n      </div>\n    </div>\n  </div>\n  <ul class=\"pagination\" *ngIf=\"pageNumbers.length > 1\">\n    <li *ngFor=\"let page of pageNumbers\"><a href=\"#\" (click)=\"changePage(page)\">{{page}}</a></li>\n  </ul>\n</div>\n\n"
+module.exports = "<div *ngIf=\"loading\">\n  <loading-indicator></loading-indicator>\n</div>\n<div class=\"container\" style=\"display: inline-block;\" *ngIf=\"!loading\">\n  <ul class=\"pagination\" *ngIf=\"pageNumbers.length > 1\">\n    <li *ngFor=\"let page of pageNumbers\"><a href=\"#\" (click)=\"changePage(page)\">{{page}}</a></li>\n  </ul>\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding\">\n      <div *ngFor=\"let post of activePage\" class=\"display-post-thumbnail\">\n        <a [routerLink]=\"['/post', post._id]\" title=\"Click to read more\" data-toggle=\"tooltip\" data-placement=\"top\">\n          <div class=\"post-block\">\n            <div class=\"row\">\n              <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12 weather-section\">\n                <h3>{{post.title}}</h3><span [innerHtml]=\"post.body.split('. ')[0]\"></span>. . . .\n                <small>(see more)</small>\n                <p>Miles Since last Post: <strong>{{post.milesSinceLastPost}}</strong><br>\n                  <small>Posted by: {{post.author}} on {{post.date.split('T')[0]}}</small>\n                  - <img id=\"post-weather-image\" src=\"{{formatPhotoName(post.weatherCondition[0])}}\"/>\n                  <small>{{post.temperature}}&#8457;</small>\n                </p>\n              </div>\n              <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12 weather-section\">\n                <img class=\"blog-post-image-thumbnail\" src=\"{{s3url}}{{post.photos[0]}}\"/>\n              </div>\n            </div>\n          </div>\n        </a>\n      </div>\n    </div>\n    <div class=\"col-xs-offset-3 col-xs-6 col-sm-3 col-md-3 col-lg-3\"\n         id=\"totals-display\" *ngIf=\"totals\">\n      <div style=\"background-color: #ffffff; padding: 1.5rem;\">\n        <h3>Totals</h3>\n        <hr style=\"margin-top: 0; margin-bottom: 10px;\">\n        <div class=\"total-time-section\">\n          <img src=\"../../../assets/clock.png\" class=\"totals-image\"> <br>\n          Time: <br>\n          <span class=\"totals-number\">{{totalTimeBiked.days}}</span> days,\n          <span class=\"totals-number\">{{totalTimeBiked.hours}}</span> hrs,\n          <span class=\"totals-number\">{{totalTimeBiked.minutes}}</span> mins<br>\n        </div>\n        <br>\n        <div class=\"total-miles-section\">\n          <img src=\"../../../assets/bike.png\" class=\"totals-image-bottom-row\"> <br>\n          Distance: <br>\n          <span class=\"totals-number\">{{totals.totalMilesBiked | number : '1.0-0'}}</span> mi <br>\n        </div>\n        <div class=\"total-ascent-section\">\n          <img src=\"../../../assets/elevation.png\" class=\"totals-image-bottom-row\"> <br>\n          Ascent: <br>\n          <span class=\"totals-number\">{{totals.totalAscent | number : '1.0-0'}}</span> ft <br>\n          {{(totals.totalAscent / 29029) | number: '1.1-2'}} Everest summits\n        </div>\n      </div>\n    </div>\n  </div>\n  <ul class=\"pagination\" *ngIf=\"pageNumbers.length > 1\">\n    <li *ngFor=\"let page of pageNumbers\"><a href=\"#\" (click)=\"changePage(page)\">{{page}}</a></li>\n  </ul>\n</div>\n\n"
 
 /***/ }),
 
@@ -847,8 +850,10 @@ var FeedComponent = (function () {
                 }
             }
         });
+        this.loading = true;
         this.getTotals();
         this.postService.getAllPosts().subscribe(function (response) {
+            _this.loading = false;
             if (response.success) {
                 _this.posts = response.posts.sort(function (a, b) {
                     var dateA = new Date(a.date), dateB = new Date(b.date);
@@ -859,6 +864,7 @@ var FeedComponent = (function () {
                 _this.setFilterTags();
             }
         });
+        this.loading = false;
     };
     FeedComponent.prototype.setFilterTags = function () {
         var _this = this;
@@ -1235,6 +1241,64 @@ var HomeComponent = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/components/loading-indicator/loading.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/loading-indicator/loading.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "\n\n<h1>\n  Hold On A Sec!\n</h1>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/loading-indicator/loading.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoadingIndicatorComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_bootstrap_dist_css_bootstrap_css__ = __webpack_require__("../../../../bootstrap/dist/css/bootstrap.css");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_bootstrap_dist_css_bootstrap_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_bootstrap_dist_css_bootstrap_css__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+var LoadingIndicatorComponent = (function () {
+    function LoadingIndicatorComponent() {
+    }
+    LoadingIndicatorComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'loading-indicator',
+            template: __webpack_require__("../../../../../src/app/components/loading-indicator/loading.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/loading-indicator/loading.component.css")]
+        })
+    ], LoadingIndicatorComponent);
+    return LoadingIndicatorComponent;
+}());
+
+//# sourceMappingURL=loading.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/components/login/login.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1438,7 +1502,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/post-page/post-page.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" style=\"display: inline-block;\">\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding\" *ngIf=\"activePost\">\n      <div *ngIf=\"previousPost && nextPost\">\n        <a class=\"pull-right\" [routerLink]=\"['/post', nextPost._id]\" (click)=\"removedPostFromPage()\" >&nbsp;| Next Day</a>\n        <a class=\"pull-right\" [routerLink]=\"['/post', previousPost._id]\" (click)=\"removedPostFromPage()\" >Previous Day</a>\n      </div>\n      <div *ngIf=\"previousPost && !nextPost\">\n        <a class=\"pull-right\" [routerLink]=\"['/post', previousPost._id]\" (click)=\"removedPostFromPage()\" >Previous Day</a>\n      </div>\n      <div *ngIf=\"!previousPost && nextPost\">\n        <a class=\"pull-right\" [routerLink]=\"['/post', nextPost._id]\" (click)=\"removedPostFromPage()\" >Next Day</a>\n      </div>\n        <app-post [selectedPost]=\"activePost\"></app-post>\n        <hr>\n    </div>\n    <div class=\"col-xs-offset-3 col-xs-6 col-sm-3 col-md-3 col-lg-3\"\n         id=\"totals-display\" *ngIf=\"totals\">\n      <div style=\"background-color: #ffffff; padding: 1.5rem;\">\n        <div class=\"total-time-section\">\n          <img src=\"../../../assets/clock.png\" class=\"totals-image\"> <br>\n          Time: <br>\n          <span class=\"totals-number\">{{totalTimeBiked.days}}</span> days,\n          <span class=\"totals-number\">{{totalTimeBiked.hours}}</span> hrs,\n          <span class=\"totals-number\">{{totalTimeBiked.minutes}}</span> mins<br>\n        </div>\n        <br>\n        <div class=\"total-miles-section\">\n          <img src=\"../../../assets/bike.png\" class=\"totals-image-bottom-row\"> <br>\n          Distance: <br>\n          <span class=\"totals-number\">{{totals.totalMilesBiked | number : '1.0-0'}}</span> mi <br>\n        </div>\n        <div class=\"total-ascent-section\">\n          <img src=\"../../../assets/elevation.png\" class=\"totals-image-bottom-row\"> <br>\n          Ascent: <br>\n          <span class=\"totals-number\">{{totals.totalAscent | number : '1.0-0'}}</span> ft <br>\n          {{(totals.totalAscent / 29029) | number: '1.1-2'}} Everest summits\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n"
+module.exports = "<div *ngIf=\"loading\">\n  <loading-indicator></loading-indicator>\n</div>\n<div class=\"container\" style=\"display: inline-block;\" *ngIf=\"!loading\">\n  <div class=\"row\">\n    <div class=\"col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding\" *ngIf=\"activePost\">\n      <div *ngIf=\"previousPost && nextPost\">\n        <a class=\"pull-right\" [routerLink]=\"['/post', nextPost._id]\" (click)=\"removedPostFromPage()\" >&nbsp;| Next Day</a>\n        <a class=\"pull-right\" [routerLink]=\"['/post', previousPost._id]\" (click)=\"removedPostFromPage()\" >Previous Day</a>\n      </div>\n      <div *ngIf=\"previousPost && !nextPost\">\n        <a class=\"pull-right\" [routerLink]=\"['/post', previousPost._id]\" (click)=\"removedPostFromPage()\" >Previous Day</a>\n      </div>\n      <div *ngIf=\"!previousPost && nextPost\">\n        <a class=\"pull-right\" [routerLink]=\"['/post', nextPost._id]\" (click)=\"removedPostFromPage()\" >Next Day</a>\n      </div>\n        <app-post [selectedPost]=\"activePost\"></app-post>\n        <hr>\n    </div>\n    <div class=\"col-xs-offset-3 col-xs-6 col-sm-3 col-md-3 col-lg-3\"\n         id=\"totals-display\" *ngIf=\"totals\">\n      <div style=\"background-color: #ffffff; padding: 1.5rem;\">\n        <div class=\"total-time-section\">\n          <img src=\"../../../assets/clock.png\" class=\"totals-image\"> <br>\n          Time: <br>\n          <span class=\"totals-number\">{{totalTimeBiked.days}}</span> days,\n          <span class=\"totals-number\">{{totalTimeBiked.hours}}</span> hrs,\n          <span class=\"totals-number\">{{totalTimeBiked.minutes}}</span> mins<br>\n        </div>\n        <br>\n        <div class=\"total-miles-section\">\n          <img src=\"../../../assets/bike.png\" class=\"totals-image-bottom-row\"> <br>\n          Distance: <br>\n          <span class=\"totals-number\">{{totals.totalMilesBiked | number : '1.0-0'}}</span> mi <br>\n        </div>\n        <div class=\"total-ascent-section\">\n          <img src=\"../../../assets/elevation.png\" class=\"totals-image-bottom-row\"> <br>\n          Ascent: <br>\n          <span class=\"totals-number\">{{totals.totalAscent | number : '1.0-0'}}</span> ft <br>\n          {{(totals.totalAscent / 29029) | number: '1.1-2'}} Everest summits\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n"
 
 /***/ }),
 
@@ -1487,9 +1551,11 @@ var PostPageComponent = (function () {
         this.previousPost = null;
         this.sub = this.route.params.subscribe(function (params) {
             var id = params['id'];
+            _this.loading = true;
             _this.postService.getPostById(id).subscribe(function (response) {
                 if (response.success) {
                     _this.activePost = response.post;
+                    _this.loading = false;
                     if (_this.activePost.weatherCondition) {
                         _this.setWeatherPhoto();
                     }
@@ -1517,6 +1583,7 @@ var PostPageComponent = (function () {
                     });
                 }
                 else {
+                    _this.loading = false;
                     _this.flashMessagesService.show('I\'m Sorry. I seem to have misplaced that post. ', {
                         cssClass: 'alert-danger',
                         timeout: 5000
@@ -1536,6 +1603,7 @@ var PostPageComponent = (function () {
             }
         });
         this.getTotals();
+        this.loading = false;
     };
     PostPageComponent.prototype.getTotals = function () {
         var _this = this;

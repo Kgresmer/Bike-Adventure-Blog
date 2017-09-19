@@ -1,4 +1,7 @@
-<div class="container" style="display: inline-block;">
+<div *ngIf="loading">
+  <loading-indicator></loading-indicator>
+</div>
+<div class="container" style="display: inline-block;" *ngIf="!loading">
   <ul class="pagination" *ngIf="pageNumbers.length > 1">
     <li *ngFor="let page of pageNumbers"><a href="#" (click)="changePage(page)">{{page}}</a></li>
   </ul>

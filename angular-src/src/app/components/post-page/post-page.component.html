@@ -1,4 +1,7 @@
-<div class="container" style="display: inline-block;">
+<div *ngIf="loading">
+  <loading-indicator></loading-indicator>
+</div>
+<div class="container" style="display: inline-block;" *ngIf="!loading">
   <div class="row">
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 remove-padding" *ngIf="activePost">
       <div *ngIf="previousPost && nextPost">
