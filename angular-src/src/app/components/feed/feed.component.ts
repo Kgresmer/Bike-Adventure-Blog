@@ -3,7 +3,6 @@ import { OnInit } from '@angular/core';
 import {PostService} from '../../services/post.service';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import {Http} from '@angular/http';
-import {MdTooltipModule} from '@angular/material'
 
 declare const jQuery: any;
 
